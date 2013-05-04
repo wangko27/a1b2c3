@@ -1,0 +1,7 @@
+--------------------------------------------------
+SHOP++
+http://www.shopxx.net
+Copyright (c) 2011 shopxx.net All Rights Reserved.
+Revision: 2.1.3
+Date: 2012-12
+--------------------------------------------------
