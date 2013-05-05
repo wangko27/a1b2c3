@@ -73,6 +73,11 @@ public class Setting {
 	public enum Operator {
 		add, subtract, multiply, divide
 	}
+	
+	// 同类产品排序
+	public enum SameGoodsOrder {
+		DEFAULT, TOTALSALES, BROWSECOUNT
+	}
 
 	public static final String HOT_SEARCH_SEPARATOR = ",";// 热门搜索分隔符
 
@@ -119,6 +124,7 @@ public class Setting {
 	private String defaultBigGoodsImagePath;// 默认商品图片(大)
 	private String defaultSmallGoodsImagePath;// 默认商品图片(小)
 	private String defaultThumbnailGoodsImagePath;// 默认缩略图
+	private SameGoodsOrder defaultSameGoodsOrder;
 	private Boolean isShowMarketPrice;// 前台是否显示市场价
 	private Operator defaultMarketPriceOperator;// 默认市场价运算符
 	private BigDecimal defaultMarketPriceNumber;// 默认市场价运算基数
@@ -484,6 +490,14 @@ public class Setting {
 
 	public void setDefaultThumbnailGoodsImagePath(String defaultThumbnailGoodsImagePath) {
 		this.defaultThumbnailGoodsImagePath = defaultThumbnailGoodsImagePath;
+	}
+
+	public SameGoodsOrder getDefaultSameGoodsOrder() {
+		return defaultSameGoodsOrder;
+	}
+
+	public void setDefaultSameGoodsOrder(SameGoodsOrder defaultSameGoodsOrder) {
+		this.defaultSameGoodsOrder = defaultSameGoodsOrder;
 	}
 
 	public Boolean getIsShowMarketPrice() {

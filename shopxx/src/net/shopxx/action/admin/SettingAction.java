@@ -11,6 +11,7 @@ import net.shopxx.bean.Setting;
 import net.shopxx.bean.Setting.CurrencyType;
 import net.shopxx.bean.Setting.Operator;
 import net.shopxx.bean.Setting.RoundType;
+import net.shopxx.bean.Setting.SameGoodsOrder;
 import net.shopxx.bean.Setting.ScoreType;
 import net.shopxx.bean.Setting.StoreFreezeTime;
 import net.shopxx.bean.Setting.WatermarkPosition;
@@ -248,6 +249,11 @@ public class SettingAction extends BaseAdminAction {
 	// 获取运算符集合
 	public List<Operator> getOperatorList() {
 		return Arrays.asList(Operator.values());
+	}
+	
+	// 获取同类产品顺序集合
+	public List<SameGoodsOrder> getSameGoodsOrderList() {
+		return Arrays.asList(SameGoodsOrder.values());
 	}
 
 	public Setting getSetting() {

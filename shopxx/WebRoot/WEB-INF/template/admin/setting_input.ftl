@@ -486,6 +486,20 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
+						同类产品排序: 
+					</th>
+					<td>
+						<select name="setting.defaultSameGoodsOrder">
+							<#list sameGoodsOrderList as order>
+								<option value="${order}"<#if order == setting.defaultSameGoodsOrder> selected</#if>>
+								${action.getText("SameGoodsOrder." + order)}
+								</option>
+							</#list>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>
 						水印图片: 
 					</th>
 					<td>

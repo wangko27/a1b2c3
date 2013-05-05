@@ -46,6 +46,7 @@
 		<defaultBigGoodsImagePath>/images/default_big_goods_image.jpg</defaultBigGoodsImagePath>
 		<defaultSmallGoodsImagePath>/images/default_small_goods_image.jpg</defaultSmallGoodsImagePath>
 		<defaultThumbnailGoodsImagePath>/images/default_thumbnail_goods_image.jpg</defaultThumbnailGoodsImagePath>
+		<defaultSameGoodsOrder>DEFAULT</defaultSameGoodsOrder>
 		<isShowMarketPrice>true</isShowMarketPrice>
 		<defaultMarketPriceOperator>multiply</defaultMarketPriceOperator>
 		<defaultMarketPriceNumber>1.2</defaultMarketPriceNumber>

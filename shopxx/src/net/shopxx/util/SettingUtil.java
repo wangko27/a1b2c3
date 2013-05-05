@@ -16,6 +16,7 @@ import net.shopxx.bean.Setting.InstantMessagingPosition;
 import net.shopxx.bean.Setting.LeaveMessageDisplayType;
 import net.shopxx.bean.Setting.Operator;
 import net.shopxx.bean.Setting.RoundType;
+import net.shopxx.bean.Setting.SameGoodsOrder;
 import net.shopxx.bean.Setting.ScoreType;
 import net.shopxx.bean.Setting.StoreFreezeTime;
 import net.shopxx.bean.Setting.WatermarkPosition;
@@ -109,6 +110,7 @@ public class SettingUtil {
 		Node defaultBigGoodsImagePathNode = document.selectSingleNode("/shopxx/setting/defaultBigGoodsImagePath");
 		Node defaultSmallGoodsImagePathNode = document.selectSingleNode("/shopxx/setting/defaultSmallGoodsImagePath");
 		Node defaultThumbnailGoodsImagePathNode = document.selectSingleNode("/shopxx/setting/defaultThumbnailGoodsImagePath");
+		Node defaultSameGoodsOrderNode = document.selectSingleNode("/shopxx/setting/defaultSameGoodsOrder");
 		Node isShowMarketPriceNode = document.selectSingleNode("/shopxx/setting/isShowMarketPrice");
 		Node defaultMarketPriceOperatorNode = document.selectSingleNode("/shopxx/setting/defaultMarketPriceOperator");
 		Node defaultMarketPriceNumberNode = document.selectSingleNode("/shopxx/setting/defaultMarketPriceNumber");
@@ -176,6 +178,7 @@ public class SettingUtil {
 		setting.setDefaultBigGoodsImagePath(defaultBigGoodsImagePathNode.getText());
 		setting.setDefaultSmallGoodsImagePath(defaultSmallGoodsImagePathNode.getText());
 		setting.setDefaultThumbnailGoodsImagePath(defaultThumbnailGoodsImagePathNode.getText());
+		setting.setDefaultSameGoodsOrder(SameGoodsOrder.valueOf(defaultSameGoodsOrderNode.getText()));
 		setting.setIsShowMarketPrice(Boolean.valueOf(isShowMarketPriceNode.getText()));
 		setting.setDefaultMarketPriceOperator(Operator.valueOf(defaultMarketPriceOperatorNode.getText()));
 		setting.setDefaultMarketPriceNumber(BigDecimal.valueOf(Double.valueOf(defaultMarketPriceNumberNode.getText())));
@@ -280,6 +283,7 @@ public class SettingUtil {
 		Node defaultBigGoodsImagePathNode = document.selectSingleNode("/shopxx/setting/defaultBigGoodsImagePath");
 		Node defaultSmallGoodsImagePathNode = document.selectSingleNode("/shopxx/setting/defaultSmallGoodsImagePath");
 		Node defaultThumbnailGoodsImagePathNode = document.selectSingleNode("/shopxx/setting/defaultThumbnailGoodsImagePath");
+		Node defaultSameGoodsOrderNode = document.selectSingleNode("/shopxx/setting/defaultSameGoodsOrder");
 		Node isShowMarketPriceNode = document.selectSingleNode("/shopxx/setting/isShowMarketPrice");
 		Node defaultMarketPriceOperatorNode = document.selectSingleNode("/shopxx/setting/defaultMarketPriceOperator");
 		Node defaultMarketPriceNumberNode = document.selectSingleNode("/shopxx/setting/defaultMarketPriceNumber");
@@ -405,6 +409,9 @@ public class SettingUtil {
 		if(defaultThumbnailGoodsImagePathNode == null){
 			defaultThumbnailGoodsImagePathNode = settingElement.addElement("defaultThumbnailGoodsImagePath");
 		}
+		if(defaultSameGoodsOrderNode == null){
+			defaultSameGoodsOrderNode = settingElement.addElement("defaultSameGoodsOrder");
+		}
 		if(isShowMarketPriceNode == null){
 			isShowMarketPriceNode = settingElement.addElement("isShowMarketPrice");
 		}
@@ -506,6 +513,7 @@ public class SettingUtil {
 		defaultBigGoodsImagePathNode.setText(setting.getDefaultBigGoodsImagePath());
 		defaultSmallGoodsImagePathNode.setText(setting.getDefaultSmallGoodsImagePath());
 		defaultThumbnailGoodsImagePathNode.setText(setting.getDefaultThumbnailGoodsImagePath());
+		defaultSameGoodsOrderNode.setText(setting.getDefaultSameGoodsOrder().toString());
 		isShowMarketPriceNode.setText(String.valueOf(setting.getIsShowMarketPrice()));
 		defaultMarketPriceOperatorNode.setText(String.valueOf(setting.getDefaultMarketPriceOperator()));
 		defaultMarketPriceNumberNode.setText(String.valueOf(setting.getDefaultMarketPriceNumber()));
