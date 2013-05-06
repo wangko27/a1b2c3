@@ -92,6 +92,11 @@ public class GoodsServiceImpl extends BaseServiceImpl<Goods, String> implements 
 	}
 	
 	@Transactional(readOnly = true)
+	public List<Goods> getRecommendGoodsList(String goodsId, GoodsCategory category, String orderType) {
+		return goodsDao.getRecommendGoodsList(goodsId, category, orderType);
+	}
+	
+	@Transactional(readOnly = true)
 	public Pager getGoodsPager(GoodsCategory goodsCategory, Pager pager) {
 		return goodsDao.getGoodsPager(goodsCategory, pager);
 	}

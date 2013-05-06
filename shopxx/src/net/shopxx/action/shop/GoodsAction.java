@@ -16,6 +16,7 @@ import net.shopxx.service.BrandService;
 import net.shopxx.service.GoodsAttributeService;
 import net.shopxx.service.GoodsCategoryService;
 import net.shopxx.service.GoodsService;
+import net.shopxx.util.SettingUtil;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -49,11 +50,14 @@ public class GoodsAction extends BaseShopAction {
 	private String orderType;
 	private String viewType;
 	private String searchType;
+	private String goodsId;
+	private String goodsCategoryId;
 	
 	private GoodsCategory goodsCategory;
 	private Brand brand;
 	private List<GoodsCategory> pathList;
 	private List<Goods> compareResultList;
+	private List<Goods> recommendList;
 	
 	@Resource(name = "goodsServiceImpl")
 	private GoodsService goodsService;
@@ -63,6 +67,25 @@ public class GoodsAction extends BaseShopAction {
 	private BrandService brandService;
 	@Resource(name = "goodsAttributeServiceImpl")
 	private GoodsAttributeService goodsAttributeService;
+	
+	@Validations(
+			requiredStrings = {
+				@RequiredStringValidator(fieldName = "goodsCategoryId", message = "参数错误!"),
+				@RequiredStringValidator(fieldName = "goodsId", message = "参数错误!")
+			}
+		)
+	@InputConfig(resultName = "error")
+	public String recommend() {
+		goodsCategory = goodsCategoryService.get(goodsCategoryId);
+		if (goodsCategory == null) {
+			addActionError("参数错误!");
+			return ERROR;
+		}
+		
+		String orderType = SettingUtil.getSetting().getDefaultSameGoodsOrder().toString();
+		recommendList = goodsService.getRecommendGoodsList(goodsId, goodsCategory, orderType);
+		return "recommend";
+	}
 
 	@Validations(
 		requiredStrings = {
@@ -268,6 +291,30 @@ public class GoodsAction extends BaseShopAction {
 
 	public void setSearchType(String searchType) {
 		this.searchType = searchType;
+	}
+
+	public String getGoodsId() {
+		return goodsId;
+	}
+
+	public void setGoodsId(String goodsId) {
+		this.goodsId = goodsId;
+	}
+
+	public String getGoodsCategoryId() {
+		return goodsCategoryId;
+	}
+
+	public void setGoodsCategoryId(String goodsCategoryId) {
+		this.goodsCategoryId = goodsCategoryId;
+	}
+
+	public List<Goods> getRecommendList() {
+		return recommendList;
+	}
+
+	public void setRecommendList(List<Goods> recommendList) {
+		this.recommendList = recommendList;
 	}
 	
 }

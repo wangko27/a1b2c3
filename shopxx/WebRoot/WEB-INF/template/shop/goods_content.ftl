@@ -232,6 +232,9 @@
 				</div>
 			</div>
 			<div class="blank"></div>
+			<input type="hidden" id="goodsId" value="${goods.id}"/>
+			<input type="hidden" id="goodsCategoryId" value="${goods.goodsCategory.id}"/>
+			<div id="recommendGoods"></div>
 			<div class="goodsBottom">
 				<ul id="goodsParameterTab" class="goodsParameterTab">
 					<li>

@@ -140,5 +140,13 @@ public interface GoodsDao extends BaseDao<Goods, String> {
 	 * @return 商品列表
 	 */
 	public List<Goods> getGoodsListByIds(List<String> ids);
+	
+	/**
+	 * 按类型取得推荐产品
+	 * @param category
+	 * @param orderType 排序方式
+	 * @return
+	 */
+	public List<Goods> getRecommendGoodsList(String goodsId, GoodsCategory category, String orderType);
 
 }

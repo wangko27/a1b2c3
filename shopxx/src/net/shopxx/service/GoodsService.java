@@ -88,6 +88,14 @@ public interface GoodsService extends BaseService<Goods, String> {
 	public List<Goods> getGoodsList(GoodsCategory goodsCategory, Date beginDate, Date endDate, Integer firstResult, Integer maxResults);
 	
 	/**
+	 * 按类型取得推荐产品
+	 * @param category
+	 * @param orderType 排序方式
+	 * @return
+	 */
+	public List<Goods> getRecommendGoodsList(String goodsId, GoodsCategory category, String orderType);
+	
+	/**
 	 * 根据商品分类和Pager对象,获取此分类下的商品分页对象（只包含isMarketable=true的对象,包含子分类商品）
 	 * 
 	 * @param goodsCategory

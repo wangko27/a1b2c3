@@ -606,6 +606,25 @@ $().ready( function() {
 		});
 	}
 	
+	/* ---------- Goods Recommend ---------- */
+	var $recommend = $("#recommendGoods");
+	if ($recommend.size() > 0) {
+		var goodsId = $('#goodsId').val();
+		var goodsCategoryId = $('#goodsCategoryId').val();
+		var getRecommendGoodsUrl = shopxx.base + '/shop/goods!recommend.action';
+		$.ajax({
+			url: getRecommendGoodsUrl,
+			data: 'goodsId=' + goodsId + '&goodsCategoryId=' + goodsCategoryId,
+			type: "GET",
+			dataType: "html",
+			cache: false,
+			success: function(html) {
+				$recommend.html(html);
+				$recommend.show();
+			}
+		});
+	}
+	
 	/* ---------- Comment ---------- */
 	
 	var $comment = $("#comment");

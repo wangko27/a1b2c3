@@ -227,6 +227,22 @@ public class GoodsDaoImpl extends BaseDaoImpl<Goods, String> implements GoodsDao
 		return (List<Goods>)criteria.list();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Goods> getRecommendGoodsList(String goodsId, GoodsCategory category, String orderType) {
+		Query query = null;
+		if ("TOTALSALES".equals(orderType)) {
+			String hql = "from Goods as goods where goods.isMarketable = :isMarketable and goods.goodsCategory = :goodsCategory and goods.id != :goodsId order by goods.totalSales desc";
+			query = getSession().createQuery(hql);
+			query.setParameter("isMarketable", true).setParameter("goodsId", goodsId).setParameter("goodsCategory", category);
+		} else {
+			String hql = "from Goods as goods where goods.isMarketable = :isMarketable and goods.goodsCategory = :goodsCategory and goods.id != :goodsId";
+			query = getSession().createQuery(hql);
+			query.setParameter("isMarketable", true).setParameter("goodsId", goodsId).setParameter("goodsCategory", category);
+		}
+	
+		return query.list();
+	}
+	
 	// 关联处理
 	@Override
 	public void delete(Goods goods) {
