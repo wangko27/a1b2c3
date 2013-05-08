@@ -1,6 +1,5 @@
 package net.shopxx.action.shop;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -196,15 +195,6 @@ public class GoodsAction extends BaseShopAction {
 		}
 	}
 	
-	public String compare() {
-		String[] compareId = compareIds.split(",");
-		compareResultList = new ArrayList<Goods>();
-		for(String id : compareId) {
-			compareResultList.add(goodsService.load(id));
-		}
-		return "compare";
-	}
-
 	public String getSign() {
 		return sign;
 	}

@@ -464,11 +464,21 @@ $().ready( function() {
 				items = id + ',';
 			}
 		}
-		$.cookie('items-compare', items, { path: '/' });
+		if(items){
+			$.cookie('items-compare', items, { path: '/' });
 		
-		$('#items-compare').html(items);
-		$('#pop-compare').prepend('<a href="/shopxx/shop/goods!compare.action?ids=' + items + '">对比</a>');
-		$('#pop-compare').show();
+			$.ajax({
+				url: shopxx.base + "/shop/compare!showSimple.action",
+				data: {"compareIds": items},
+				type: "GET",
+				dataType: "html",
+				cache: false,
+				success: function(data) {
+					$('#diff-items').html(data);
+				}
+			});
+			$('#pop-compare').show();
+		}
 	}
 	
 	/* ---------- AddCartItem ---------- */
@@ -513,6 +523,7 @@ $().ready( function() {
 		var $tableType = $("#tableType");
 		var $pictureType = $("#pictureType");
 		var $addFavorite = $("input.addFavorite");
+		var $gotoCompare = $('#goto-contrast');
 		var $addCompare = $("input.addCompare");
 		
 		$brand.click( function() {
@@ -567,6 +578,15 @@ $().ready( function() {
 			var $this = $(this);
 			$.addCompare($this.attr("goodsId"));
 		});
+		
+		$gotoCompare.click( function() {
+			var items = $.cookie('items-compare');
+			if(items){
+				var url = shopxx.base + "/shop/compare!showResult.action?compareIds=" + items;
+				window.open(url);
+			}
+		});
+		
 	
 	}
 	
