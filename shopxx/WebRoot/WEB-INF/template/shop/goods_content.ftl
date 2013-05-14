@@ -225,8 +225,25 @@
 								<#else>
 									<input type="button" id="goodsButton" class="addCartItemButton" value="" hidefocus />
 								</#if>
-								
-								 <input type="button" id="addFavorite" class="addFavoriteButton" goodsId="${goods.id}" hidefocus />
+								<div id="shop_star">
+                                	<ul>
+                                		<#if goods.averageScore == 0>
+                                		<li><img src="${base}/template/shop/images/shop_star2.gif"></li>
+                                		<li><img src="${base}/template/shop/images/shop_star2.gif"></li>
+                                		<li><img src="${base}/template/shop/images/shop_star2.gif"></li>
+                                		<li><img src="${base}/template/shop/images/shop_star2.gif"></li>
+                                		</#if>
+                                		<#if goods.averageScore != 0>
+                                		<#list 1..goods.averageScore as t>
+                                    	<li><img src="${base}/template/shop/images/shop_star1.gif"></li>
+                                    	</#list>
+                                    	<#list (goods.averageScore + 1)..5 as t>
+                                        <li><img src="${base}/template/shop/images/shop_star2.gif"></li>
+                                        </#list>
+                                		</#if>
+                                    </ul>
+                                </div>
+                                <div id="Collect"><input type="button" id="addFavorite" class="addFavoriteButton" goodsid="${goods.id}" hidefocus=""></div>
 							</td>
 						</tr>
 					</table>
@@ -292,7 +309,7 @@
 							<#list commentList as comment>
 								<#assign isHasComment = true />
 								<div class="commentItem" id="commentItem${comment.id}">
-									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.score}星&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
+									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp<span><img src="${base}/template/shop/images/discuss_s${comment.score}.gif" /></span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
 									<p><pre>${comment.content}</pre></p>
 									<#list comment.replyCommentSet as replyComment>
 										<#if replyComment.isShow>
@@ -407,12 +424,12 @@
 										评分: 
 									</th>
 									<td>
-										<ul>
-											<li><input type="radio" name="comment.score" value="5"/>5星</li>
-											<li><input type="radio" name="comment.score" value="4"/>4星</li>
-											<li><input type="radio" name="comment.score" value="3"/>3星</li>
-											<li><input type="radio" name="comment.score" value="2"/>2星</li>
-											<li><input type="radio" name="comment.score" value="1"/>1星</li>
+										<ul class="discuss_star">
+											<li><input type="radio" name="comment.score" value="5"/><span class="discuss_s"><img src="${base}/template/shop/images/discuss_s5.gif"></span></li>
+											<li><input type="radio" name="comment.score" value="4"/><span class="discuss_s"><img src="${base}/template/shop/images/discuss_s4.gif"></span></li>
+											<li><input type="radio" name="comment.score" value="3"/><span class="discuss_s"><img src="${base}/template/shop/images/discuss_s3.gif"></span></li>
+											<li><input type="radio" name="comment.score" value="2"/><span class="discuss_s"><img src="${base}/template/shop/images/discuss_s2.gif"></span></li>
+											<li><input type="radio" name="comment.score" value="1"/><span class="discuss_s"><img src="${base}/template/shop/images/discuss_s1.gif"></span></li>
 										</ul>
 									</td>
 								</tr>
@@ -456,6 +473,40 @@
 					</div>
 				</#if>
 				<div class="tabContent goodsHelp">
+					<ul id="video">
+                    	<li>
+                        	<a href=""><img src="images/pic.jpg"></a>
+                            <span><a href="">三星P1000 GALAXY 文件名称</a></span>
+                        </li>
+                        <li>
+                        	<a href=""><img src="images/pic.jpg"></a>
+                            <span><a href="">汉王 TouchPad文件名称</a></span>
+                        </li>
+                        <li>
+                        	<a href=""><img src="images/pic.jpg"></a>
+                            <span><a href="">苹果ipad 4代 名称文件名称</a></span>
+                        </li>
+                        <li>
+                        	<a href=""><img src="images/pic.jpg"></a>
+                            <span><a href="">视频帮助文件名称</a></span>
+                        </li>
+                        <li>
+                        	
+                            <span><a href="">■ 苹果ipad 4代 名称文件名称</a></span>
+                        </li>
+                        <li>
+                        	
+                            <span><a href="">■ 汉王 TouchPad文件名称</a></span>
+                        </li>
+                        <li>
+                        	
+                            <span><a href="">■ 视频帮助文件名称文件名称</a></span>
+                        </li>
+                        <li>
+                        	
+                            <span><a href="">■ 视频帮助文件名称</a></span>
+                        </li>
+					</ul>
 					<ul>
 						<#list goods.goodsHelpList as goodsHelp>
 						<li><a href="${goodsHelp.filePath}">${goodsHelp.name}</a></li>

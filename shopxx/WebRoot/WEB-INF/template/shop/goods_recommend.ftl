@@ -1,8 +1,10 @@
+<div class="title"><strong>同类推荐</strong></div>
 <ul class="menu">
 	<#list recommendList as recommendGoods>
 		<li>
 			<a href="${base}${recommendGoods.htmlPath}">
-				<span class="icon">&nbsp;</span>${recommendGoods.name}
+				<img src="${base}${recommendGoods.defaultThumbnailGoodsImagePath}">
+				<span class="text"><a href="${base}${recommendGoods.htmlPath}">${recommendGoods.name}</a></span>
 			</a>
 		</li>
 	</#list>

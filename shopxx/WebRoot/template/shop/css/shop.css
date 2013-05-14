@@ -1692,6 +1692,7 @@
 .goodsContent .thumbnailGoodsImage .items {
 	width: 20000em;
 	position: absolute;
+	left: 7px;
 }
 
 .goodsContent .thumbnailGoodsImage .goodsImageTab li {
@@ -1822,7 +1823,7 @@
 }
 
 .goodsContent .buyInfo td {
-	padding: 3px 5px;
+	padding: 3px 5px 10px 0;
 }
 
 .goodsContent .buyInfo .text li {
@@ -3755,8 +3756,171 @@
 	cursor: pointer;
 }
 
-.pop-compare { display:none; position:fixed; bottom:-200px; right:50%; margin-right:-495px; z-index:5; width:990px; height:137px; background:#fff;}
-.pop-wrap { position:absolute; left:0; top:0; width:990px; }
+
+
+/*推荐产品*/
+#recommendGoods{ overflow:hidden}
+#recommendGoods ul.menu{ overflow:hidden}
+#recommendGoods ul.menu li{ float:left; width:110px; padding-right:20px; height:150px; overflow:hidden}
+#recommendGoods ul.menu li img{ width:110px; height:110px; border:1px solid #ccc;}
+#recommendGoods ul.menu .text{ text-align:center; width:110px; display:block}
+#recommendGoods .title{ height: 29px; line-height: 29px; margin-bottom: 10px; border-top: 1px solid #AAA8A9; background-color: lightGrey;}
+#recommendGoods .title strong{display: block; float: left;padding: 0px 20px;color: white; font-size: 14px; font-weight: bold; font-family: "Microsoft YaHei"; background-color: #AAA8A9;}
+#shop_star{ padding:8px 0 0 40px; float:left; width:110px;overflow:hidden}
+#shop_star li{ float:left}
+#Collect{ float:left; width:80px; padding-left:5px;overflow:hidden}
+#video{ float:left; padding:8px 0;overflow:hidden}
+#video li{ float:left; width:370px; padding-bottom:10px;}
+#video li img{ width:150px; height:150px; border:1px solid #ccc;}
+#video span{ padding-left:8px;}
+/*评论发表*/
+.discuss{ margin-bottom:14px; padding-top:5px;}
+.discuss a{padding: 4px 8px; color: white; font-weight: bold; white-space: nowrap; background-color: #2372CF;}
+.discuss a:hover{color: white;}
+.sendTable ul{ margin-top:-5px;}
+.sendTable li{ float:left}
+.discuss_star{ padding-top:8px;}
+.discuss_star input{ float:left}
+.discuss_s{ float:left;}
+.discuss_list{ background:#ECF2F8; border: 1px solid #C7DBE5; padding:8px;}
+.discuss_title{}
+.discuss_title span{ padding-right:5px;}
+.discuss_title .name{ color:#be1800; font-weight:bold; padding-left:5px;}
+.discuss_list .discuss_text{ padding:8px 0 8px 5px; color:#9B9B9B}
+.discuss_more{ float:right}
+.discuss_list2{ background:#fff;border: 1px solid #C7DBE5; padding:8px; margin-bottom:5px;}
+#mt{overflow: visible; height: 30px; line-height: 30px; margin-bottom:5px; background: 0; border-top: 2px solid #DDD; border-left: 1px solid #DDD; border-right: 1px solid #DDD; border-bottom: 1px solid #DDD; background:#F7F7F7}
+#mt .tab{margin-left: -1px; overflow: visible;}
+#mt .tab li,.tab a{float: left; text-align: center; width:140px;}
+
+#mt .tab .curr{background-color: white; margin-top: -1px; border-top: 2px solid #E4393C; border-left: 1px solid #DDD;}
+#mt .tab .curr a{color: #ff6600; font-weight:bold}
+
+/*对比栏样式*/
+ #pop-compare {
+margin-right: -500px;
+}
+.pop-compare {
+display: none;
+position: fixed;
+bottom: -200px;
+right: 50%;
+margin-right: -495px;
+z-index: 9;
+width: 990px;
+height: 137px;
+background: white;
+}
+#pop-compare .pop-inner {
+height: 133px;
+border: 2px solid #028DD3;
+
+}
+.diff-hd {
+position: relative;
+overflow: hidden;
+}
+.diff-hd .tab-btns {
+height: 30px;
+border-bottom: 1px solid #028DD3;
+background: #DCF5FF;
+_overflow: hidden;
+}
+.tab-btns .current {
+position: relative;
+background: white;
+font-weight: 700;
+height: 31px;
+}
+.tab-btns .current a {
+color: #005AA0;
+}
+.diff-hd li {
+float: left;
+position: relative;
+border-right: 1px solid #028DD3;
+width: 110px;
+height: 30px;
+line-height: 30px;
+text-align: center;
+zoom: 1;
+}
+.diff-hd .operate {
+width: 190px;
+text-align: right;
+position: absolute;
+right: 0;
+top: 0;
+padding-right: 22px;
+height: 30px;
+line-height: 30px;
+clear: both;
+}
+.diff-bd, .compare-follow {
+position: relative;
+}
+div.diff-items {
+color: #CCC;
+height: 90px;
+overflow: hidden;
+padding: 6px;
+}
+
+.clearfix {
+display: block;
+}
+.diff-items dl, .scroll-con dl {
+float: left;
+overflow: hidden;
+margin-right: 10px;
+border-right: 1px dotted #C5C5C5;
+padding: 17px 10px 12px 0;
+width: 196px;
+}
+div.diff-items {
+color: #CCC;
+height: 90px;
+overflow: hidden;
+padding: 6px;
+width:880px;
+float:left
+}
+.diff-items dt, .scroll-con dt, #scroll-con-inner .dt {
+float: left;
+margin-right: 5px;
+width: 48px;
+height: 48px;
+text-align: center;
+line-height: 48px;
+background: #F6F6F6;
+color: #CCC;
+border: 1px solid #E7E7E7;
+font-size: 45px;
+overflow: hidden;
+}
+.diff-operate {
+text-align: center;
+float:left;
+width:84px;
+margin-top:20px;
+overflow:hidden
+}
+.btn-compare-b {
+display: block;
+width: 84px;
+height: 30px;
+margin-bottom: 11px;
+line-height: 30px;
+color: #333;
+cursor: default;
+background: url(../images/cmp_btns.gif) no-repeat;
+
+}
+
+.del-items:hover{cursor: pointer;}
+.p-price{ color:#be1800; font-weight:bold; display:block}
+.pop-compare { display:none; position:fixed; bottom:-200px; right:50%; margin-right:-495px; z-index:5; width:1000px; height:137px; background:#fff;}
+.pop-wrap { position:absolute; left:0; top:0; width:1000px; }
 .pop-compare-narrow .pop-wrap { width:970px; }
 .pop-compare-narrow .diff-operate { right:14px; }
 * html .pop-wrap { position: static; }
