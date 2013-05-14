@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import net.shopxx.action.admin.BaseAdminAction.Status;
 import net.shopxx.entity.CarMake;
 import net.shopxx.service.CarMakeService;
 

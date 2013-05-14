@@ -29,6 +29,86 @@
 			}
 		});
 	}
+	
+	function gotoAddCarMode(){
+		var carMode = prompt("请输入汽车型号","");
+		var carMakeId = $('#carMakeId').val();
+		if(!carMakeId || carMakeId == null || carMakeId == '') {
+			$.message({type: 'error', content: '请选选择制造商'});
+			return;
+		}
+		var url = shopxx.base + "/admin/car_mode!save.action";
+		$.ajax({
+			url: url,
+			data: 'carMode.carMakeId=' + carMakeId + '&carMode.name=' + carMode,
+			type: "POST",
+			dataType: "json",
+			success: function(data) {
+				if (data.status == "success") {
+					$('#carModeList').append('<li><a href="javascript:;" onclick="showCarStyleList(' + carMakeId + ')">' + carMode + '</a></li>');
+				}
+				$.message({type: data.status, content: data.message});
+			}
+		});
+	}
+	
+	function showCarModeList(carMakeId){
+		var url = shopxx.base + "/admin/car_mode!list.action";
+		$.ajax({
+			url: url,
+			data: 'carMode.carMakeId=' + carMakeId,
+			type: "POST",
+			dataType: "json",
+			success: function(data) {
+				var html = '';
+				for(var i = 0; i < data.length; i++){
+					html += '<li><a href="javascript:;" onclick="showCarStyleList(\'' + data[i].id +'\')">' + data[i].name + '</a></li>';
+				}
+				$('#carMakeId').val(carMakeId);
+				$('#carModeList').html(html);
+			}
+		});
+	}
+	
+	function gotoAddCarStyle(){
+		var carModeId = $('#carModeId').val();
+		if(!carModeId || carModeId == null || carModeId == '') {
+			$.message({type: 'error', content: '请选择车型'});
+			return;
+		}
+		var carStyle = prompt("请输入汽车规格","");
+		var yearMade = prompt("请输入生产年代","");
+		var url = shopxx.base + "/admin/car_style!save.action";
+		$.ajax({
+			url: url,
+			data: 'carStyle.carModeId=' + carModeId + '&carStyle.style=' + carStyle + '&carStyle.yearMade=' + yearMade,
+			type: "POST",
+			dataType: "json",
+			success: function(data) {
+				if (data.status == "success") {
+					$('#carStyleList').append('<li><input type="hidden" value="" />' + carStyle + '---' + yearMade + '</li>')
+				}
+				$.message({type: data.status, content: data.message});
+			}
+		});
+	}
+	function showCarStyleList(carModeId){
+		var url = shopxx.base + "/admin/car_style!list.action";
+		$.ajax({
+			url: url,
+			data: 'carStyle.carModeId=' + carModeId,
+			type: "POST",
+			dataType: "json",
+			success: function(data) {
+				var html = '';
+				for(var i = 0; i < data.length; i++){
+					html += '<li>' + data[i].style + '---' + data[i].yearMade + '</li>';
+				}
+				$('#carModeId').val(carModeId);
+				$('#carStyleList').html(html);
+			}
+		});
+	}
 </script>
 </head>
 <body class="list">
@@ -46,7 +126,7 @@
 				</div>
 				<ul id="carMakeList">
 					<#list carMakeList as carMake>
-					<li><input type="hidden" value="${carMake.id}" />${carMake.name}</li>
+					<li><input type="hidden" value="${carMake.id}" /><a href="javascript:;" onclick="showCarModeList('${carMake.id}')">${carMake.name}</a></li>
 					</#list>
 				</ul>
 			</form>
@@ -56,18 +136,25 @@
 		<div class="bar">
 			车型
 		</div>
+		<input type="hidden" id="carMakeId" value="" />
+		<div class="listBar">
+			<input type="button" class="formButton" onclick="gotoAddCarMode()" value="添加" hidefocus />
+			<input type="button" class="formButton" onclick="gotoDeleteCarMake()" value="删除" hidefocus />
+		</div>
 		<ul id="carModeList">
 		</ul>
 		</td>
 		<td style="width: 100px">
+		<input type="hidden" id="carModeId" value="" />
 		<div class="bar">
 			出厂年限
 		</div>
-		</td>
-		<td style="width: 100px">
-		<div class="bar">
-			规格
+		<div class="listBar">
+			<input type="button" class="formButton" onclick="gotoAddCarStyle()" value="添加" hidefocus />
+			<input type="button" class="formButton" onclick="gotoDeleteCarMake()" value="删除" hidefocus />
 		</div>
+		<ul id="carStyleList">
+		</ul>
 		</td>
 		</tr>
 	</table>

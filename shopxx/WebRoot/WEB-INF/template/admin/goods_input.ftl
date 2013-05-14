@@ -675,6 +675,9 @@ $().ready(function() {
 				<li>
 					<input type="button" value="帮助文件" hidefocus />
 				</li>
+				<li>
+					<input type="button" value="适应车型" hidefocus />
+				</li>
 			</ul>
 			<table id="infoTable" class="inputTable tabContent">
 				<tr>
@@ -1179,6 +1182,49 @@ $().ready(function() {
 						</td>
 						<td>
 							<input type="text" name="goodsHelpList[${goodsHelp_index}].orderList" class="formText goodsImageOrderList" value="${goodsHelp.orderList}" style="width: 50px;" />
+						</td>
+						<td>
+							<span class="deleteIcon deleteGoodsHelp" title="删 除">&nbsp;</span>
+						</td>
+					</tr>
+				</#list>
+			</table>
+			<table id="fitCarTable" class="inputTable tabContent">
+				<tr class="noneHover">
+					<td colspan="5">
+						<input type="button" id="addFitCarButton" class="formButton" value="增加" hidefocus />
+					</td>
+				</tr>
+				<tr class="title">
+					<th>
+						制造商
+					</th>
+					<th>
+						汽车型号
+					</th>
+					<th>
+						汽车规格
+					</th>
+					<th>
+						出厂年代
+					</th>
+					<th>
+						删除
+					</th>
+				</tr>
+				<#list (goods.fitCarList)! as fitCar>
+					<tr class="goodsImageTr">
+						<td>
+							${fitCar.carMake.name}
+						</td>
+						<td>
+							${fitCar.carMode.name}
+						</td>
+						<td>
+							${fitCar.carStyle.style}
+						</td>
+						<td>
+							${fitCar.carStyle.yearMade}
 						</td>
 						<td>
 							<span class="deleteIcon deleteGoodsHelp" title="删 除">&nbsp;</span>
