@@ -23,57 +23,57 @@ import org.apache.commons.lang.StringUtils;
  */
 
 public class Setting {
-	
+
 	// 货币种类(人民币、美元、欧元、英磅、加拿大元、澳元、卢布、港币、新台币、韩元、新加坡元、新西兰元、日元、马元、瑞士法郎、瑞典克朗、丹麦克朗、兹罗提、挪威克朗、福林、捷克克朗、葡币)
 	public enum CurrencyType {
 		CNY, USD, EUR, GBP, CAD, AUD, RUB, HKD, TWD, KRW, SGD, NZD, JPY, MYR, CHF, SEK, DKK, PLZ, NOK, HUF, CSK, MOP
 	};
-	
+
 	// 小数位精确方式(四舍五入、向上取整、向下取整)
 	public enum RoundType {
 		roundHalfUp, roundUp, roundDown
 	}
-	
+
 	// 库存预占时间点(下订单、订单付款、订单发货)
 	public enum StoreFreezeTime {
 		order, payment, ship
 	}
-	
+
 	// 水印位置(无、左上、右上、居中、左下、右下)
 	public enum WatermarkPosition {
 		no, topLeft, topRight, center, bottomLeft, bottomRight
 	}
-	
+
 	// 积分获取方式(禁用积分获取、按订单总额计算、为商品单独设置)
 	public enum ScoreType {
 		disable, orderAmount, goodsSet
 	}
-	
+
 	// 在线客服位置(左、右)
 	public enum InstantMessagingPosition {
 		left, right
 	}
-	
+
 	// 在线留言显示方式(立即显示、回复后显示)
 	public enum LeaveMessageDisplayType {
 		direct, reply
 	}
-	
+
 	// 评论发表权限(任何访问者、注册会员、已购买会员)
 	public enum CommentAuthority {
 		anyone, member, purchased
 	}
-	
+
 	// 评论显示方式(立即显示、回复后显示)
 	public enum CommentDisplayType {
 		direct, reply
 	}
-	
+
 	// 运算符(加、减、乘、除)
 	public enum Operator {
 		add, subtract, multiply, divide
 	}
-	
+
 	// 同类产品排序
 	public enum SameGoodsOrder {
 		DEFAULT, TOTALSALES, BROWSECOUNT
@@ -86,6 +86,7 @@ public class Setting {
 	private String systemDescription;// 系统描述
 	private String contextPath;// 虚拟路径
 	private String imageUploadPath;// 图片上传路径
+	private String fileUploadPath;// 文件上传路径
 	private String imageBrowsePath;// 图片浏览路径
 	private String adminLoginUrl;// 后台登录URL
 	private String adminLoginProcessingUrl;// 后台登录处理URL
@@ -147,7 +148,7 @@ public class Setting {
 	private Boolean isCommentCaptchaEnabled;// 是否开启评论验证码功能
 	private CommentAuthority commentAuthority;// 评论发表权限
 	private CommentDisplayType commentDisplayType;// 评论显示方式
-	
+
 	public String getSystemName() {
 		return systemName;
 	}
@@ -187,7 +188,16 @@ public class Setting {
 	public void setImageUploadPath(String imageUploadPath) {
 		this.imageUploadPath = StringUtils.removeEnd(imageUploadPath, "/");
 	}
-	
+
+	public String getFileUploadPath() {
+		return fileUploadPath;
+	}
+
+	public void setFileUploadPath(String fileUploadPath) {
+		this.fileUploadPath = StringUtils.removeEnd(fileUploadPath, "/");
+		;
+	}
+
 	public String getImageBrowsePath() {
 		return imageBrowsePath;
 	}
@@ -299,7 +309,7 @@ public class Setting {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getCerttext() {
 		return certtext;
 	}
@@ -579,7 +589,7 @@ public class Setting {
 	public void setScoreScale(Double scoreScale) {
 		this.scoreScale = scoreScale;
 	}
-	
+
 	public Integer getBuildHtmlDelayTime() {
 		return buildHtmlDelayTime;
 	}
@@ -675,15 +685,20 @@ public class Setting {
 	public void setCommentDisplayType(CommentDisplayType commentDisplayType) {
 		this.commentDisplayType = commentDisplayType;
 	}
-	
+
 	// 获取热门搜索关键词集合
 	public List<String> getHotSearchList() {
 		return StringUtils.isNotEmpty(hotSearch) ? Arrays.asList(hotSearch.split(HOT_SEARCH_SEPARATOR)) : new ArrayList<String>();
 	}
-	
+
 	// 获取图片上传真实路径
 	public String getImageUploadRealPath() {
 		return CommonUtil.getPreparedStatementPath(imageUploadPath);
+	}
+
+	// 获取文件上传真实路径
+	public String getFileUploadRealPath() {
+		return CommonUtil.getPreparedStatementPath(fileUploadPath);
 	}
 
 }

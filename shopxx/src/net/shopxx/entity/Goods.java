@@ -60,11 +60,11 @@ import org.wltea.analyzer.lucene.IKAnalyzer;
 public class Goods extends BaseEntity {
 
 	private static final long serialVersionUID = 8394952361534286179L;
-	
+
 	public static final int DEFAULT_GOODS_LIST_PAGE_SIZE = 12;// 商品列表默认每页显示数
 	public static final int GOODS_ATTRIBUTE_VALUE_PROPERTY_COUNT = 20;// 商品属性值对象属性个数
 	public static final String GOODS_ATTRIBUTE_VALUE_PROPERTY_NAME_PREFIX = "goodsAttributeValue";// 商品属性值对象属性名称前缀
-	
+
 	private String goodsSn;// 商品编号
 	private String name;// 商品名称
 	private BigDecimal price;// 销售价
@@ -80,6 +80,7 @@ public class Goods extends BaseEntity {
 	private Boolean isNew;// 是否为新品商品
 	private Boolean isHot;// 是否为热销商品
 	private Boolean isSpecificationEnabled;// 是否启用商品规格
+	private String rank; // 评价汇总
 	private String introduction;// 介绍
 	private String metaKeywords;// 页面关键词
 	private String metaDescription;// 页面描述
@@ -110,12 +111,12 @@ public class Goods extends BaseEntity {
 	private String goodsAttributeValue18;// 商品属性值18
 	private String goodsAttributeValue19;// 商品属性值19
 	private String goodsParameterValueStore;// 商品参数存储
-	
+
 	private List<Goods> buildRelateGoodsList;
 	private GoodsCategory goodsCategory;// 商品分类
 	private GoodsType goodsType;// 商品类型
 	private Brand brand;// 品牌
-	
+
 	private Set<Specification> specificationSet = new HashSet<Specification>();// 规格
 	private Set<Product> productSet = new LinkedHashSet<Product>();// 货品
 	private Set<Comment> commentSet = new HashSet<Comment>();// 评论
@@ -139,7 +140,7 @@ public class Goods extends BaseEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	@Field(store = Store.YES, index = Index.UN_TOKENIZED)
 	@Column(nullable = false, precision = 15, scale = 5)
 	public BigDecimal getPrice() {
@@ -149,22 +150,22 @@ public class Goods extends BaseEntity {
 	public void setPrice(BigDecimal price) {
 		this.price = SettingUtil.setPriceScale(price);
 	}
-	
+
 	@Column(precision = 15, scale = 5)
 	public BigDecimal getCost() {
 		return cost;
 	}
-	
+
 	public void setCost(BigDecimal cost) {
 		this.cost = SettingUtil.setPriceScale(cost);
 	}
-	
+
 	@Field(store = Store.YES, index = Index.UN_TOKENIZED)
 	@Column(nullable = true, precision = 15, scale = 5)
 	public BigDecimal getDiscount() {
 		return cost;
 	}
-	
+
 	public void setDiscount(BigDecimal discount) {
 		this.discount = SettingUtil.setPriceScale(discount);
 	}
@@ -196,7 +197,7 @@ public class Goods extends BaseEntity {
 	public void setStore(Integer store) {
 		this.store = store;
 	}
-	
+
 	@Field(store = Store.YES, index = Index.UN_TOKENIZED)
 	public Long getTotalSales() {
 		return totalSales;
@@ -232,7 +233,7 @@ public class Goods extends BaseEntity {
 	public void setScore(Integer score) {
 		this.score = score;
 	}
-	
+
 	@Field(store = Store.YES, index = Index.UN_TOKENIZED)
 	@Column(nullable = false)
 	public Boolean getIsMarketable() {
@@ -329,7 +330,7 @@ public class Goods extends BaseEntity {
 	public void setGoodsImageStore(String goodsImageStore) {
 		this.goodsImageStore = goodsImageStore;
 	}
-	
+
 	@Field(store = Store.YES, index = Index.NO)
 	@Column(length = 3000)
 	public String getGoodsHelpStore() {
@@ -339,7 +340,7 @@ public class Goods extends BaseEntity {
 	public void setGoodsHelpStore(String goodsHelpStore) {
 		this.goodsHelpStore = goodsHelpStore;
 	}
-	
+
 	@Field(store = Store.YES, index = Index.NO)
 	@Column(length = 3000)
 	public String getRelateGoods() {
@@ -348,6 +349,16 @@ public class Goods extends BaseEntity {
 
 	public void setRelateGoods(String relateGoods) {
 		this.relateGoods = relateGoods;
+	}
+
+	@Field(store = Store.YES, index = Index.NO)
+	@Column(length = 3000)
+	public String getRank() {
+		return rank;
+	}
+
+	public void setRank(String rank) {
+		this.rank = rank;
 	}
 
 	public String getGoodsAttributeValue0() {
@@ -529,7 +540,7 @@ public class Goods extends BaseEntity {
 	public void setGoodsCategory(GoodsCategory goodsCategory) {
 		this.goodsCategory = goodsCategory;
 	}
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@ForeignKey(name = "fk_goods_goods_type")
 	public GoodsType getGoodsType() {
@@ -539,7 +550,7 @@ public class Goods extends BaseEntity {
 	public void setGoodsType(GoodsType goodsType) {
 		this.goodsType = goodsType;
 	}
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@ForeignKey(name = "fk_goods_brand")
 	public Brand getBrand() {
@@ -549,7 +560,7 @@ public class Goods extends BaseEntity {
 	public void setBrand(Brand brand) {
 		this.brand = brand;
 	}
-	
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@OrderBy("orderList asc")
 	@ForeignKey(name = "fk_specification_set")
@@ -561,7 +572,7 @@ public class Goods extends BaseEntity {
 		this.specificationSet = specificationSet;
 	}
 
-	@OneToMany(mappedBy = "goods", fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE})
+	@OneToMany(mappedBy = "goods", fetch = FetchType.LAZY, cascade = { CascadeType.REMOVE })
 	public Set<Product> getProductSet() {
 		return productSet;
 	}
@@ -570,7 +581,7 @@ public class Goods extends BaseEntity {
 		this.productSet = productSet;
 	}
 
-	@OneToMany(mappedBy = "goods", fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE})
+	@OneToMany(mappedBy = "goods", fetch = FetchType.LAZY, cascade = { CascadeType.REMOVE })
 	public Set<Comment> getCommentSet() {
 		return commentSet;
 	}
@@ -588,7 +599,7 @@ public class Goods extends BaseEntity {
 	public void setFavoriteMemberSet(Set<Member> favoriteMemberSet) {
 		this.favoriteMemberSet = favoriteMemberSet;
 	}
-	
+
 	@Transient
 	public List<Goods> getBuildRelateGoodsList() {
 		return buildRelateGoodsList;
@@ -606,12 +617,13 @@ public class Goods extends BaseEntity {
 			return null;
 		}
 		try {
-			return JsonUtil.toObject(goodsImageStore, new TypeReference<List<GoodsImage>>() {});
+			return JsonUtil.toObject(goodsImageStore, new TypeReference<List<GoodsImage>>() {
+			});
 		} catch (Exception e) {
 			return null;
 		}
 	}
-	
+
 	// 设置商品图片
 	@Transient
 	public void setGoodsImageList(List<GoodsImage> goodsImageList) {
@@ -622,7 +634,7 @@ public class Goods extends BaseEntity {
 		Collections.sort(goodsImageList);
 		goodsImageStore = JsonUtil.toJson(goodsImageList);
 	}
-	
+
 	// 获取商商品帮助文件
 	@Transient
 	public List<GoodsHelp> getGoodsHelpList() {
@@ -630,12 +642,13 @@ public class Goods extends BaseEntity {
 			return null;
 		}
 		try {
-			return JsonUtil.toObject(goodsHelpStore, new TypeReference<List<GoodsHelp>>() {});
+			return JsonUtil.toObject(goodsHelpStore, new TypeReference<List<GoodsHelp>>() {
+			});
 		} catch (Exception e) {
 			return null;
 		}
 	}
-	
+
 	// 设置商品帮助文件
 	@Transient
 	public void setGoodsHelpList(List<GoodsHelp> goodsHelpList) {
@@ -646,7 +659,7 @@ public class Goods extends BaseEntity {
 		Collections.sort(goodsHelpList);
 		goodsHelpStore = JsonUtil.toJson(goodsHelpList);
 	}
-	
+
 	// 设置相关产品
 	@Transient
 	public void setRelateGoodsList(List<String> relateGoodsList) {
@@ -656,7 +669,7 @@ public class Goods extends BaseEntity {
 		}
 		relateGoods = JsonUtil.toJson(relateGoodsList);
 	}
-	
+
 	// 获取相关产品
 	@Transient
 	public List<String> getRelateGoodsList() {
@@ -664,12 +677,13 @@ public class Goods extends BaseEntity {
 			return null;
 		}
 		try {
-			return JsonUtil.toObject(relateGoods, new TypeReference<List<String>>() {});
+			return JsonUtil.toObject(relateGoods, new TypeReference<List<String>>() {
+			});
 		} catch (Exception e) {
 			return null;
 		}
 	}
-	
+
 	// 获取商品属性值
 	@Transient
 	public Object getGoodsAttributeValue(GoodsAttribute goodsAttribute) {
@@ -679,7 +693,7 @@ public class Goods extends BaseEntity {
 		String propertyName = GOODS_ATTRIBUTE_VALUE_PROPERTY_NAME_PREFIX + goodsAttribute.getPropertyIndex();
 		return (String) ReflectionUtil.invokeGetterMethod(this, propertyName);
 	}
-	
+
 	// 设置商品属性值
 	@Transient
 	public void setGoodsAttributeValue(GoodsAttribute goodsAttribute, String goodsAttributeValue) {
@@ -692,7 +706,7 @@ public class Goods extends BaseEntity {
 		String propertyName = GOODS_ATTRIBUTE_VALUE_PROPERTY_NAME_PREFIX + goodsAttribute.getPropertyIndex();
 		ReflectionUtil.invokeSetterMethod(this, propertyName, goodsAttributeValue);
 	}
-	
+
 	// 获取商品参数值
 	@Transient
 	public Map<String, String> getGoodsParameterValueMap() {
@@ -700,12 +714,13 @@ public class Goods extends BaseEntity {
 			return null;
 		}
 		try {
-			return JsonUtil.toObject(goodsParameterValueStore, new TypeReference<Map<String, String>>() {});
+			return JsonUtil.toObject(goodsParameterValueStore, new TypeReference<Map<String, String>>() {
+			});
 		} catch (Exception e) {
 			return null;
 		}
 	}
-	
+
 	// 设置商品参数值
 	@Transient
 	public void setGoodsParameterValueMap(Map<String, String> goodsParameterValueMap) {
@@ -714,7 +729,7 @@ public class Goods extends BaseEntity {
 		}
 		goodsParameterValueStore = JsonUtil.toJson(goodsParameterValueMap);
 	}
-	
+
 	// 保存处理
 	@Override
 	@Transient
@@ -759,7 +774,7 @@ public class Goods extends BaseEntity {
 		PageTemplateConfig pageTemplateConfig = TemplateConfigUtil.getPageTemplateConfig(PageTemplateConfig.GOODS_CONTENT);
 		htmlPath = pageTemplateConfig.getHtmlRealPath();
 	}
-	
+
 	// 更新处理
 	@Override
 	@Transient
@@ -801,7 +816,7 @@ public class Goods extends BaseEntity {
 			goodsSn = SerialNumberUtil.buildGoodsSn();
 		}
 	}
-	
+
 	// 获取默认货品
 	@Transient
 	public Product getDefaultProduct() {
@@ -818,7 +833,7 @@ public class Goods extends BaseEntity {
 		}
 		return null;
 	}
-	
+
 	// 获取默认商品图片（大）
 	@Transient
 	public String getDefaultBigGoodsImagePath() {
@@ -830,7 +845,7 @@ public class Goods extends BaseEntity {
 			return setting.getDefaultBigGoodsImagePath();
 		}
 	}
-	
+
 	// 获取默认商品图片（小）
 	@Transient
 	public String getDefaultSmallGoodsImagePath() {
@@ -842,7 +857,7 @@ public class Goods extends BaseEntity {
 			return setting.getDefaultSmallGoodsImagePath();
 		}
 	}
-	
+
 	// 获取默认商品图片（缩略图）
 	@Transient
 	public String getDefaultThumbnailGoodsImagePath() {
@@ -854,7 +869,7 @@ public class Goods extends BaseEntity {
 			return setting.getDefaultThumbnailGoodsImagePath();
 		}
 	}
-	
+
 	// 获取商品规格值
 	@Transient
 	public Set<SpecificationValue> getSpecificationValueSet() {
@@ -866,16 +881,39 @@ public class Goods extends BaseEntity {
 		}
 		return specificationValueSet;
 	}
-	
+
 	// 设置商品属性值为NULL
 	@Transient
 	public void setGoodsAttributeValueToNull() {
-		for (int i = 0; i < GOODS_ATTRIBUTE_VALUE_PROPERTY_COUNT; i ++) {
+		for (int i = 0; i < GOODS_ATTRIBUTE_VALUE_PROPERTY_COUNT; i++) {
 			String propertyName = GOODS_ATTRIBUTE_VALUE_PROPERTY_NAME_PREFIX + i;
 			ReflectionUtil.invokeSetterMethod(this, propertyName, null, String.class);
 		}
 	}
-	
+
+	// 获取星级
+	@SuppressWarnings("unchecked")
+	@Transient
+	public int getAverageScore() {
+		if (StringUtils.isBlank(rank)) {
+			return 0;
+		}
+		Map<String, Integer> retMap = JsonUtil.toObject(rank, Map.class);
+		int totalCount = 0;
+		int totalStar = 0;
+		for (int i = 1; i <= 5; i++) {
+			Integer tmp = retMap.get("count_" + i);
+			if (tmp != null) {
+				totalCount += tmp;
+				totalStar += i * tmp;
+			}
+		}
+		if (totalCount <= 0) {
+			return 0;
+		}
+		return totalStar / totalCount;
+	}
+
 	/**
 	 * 商品是否缺货
 	 */

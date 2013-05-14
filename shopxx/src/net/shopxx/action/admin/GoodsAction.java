@@ -32,6 +32,7 @@ import net.shopxx.service.GoodsService;
 import net.shopxx.service.GoodsTypeService;
 import net.shopxx.service.ProductService;
 import net.shopxx.service.SpecificationService;
+import net.shopxx.util.CommonUtil;
 import net.shopxx.util.JsonUtil;
 
 import org.apache.commons.lang.StringUtils;
@@ -73,6 +74,7 @@ public class GoodsAction extends BaseAdminAction {
 	private List<Goods> disPlayRelateGoodsList;
 	private List<String> relateGoodsList;
 	private List<File> goodsHelpFileList;
+	private List<File> goodsHelpFileThumbnailList;
 	private String[] specificationIds;
 	private List<Product> productList;
 	private List<String[]> specificationValueIdsList; 
@@ -245,11 +247,18 @@ public class GoodsAction extends BaseAdminAction {
 				if (goodsHelp == null) {
 					continue;
 				}
-				String suffix = goodsHelp.getRealPath().substring(goodsHelp.getRealPath().lastIndexOf(".") + 1);
-				File goodsHeloFile = goodsHelpFileList.get(i);
-				GoodsHelp g = goodsHelpService.uploadGoodsHelp(goodsHeloFile, suffix);
-				goodsHelp.setId(g.getId());
-				goodsHelp.setPath(g.getPath());
+				
+				goodsHelp.setId(CommonUtil.getUUID());
+				
+				// 处理缩略图
+				File thumbnailFile = goodsHelpFileThumbnailList.get(i);
+				GoodsHelp g1 = goodsHelpService.uploadGoodsHelpThumbnail(goodsHelp.getId(), thumbnailFile);
+				goodsHelp.setFileThumbnail(g1.getThumbnailImagePath());
+				
+				// 处理帮助文件
+				File helpFile = goodsHelpFileList.get(i);
+				GoodsHelp g2 = goodsHelpService.uploadGoodsHelp(goodsHelp.getId(), helpFile, goodsHelp.getFileSuffix());
+				goodsHelp.setFilePath(g2.getFilePath());
 			}
 			
 			for (Iterator<GoodsHelp> iterator = goodsHelpList.iterator(); iterator.hasNext();) {
@@ -442,12 +451,19 @@ public class GoodsAction extends BaseAdminAction {
 				if (goodsHelp == null) {
 					continue;
 				}
-				String suffix = goodsHelp.getRealPath().substring(goodsHelp.getRealPath().lastIndexOf(".") + 1);
+				// 新增帮助文件
 				if (StringUtils.isEmpty(goodsHelp.getId())) {
-					File goodsHeloFile = goodsHelpFileList.get(i);
-					GoodsHelp g = goodsHelpService.uploadGoodsHelp(goodsHeloFile, suffix);
-					goodsHelp.setId(g.getId());
-					goodsHelp.setPath(g.getPath());
+					goodsHelp.setId(CommonUtil.getUUID());
+					
+					// 处理缩略图
+					File thumbnailFile = goodsHelpFileThumbnailList.get(i);
+					GoodsHelp g1 = goodsHelpService.uploadGoodsHelpThumbnail(goodsHelp.getId(), thumbnailFile);
+					goodsHelp.setFileThumbnail(g1.getThumbnailImagePath());
+					
+					// 处理帮助文件
+					File helpFile = goodsHelpFileList.get(i);
+					GoodsHelp g2 = goodsHelpService.uploadGoodsHelp(goodsHelp.getId(), helpFile, goodsHelp.getFileSuffix());
+					goodsHelp.setFilePath(g2.getFilePath());
 				}
 			}
 			
@@ -723,6 +739,14 @@ public class GoodsAction extends BaseAdminAction {
 
 	public void setDisPlayRelateGoodsList(List<Goods> disPlayRelateGoodsList) {
 		this.disPlayRelateGoodsList = disPlayRelateGoodsList;
+	}
+
+	public List<File> getGoodsHelpFileThumbnailList() {
+		return goodsHelpFileThumbnailList;
+	}
+
+	public void setGoodsHelpFileThumbnailList(List<File> goodsHelpFileThumbnailList) {
+		this.goodsHelpFileThumbnailList = goodsHelpFileThumbnailList;
 	}
 
 }

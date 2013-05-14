@@ -86,6 +86,19 @@
 				</dd>
 			</dl>
 		</@sec.authorize>
+		<@sec.authorize ifAnyGranted="ROLE_BRAND">
+			<dl>
+				<dt>
+					<span>适用车型&nbsp;</span>
+				</dt>
+				<dd>
+					<a href="car_make!list.action" target="mainFrame">信息维护</a>
+				</dd>
+				<dd>
+					<a href="car_make!search.action" target="mainFrame">信息查询</a>
+				</dd>
+			</dl>
+		</@sec.authorize>
 	</div>
 </body>
 </html>

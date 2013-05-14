@@ -28,6 +28,8 @@ public interface GoodsHelpService {
 	 * @param suffix 后缀
 	 * 
 	 */
-	public GoodsHelp uploadGoodsHelp(File goodsHelpFile, String suffix);
+	public GoodsHelp uploadGoodsHelp(String id, File goodsHelpFile, String suffix);
+	
+	public GoodsHelp uploadGoodsHelpThumbnail(String id, File goodsHelpThumbnail);
 
 }

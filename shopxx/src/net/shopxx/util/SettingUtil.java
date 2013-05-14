@@ -72,6 +72,7 @@ public class SettingUtil {
 		Node systemDescriptionNode = document.selectSingleNode("/shopxx/setting/systemDescription");
 		Node contextPathNode = document.selectSingleNode("/shopxx/setting/contextPath");
 		Node imageUploadPathNode = document.selectSingleNode("/shopxx/setting/imageUploadPath");
+		Node fileUploadPathNode = document.selectSingleNode("/shopxx/setting/fileUploadPath");
 		Node imageBrowsePathNode = document.selectSingleNode("/shopxx/setting/imageBrowsePath");
 		Node adminLoginUrlNode = document.selectSingleNode("/shopxx/setting/adminLoginUrl");
 		Node adminLoginProcessingUrlNode = document.selectSingleNode("/shopxx/setting/adminLoginProcessingUrl");
@@ -140,6 +141,7 @@ public class SettingUtil {
 		setting.setSystemDescription(systemDescriptionNode.getText());
 		setting.setContextPath(contextPathNode.getText());
 		setting.setImageUploadPath(imageUploadPathNode.getText());
+		setting.setFileUploadPath(fileUploadPathNode.getText());
 		setting.setImageBrowsePath(imageBrowsePathNode.getText());
 		setting.setAdminLoginUrl(adminLoginUrlNode.getText());
 		setting.setAdminLoginProcessingUrl(adminLoginProcessingUrlNode.getText());

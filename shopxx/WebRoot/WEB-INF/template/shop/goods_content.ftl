@@ -225,6 +225,7 @@
 								<#else>
 									<input type="button" id="goodsButton" class="addCartItemButton" value="" hidefocus />
 								</#if>
+								
 								 <input type="button" id="addFavorite" class="addFavoriteButton" goodsId="${goods.id}" hidefocus />
 							</td>
 						</tr>
@@ -306,6 +307,83 @@
 									<div class="blank"></div>
 								</#if>
 							</#list>
+							
+							<#list goodCommentList as comment>
+								<#assign isHasComment = true />
+								<div class="commentItem" id="commentItem${comment.id}">
+									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.score}星&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
+									<p><pre>${comment.content}</pre></p>
+									<#list comment.replyCommentSet as replyComment>
+										<#if replyComment.isShow>
+											<div class="reply">
+												<p><span class="red"><#if replyComment.isAdminReply>管理员<#else>${(replyComment.username)!"游客"}</#if></span> ${replyComment.createDate?string("yyyy-MM-dd HH: mm")}</p>
+												<p><pre>${replyComment.content}</pre></p>
+											</div>
+										</#if>
+									</#list>
+								</div>
+								<#if comment_has_next>
+									<div class="blank"></div>
+								</#if>
+							</#list>
+							
+							<#list goodCommentList as comment>
+								<#assign isHasComment = true />
+								<div class="commentItem" id="commentItem${comment.id}">
+									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.score}星&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
+									<p><pre>${comment.content}</pre></p>
+									<#list comment.replyCommentSet as replyComment>
+										<#if replyComment.isShow>
+											<div class="reply">
+												<p><span class="red"><#if replyComment.isAdminReply>管理员<#else>${(replyComment.username)!"游客"}</#if></span> ${replyComment.createDate?string("yyyy-MM-dd HH: mm")}</p>
+												<p><pre>${replyComment.content}</pre></p>
+											</div>
+										</#if>
+									</#list>
+								</div>
+								<#if comment_has_next>
+									<div class="blank"></div>
+								</#if>
+							</#list>
+							
+							<#list middleCommentList as comment>
+								<#assign isHasComment = true />
+								<div class="commentItem" id="commentItem${comment.id}">
+									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.score}星&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
+									<p><pre>${comment.content}</pre></p>
+									<#list comment.replyCommentSet as replyComment>
+										<#if replyComment.isShow>
+											<div class="reply">
+												<p><span class="red"><#if replyComment.isAdminReply>管理员<#else>${(replyComment.username)!"游客"}</#if></span> ${replyComment.createDate?string("yyyy-MM-dd HH: mm")}</p>
+												<p><pre>${replyComment.content}</pre></p>
+											</div>
+										</#if>
+									</#list>
+								</div>
+								<#if comment_has_next>
+									<div class="blank"></div>
+								</#if>
+							</#list>
+							
+							<#list badCommentList as comment>
+								<#assign isHasComment = true />
+								<div class="commentItem" id="commentItem${comment.id}">
+									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.score}星&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
+									<p><pre>${comment.content}</pre></p>
+									<#list comment.replyCommentSet as replyComment>
+										<#if replyComment.isShow>
+											<div class="reply">
+												<p><span class="red"><#if replyComment.isAdminReply>管理员<#else>${(replyComment.username)!"游客"}</#if></span> ${replyComment.createDate?string("yyyy-MM-dd HH: mm")}</p>
+												<p><pre>${replyComment.content}</pre></p>
+											</div>
+										</#if>
+									</#list>
+								</div>
+								<#if comment_has_next>
+									<div class="blank"></div>
+								</#if>
+							</#list>
+							
 							<#if (commentList?size > 0)>
 								<div class="info">
 									<a href="${base}/shop/comment_list/${goods.id}.htm">查看所有评论&gt;&gt;</a>
@@ -380,7 +458,7 @@
 				<div class="tabContent goodsHelp">
 					<ul>
 						<#list goods.goodsHelpList as goodsHelp>
-						<li><a href="${goodsHelp.path}">${goodsHelp.name}</a></li>
+						<li><a href="${goodsHelp.filePath}">${goodsHelp.name}</a></li>
 						</#list>
 					</ul>
 				</div>

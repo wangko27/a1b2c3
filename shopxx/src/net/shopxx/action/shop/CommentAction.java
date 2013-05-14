@@ -1,5 +1,9 @@
 package net.shopxx.action.shop;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import net.shopxx.bean.Setting;
@@ -13,6 +17,7 @@ import net.shopxx.service.CommentService;
 import net.shopxx.service.GoodsService;
 import net.shopxx.service.MemberService;
 import net.shopxx.util.CaptchaUtil;
+import net.shopxx.util.JsonUtil;
 import net.shopxx.util.SettingUtil;
 
 import org.apache.commons.lang.StringUtils;
@@ -72,6 +77,7 @@ public class CommentAction extends BaseShopAction {
 	}
 	
 	// 保存
+	@SuppressWarnings("unchecked")
 	@Validations(
 		requiredStrings = {
 			@RequiredStringValidator(fieldName = "comment.goods.id", message = "参数错误!"),
@@ -117,6 +123,25 @@ public class CommentAction extends BaseShopAction {
 		comment.setIsAdminReply(false);
 		comment.setForComment(null);
 		commentService.save(comment);
+		
+		Goods currentGoods = goodsService.load(comment.getGoods().getId());
+		String rank = currentGoods.getRank();
+		Map<String, Integer> rankMap;
+		if (StringUtils.isNotBlank(rank)) {
+			rankMap = JsonUtil.toObject(rank, Map.class);
+		} else {
+			rankMap = new HashMap<String, Integer>();
+		}
+		
+		Integer starCount = rankMap.get("count_" + comment.getScore());
+		if (starCount == null) {
+			starCount = 1;
+		} else {
+			starCount = starCount + 1;
+		}
+		rankMap.put("count_" + comment.getScore(), starCount);
+		currentGoods.setRank(JsonUtil.toJson(rankMap));
+		goodsService.update(currentGoods);
 		
 		if (setting.getCommentDisplayType() == CommentDisplayType.direct) {
 			cacheService.flushCommentListPageCache(getRequest());
