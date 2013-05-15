@@ -232,6 +232,7 @@
                                 		<li><img src="${base}/template/shop/images/shop_star2.gif"></li>
                                 		<li><img src="${base}/template/shop/images/shop_star2.gif"></li>
                                 		<li><img src="${base}/template/shop/images/shop_star2.gif"></li>
+                                		<li><img src="${base}/template/shop/images/shop_star2.gif"></li>
                                 		</#if>
                                 		<#if goods.averageScore != 0>
                                 		<#list 1..goods.averageScore as t>
@@ -305,7 +306,16 @@
 				</div>
 				<#if setting.isCommentEnabled>
 					<div id="comment" class="tabContent comment">
+						<div id="mt">
+                        	<ul class="tab" id="cmtTab">
+								<li><a href="javascript:;">全部评价<em>(${})</em></a></li>
+								<li><a href="javascript:;">好评<em>(20)</em></a></li>
+                                <li><a href="javascript:;">中评<em>(12)</em></a></li>
+                                <li><a href="javascript:;">差评<em>(12)</em></a></li>
+                            </ul>
+						</div>
 						<@comment_list goods_id=goods.id count=5; commentList>
+							<div class="commentTab">
 							<#list commentList as comment>
 								<#assign isHasComment = true />
 								<div class="commentItem" id="commentItem${comment.id}">
@@ -320,15 +330,13 @@
 										</#if>
 									</#list>
 								</div>
-								<#if comment_has_next>
-									<div class="blank"></div>
-								</#if>
 							</#list>
-							
+							</div>
+							<div class="commentTab">
 							<#list goodCommentList as comment>
 								<#assign isHasComment = true />
 								<div class="commentItem" id="commentItem${comment.id}">
-									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.score}星&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
+									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><img src="${base}/template/shop/images/discuss_s${comment.score}.gif" /></span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
 									<p><pre>${comment.content}</pre></p>
 									<#list comment.replyCommentSet as replyComment>
 										<#if replyComment.isShow>
@@ -339,34 +347,13 @@
 										</#if>
 									</#list>
 								</div>
-								<#if comment_has_next>
-									<div class="blank"></div>
-								</#if>
 							</#list>
-							
-							<#list goodCommentList as comment>
-								<#assign isHasComment = true />
-								<div class="commentItem" id="commentItem${comment.id}">
-									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.score}星&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
-									<p><pre>${comment.content}</pre></p>
-									<#list comment.replyCommentSet as replyComment>
-										<#if replyComment.isShow>
-											<div class="reply">
-												<p><span class="red"><#if replyComment.isAdminReply>管理员<#else>${(replyComment.username)!"游客"}</#if></span> ${replyComment.createDate?string("yyyy-MM-dd HH: mm")}</p>
-												<p><pre>${replyComment.content}</pre></p>
-											</div>
-										</#if>
-									</#list>
-								</div>
-								<#if comment_has_next>
-									<div class="blank"></div>
-								</#if>
-							</#list>
-							
+							</div>
+							<div class="commentTab">
 							<#list middleCommentList as comment>
 								<#assign isHasComment = true />
 								<div class="commentItem" id="commentItem${comment.id}">
-									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.score}星&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
+									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><img src="${base}/template/shop/images/discuss_s${comment.score}.gif" /></span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
 									<p><pre>${comment.content}</pre></p>
 									<#list comment.replyCommentSet as replyComment>
 										<#if replyComment.isShow>
@@ -377,15 +364,13 @@
 										</#if>
 									</#list>
 								</div>
-								<#if comment_has_next>
-									<div class="blank"></div>
-								</#if>
 							</#list>
-							
+							</div>
+							<div class="commentTab">
 							<#list badCommentList as comment>
 								<#assign isHasComment = true />
 								<div class="commentItem" id="commentItem${comment.id}">
-									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.score}星&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
+									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><img src="${base}/template/shop/images/discuss_s${comment.score}.gif" /></span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
 									<p><pre>${comment.content}</pre></p>
 									<#list comment.replyCommentSet as replyComment>
 										<#if replyComment.isShow>
@@ -396,11 +381,8 @@
 										</#if>
 									</#list>
 								</div>
-								<#if comment_has_next>
-									<div class="blank"></div>
-								</#if>
 							</#list>
-							
+							</div>
 							<#if (commentList?size > 0)>
 								<div class="info">
 									<a href="${base}/shop/comment_list/${goods.id}.htm">查看所有评论&gt;&gt;</a>
@@ -474,43 +456,18 @@
 				</#if>
 				<div class="tabContent goodsHelp">
 					<ul id="video">
-                    	<li>
-                        	<a href=""><img src="images/pic.jpg"></a>
-                            <span><a href="">三星P1000 GALAXY 文件名称</a></span>
-                        </li>
-                        <li>
-                        	<a href=""><img src="images/pic.jpg"></a>
-                            <span><a href="">汉王 TouchPad文件名称</a></span>
-                        </li>
-                        <li>
-                        	<a href=""><img src="images/pic.jpg"></a>
-                            <span><a href="">苹果ipad 4代 名称文件名称</a></span>
-                        </li>
-                        <li>
-                        	<a href=""><img src="images/pic.jpg"></a>
-                            <span><a href="">视频帮助文件名称</a></span>
-                        </li>
-                        <li>
-                        	
-                            <span><a href="">■ 苹果ipad 4代 名称文件名称</a></span>
-                        </li>
-                        <li>
-                        	
-                            <span><a href="">■ 汉王 TouchPad文件名称</a></span>
-                        </li>
-                        <li>
-                        	
-                            <span><a href="">■ 视频帮助文件名称文件名称</a></span>
-                        </li>
-                        <li>
-                        	
-                            <span><a href="">■ 视频帮助文件名称</a></span>
-                        </li>
-					</ul>
-					<ul>
 						<#list goods.goodsHelpList as goodsHelp>
-						<li><a href="${goodsHelp.filePath}">${goodsHelp.name}</a></li>
-						</#list>
+						<#if (goodsHelp.fileThumbnail)??>
+                    	<li>
+                        	<a href="${goodsHelp.filePath}"><img src="${goodsHelp.fileThumbnail}"></a>
+                            <span><a href="${goodsHelp.filePath}">${goodsHelp.name}</a></span>
+                        </li>
+                        <#else>
+                        <li>
+                            <span><a href="${goodsHelp.filePath}">■ ${goodsHelp.name}</a></span>
+                        </li>
+                        </#if>
+                        </#list>
 					</ul>
 				</div>
 			</div>

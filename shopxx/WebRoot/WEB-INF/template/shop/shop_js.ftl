@@ -598,6 +598,7 @@ $().ready( function() {
 		var $thumbnailGoodsImageScrollable = $("#thumbnailGoodsImageScrollable");
 		var $goodsImageTab = $("#goodsImageTab");
 		var $goodsParameterTab = $("#goodsParameterTab");
+		var $cmtTab = $("#cmtTab");
 		var $addFavorite = $("#addFavorite");
 		
 		$thumbnailGoodsImageScrollable.scrollable({
@@ -617,6 +618,10 @@ $().ready( function() {
 		});
 		
 		$goodsParameterTab.tabs(".goodsBottom .tabContent", {
+			event: "mouseover"
+		});
+		
+		$cmtTab.tabs(".commentTab", {
 			event: "mouseover"
 		});
 		
