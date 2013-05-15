@@ -3923,3 +3923,73 @@ background: url(../images/cmp_btns.gif) no-repeat;
 .pop-compare-narrow .diff-operate { right:14px; }
 * html .pop-wrap { position: static; }
 .pop-inner { height:133px; border:2px solid #028dd3; }
+
+/*商品对比*/
+#shop_contrast{}
+#shop_contrast .title{ height: 29px; line-height: 29px; margin-bottom: 10px; border-top: 1px solid #AAA8A9; background-color: lightGrey;}
+#shop_contrast .title strong{display: block; float: left;padding: 0px 20px;color: white; font-size: 14px; font-weight: bold; font-family: "Microsoft YaHei"; background-color: #AAA8A9;}
+#shop_contrast .tb{margin-top: -1px;border-collapse: collapse;border: 1px solid #E6E6E6;border-top: none 0;table-layout: fixed;}
+#shop_contrast .tb th {width: 84px; padding-left: 30px; text-align: left;color: #333;}
+.tb td {overflow: hidden;width: 200px;text-align: center;vertical-align: top;}
+#shop_contrast .tb th, .tb td {padding: 8px 10px;border: 1px solid #E6E6E6;line-height: 20px; }
+#shop_contrast .tb tbody .no-contrast { padding: 40px 0px 5px; text-align: center; font-family: "微软雅黑"; font-size: 25px; color: #CCC;}
+#shop_contrast .tb tbody .add-contrast {text-align: center;}
+#shop_contrast .tb a{color: #005EA7;}
+#shop_contrast .tb a:hover{ color: #ff6600;}
+#shop_contrast .tb .pro img{ width:110px; height:110px; border:1px solid #ccc;}
+#shop_contrast .tb .price {color: #FF6600;font-size: 14px;font-weight: bold;}
+#shop_contrast .tb .marketPrice {color: #999999; text-decoration: line-through;}
+#tool {
+position: fixed;
+bottom: 0px;
+left: 50%;
+z-index: 1;
+width: 470px;
+height: 40px;
+margin: 10px 0px 0px -235px;
+background:url(../images/icon_pcompare3.jpg) repeat-x;
+}
+
+#static {
+float: right;
+cursor: pointer;
+width: 52px;
+height: 40px;
+margin-right: -20px;
+
+}
+
+#tool .con, #locate, #static {
+position: relative;
+background: url(../images/icon_pcompare2.gif) no-repeat;
+}
+
+#tool .con {
+display: block;
+width: 340px;
+height: 34px;
+margin-left: -20px;
+padding: 6px 0px 0px 110px;
+background-position: -53px 0;
+line-height: 34px;
+}
+#tool a.setup {
+float: left;
+display: block;
+height: 29px;
+margin-left: 7px;
+padding-left: 15px;
+background: url(../images/icon_pcompare.jpg) no-repeat 0px -64px;
+line-height: 29px;
+text-align: center;
+}
+#tool a.setup:hover {
+text-decoration: none;
+}
+#tool a.setup b {
+float: right;
+display: block;
+width: 12px;
+height: 34px;
+background: url(../images/icon_pcompare.jpg) no-repeat right -64px;
+}

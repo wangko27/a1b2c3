@@ -43,7 +43,6 @@ public class GoodsAction extends BaseShopAction {
 	private static final long serialVersionUID = -4969421249817468001L;
 
 	private String sign;
-	private String compareIds;
 	private Map<String, String> goodsAttributeIdMap;
 	private Map<String, String> parameterMap;
 	private String orderType;
@@ -201,14 +200,6 @@ public class GoodsAction extends BaseShopAction {
 
 	public void setSign(String sign) {
 		this.sign = sign;
-	}
-
-	public String getCompareIds() {
-		return compareIds;
-	}
-
-	public void setCompareIds(String compareIds) {
-		this.compareIds = compareIds;
 	}
 
 	public Map<String, String> getGoodsAttributeIdMap() {

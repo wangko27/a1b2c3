@@ -1189,49 +1189,102 @@ $().ready(function() {
 					</tr>
 				</#list>
 			</table>
-			<table id="fitCarTable" class="inputTable tabContent">
-				<tr class="noneHover">
-					<td colspan="5">
-						<input type="button" id="addFitCarButton" class="formButton" value="增加" hidefocus />
-					</td>
-				</tr>
-				<tr class="title">
-					<th>
-						制造商
-					</th>
-					<th>
-						汽车型号
-					</th>
-					<th>
-						汽车规格
-					</th>
-					<th>
-						出厂年代
-					</th>
-					<th>
-						删除
-					</th>
-				</tr>
-				<#list (goods.fitCarList)! as fitCar>
-					<tr class="goodsImageTr">
+			
+			<div id="fitCarDiv" class="tabContent">
+				<table class="inputTable">
+					<tr>
+						<th>
+							请选择制造商: 
+						</th>
 						<td>
-							${fitCar.carMake.name}
-						</td>
-						<td>
-							${fitCar.carMode.name}
-						</td>
-						<td>
-							${fitCar.carStyle.style}
-						</td>
-						<td>
-							${fitCar.carStyle.yearMade}
-						</td>
-						<td>
-							<span class="deleteIcon deleteGoodsHelp" title="删 除">&nbsp;</span>
+							<select name="goodsFitCar.carMakeId" id="goodsFitCar_carMakeId">
+								<option value="0">请选择...</option>
+								<#list carMakeList as carMake>
+									<option value="${carMake.id}">${carMake.name}</option>
+								</#list>
+							</select>
+							<label class="requireField">*</label>
 						</td>
 					</tr>
-				</#list>
-			</table>
+					<tr>
+						<th>
+							请选择汽车型号: 
+						</th>
+						<td>
+							<select name="goodsFitCar.carModeId" id="goodsFitCar_carModeId">
+								<option value="0">请选择...</option>
+							</select>
+							<label class="requireField">*</label>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							请选择汽车规格: 
+						</th>
+						<td>
+							<select name="goodsFitCar.carStyleId" id="goodsFitCar_carStyleId">
+								<option value="0">请选择...</option>
+							</select>
+							<label class="requireField">*</label>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							请选择出厂年代: 
+						</th>
+						<td>
+							<select name="goodsFitCar.yearMade" id="goodsFitCar_yearMade">
+								<option value="0">请选择...</option>
+							</select>
+							<label class="requireField">*</label>
+						</td>
+					</tr>
+					<tr class="noneHover">
+						<td colspan="2">
+							<input type="button" id="addFitCarButton" class="formButton" value="增加" hidefocus />
+						</td>
+					</tr>
+				</table>
+				<table class="inputTable">
+					<tr class="title">
+						<th>
+							制造商
+						</th>
+						<th>
+							汽车型号
+						</th>
+						<th>
+							汽车规格
+						</th>
+						<th>
+							出厂年代
+						</th>
+						<th>
+							删除
+						</th>
+					</tr>
+					<#list (goods.fitCarList)! as fitCar>
+						<tr class="goodsImageTr">
+							<td>
+								${fitCar.carMake.name}
+							</td>
+							<td>
+								${fitCar.carMode.name}
+							</td>
+							<td>
+								${fitCar.carStyle.style}
+							</td>
+							<td>
+								${fitCar.carStyle.yearMade}
+							</td>
+							<td>
+								<span class="deleteIcon deleteGoodsHelp" title="删 除">&nbsp;</span>
+							</td>
+						</tr>
+					</#list>
+				</table>
+			</div>
+			
 			<div class="buttonArea">
 				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
 				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
