@@ -459,7 +459,20 @@ $().ready( function() {
 		var items = $.cookie('items-compare');
 		if(id){
 			if(items){
-				items += id + ',';
+				var exist = false;
+				var itemArray = items.split(',');
+				if(itemArray.length < 5){
+					for(var i = 0; i < itemArray.length; i++) {
+						if(itemArray[i] == id) {
+							exist = true;
+							break;
+						}
+					}
+					if(!exist){
+						items += id + ',';
+					}
+				}
+				
 			} else {
 				items = id + ',';
 			}
@@ -478,8 +491,24 @@ $().ready( function() {
 				}
 			});
 			$('#pop-compare').show();
+			if(items.split(',').length > 2){
+				$('#goto-contrast').attr('class', 'compare-active');
+			}
 		}
 	}
+	
+	/* ---------- ClearCompare ---------- */
+	$.clearCompare= function() {
+		$('#pop-compare').show();
+		$.cookie('items-compare', '', { path: '/' });
+		var html = '<dl class="item-empty"><dt>1</dt><dd>您还可以继续添加</dd></dl>'
+		         + '<dl class="item-empty"><dt>2</dt><dd>您还可以继续添加</dd></dl>'
+		         + '<dl class="item-empty"><dt>3</dt><dd>您还可以继续添加</dd></dl>'
+		         + '<dl class="item-empty"><dt>4</dt><dd>您还可以继续添加</dd></dl>';
+		$('#diff-items').html(html);
+		$('#goto-contrast').attr('class', 'btn-compare-b');
+	}
+	
 	
 	/* ---------- AddCartItem ---------- */
 	
@@ -582,6 +611,10 @@ $().ready( function() {
 		$gotoCompare.click( function() {
 			var items = $.cookie('items-compare');
 			if(items){
+				var itemArray = items.split(',');
+				if(itemArray.length < 2){
+					return;
+				}
 				var url = shopxx.base + "/shop/compare!showResult.action?compareIds=" + items;
 				window.open(url);
 			}

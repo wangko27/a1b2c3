@@ -10,8 +10,6 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
 <link href="${base}/template/shop/css/base.css" rel="stylesheet" type="text/css" />
 <link href="${base}/template/shop/css/shop.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="http://misc.360buyimg.com/lib/skin/2012/base.css" media="all" />
-<link rel="stylesheet" type="text/css" href="http://misc.360buyimg.com/contrast/skin/2012/pop_compare.css?t=20121220" media="all" />
 <!--[if lte IE 6]>
 	<script type="text/javascript" src="${base}/template/common/js/belatedPNG.js"></script>
 	<script type="text/javascript">
@@ -254,6 +252,8 @@
 	</div>
 	<div class="blank"></div>
 	<#include "/WEB-INF/template/shop/footer.ftl">
+	
+	
 	<div id="pop-compare" data-load="true" class="pop-compare" style="display: none; bottom: 0px;">
 	    <div class="pop-wrap">
 	        <p class="pop-compare-tips"></p>
@@ -263,7 +263,7 @@
 	                    <li class="current" data-widget="tab-item"><a href="javascript:;">对比栏</a></li>
 	                </ul>
 	                <div class="operate">
-	                    <a href="javascript:;" class="hide-me">隐藏</a>
+	                    <a href="javascript:;" class="hide-me" id="hideCompare">隐藏</a>
 	                </div>
 	            </div>
 	            <div class="diff-bd tab-cons">
@@ -271,7 +271,7 @@
 	                    <div id="diff-items" class="diff-items clearfix">
 	                        
 	                    </div>
-	                    <div class="diff-operate"><a target="_blank" id="goto-contrast" href="#none" class="btn-compare-b">对比</a><a class="del-items">清空对比栏</a></div>
+	                    <div class="diff-operate"><a target="_blank" id="goto-contrast" href="javascript:;" class="btn-compare-b">对比</a><a class="del-items" href="javascript:;" id="clearCompare">清空对比栏</a></div>
 	                </div>
 	            </div>
 	        </div>
@@ -284,7 +284,13 @@
 	<script type="text/javascript" src="${base}/template/shop/js/shop.js"></script>
 	<script type="text/javascript">
 		$().ready( function() {
-			$.addCompare();
+			// $.addCompare();
+			$('#clearCompare').bind('click', function(){
+				$.clearCompare();
+			});
+			$('#hideCompare').bind('click', function(){
+				$('#pop-compare').hide();
+			});
 		});
 	</script>
 </body>
