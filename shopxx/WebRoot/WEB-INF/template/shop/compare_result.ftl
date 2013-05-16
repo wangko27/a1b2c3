@@ -216,9 +216,9 @@
 		<div id="locate"></div>
 		<div id="static"></div>
 		<div class="con">
-			<a href="#" class="setup" style="width:99px;"><b></b>高亮显示不同项</a>
-			<a href="#" class="setup" style="width:75px;"><b></b>隐藏相同项</a>
-			<a href="" class="setup" style="width:63px;"><b></b>新增商品</a>
+			<a href="javascript:;" class="setup" style="width:99px;" id="compare_highlight"><b></b>高亮显示不同项</a>
+			<a href="javascript:;" class="setup" style="width:75px;" id="compare_equal"><b></b>隐藏相同项</a>
+			<a href="javascript:;" class="setup" style="width:63px;" onclick="history.back(-1);"><b></b>新增商品</a>
 		</div>
 	</div>
 	<script type="text/javascript" src="${base}/template/common/js/jquery.js"></script>

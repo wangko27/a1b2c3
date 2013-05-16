@@ -934,3 +934,83 @@ $().ready( function() {
 	</#if>
 
 });
+
+(function($) {
+	$.uniq = function(m) {
+		var ret = [],
+		l = m.length,
+		e = 0,
+		c = {};
+		for (var i = 0; i < l; i++) {
+			c[m[i]] = null
+		}
+		for (var i in c) {
+			ret.push(i)
+		}
+		return ret;
+	}
+})($);
+
+var compareList = function(b, c) {
+	var d,
+	a = [];
+	$("#shop_contrast > table > tbody > tr").each(function(key, value) {
+		d = $("td", value).not(".data_empty");
+		var g = [];
+		d.each(function(i, k) {
+			g.push($.trim($(d[i]).text()))
+		});
+		var h = $.uniq(g).length;
+		if (c) {
+			if (h != 1 && b) {
+				$(this).addClass("differ")
+			} else {
+				if (h != 1 && !b) {
+					$(this).removeClass("differ")
+				}
+			}
+		} else {
+			if (h == 1 && b) {
+				$(this).css("display", "none")
+			} else {
+				if (h == 1 && !b) {
+					$(this).css("display", "")
+				}
+			}
+		}
+	})
+};
+
+
+
+var highlightFlag = false, k = false;
+var highlightNotEqual = "\u9AD8\u4EAE\u663E\u793A\u4E0D\u540C\u9879",
+    cancelHighlightNotEqual = "\u53D6\u6D88\u9AD8\u4EAE\u4E0D\u540C\u9879",
+    j = "\u663E\u793A\u76F8\u540C\u9879",
+		h = "\u9690\u85CF\u76F8\u540C\u9879";
+var f = "<b></b>";
+$("#compare_highlight").bind("click", function(e) {
+    e.preventDefault();
+    if (!highlightFlag) {
+        highlightFlag = true;
+        compareList(true, true);
+        $(this).html(f + cancelHighlightNotEqual)
+    } else {
+        highlightFlag = false;
+        compareList(false, true);
+        $(this).html(f + highlightNotEqual)
+    }
+});
+
+$("#compare_equal").bind("click", function(l) {
+    l.preventDefault();
+    if (!k) {
+        k = true;
+        compareList(true, false);
+        $(this).html(f + j)
+    } else {
+        k = false;
+        compareList(false, false);
+        $(this).html(f + h)
+    }
+});
