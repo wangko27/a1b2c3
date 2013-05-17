@@ -229,7 +229,7 @@
 										<a href="${base}${goods.htmlPath}" class="addCartItemButton">购买</a>
 										<input type="button" class="addFavoriteButton addFavorite" value="收 藏" goodsId="${goods.id}" hidefocus />
 										<#if goodsCategory.grade == 2>
-										<input type="button" class="addFavoriteButton addFavorite" value="对比" goodsId="${goods.id}" hidefocus />
+										<input type="button" class="addFavoriteButton addCompare" value="对比" goodsId="${goods.id}" hidefocus />
 										</#if>
 									</div>
 								</div>
@@ -277,6 +277,7 @@
 	</div>
 	<script type="text/javascript" src="${base}/template/common/js/jquery.js"></script>
 	<script type="text/javascript" src="${base}/template/common/js/jquery.tools.js"></script>
+	<script type="text/javascript" src="${base}/template/common/js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="${base}/template/shop/js/base.js"></script>
 	<script type="text/javascript" src="${base}/template/shop/js/shop.js"></script>
 	<script type="text/javascript">
