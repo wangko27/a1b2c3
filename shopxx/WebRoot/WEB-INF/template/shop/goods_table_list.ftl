@@ -229,7 +229,7 @@
 										<a href="${base}${goods.htmlPath}" class="addCartItemButton">购买</a>
 										<input type="button" class="addFavoriteButton addFavorite" value="收 藏" goodsId="${goods.id}" hidefocus />
 										<#if goodsCategory.grade == 2>
-										<input type="button" class="addFavoriteButton addFavorite" value="对比" goodsId="${goods.id}" hidefocus />
+										<input type="button" class="addFavoriteButton addCompare" value="对比" goodsId="${goods.id}" hidefocus />
 										</#if>
 									</div>
 								</div>
@@ -251,9 +251,45 @@
 	</div>
 	<div class="blank"></div>
 	<#include "/WEB-INF/template/shop/footer.ftl">
+	
+	<div id="pop-compare" data-load="true" class="pop-compare" style="display: none; bottom: 0px;">
+	    <div class="pop-wrap">
+	        <p class="pop-compare-tips"></p>
+	        <div class="pop-inner" data-widget="tabs">
+	            <div class="diff-hd">
+	                <ul class="tab-btns clearfix">
+	                    <li class="current" data-widget="tab-item"><a href="javascript:;">对比栏</a></li>
+	                </ul>
+	                <div class="operate">
+	                    <a href="javascript:;" class="hide-me" id="hideCompare">隐藏</a>
+	                </div>
+	            </div>
+	            <div class="diff-bd tab-cons">
+	                <div class="tab-con" data-widget="tab-content">
+	                    <div id="diff-items" class="diff-items clearfix">
+	                        
+	                    </div>
+	                    <div class="diff-operate"><a target="_blank" id="goto-contrast" href="javascript:;" class="btn-compare-b">对比</a><a class="del-items" href="javascript:;" id="clearCompare">清空对比栏</a></div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 	<script type="text/javascript" src="${base}/template/common/js/jquery.js"></script>
 	<script type="text/javascript" src="${base}/template/common/js/jquery.tools.js"></script>
+	<script type="text/javascript" src="${base}/template/common/js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="${base}/template/shop/js/base.js"></script>
 	<script type="text/javascript" src="${base}/template/shop/js/shop.js"></script>
+	<script type="text/javascript">
+		$().ready( function() {
+			// $.addCompare();
+			$('#clearCompare').bind('click', function(){
+				$.clearCompare();
+			});
+			$('#hideCompare').bind('click', function(){
+				$('#pop-compare').hide();
+			});
+		});
+	</script>
 </body>
 </html>
