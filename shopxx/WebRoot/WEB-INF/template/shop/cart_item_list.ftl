@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>查看购物车<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("caritem.view.title")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,7 +15,6 @@
 <!--[if lte IE 6]>
 	<script type="text/javascript" src="${base}/template/common/js/belatedPNG.js"></script>
 	<script type="text/javascript">
-		// 解决IE6透明PNG图片BUG
 		DD_belatedPNG.fix(".belatedPNG");
 	</script>
 <![endif]-->
@@ -56,8 +55,8 @@ $().ready( function() {
 		if (!reg.test(quantity)) {
 			var previousQuantity = $this.data("previousQuantity");
 			$this.val(previousQuantity);
-			$changeQuantityTipTopMessage.text("商品数量修改失败!");
-			$changeQuantityTipBottomMessage.text("商品数量必须为正整数!");
+			$changeQuantityTipTopMessage.text("${bundle("goods.quantity.change.message.fail.top")}");
+			$changeQuantityTipBottomMessage.text("${bundle("goods.quantity.change.message.fail.bottom")}");
 			$changeQuantityTip.fadeIn();
 			setTimeout(function() {$changeQuantityTip.fadeOut()}, 3000);
 			return false;
@@ -80,14 +79,14 @@ $().ready( function() {
 					$totalProductQuantity.text(data.totalProductQuantity);
 					$totalProductPrice.text(currencyFormat(data.totalProductPrice));
 					$totalScore.text(currencyFormat(data.totalScore));
-					$changeQuantityTipTopMessage.text("商品数量修改成功!");
-					$changeQuantityTipBottomMessage.text("商品总金额: " + currencyFormat(data.totalProductPrice));
+					$changeQuantityTipTopMessage.text("${bundle("goods.quantity.change.message.success.top")}");
+					$changeQuantityTipBottomMessage.text("${bundle("goods.quantity.change.message.success.bottom")}" + currencyFormat(data.totalProductPrice));
 					$changeQuantityTip.fadeIn();
 					setTimeout(function() {$changeQuantityTip.fadeOut()}, 3000);
 				} else {
 					var previousQuantity = $this.data("previousQuantity");
 					$this.val(previousQuantity);
-					$changeQuantityTipTopMessage.text("商品数量修改失败!");
+					$changeQuantityTipTopMessage.text("${bundle("goods.quantity.change.message.fail.top")}");
 					$changeQuantityTipBottomMessage.text(data.message);
 					$changeQuantityTip.fadeIn();
 					setTimeout(function() {$changeQuantityTip.fadeOut()}, 3000);
@@ -107,7 +106,7 @@ $().ready( function() {
 	$deleteCartItem.click( function() {
 		$this = $(this);
 		var productId = $this.attr("productId");
-		$.dialog({type: "warn", content: "您确定要移除此商品吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: deleteCartItem});
+		$.dialog({type: "warn", content: "${bundle("caritem.delete.message")}", ok: "确 定",${bundle("caritem.delete.confirm")} cancel: "${bundle("caritem.delete.cancel")}", modal: true, okCallback: deleteCartItem});
 		function deleteCartItem() {
 			$.ajax({
 				url: "cart_item!ajaxDelete.action",
@@ -130,7 +129,7 @@ $().ready( function() {
 	
 	// 清空购物车项
 	$clearCartItem.click( function() {
-		$.dialog({type: "warn", content: "您确定要清空购物车吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: clearCartItem});
+		$.dialog({type: "warn", content: "${bundle("caritem.clear.message")}", ok: "${bundle("caritem.clear.confirm")}", cancel: "${bundle("caritem.clear.cancel")}", modal: true, okCallback: clearCartItem});
 		function clearCartItem() {
 			$.ajax({
 				url: "cart_item!ajaxClear.action",
@@ -141,9 +140,9 @@ $().ready( function() {
 					if (data.status == "success") {
 						$(".listTable tr:gt(0)").remove();
 						<#if (loginMember.memberRank.preferentialScale != 100)!>
-							$listTable.append('<tr><td class="noRecord" colspan="7">购物车目前没有加入任何商品!</td></tr>');
+							$listTable.append('<tr><td class="noRecord" colspan="7">${bundle("caritem.empty.message")}</td></tr>');
 						<#else>
-							$listTable.append('<tr><td class="noRecord" colspan="6">购物车目前没有加入任何商品!</td></tr>');
+							$listTable.append('<tr><td class="noRecord" colspan="6">${bundle("caritem.empty.message")}</td></tr>');
 						</#if>
 						$orderInfoButton.remove();
 						$clearCartItem.remove();
@@ -158,7 +157,7 @@ $().ready( function() {
 	$orderInfoButton.click( function() {
 		var $this = $(this);
 		if (parseInt($totalProductQuantity.text()) < 1) {
-			$.message({type: "warn", content: "购物车目前没有加入任何商品!"});
+			$.message({type: "warn", content: "${bundle("caritem.empty.message")}"});
 			return false;
 		}
 		if (!$.memberVerify()) {
@@ -186,21 +185,21 @@ $().ready( function() {
 		<div class="cartItemListDetail">
 			<div class="top">
 				<div class="topLeft"></div>
-				<div class="topMiddle">已放入购物车的商品: </div>
+				<div class="topMiddle">${bundle("caritem.list.title")} </div>
 				<div class="topRight"></div>
 			</div>
 			<div class="middle">
 				<table id="cartItemTable" class="listTable">
 					<tr>
-						<th>商品图片</th>
-						<th>商品名称</th>
-						<th>销售价格</th>
+						<th>${bundle("caritem.list.th.pic")}</th>
+						<th>${bundle("caritem.list.th.name")}</th>
+						<th>${bundle("caritem.list.th.price")}</th>
 						<#if (loginMember.memberRank.preferentialScale != 100)!>
-							<th>优惠价格</th>
+							<th>${bundle("caritem.list.th.discount")}</th>
 						</#if>
-						<th>数量</th>
-						<th>小计</th>
-						<th>删除</th>
+						<th>${bundle("caritem.list.th.count")}</th>
+						<th>${bundle("caritem.list.th.total")}</th>
+						<th>${bundle("caritem.list.th.delete")}</th>
 					</tr>
 					<#list cartItemList as cartItem>
 						<#assign product = cartItem.product />
@@ -231,38 +230,38 @@ $().ready( function() {
 							<td>
 								<input type="text" name="quantity" class="formText quantity" value="${cartItem.quantity}" productId="${product.id}" />
 								<#if (product.store?? && product.freezeStore + cartItem.quantity > product.store)>
-									<strong class="storeInfo red">[库存不足]</strong>
+									<strong class="storeInfo red">[${bundle("caritem.not.enough.store")}]</strong>
 								</#if>
 							</td>
 							<td>
 								<span class="subtotalPrice">${cartItem.subtotalPrice?string(currencyFormat)}</span>
 							</td>
 							<td>
-								<a class="deleteCartItem" href="javascript: void(0);" productId="${product.id}">删除</a>
+								<a class="deleteCartItem" href="javascript: void(0);" productId="${product.id}">${bundle("caritem.list.th.delete")}</a>
 							</td>
 						</tr>
 					</#list>
 					<#if (cartItemList == null || cartItemList?size == 0)!>
 						<tr>
-							<td class="noRecord" colspan="<#if (loginMember.memberRank.preferentialScale != 100)!>7<#else>6</#if>">购物车目前没有加入任何商品!</td>
+							<td class="noRecord" colspan="<#if (loginMember.memberRank.preferentialScale != 100)!>7<#else>6</#if>">${bundle("caritem.empty.message")}</td>
 						</tr>
 					<#else>
 						<tr>
 							<td class="info" colspan="<#if (loginMember.memberRank.preferentialScale != 100)!>7<#else>6</#if>">
-								商品共计: <span id="totalProductQuantity" class="red">${totalProductQuantity}</span> 件&nbsp;&nbsp;
+								${bundle("caritem.total.message")} <span id="totalProductQuantity" class="red">${totalProductQuantity}</span> ${bundle("caritem.total.unit")}&nbsp;&nbsp;
 								<#if setting.scoreType != "disable">
-									积分: <span id="totalScore" class="red">${totalScore}</span>&nbsp;&nbsp;
+									${bundle("caritem.total.score")} <span id="totalScore" class="red">${totalScore}</span>&nbsp;&nbsp;
 								</#if>
-								商品总金额(不含运费): <span id="totalProductPrice" class="red">${totalProductPrice?string(currencyFormat)}</span>
+								${bundle("caritem.total.price")} <span id="totalProductPrice" class="red">${totalProductPrice?string(currencyFormat)}</span>
 							</td>
 						</tr>
 					</#if>
 				</table>
 				<div class="blank"></div>
-				<a class="continueShopping" href="${base}/"><span class="icon">&nbsp;</span>继续购物</a>
+				<a class="continueShopping" href="${base}/"><span class="icon">&nbsp;</span>${bundle("caritem.button.continue")}</a>
 				<#if (cartItemList?? && cartItemList?size > 0)!>
-					<a id="clearCartItem" class="clearCartItem" href="javascript: void(0);"><span class="icon">&nbsp;</span>清空购物车</a>
-					<a id="orderInfoButton" class="formButton" href="order!info.action">去结算</a>
+					<a id="clearCartItem" class="clearCartItem" href="javascript: void(0);"><span class="icon">&nbsp;</span>${bundle("caritem.button.clear")}</a>
+					<a id="orderInfoButton" class="formButton" href="order!info.action">${bundle("caritem.button.pay")}</a>
 				</#if>
 				<div class="clear"></div>
 			</div>
