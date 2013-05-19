@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>${articleCategory.name} 文章列表<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${articleCategory.name} ${bundle("article.list.title")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <#if (articleCategory.metaKeywords)! != ""><meta name="keywords" content="${articleCategory.metaKeywords}" /></#if>
@@ -13,7 +13,6 @@
 <!--[if lte IE 6]>
 	<script type="text/javascript" src="${base}/template/common/js/belatedPNG.js"></script>
 	<script type="text/javascript">
-		// 解决IE6透明PNG图片BUG
 		DD_belatedPNG.fix(".belatedPNG");
 	</script>
 <![endif]-->
@@ -23,7 +22,7 @@
 	<div class="body">
 		<div class="bodyLeft">
 			<div class="recommendArticle">
-				<div class="top">推荐文章</div>
+				<div class="top">${bundle("article.recommend.title")}</div>
 				<div class="middle">
 					<ul>
 						<@article_list article_category_id=articleCategory.id type="recommend" count=10; articleList>
@@ -40,7 +39,7 @@
 			</div>
 			<div class="blank"></div>
 			<div class="hotArticle">
-				<div class="top">热点文章</div>
+				<div class="top">${bundle("article.hot.title")}</div>
 				<div class="middle">
 					<ul>
 						<@article_list article_category_id=articleCategory.id type="hot" count=10; articleList>
@@ -61,14 +60,14 @@
 				<div class="left"></div>
 				<div class="middle">
 					<div class="path">
-						<a href="${base}/" class="home"><span class="icon">&nbsp;</span>首页</a> &gt;
+						<a href="${base}/" class="home"><span class="icon">&nbsp;</span>${bundle("nav.homepage")}</a> &gt;
 						<#list pathList as path>
 							<a href="${base}${path.url}">${path.name}</a> &gt;
 						</#list>
 					</div>
 					<div id="articleSearch" class="articleSearch">
 						<form id="articleSearchForm" action="${base}/shop/article!search.action" method="post">
-							<input type="text" name="pager.keyword" id="articleSearchKeyword" class="keyword" value="请输入关键词..." />
+							<input type="text" name="pager.keyword" id="articleSearchKeyword" class="keyword" value="${bundle("article.search.tips")}" />
 							<input type="submit" class="searchButton" value="" />
 						</form>
 					</div>
@@ -86,14 +85,14 @@
 									${substring(article.title, 40, "...")}
 								</a>
                                 <span class="author">
-                                	作者: <#if article.author == "">未知<#else>${article.author}</#if>
+                                	${bundle("article.author.title")}: <#if article.author == "">${bundle("article.author.none")}<#else>${article.author}</#if>
                                 </span>
                                 <span class="createDate">
                                 	${article.createDate}
                                 </span>
                                 <div class="contentText">
 									${substring(article.contentText, 200, "...")}
-									<a href="${base}${article.htmlPath}">[阅读全文]</a>
+									<a href="${base}${article.htmlPath}">[${bundle("article.list.readmore")}]</a>
 								</div>
       		        		</li>
                 		</#list>

@@ -23,7 +23,7 @@
 	<div class="body">
 		<div class="bodyLeft">
 			<div class="recommendArticle">
-				<div class="top">推荐文章</div>
+				<div class="top">${bundle("article.recommend.title")}</div>
 				<div class="middle">
 					<ul>
 						<@article_list article_category_id=article.articleCategory.id type="recommend" count=10; articleList>
@@ -40,7 +40,7 @@
 			</div>
 			<div class="blank"></div>
 			<div class="hotArticle">
-				<div class="top">热点文章</div>
+				<div class="top">${bundle("article.hot.title")}</div>
 				<div class="middle">
 					<ul>
 						<@article_list article_category_id=article.articleCategory.id type="hot" count=10; articleList>
@@ -61,14 +61,14 @@
 				<div class="left"></div>
 				<div class="middle">
 					<div class="path">
-						<a href="${base}/" class="shop"><span class="icon">&nbsp;</span>首页</a> &gt;
+						<a href="${base}/" class="shop"><span class="icon">&nbsp;</span>${bundle("nav.homepage")}</a> &gt;
 						<#list pathList as path>
 							<a href="${base}${path.url}">${path.name}</a> &gt;
 						</#list>
 					</div>
 					<div id="articleSearch" class="articleSearch">
 						<form id="articleSearchForm" action="${base}/shop/article!search.action" method="post">
-							<input type="text" name="pager.keyword" id="articleSearchKeyword" class="keyword" value="请输入关键词..." />
+							<input type="text" name="pager.keyword" id="articleSearchKeyword" class="keyword" value="${bundle("article.search.tips")}" />
 							<input type="submit" class="searchButton" value="" />
 						</form>
 					</div>
@@ -82,12 +82,12 @@
 					<div class="title">${article.title}<#if (pageCount > 1 && pageNumber > 1)>( ${pageNumber} )</#if></div>
                     <div class="blank"></div>
                     <div class="info">
-                    	<span class="createDate">日期: ${article.createDate?string("yyyy-MM-dd HH: mm")}</span>
+                    	<span class="createDate">${bundle("article.date.title")}: ${article.createDate?string("yyyy-MM-dd HH: mm")}</span>
                     	<#if article.author??>
-                    		<span class="author">作者: ${article.author}</span>
+                    		<span class="author">${bundle("article.author.title")}: ${article.author}</span>
                     	</#if>
-                    	点击: <span id="hits"></span> 次
-                    	<span class="fontSize">【<a id="changeBigFontSize" href="javascript: void(0);">大</a> <a id="changeNormalFontSize" href="javascript: void(0);">中</a> <a id="changeSmallFontSize" href="javascript: void(0);">小</a>】</span>
+                    	${bundle("article.click.title")}: <span id="hits"></span> ${bundle("article.click.times.unit")}
+                    	<span class="fontSize">【<a id="changeBigFontSize" href="javascript: void(0);">${bundle("article.fontsize.big")}</a> <a id="changeNormalFontSize" href="javascript: void(0);">${bundle("article.fontsize.middle")}</a> <a id="changeSmallFontSize" href="javascript: void(0);">${bundle("article.fontsize.small")}</a>】</span>
                     </div>
 					<div id="articleContent" class="content">
 						${content}
