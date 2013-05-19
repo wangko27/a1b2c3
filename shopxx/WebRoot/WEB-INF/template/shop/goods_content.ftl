@@ -308,14 +308,15 @@
 					<div id="comment" class="tabContent comment">
 						<div id="mt">
                         	<ul class="tab" id="cmtTab">
-								<li><a href="javascript:;">全部评价<em>(${})</em></a></li>
+								<li><a href="javascript:;">全部评价<em>(1)</em></a></li>
 								<li><a href="javascript:;">好评<em>(20)</em></a></li>
                                 <li><a href="javascript:;">中评<em>(12)</em></a></li>
                                 <li><a href="javascript:;">差评<em>(12)</em></a></li>
                             </ul>
 						</div>
+						<div id="commentList">
 						<@comment_list goods_id=goods.id count=5; commentList>
-							<div class="commentTab">
+							<div class="commentTab" id="commentList_0">
 							<#list commentList as comment>
 								<#assign isHasComment = true />
 								<div class="commentItem" id="commentItem${comment.id}">
@@ -332,7 +333,7 @@
 								</div>
 							</#list>
 							</div>
-							<div class="commentTab">
+							<div class="commentTab" id="commentList_1">
 							<#list goodCommentList as comment>
 								<#assign isHasComment = true />
 								<div class="commentItem" id="commentItem${comment.id}">
@@ -349,7 +350,7 @@
 								</div>
 							</#list>
 							</div>
-							<div class="commentTab">
+							<div class="commentTab" id="commentList_2">
 							<#list middleCommentList as comment>
 								<#assign isHasComment = true />
 								<div class="commentItem" id="commentItem${comment.id}">
@@ -366,7 +367,7 @@
 								</div>
 							</#list>
 							</div>
-							<div class="commentTab">
+							<div class="commentTab" id="commentList_3">
 							<#list badCommentList as comment>
 								<#assign isHasComment = true />
 								<div class="commentItem" id="commentItem${comment.id}">
@@ -389,6 +390,7 @@
 								</div>
 							</#if>
 						</@comment_list>
+						</div>
 						<form id="commentForm" name="commentForm" method="post">
 							<input type="hidden" name="comment.goods.id" value="${goods.id}" />
 							<input type="hidden" id="forCommentId" name="forCommentId" />
@@ -459,12 +461,12 @@
 						<#list goods.goodsHelpList as goodsHelp>
 						<#if (goodsHelp.fileThumbnail)??>
                     	<li>
-                        	<a href="${goodsHelp.filePath}"><img src="${goodsHelp.fileThumbnail}"></a>
-                            <span><a href="${goodsHelp.filePath}">${goodsHelp.name}</a></span>
+                        	<a href="${base}${goodsHelp.filePath}"><img src="${base}${goodsHelp.fileThumbnail}"></a>
+                            <span><a href="${base}${goodsHelp.filePath}">${goodsHelp.name}</a></span>
                         </li>
                         <#else>
                         <li>
-                            <span><a href="${goodsHelp.filePath}">■ ${goodsHelp.name}</a></span>
+                            <span><a href="${base}${goodsHelp.filePath}">■ ${goodsHelp.name}</a></span>
                         </li>
                         </#if>
                         </#list>

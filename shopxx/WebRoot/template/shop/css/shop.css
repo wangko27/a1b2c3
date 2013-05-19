@@ -3769,9 +3769,10 @@
 #shop_star{ padding:8px 0 0 40px; float:left; width:110px;overflow:hidden}
 #shop_star li{ float:left}
 #Collect{ float:left; width:80px; padding-left:5px;overflow:hidden}
-#video li img{ width:120px; height:90px; border:1px solid #ccc; float:left}
-#video span{ padding-left:8px; float:left; width:220px; line-height:22px;}
-#video span a{ text-decoration:underline}
+#video{ float:left; padding:8px 0;overflow:hidden}
+#video li{ float:left; width:370px; padding-bottom:10px;}
+#video li img{ width:150px; height:150px; border:1px solid #ccc;}
+#video span{ padding-left:8px;}
 /*评论发表*/
 .discuss{ margin-bottom:14px; padding-top:5px;}
 .discuss a{padding: 4px 8px; color: white; font-weight: bold; white-space: nowrap; background-color: #2372CF;}

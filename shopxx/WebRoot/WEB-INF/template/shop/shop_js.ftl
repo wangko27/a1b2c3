@@ -655,7 +655,10 @@ $().ready( function() {
 		});
 		
 		$cmtTab.tabs(".commentTab", {
-			event: "mouseover"
+			event: "click",
+			onClick: function(e, tab){
+				// alert($('#commentList_' + tab).html());
+			}
 		});
 		
 		$addFavorite.click( function() {
@@ -745,6 +748,7 @@ $().ready( function() {
 				}
 			</#if>
 			
+			var score = $("input[name='comment.score']:checked").val();
 			$.ajax({
 				url: ajaxUrl,
 				data: $commentForm.serialize(),
@@ -763,8 +767,10 @@ $().ready( function() {
 								username = "游客";
 							}
 							if (forCommentId == null) {
-								var commentItemHtml = '<div class="commentItem"><p><span class="red">' + username + '</span> ' + new Date().toLocaleDateString() + '</p><p><pre>' + htmlEscape($commentContent.val()) + '</pre></p></div><div class="blank"></div>';
-								$comment.prepend(commentItemHtml);
+								var commentItemHtml = '<div class="commentItem"><p><span class="red">' + username + '</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><img src="${base}/template/shop/images/discuss_s' + score + '.gif" /></span>&nbsp;&nbsp;&nbsp;&nbsp;' + new Date().toLocaleDateString() + '</p><p><pre>' + htmlEscape($commentContent.val()) + '</pre></p></div><div class="blank"></div>';
+								// $comment.prepend(commentItemHtml);
+								
+								$('#commentList').prepend(commentItemHtml);
 							} else {
 								var replyHtml = '<div class="reply"><p><span class="red">' + username + '</span> ' + new Date().toLocaleDateString() + '</p><p><pre>' + htmlEscape($commentContent.val()) + '</pre></p></div>';
 								$("#commentItem" + forCommentId).append(replyHtml);

@@ -33,11 +33,12 @@
 		<div class="blank"></div>
 		<div class="singlePageDetail">
 			<div id="comment">
+				<div id="commentList">
 				<#list pager.result as comment>
 					<div class="commentItem" id="commentItem${comment.id}">
 						<p>
 							<span class="red">${(comment.username)!"游客"}</span>
-							${comment.score}星&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")}
+							&nbsp;&nbsp;&nbsp;&nbsp;<span><img src="${base}/template/shop/images/discuss_s${comment.score}.gif" /></span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")}
 							<a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a>
 						</p>
 						<p>
@@ -63,6 +64,7 @@
 						<div class="blank"></div>
 					</#if>
 				</#list>
+				</div>
 				<#if (pager.result?size > 0)>
 					<div class="blank"></div>
 					<@pagination pager=pager baseUrl="/shop/comment_list/${goods.id}.htm">
@@ -91,12 +93,12 @@
 								评分: 
 							</th>
 							<td>
-								<ul>
-									<li><input type="radio" name="comment.score" value="5"/>5星</li>
-									<li><input type="radio" name="comment.score" value="4"/>4星</li>
-									<li><input type="radio" name="comment.score" value="3"/>3星</li>
-									<li><input type="radio" name="comment.score" value="2"/>2星</li>
-									<li><input type="radio" name="comment.score" value="1"/>1星</li>
+								<ul class="discuss_star">
+									<li><input type="radio" name="comment.score" value="5"/><span class="discuss_s"><img src="${base}/template/shop/images/discuss_s5.gif"></span></li>
+									<li><input type="radio" name="comment.score" value="4"/><span class="discuss_s"><img src="${base}/template/shop/images/discuss_s4.gif"></span></li>
+									<li><input type="radio" name="comment.score" value="3"/><span class="discuss_s"><img src="${base}/template/shop/images/discuss_s3.gif"></span></li>
+									<li><input type="radio" name="comment.score" value="2"/><span class="discuss_s"><img src="${base}/template/shop/images/discuss_s2.gif"></span></li>
+									<li><input type="radio" name="comment.score" value="1"/><span class="discuss_s"><img src="${base}/template/shop/images/discuss_s1.gif"></span></li>
 								</ul>
 							</td>
 						</tr>
