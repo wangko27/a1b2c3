@@ -23,7 +23,7 @@
 	<div class="body">
 		<div class="bodyLeft">
 			<div class="goodsCategory">
-            	<div class="top">商品分类</div>
+            	<div class="top">${bundle("menu.title")}</div>
             	<div class="middle">
             		<ul id="goodsCategoryMenu" class="menu">
             			<@goods_category_tree; goodsCategoryTree>
@@ -77,7 +77,7 @@
 			<div class="blank"></div>
 			<div class="hotGoodsSlider">
 				<div class="title">
-					<strong>热卖商品</strong>HOT
+					<strong>${bundle("goods.hot.title")}</strong>HOT
 				</div>
 				<a class="prev browse"></a>
 				<@goods_list type="hot" count=12; goodsList>
@@ -148,7 +148,7 @@
 			<@goods_list type="hot" count=10; goodsList>
 				<#if (goodsList?size > 0)>
 					<div class="hotGoods">
-						<div class="top">热销排行</div>
+						<div class="top">${bundle("goods.hot.sort.title")}</div>
 						<div class="middle">
 							<ul>
 								<#list goodsList as goods>
@@ -167,7 +167,7 @@
 			<@article_list type="hot" count=10; articleList>
 				<#if (articleList?size > 0)>
 					<div class="hotArticle">
-						<div class="top">热点文章</div>
+						<div class="top">${bundle("article.hot.title")}</div>
 						<div class="middle">
 							<ul>
 								<#list articleList as article>
@@ -188,7 +188,7 @@
 				<#if (goodsList?size > 0)>
 					<div class="bestGoods">
 						<div class="top">
-							<strong>精品推荐</strong>BEST
+							<strong>${bundle("goods.recommend.title")}</strong>BEST
 						</div>
 						<div class="middle">
 							<ul>

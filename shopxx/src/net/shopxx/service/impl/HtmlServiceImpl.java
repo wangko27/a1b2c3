@@ -75,7 +75,6 @@ public class HtmlServiceImpl implements HtmlService, ServletContextAware {
 	public Map<String, Object> getCommonData() {
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("i18n");
 		ResourceBundleModel resourceBundleModel = new ResourceBundleModel(resourceBundle, new BeansWrapper());
-		
 		Map<String, Object> commonData = new HashMap<String, Object>();
 		commonData.put("bundle", resourceBundleModel);
 		commonData.put("base", getContextPath());
@@ -207,6 +206,10 @@ public class HtmlServiceImpl implements HtmlService, ServletContextAware {
 		String htmlPath = goods.getHtmlPath();
 		if (goods.getIsMarketable()) {
 			Map<String, Object> data = getCommonData();
+			
+			ResourceBundle resourceBundle = ResourceBundle.getBundle("goods_content");
+			ResourceBundleModel resourceBundleModel = new ResourceBundleModel(resourceBundle, new BeansWrapper());
+			data.put("goods_content", resourceBundleModel);
 			data.put("goods", goods);
 			data.put("pathList", goodsCategoryService.getGoodsCategoryPathList(goods.getGoodsCategory()));
 			String templatePath = pageTemplateConfig.getTemplatePath();

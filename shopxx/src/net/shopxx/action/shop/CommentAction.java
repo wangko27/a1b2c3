@@ -79,6 +79,7 @@ public class CommentAction extends BaseShopAction {
 	}
 	
 	public String ajaxList() {
+		goods = goodsService.load(id);
 		Map<String, Object> ret = new HashMap<String, Object>();
 		long totalCount = commentService.getTotalCountByType(goods, 0);
 		long goodCount = commentService.getTotalCountByType(goods, 1);

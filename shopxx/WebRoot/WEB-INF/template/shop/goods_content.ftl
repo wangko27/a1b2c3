@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>${goods.name}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${goods.name}</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <#if (goods.metaKeywords)! != ""><meta name="keywords" content="${goods.metaKeywords}" /></#if>
@@ -24,7 +24,7 @@
 	<div class="body">
 		<div class="bodyLeft">
 			<div class="goodsCategory">
-            	<div class="top">商品分类</div>
+            	<div class="top">${goods_content("goods_category")}</div>
             	<div class="middle">
             		<ul id="goodsCategoryMenu" class="menu">
             			<@goods_category_tree; goodsCategoryTree>
@@ -309,7 +309,7 @@
 						<@comment_list goods_id=goods.id count=20; commentList>
 						<div id="mt">
                         	<ul class="tab" id="cmtTab">
-								<li><a href="javascript:;">全部评价<em id="totalCount">(${totalCount})</em></a></li>
+								<li id="cmtTab0"><a href="javascript:;">全部评价<em id="totalCount">(${totalCount})</em></a></li>
 								<li><a href="javascript:;">好评<em id="goodCount">(${goodCount})</em></a></li>
                                 <li><a href="javascript:;">中评<em id="middleCount">(${middleCount})</em></a></li>
                                 <li><a href="javascript:;">差评<em id="badCount">(${badCount})</em></a></li>

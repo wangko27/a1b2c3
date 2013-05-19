@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>会员登录<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("login.title")}</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <#if (article.metaKeywords)! != ""><meta name="keywords" content="${article.metaKeywords}" /></#if>
@@ -17,7 +17,6 @@
 <!--[if lte IE 6]>
 	<script type="text/javascript" src="${base}/template/common/js/belatedPNG.js"></script>
 	<script type="text/javascript">
-		// 解决IE6透明PNG图片BUG
 		DD_belatedPNG.fix(".belatedPNG");
 	</script>
 <![endif]-->
@@ -42,15 +41,15 @@
 		// 表单验证
 		$loginForm.submit( function() {
 			if ($.trim($memberUsername.val()) == "") {
-				$.dialog({type: "warn", content: "请输入用户名!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "${bundle("login.error.username")}", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if ($.trim($memberPassword.val()) == "") {
-				$.dialog({type: "warn", content: "请输入密码!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "${bundle("login.error.password")}", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if ($.trim($captcha.val()) == "") {
-				$.dialog({type: "warn", content: "请输入验证码!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "${bundle("login.error.captcha")}", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 		});
@@ -74,41 +73,41 @@
 	<div class="blank"></div>
 	<div class="body">
 		<div class="loginDetail">
-			<div class="top">会员登录</div>
+			<div class="top">${bundle("login.title")}</div>
 			<div class="middle">
 				<form id="loginForm" action="${base}/shop/member!login.action" method="post">
 					<input type="hidden" id="loginRedirectUrl" name="loginRedirectUrl" />
 					<table>
 						<tr>
-							<th>用户名</th>
+							<th>${bundle("login.field.username")}</th>
 							<td>
 								<input type="text" id="memberUsername" name="member.username" class="formText" />
 							</td>
 						</tr>
 						<tr>
-							<th>密&nbsp;&nbsp;&nbsp;码</th>
+							<th>${bundle("login.field.password")}</th>
 							<td>
 								<input type="password" id="memberPassword" name="member.password" class="formText" />
 							</td>
 						</tr>
 						<tr>
-							<th>验证码</th>
+							<th>${bundle("login.field.captcha")}</th>
 							<td>
 								<input type="text" id="captcha" name="j_captcha" class="formText captcha" />
-								<img id="captchaImage" class="captchaImage" src="${base}/captcha.jpeg" alt="换一张" />
+								<img id="captchaImage" class="captchaImage" src="${base}/captcha.jpeg" alt="${bundle("login.field.captcha.tips")}" />
 							</td>
 						</tr>
 						<tr>
 							<th>&nbsp;</th>
 							<td>
 								<span class="warnIcon">&nbsp;</span>
-								<a href="${base}/shop/member!passwordRecover.action">忘记了密码? 点击找回!</a>
+								<a href="${base}/shop/member!passwordRecover.action">${bundle("login.fogotpassword.tips")}</a>
 							</td>
 						</tr>
 						<tr>
 							<th>&nbsp;</th>
 							<td>
-								<input type="submit" id="submitButton" class="formButton" value="登 录" hidefocus />
+								<input type="submit" id="submitButton" class="formButton" value="${bundle("login.button.name")}" hidefocus />
 							</td>
 						</tr>
 					</table>

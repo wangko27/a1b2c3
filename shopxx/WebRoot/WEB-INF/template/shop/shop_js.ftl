@@ -660,9 +660,10 @@ $().ready( function() {
 			event: "click",
 			onClick: function(e, tab){
 				var getCmtListUrl = shopxx.base + '/shop/comment!ajaxList.action';
+				var goodsId = $('#goodsId').val();
 				$.ajax({
 					url: getCmtListUrl,
-					data: 'comment.goods.id=' + goodsId + '&type=' + tab + '&date' + new Date(),
+					data: 'id=' + goodsId + '&type=' + tab + '&date' + new Date(),
 					type: "GET",
 					dataType: "json",
 					cache: false,
