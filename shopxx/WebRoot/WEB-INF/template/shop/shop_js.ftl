@@ -456,6 +456,8 @@ $().ready( function() {
 	/* ---------- AddCompare ---------- */
 	
 	$.addCompare = function(id) {
+		var goodsCategory = $('#goodsCategory').val();
+		$.cookie('compare-goodsCategory', goodsCategory, { path: '/' });
 		var items = $.cookie('items-compare');
 		if(id){
 			if(items){
@@ -1080,4 +1082,11 @@ $("#compare_equal").bind("click", function(l) {
         compareList(false, false);
         $(this).html(f + h)
     }
+});
+
+$("#add_compare_goods").bind("click", function(e) {
+    e.preventDefault();
+    var goodsCategory = $.cookie('compare-goodsCategory');
+    var redirectUrl = '${base}/shop/goods_list/' + goodsCategory + '.htm';
+    location.href = redirectUrl;
 });

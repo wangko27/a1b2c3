@@ -218,11 +218,12 @@
 		<div class="con">
 			<a href="javascript:;" class="setup" style="width:99px;" id="compare_highlight"><b></b>高亮显示不同项</a>
 			<a href="javascript:;" class="setup" style="width:75px;" id="compare_equal"><b></b>隐藏相同项</a>
-			<a href="javascript:;" class="setup" style="width:63px;" onclick="history.back(-1);"><b></b>新增商品</a>
+			<a href="javascript:;" class="setup" style="width:63px;" id="add_compare_goods"><b></b>新增商品</a>
 		</div>
 	</div>
 	<script type="text/javascript" src="${base}/template/common/js/jquery.js"></script>
 	<script type="text/javascript" src="${base}/template/common/js/jquery.tools.js"></script>
+	<script type="text/javascript" src="${base}/template/common/js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="${base}/template/shop/js/base.js"></script>
 	<script type="text/javascript" src="${base}/template/shop/js/shop.js"></script>
 </body>

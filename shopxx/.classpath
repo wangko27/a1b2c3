@@ -24,7 +24,7 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/hibernate-search-3.4.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/im4java-1.2.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-core-1.9.5.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-mapper-1.9.5.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-mapper-1.9.5.jar" sourcepath="C:/Users/robin/.m2/repository/org/codehaus/jackson/jackson-mapper-asl/1.9.5/jackson-mapper-asl-1.9.5-sources.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/javassist-3.12.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jaxen-1.1.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jcaptcha-1.0.jar"/>
@@ -51,7 +51,8 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-core-2.3.7.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-spring-plugin-2.3.7.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/urlrewrite-3.2.0.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xwork-core-2.3.7.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xwork-core-2.3.7.jar" sourcepath="C:/Users/robin/.m2/repository/org/apache/struts/xwork/xwork-core/2.3.7/xwork-core-2.3.7-sources.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/gson-2.2.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/servlet"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

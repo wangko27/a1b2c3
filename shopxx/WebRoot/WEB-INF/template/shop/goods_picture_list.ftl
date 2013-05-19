@@ -230,6 +230,7 @@
 										<a href="${base}${goods.htmlPath}" class="addCartItemButton">购买</a>
 										<input type="button" class="addFavoriteButton addFavorite" value="收藏" goodsId="${goods.id}" hidefocus />
 										<#if goodsCategory.grade == 2>
+										<input type="hidden" id="goodsCategory" value="${goodsCategory.sign}"/>
 										<input type="button" class="addFavoriteButton addCompare" value="对比" goodsId="${goods.id}" hidefocus />
 										</#if>
 									</div>
