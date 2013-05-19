@@ -306,16 +306,16 @@
 				</div>
 				<#if setting.isCommentEnabled>
 					<div id="comment" class="tabContent comment">
+						<@comment_list goods_id=goods.id count=20; commentList>
 						<div id="mt">
                         	<ul class="tab" id="cmtTab">
-								<li><a href="javascript:;">全部评价<em>(1)</em></a></li>
-								<li><a href="javascript:;">好评<em>(20)</em></a></li>
-                                <li><a href="javascript:;">中评<em>(12)</em></a></li>
-                                <li><a href="javascript:;">差评<em>(12)</em></a></li>
+								<li><a href="javascript:;">全部评价<em id="totalCount">(${totalCount})</em></a></li>
+								<li><a href="javascript:;">好评<em id="goodCount">(${goodCount})</em></a></li>
+                                <li><a href="javascript:;">中评<em id="middleCount">(${middleCount})</em></a></li>
+                                <li><a href="javascript:;">差评<em id="badCount">(${badCount})</em></a></li>
                             </ul>
 						</div>
 						<div id="commentList">
-						<@comment_list goods_id=goods.id count=5; commentList>
 							<div class="commentTab" id="commentList_0">
 							<#list commentList as comment>
 								<#assign isHasComment = true />
@@ -334,55 +334,10 @@
 							</#list>
 							</div>
 							<div class="commentTab" id="commentList_1">
-							<#list goodCommentList as comment>
-								<#assign isHasComment = true />
-								<div class="commentItem" id="commentItem${comment.id}">
-									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><img src="${base}/template/shop/images/discuss_s${comment.score}.gif" /></span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
-									<p><pre>${comment.content}</pre></p>
-									<#list comment.replyCommentSet as replyComment>
-										<#if replyComment.isShow>
-											<div class="reply">
-												<p><span class="red"><#if replyComment.isAdminReply>管理员<#else>${(replyComment.username)!"游客"}</#if></span> ${replyComment.createDate?string("yyyy-MM-dd HH: mm")}</p>
-												<p><pre>${replyComment.content}</pre></p>
-											</div>
-										</#if>
-									</#list>
-								</div>
-							</#list>
 							</div>
 							<div class="commentTab" id="commentList_2">
-							<#list middleCommentList as comment>
-								<#assign isHasComment = true />
-								<div class="commentItem" id="commentItem${comment.id}">
-									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><img src="${base}/template/shop/images/discuss_s${comment.score}.gif" /></span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
-									<p><pre>${comment.content}</pre></p>
-									<#list comment.replyCommentSet as replyComment>
-										<#if replyComment.isShow>
-											<div class="reply">
-												<p><span class="red"><#if replyComment.isAdminReply>管理员<#else>${(replyComment.username)!"游客"}</#if></span> ${replyComment.createDate?string("yyyy-MM-dd HH: mm")}</p>
-												<p><pre>${replyComment.content}</pre></p>
-											</div>
-										</#if>
-									</#list>
-								</div>
-							</#list>
 							</div>
 							<div class="commentTab" id="commentList_3">
-							<#list badCommentList as comment>
-								<#assign isHasComment = true />
-								<div class="commentItem" id="commentItem${comment.id}">
-									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><img src="${base}/template/shop/images/discuss_s${comment.score}.gif" /></span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
-									<p><pre>${comment.content}</pre></p>
-									<#list comment.replyCommentSet as replyComment>
-										<#if replyComment.isShow>
-											<div class="reply">
-												<p><span class="red"><#if replyComment.isAdminReply>管理员<#else>${(replyComment.username)!"游客"}</#if></span> ${replyComment.createDate?string("yyyy-MM-dd HH: mm")}</p>
-												<p><pre>${replyComment.content}</pre></p>
-											</div>
-										</#if>
-									</#list>
-								</div>
-							</#list>
 							</div>
 							<#if (commentList?size > 0)>
 								<div class="info">

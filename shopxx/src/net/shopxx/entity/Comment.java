@@ -1,5 +1,7 @@
 package net.shopxx.entity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -165,4 +167,12 @@ public class Comment extends BaseEntity {
 		}
 	}
 
+	@Transient
+	public String getFormatCreateDate(){
+		if (this.getCreateDate() != null) {
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			return df.format(this.getCreateDate());
+		}
+		return null;
+	}
 }

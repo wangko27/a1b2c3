@@ -1,5 +1,6 @@
 package net.shopxx.action.shop;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +50,7 @@ public class CommentAction extends BaseShopAction {
 	private Comment comment;// 评论
 	private Goods goods;
 	private String forCommentId;// 回复评论ID
+	private int type;
 	
 	@Resource(name = "commentServiceImpl")
 	private CommentService commentService;
@@ -74,6 +76,32 @@ public class CommentAction extends BaseShopAction {
 		goods = goodsService.load(id);
 		pager = commentService.getCommentPager(pager, goods);
 		return LIST;
+	}
+	
+	public String ajaxList() {
+		Map<String, Object> ret = new HashMap<String, Object>();
+		long totalCount = commentService.getTotalCountByType(goods, 0);
+		long goodCount = commentService.getTotalCountByType(goods, 1);
+		long middleCount = commentService.getTotalCountByType(goods, 2);
+		long badCount = commentService.getTotalCountByType(goods, 3);
+		ret.put("totalCount", totalCount);
+		ret.put("goodCount", goodCount);
+		ret.put("middleCount", middleCount);
+		ret.put("badCount", badCount);
+		
+		List<Comment> retList = commentService.getCommentList(goods, 20, type);
+		List<Map<String, Object>> retList1 = new ArrayList<Map<String, Object>>();
+		for(Comment comment : retList) {
+			Map<String, Object> tmp = new HashMap<String, Object>();
+			tmp.put("username", comment.getUsername());
+			tmp.put("score", comment.getScore());
+			tmp.put("formatCreateDate", comment.getFormatCreateDate());
+			tmp.put("content", comment.getContent());
+			retList1.add(tmp);
+		}
+		ret.put("retList", retList1);
+		
+		return ajaxGson(ret);
 	}
 	
 	// 保存
@@ -232,6 +260,14 @@ public class CommentAction extends BaseShopAction {
 
 	public void setForCommentId(String forCommentId) {
 		this.forCommentId = forCommentId;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 	
 }

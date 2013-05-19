@@ -33,7 +33,7 @@
 		<div class="blank"></div>
 		<div class="singlePageDetail">
 			<div id="comment">
-				<div id="commentList">
+				<div id="commentList_0">
 				<#list pager.result as comment>
 					<div class="commentItem" id="commentItem${comment.id}">
 						<p>

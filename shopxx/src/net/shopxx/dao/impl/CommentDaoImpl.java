@@ -53,4 +53,100 @@ public class CommentDaoImpl extends BaseDaoImpl<Comment, String> implements Comm
 		return query.list();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Comment> getCommentList(Goods goods, Integer maxResults, int type) {
+		Query query = null;
+		if(type == 1) {
+			if (goods != null) {
+				String hql = "from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.goods = :goods and comment.score > 3 order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true).setParameter("goods", goods);
+			} else {
+				String hql = "from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.score > 3 order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true);
+			}
+		} else if(type == 2) {
+			if (goods != null) {
+				String hql = "from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.goods = :goods and comment.score = 3 order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true).setParameter("goods", goods);
+			} else {
+				String hql = "from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.score = 3 order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true);
+			}
+		} else if(type == 3) {
+			if (goods != null) {
+				String hql = "from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.goods = :goods and comment.score < 3 order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true).setParameter("goods", goods);
+			} else {
+				String hql = "from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.score < 3 order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true);
+			}
+		} else {
+			if (goods != null) {
+				String hql = "from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.goods = :goods order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true).setParameter("goods", goods);
+			} else {
+				String hql = "from Comment as comment where comment.isShow = :isShow and comment.forComment is null order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true);
+			}
+		}
+		
+		if (maxResults != null) {
+			query.setMaxResults(maxResults);
+		}
+		return query.list();
+	}
+	
+	public Long getTotalCountByType(Goods goods, int type) {
+		Query query = null;
+		if(type == 1) {
+			if (goods != null) {
+				String hql = "select count(*) from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.goods = :goods and comment.score > 3 order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true).setParameter("goods", goods);
+			} else {
+				String hql = "select count(*) from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.score > 3 order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true);
+			}
+		} else if(type == 2) {
+			if (goods != null) {
+				String hql = "select count(*) from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.goods = :goods and comment.score = 3 order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true).setParameter("goods", goods);
+			} else {
+				String hql = "select count(*) from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.score = 3 order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true);
+			}
+		} else if(type == 3) {
+			if (goods != null) {
+				String hql = "select count(*) from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.goods = :goods and comment.score < 3 order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true).setParameter("goods", goods);
+			} else {
+				String hql = "select count(*) from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.score < 3 order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true);
+			}
+		} else {
+			if (goods != null) {
+				String hql = "select count(*) from Comment as comment where comment.isShow = :isShow and comment.forComment is null and comment.goods = :goods order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true).setParameter("goods", goods);
+			} else {
+				String hql = "select count(*) from Comment as comment where comment.isShow = :isShow and comment.forComment is null order by comment.createDate desc";
+				query = getSession().createQuery(hql);
+				query.setParameter("isShow", true);
+			}
+		}
+		return (Long) query.uniqueResult();
+	}
 }

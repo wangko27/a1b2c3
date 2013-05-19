@@ -1,6 +1,7 @@
 package net.shopxx.action.shop;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ import net.shopxx.util.SettingUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
+import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -231,6 +233,20 @@ public class BaseShopAction extends ActionSupport {
 	protected String ajax(Object object) {
 		HttpServletResponse response = initResponse(HEADER_JSON_CONTENT_TYPE);
 		JsonUtil.toJson(response, object);
+		return NONE;
+	}
+	
+	protected String ajaxGson(Object object) {
+		HttpServletResponse response = initResponse(HEADER_JSON_CONTENT_TYPE);
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+			out.print(new Gson().toJson(object));
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return NONE;
 	}
 	

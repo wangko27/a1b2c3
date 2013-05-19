@@ -51,22 +51,31 @@ public class CommentListDirective implements TemplateDirectiveModel {
 				loopVars[0] = ObjectWrapper.BEANS_WRAPPER.wrap(commentList);
 			}
 			
-			List<Comment> goodCommentList = new ArrayList<Comment>();
-			List<Comment> middleCommentList = new ArrayList<Comment>();
-			List<Comment> badCommentList = new ArrayList<Comment>();
-			for (Comment cmt : commentList) {
-				if (cmt.getScore() > 3) {
-					goodCommentList.add(cmt);
-				} else if (cmt.getScore() < 3) {
-					badCommentList.add(cmt);
-				} else {
-					middleCommentList.add(cmt);
-				}
-			}
-			
-			env.setVariable("goodCommentList", ObjectWrapper.DEFAULT_WRAPPER.wrap(goodCommentList));
-			env.setVariable("middleCommentList", ObjectWrapper.DEFAULT_WRAPPER.wrap(middleCommentList));
-			env.setVariable("badCommentList", ObjectWrapper.DEFAULT_WRAPPER.wrap(badCommentList));
+			long totalCount = commentService.getTotalCountByType(goods, 0);
+			long goodCount = commentService.getTotalCountByType(goods, 1);
+			long middleCount = commentService.getTotalCountByType(goods, 2);
+			long badCount = commentService.getTotalCountByType(goods, 3);
+			env.setVariable("totalCount", ObjectWrapper.DEFAULT_WRAPPER.wrap(totalCount));
+			env.setVariable("goodCount", ObjectWrapper.DEFAULT_WRAPPER.wrap(goodCount));
+			env.setVariable("middleCount", ObjectWrapper.DEFAULT_WRAPPER.wrap(middleCount));
+			env.setVariable("badCount", ObjectWrapper.DEFAULT_WRAPPER.wrap(badCount));
+//			
+//			List<Comment> goodCommentList = new ArrayList<Comment>();
+//			List<Comment> middleCommentList = new ArrayList<Comment>();
+//			List<Comment> badCommentList = new ArrayList<Comment>();
+//			for (Comment cmt : commentList) {
+//				if (cmt.getScore() > 3) {
+//					goodCommentList.add(cmt);
+//				} else if (cmt.getScore() < 3) {
+//					badCommentList.add(cmt);
+//				} else {
+//					middleCommentList.add(cmt);
+//				}
+//			}
+//			
+//			env.setVariable("goodCommentList", ObjectWrapper.DEFAULT_WRAPPER.wrap(goodCommentList));
+//			env.setVariable("middleCommentList", ObjectWrapper.DEFAULT_WRAPPER.wrap(middleCommentList));
+//			env.setVariable("badCommentList", ObjectWrapper.DEFAULT_WRAPPER.wrap(badCommentList));
 			body.render(env.getOut());
 		}
 	}

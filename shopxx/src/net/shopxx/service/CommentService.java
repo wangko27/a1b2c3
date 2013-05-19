@@ -59,4 +59,25 @@ public interface CommentService extends BaseService<Comment, String> {
 	 */
 	public List<Comment> getCommentList(Goods goods, Integer maxResults);
 	
+	/**
+	 * 根据商品、最大结果数获取评论集合,若无评论则返回null（只包含isShow = true的对象）
+	 * 
+	 * @param goods
+	 *            商品,null表示无限制
+	 * 
+	 * @param maxResults
+	 *            最大结果数,null表示无限制
+	 * 
+	 * @return 评论集合
+	 * 
+	 */
+	public List<Comment> getCommentList(Goods goods, Integer maxResults, int type);
+	
+	/**
+	 * 获取所有实体对象总数
+	 * 
+	 * @return 实体对象总数
+	 */
+	public Long getTotalCountByType(Goods goods, int type);
+	
 }

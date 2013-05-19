@@ -657,7 +657,27 @@ $().ready( function() {
 		$cmtTab.tabs(".commentTab", {
 			event: "click",
 			onClick: function(e, tab){
-				// alert($('#commentList_' + tab).html());
+				var getCmtListUrl = shopxx.base + '/shop/comment!ajaxList.action';
+				$.ajax({
+					url: getCmtListUrl,
+					data: 'comment.goods.id=' + goodsId + '&type=' + tab + '&date' + new Date(),
+					type: "GET",
+					dataType: "json",
+					cache: false,
+					success: function(data) {
+						$('#totalCount').html('(' + data.totalCount + ')');
+						$('#goodCount').html('(' + data.goodCount + ')');
+						$('#middleCount').html('(' + data.middleCount + ')');
+						$('#badCount').html('(' + data.badCount + ')');
+						var commentItemHtml = '';
+						var retList = data['retList'];
+						for(var i = 0; i < retList.length; i++) {
+							var comment = retList[i];
+							commentItemHtml += '<div class="commentItem"><p><span class="red">' + comment.username + '</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><img src="${base}/template/shop/images/discuss_s' + comment.score + '.gif" /></span>&nbsp;&nbsp;&nbsp;&nbsp;' + comment.formatCreateDate + '</p><p><pre>' + htmlEscape(comment.content) + '</pre></p></div><div class="blank"></div>';
+						}
+						$('#commentList_' + tab).html(commentItemHtml);
+					}
+				});
 			}
 		});
 		
@@ -769,8 +789,16 @@ $().ready( function() {
 							if (forCommentId == null) {
 								var commentItemHtml = '<div class="commentItem"><p><span class="red">' + username + '</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><img src="${base}/template/shop/images/discuss_s' + score + '.gif" /></span>&nbsp;&nbsp;&nbsp;&nbsp;' + new Date().toLocaleDateString() + '</p><p><pre>' + htmlEscape($commentContent.val()) + '</pre></p></div><div class="blank"></div>';
 								// $comment.prepend(commentItemHtml);
-								
-								$('#commentList').prepend(commentItemHtml);
+								if($('#commentList_1').size() > 0){
+									if(score > 3){
+										$('#commentList_1').prepend(commentItemHtml);
+									} else if (score < 3){
+										$('#commentList_3').prepend(commentItemHtml);
+									} else {
+										$('#commentList_2').prepend(commentItemHtml);
+									}
+								}
+								$('#commentList_0').prepend(commentItemHtml);
 							} else {
 								var replyHtml = '<div class="reply"><p><span class="red">' + username + '</span> ' + new Date().toLocaleDateString() + '</p><p><pre>' + htmlEscape($commentContent.val()) + '</pre></p></div>';
 								$("#commentItem" + forCommentId).append(replyHtml);

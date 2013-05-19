@@ -52,4 +52,13 @@ public class CommentServiceImpl extends BaseServiceImpl<Comment, String> impleme
 		return commentDao.getCommentList(goods, maxResults);
 	}
 
+	@Transactional(readOnly = true)
+	public List<Comment> getCommentList(Goods goods, Integer maxResults, int type) {
+		return commentDao.getCommentList(goods, maxResults, type);
+	}
+	
+	@Transactional(readOnly = true)
+	public Long getTotalCountByType(Goods goods, int type) {
+		return commentDao.getTotalCountByType(goods, type);
+	}
 }
