@@ -207,9 +207,6 @@ public class HtmlServiceImpl implements HtmlService, ServletContextAware {
 		if (goods.getIsMarketable()) {
 			Map<String, Object> data = getCommonData();
 			
-			ResourceBundle resourceBundle = ResourceBundle.getBundle("goods_content");
-			ResourceBundleModel resourceBundleModel = new ResourceBundleModel(resourceBundle, new BeansWrapper());
-			data.put("goods_content", resourceBundleModel);
 			data.put("goods", goods);
 			data.put("pathList", goodsCategoryService.getGoodsCategoryPathList(goods.getGoodsCategory()));
 			String templatePath = pageTemplateConfig.getTemplatePath();
