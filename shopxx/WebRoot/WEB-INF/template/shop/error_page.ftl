@@ -12,7 +12,7 @@
 	<div class="body">
 		<div class="errorBox">
 			<div class="errorMessage">
-				${errorContent!"${bundle("error.page.errorcontent")}"}
+				${errorContent!bundle("error.page.errorcontent")}
 			</div>
 			<div class="errorUrl">${bundle("error.page.back.part1")}<a href="javascript: void(0);" onclick="window.history.back(); return false;">${bundle("error.page.back.part2")}</a>${bundle("error.page.back.part3")}<a href="${base}/">${bundle("error.page.back.part4")}</a></div>
 		</div>

@@ -3,7 +3,7 @@
 <struts>
 
 	<constant name="struts.devMode" value="false" />
-	<constant name="struts.custom.i18n.resources" value="i18n,login,goods_content" />
+	<constant name="struts.custom.i18n.resources" value="i18n" />
 	<constant name="struts.i18n.reload" value="false" />
 	<constant name="struts.convention.classes.reload" value="false" />
 	<constant name="struts.convention.action.packages" value="net.shopxx.action" />
