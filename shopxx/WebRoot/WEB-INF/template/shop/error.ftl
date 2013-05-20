@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>提示信息<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("error.page.pagetitle")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -23,7 +23,7 @@ $().ready( function() {
 	}
 	
 	<@compress single_line = true>
-		$.dialog({type: "error", title: "操作提示", content: 
+		$.dialog({type: "error", title: "${bundle("error.page.operation.message")}", content: 
 		"<#if (errorMessages?? && errorMessages?size > 0) || (fieldErrors?? && fieldErrors?size > 0)>
 			<#if errorMessages??>
 				<#list errorMessages as errorMessage>
@@ -38,9 +38,9 @@ $().ready( function() {
 				</#list>
 			</#if>
 		<#else>
-			您的操作出现错误!
+			${bundle("error.page.operation.error")}
 		</#if>
-		", ok: "确定", okCallback: redirectUrl, cancelCallback: redirectUrl, width: 380, modal: true});
+		", ok: "${bundle("button.name.confirm")}", okCallback: redirectUrl, cancelCallback: redirectUrl, width: 380, modal: true});
 	</@compress>
 
 });

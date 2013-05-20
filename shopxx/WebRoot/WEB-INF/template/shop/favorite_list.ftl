@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>商品收藏<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("favorite.list.pagetitle")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -28,7 +28,7 @@ $().ready( function() {
 	$deleteFavorite.click( function() {
 		var $this = $(this);
 		var favoriteId = $this.attr("favoriteId");
-		$.dialog({type: "warn", content: "您确定要删除吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: deleteFavoriteGoods});
+		$.dialog({type: "warn", content: "${bundle("item.delete.tipmessage")}", ok: "${bundle("button.name.confirm")}", cancel: "${bundle("button.name.cancel")}", modal: true, okCallback: deleteFavoriteGoods});
 		function deleteFavoriteGoods() {
 			$.ajax({
 				url: "favorite!ajaxDelete.action",
@@ -55,48 +55,48 @@ $().ready( function() {
 			<div class="memberInfo">
 				<div class="top"></div>
 				<div class="middle">
-					<p>欢迎您!&nbsp;&nbsp;<span class="username">${loginMember.username}</span>&nbsp;&nbsp;[<a class="userLogout" href="member!logout.action"">退出</a>]</p>
-					<p>会员等级: <span class="red"> ${loginMember.memberRank.name}</span></p>
+					<p>${bundle("deposit.welcome.message")}&nbsp;&nbsp;<span class="username">${loginMember.username}</span>&nbsp;&nbsp;[<a class="userLogout" href="member!logout.action"">${bundle("button.name.logout")}</a>]</p>
+					<p>${bundle("member.rank")} <span class="red"> ${loginMember.memberRank.name}</span></p>
 				</div>
 				<div class="bottom"></div>
 			</div>
 			<div class="blank"></div>
 			<div class="memberMenu">
 				<div class="top">
-					<a href="member_center!index.action">会员中心首页</a>
+					<a href="member_center!index.action">${bundle("member.homepage")}</a>
 				</div>
 				<div class="middle">
 					<ul>
 	                	<li class="order">
 	                    	<ul>
-	                        	<li><a href="order!list.action">我的订单</a></li>
+	                        	<li><a href="order!list.action">${bundle("member.menu.order")}</a></li>
 	                        </ul>
 	                    </li>
 	                    <li class="category favorite">
 	                    	<ul>
-	                        	<li class="current"><a href="favorite!list.action">商品收藏</a></li>
-	                        	<li><a href="goods_notify!list.action">缺货登记</a></li>
+	                        	<li><a href="favorite!list.action">${bundle("member.menu.favorite")}</a></li>
+	                        	<li><a href="goods_notify!list.action">${bundle("member.menu.goods.notify")}</a></li>
 	                        </ul>
 	                    </li>
 	                  	<li class="message">
 	                    	<ul>
-	                        	<li><a href="message!send.action">发送消息</a></li>
-	                            <li><a href="message!inbox.action">收件箱</a></li>
-	                            <li><a href="message!draftbox.action">草稿箱</a></li>
-	                            <li><a href="message!outbox.action">发件箱</a></li>
+	                        	<li><a href="message!send.action">${bundle("member.menu.message.send")}</a></li>
+	                            <li><a href="message!inbox.action">${bundle("member.menu.message.inbox")}</a></li>
+	                            <li><a href="message!draftbox.action">${bundle("member.menu.message.draftbox")}</a></li>
+	                            <li><a href="message!outbox.action">${bundle("member.menu.message.outbox")}</a></li>
 	                        </ul>
 	                    </li>
 	                    <li class="profile">
 	                    	<ul>
-	                        	<li><a href="profile!edit.action">个人信息</a></li>
-	                            <li><a href="password!edit.action">修改密码</a></li>
-	                            <li><a href="receiver!list.action">收货地址</a></li>
+	                        	<li><a href="profile!edit.action">${bundle("member.menu.profile.profile")}</a></li>
+	                            <li><a href="password!edit.action">${bundle("member.menu.profile.password")}</a></li>
+	                            <li><a href="receiver!list.action">${bundle("member.menu.profile.receiver")}</a></li>
 	                        </ul>
 	                    </li>
 	                    <li class="deposit">
 	                    	<ul>
-	                    		<li><a href="deposit!list.action">我的预存款</a></li>
-	                        	<li><a href="deposit!recharge.action">预存款充值</a></li>
+	                    		<li class="current"><a href="deposit!list.action">${bundle("member.menu.deposit.my")}</a></li>
+	                        	<li><a href="deposit!recharge.action">${bundle("member.menu.deposit.recharge")}</a></li>
 	                        </ul>
 	                    </li>
 	                </ul>
@@ -106,15 +106,15 @@ $().ready( function() {
 		</div>
 		<div class="bodyRight">
 			<div class="memberCenterDetail">
-				<div class="top">商品收藏</div>
+				<div class="top">${bundle("favorite.list.title")}</div>
 				<div class="middle">
 					<div class="blank"></div>
 					<table id="favoriteTable" class="listTable">
 						<tr>
-							<th>商品图片</th>
-							<th>商品名称</th>
-							<th>商品价格</th>
-							<th>操作</th>
+							<th>${bundle("favorite.list.header.pic")}</th>
+							<th>${bundle("favorite.list.header.name")}</th>
+							<th>${bundle("favorite.list.header.price")}</th>
+							<th>${bundle("favorite.list.header.operation")}</th>
 						</tr>
 						<#list pager.result as favoriteGoods>
 							<tr>
@@ -130,7 +130,7 @@ $().ready( function() {
 									${favoriteGoods.price?string(currencyFormat)}
 								</td>
 								<td>
-									<a href="#" class="deleteFavorite" favoriteId="${favoriteGoods.id}" title="删 除">删 除</a>
+									<a href="#" class="deleteFavorite" favoriteId="${favoriteGoods.id}" title="${bundle("button.name.delete")}">${bundle("button.name.delete")}</a>
 								</td>
 							</tr>
 						</#list>

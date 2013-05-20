@@ -24,7 +24,7 @@
 	<div class="body">
 		<div class="bodyLeft">
 			<div class="goodsCategory">
-            	<div class="top">${goods_content("goods_category")}</div>
+            	<div class="top">${bundle("goods.content.menu.category.title")}</div>
             	<div class="middle">
             		<ul id="goodsCategoryMenu" class="menu">
             			<@goods_category_tree; goodsCategoryTree>
@@ -55,7 +55,7 @@
 			</div>
 			<div class="blank"></div>
 			<div class="hotGoods">
-				<div class="top">热销排行</div>
+				<div class="top">${bundle("goods.content.menu.hotgoods.title")}</div>
 				<div class="middle">
 					<ul>
 						<@goods_list goods_category_id=goods.goodsCategory.id type="hot" count=10; goodsList>
@@ -72,7 +72,7 @@
 			</div>
 			<div class="blank"></div>
 			<div id="goodsHistory" class="goodsHistory">
-				<div class="top">浏览记录</div>
+				<div class="top">${bundle("goods.content.menu.browse.title")}</div>
 				<div class="middle">
 					<ul id="goodsHistoryListDetail"></ul>
 				</div>
@@ -84,7 +84,7 @@
 				<div class="left"></div>
 				<div class="middle">
 					<div class="path">
-						<a href="${base}/" class="shop"><span class="icon">&nbsp;</span>首页</a> &gt;
+						<a href="${base}/" class="shop"><span class="icon">&nbsp;</span>${bundle("nav.homepage")}</a> &gt;
 						<#list pathList as path>
 							<a href="${base}${path.url}">${path.name}</a> &gt;
 						</#list>
@@ -99,12 +99,12 @@
 						<#if goods.goodsImageList??>
 		                	<#list goods.goodsImageList as goodsImage>
 		                		<a href="${base}${goodsImage.bigImagePath}" class="tabContent zoom<#if (goodsImage_index > 0)> nonFirst</#if>">
-									<img src="${base}${goodsImage.smallImagePath}" alt="点击放大" />
+									<img src="${base}${goodsImage.smallImagePath}" alt="" />
 								</a>
 							</#list>
 						<#else>
 	            			<a href="${base}${setting.defaultBigGoodsImagePath}" class="zoom">
-								<img src="${base}${setting.defaultSmallGoodsImagePath}" alt="点击放大" />
+								<img src="${base}${setting.defaultSmallGoodsImagePath}" alt="" />
 							</a>
 	                	</#if>
                 	</div>
@@ -127,8 +127,8 @@
 				<div class="goodsTopRight">
 					<h1 class="title">${substring(goods.name, 50, "...")}</h1>
 					<ul class="goodsAttribute">
-						<li>商品编号: ${goods.goodsSn}</li>
-						<li>货品编号: <span id="productSn">${goods.defaultProduct.productSn}</span></li>
+						<li>${bundle("goods.info.goodsSn")}: ${goods.goodsSn}</li>
+						<li>${bundle("goods.info.productSn")}: <span id="productSn">${goods.defaultProduct.productSn}</span></li>
 						<#list (goods.goodsType.goodsAttributeSet)! as goodsAttribute>
 							<#if goods.getGoodsAttributeValue(goodsAttribute)?? && goods.getGoodsAttributeValue(goodsAttribute) != "">
 	                    		<li>${goodsAttribute.name}: ${substring(goods.getGoodsAttributeValue(goodsAttribute), 26)}</li>
@@ -140,11 +140,11 @@
 						<div class="left"></div>
 						<div class="right">
 							<div class="top">
-								销 售 价:
+								${bundle("goods.info.price")}:
 								<span id="price" class="price">${goods.price?string(currencyFormat)}</span>
 							</div>
 							<div class="bottom">
-								市 场 价:
+								${bundle("goods.info.marketPrice")}:
 								<#if setting.isShowMarketPrice>
 									<span id="marketPrice" class="marketPrice">${goods.marketPrice?string(currencyFormat)}</span>
 								<#else>

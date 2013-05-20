@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>预存款充值<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("deposit.recharge.pagetitle")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -44,10 +44,10 @@ $().ready( function() {
 		},
 		messages: {
 			"rechargeAmount": {
-				required: "请填写充值金额",
-				positive: "充值金额必须为正数"
+				required: "${bundle("deposit.recharge.amount.message.required")}",
+				positive: "${bundle("deposit.recharge.amount.message.positive")}"
 			},
-			"paymentConfig.id": "请选择支付方式"
+			"paymentConfig.id": "${bundle("deposit.recharge.amount.message.paymethod")}"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -65,48 +65,48 @@ $().ready( function() {
 			<div class="memberInfo">
 				<div class="top"></div>
 				<div class="middle">
-					<p>欢迎您!&nbsp;&nbsp;<span class="username">${loginMember.username}</span>&nbsp;&nbsp;[<a class="userLogout" href="member!logout.action"">退出</a>]</p>
-					<p>会员等级: <span class="red"> ${loginMember.memberRank.name}</span></p>
+					<p>${bundle("deposit.welcome.message")}&nbsp;&nbsp;<span class="username">${loginMember.username}</span>&nbsp;&nbsp;[<a class="userLogout" href="member!logout.action"">${bundle("button.name.logout")}</a>]</p>
+					<p>${bundle("member.rank")} <span class="red"> ${loginMember.memberRank.name}</span></p>
 				</div>
 				<div class="bottom"></div>
 			</div>
 			<div class="blank"></div>
 			<div class="memberMenu">
 				<div class="top">
-					<a href="member_center!index.action">会员中心首页</a>
+					<a href="member_center!index.action">${bundle("member.homepage")}</a>
 				</div>
 				<div class="middle">
 					<ul>
 	                	<li class="order">
 	                    	<ul>
-	                        	<li><a href="order!list.action">我的订单</a></li>
+	                        	<li><a href="order!list.action">${bundle("member.menu.order")}</a></li>
 	                        </ul>
 	                    </li>
 	                    <li class="category favorite">
 	                    	<ul>
-	                        	<li><a href="favorite!list.action">商品收藏</a></li>
-	                        	<li><a href="goods_notify!list.action">缺货登记</a></li>
+	                        	<li><a href="favorite!list.action">${bundle("member.menu.favorite")}</a></li>
+	                        	<li><a href="goods_notify!list.action">${bundle("member.menu.goods.notify")}</a></li>
 	                        </ul>
 	                    </li>
 	                  	<li class="message">
 	                    	<ul>
-	                        	<li><a href="message!send.action">发送消息</a></li>
-	                            <li><a href="message!inbox.action">收件箱</a></li>
-	                            <li><a href="message!draftbox.action">草稿箱</a></li>
-	                            <li><a href="message!outbox.action">发件箱</a></li>
+	                        	<li><a href="message!send.action">${bundle("member.menu.message.send")}</a></li>
+	                            <li><a href="message!inbox.action">${bundle("member.menu.message.inbox")}</a></li>
+	                            <li><a href="message!draftbox.action">${bundle("member.menu.message.draftbox")}</a></li>
+	                            <li><a href="message!outbox.action">${bundle("member.menu.message.outbox")}</a></li>
 	                        </ul>
 	                    </li>
 	                    <li class="profile">
 	                    	<ul>
-	                        	<li><a href="profile!edit.action">个人信息</a></li>
-	                            <li><a href="password!edit.action">修改密码</a></li>
-	                            <li><a href="receiver!list.action">收货地址</a></li>
+	                        	<li><a href="profile!edit.action">${bundle("member.menu.profile.profile")}</a></li>
+	                            <li><a href="password!edit.action">${bundle("member.menu.profile.password")}</a></li>
+	                            <li><a href="receiver!list.action">${bundle("member.menu.profile.receiver")}</a></li>
 	                        </ul>
 	                    </li>
 	                    <li class="deposit">
 	                    	<ul>
-	                    		<li><a href="deposit!list.action">我的预存款</a></li>
-	                        	<li class="current"><a href="deposit!recharge.action">预存款充值</a></li>
+	                    		<li class="current"><a href="deposit!list.action">${bundle("member.menu.deposit.my")}</a></li>
+	                        	<li><a href="deposit!recharge.action">${bundle("member.menu.deposit.recharge")}</a></li>
 	                        </ul>
 	                    </li>
 	                </ul>
@@ -116,10 +116,10 @@ $().ready( function() {
 		</div>
 		<div class="bodyRight">
 			<div class="memberCenterDetail">
-				<div class="top">预存款充值</div>
+				<div class="top">${bundle("deposit.recharge.title")}</div>
 				<div class="middle">
 					<div id="validateErrorContainer" class="validateErrorContainer">
-						<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+						<div class="validateErrorTitle">${bundle("deposit.recharge.input.error")}</div>
 						<ul></ul>
 					</div>
 					<div class="blank"></div>
@@ -128,7 +128,7 @@ $().ready( function() {
 						<table class="inputTable">
 							<tr>
 								<th>
-									充值金额: 
+									${bundle("deposit.recharge.input.rechargeAmount")}
 								</th>
 								<td>
 									<input type="text" name="rechargeAmount" class="formText" />
@@ -137,7 +137,7 @@ $().ready( function() {
 							</tr>
 							<tr>
 								<th>
-									支付方式: 
+									${bundle("deposit.recharge.input.payMethod")}
 								</th>
 								<td>
 									<table class="paymentConfigTable">
@@ -150,9 +150,9 @@ $().ready( function() {
 												</td>
 												<td>
 													<#if paymentConfig.paymentFeeType == "scale" && paymentConfig.paymentFee != 0>
-														[支付手续费费率: ${paymentConfig.paymentFee}%]
+														[${bundle("deposit.recharge.input.pay.feerate")} ${paymentConfig.paymentFee}%]
 													<#elseif paymentConfig.paymentFeeType == "fixed" && paymentConfig.paymentFee != 0>
-														[支付手续费: ${paymentConfig.paymentFee?string(currencyFormat)}]
+														[${bundle("deposit.recharge.input.pay.fee")} ${paymentConfig.paymentFee?string(currencyFormat)}]
 													</#if>
 													<#if paymentConfig.description??>
 														<p>${paymentConfig.description}</p>
@@ -168,7 +168,7 @@ $().ready( function() {
 									&nbsp;
 								</th>
 								<td>
-									<input type="submit" class="submitButton" value="立刻充值" hidefocus />
+									<input type="submit" class="submitButton" value="${bundle("deposit.recharge.input.button.submit")}" hidefocus />
 								</td>
 							</tr>
 						</table>

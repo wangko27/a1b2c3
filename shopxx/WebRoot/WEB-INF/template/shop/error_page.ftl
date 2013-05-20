@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>提示信息<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("error.page.pagetitle")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link href="${base}/template/shop/css/base.css" rel="stylesheet" type="text/css" />
@@ -12,9 +12,9 @@
 	<div class="body">
 		<div class="errorBox">
 			<div class="errorMessage">
-				${errorContent!"您的操作出现错误!"}
+				${errorContent!"${bundle("error.page.errorcontent")}"}
 			</div>
-			<div class="errorUrl">点击此处<a href="javascript: void(0);" onclick="window.history.back(); return false;">返回</a>或回到<a href="${base}/">首页</a></div>
+			<div class="errorUrl">${bundle("error.page.back.part1")}<a href="javascript: void(0);" onclick="window.history.back(); return false;">${bundle("error.page.back.part2")}</a>${bundle("error.page.back.part3")}<a href="${base}/">${bundle("error.page.back.part4")}</a></div>
 		</div>
 	</div>
 </body>
