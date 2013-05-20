@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>商品比较<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("goods.compare.title")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <#if (goodsCategory.metaKeywords)! != ""><meta name="keywords" content="${goodsCategory.metaKeywords}" /></#if>
@@ -23,46 +23,46 @@
 	<#include "/WEB-INF/template/shop/header.ftl">
 	<div class="body">
 		<div id="shop_contrast">
-    		<div class="title"><strong>基本信息</strong></div>
+    		<div class="title"><strong>${bundle("goods.compare.head1")}</strong></div>
         	<table width="1000" border="1" class="tb">
 			<tr>
-			    <th>商品图片</th>
+			    <th>${bundle("goods.compare.result.pic")}</th>
 			    <#list compareResultList as goods>
 			    <td><div class="pro"><img src="${base}${goods.defaultSmallGoodsImagePath}" align="middle" /></div></td>
 			    </#list>
 			</tr>
 			<tr>
-			    <th>商品名称</th>
+			    <th>${bundle("goods.compare.result.name")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.name}</td>
 				</#list>
 			</tr>
 			<tr>
-			    <th>商品编号</th> 
+			    <th>${bundle("goods.compare.result.sn")}</th> 
 			    <#list compareResultList as goods>
 				<td>${goods.goodsSn}</td>
 				</#list>
 			</tr>
 		  	<tr>
-			    <th>销售价</th> 
+			    <th>${bundle("goods.compare.result.price")}</th> 
 			    <#list compareResultList as goods>
 				<td>${goods.price}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-		     	<th>市场价</th> 
+		     	<th>${bundle("goods.compare.result.marketPrice")}</th> 
 		     	<#list compareResultList as goods>
 				<td>${goods.marketPrice}</td>
 				</#list>
 		  	</tr>
   			<tr>
-		     	<th>品牌名称</th>
+		     	<th>${bundle("goods.compare.result.brand")}</th>
 		     	<#list compareResultList as goods>
 				<td>${goods.brand.name}</td>
 				</#list>
   			</tr>
   			<tr>
-     			<th>用户评分</th>
+     			<th>${bundle("goods.compare.result.score")}</th>
      			<#list compareResultList as goods>
 				<td>
 					<#if goods.averageScore == 0>
@@ -82,124 +82,124 @@
 			</table>
 			<div class="blank"></div>
 			
-			<div class="title"><strong>产品参数</strong></div>
+			<div class="title"><strong>${bundle("goods.compare.head2")}</strong></div>
 			<table width="1000" border="1" class="tb">
 			<tr>
-			    <th>商品属性值0</th>
+			    <th>${bundle("goods.compare.attribute")}0</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue0}</td>
 				</#list>
 		  	</tr>
   			<tr>
-			    <th>商品属性值1</th>
+			    <th>${bundle("goods.compare.attribute")}1</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue1}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>商品属性值2</th>
+			    <th>${bundle("goods.compare.attribute")}2</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue2}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>商品属性值3</th>
+			    <th>${bundle("goods.compare.attribute")}3</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue3}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>商品属性值4</th>
+			    <th>${bundle("goods.compare.attribute")}4</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue4}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>商品属性值5</th>
+			    <th>${bundle("goods.compare.attribute")}5</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue5}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>商品属性值6</th>
+			    <th>${bundle("goods.compare.attribute")}6</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue6}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>商品属性值7</th>
+			    <th>${bundle("goods.compare.attribute")}7</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue7}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>商品属性值8</th>
+			    <th>${bundle("goods.compare.attribute")}8</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue8}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>商品属性值9</th>
+			    <th>${bundle("goods.compare.attribute")}9</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue9}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>商品属性值10</th>
+			    <th>${bundle("goods.compare.attribute")}10</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue10}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>商品属性值11</th>
+			    <th>${bundle("goods.compare.attribute")}11</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue11}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>商品属性值12</th>
+			    <th>${bundle("goods.compare.attribute")}12</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue12}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>商品属性值13</th>
+			    <th>${bundle("goods.compare.attribute")}13</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue13}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>商品属性值14</th>
+			    <th>${bundle("goods.compare.attribute")}14</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue14}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>商品属性值15</th>
+			    <th>${bundle("goods.compare.attribute")}15</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue15}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>商品属性值16</th>
+			    <th>${bundle("goods.compare.attribute")}16</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue16}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>商品属性值17</th>
+			    <th>${bundle("goods.compare.attribute")}17</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue17}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>商品属性值18</th>
+			    <th>${bundle("goods.compare.attribute")}18</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue18}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>商品属性值19</th>
+			    <th>${bundle("goods.compare.attribute")}19</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue19}</td>
 				</#list>
@@ -216,9 +216,9 @@
 		<div id="locate"></div>
 		<div id="static"></div>
 		<div class="con">
-			<a href="javascript:;" class="setup" style="width:99px;" id="compare_highlight"><b></b>高亮显示不同项</a>
-			<a href="javascript:;" class="setup" style="width:75px;" id="compare_equal"><b></b>隐藏相同项</a>
-			<a href="javascript:;" class="setup" style="width:63px;" id="add_compare_goods"><b></b>新增商品</a>
+			<a href="javascript:;" class="setup" style="width:99px;" id="compare_highlight"><b></b>${bundle("goods.compare.button.highlight")}</a>
+			<a href="javascript:;" class="setup" style="width:75px;" id="compare_equal"><b></b>${bundle("goods.compare.button.equal")}</a>
+			<a href="javascript:;" class="setup" style="width:63px;" id="add_compare_goods"><b></b>${bundle("goods.compare.button.add")}</a>
 		</div>
 	</div>
 	<script type="text/javascript" src="${base}/template/common/js/jquery.js"></script>
