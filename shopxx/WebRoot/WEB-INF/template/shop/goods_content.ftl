@@ -158,14 +158,14 @@
 						<#if goods.isSpecificationEnabled>
 							<#assign specificationValueSet = goods.specificationValueSet>
 							<tr class="specificationTips">
-								<th id="tipsTitle">请选择:</th>
+								<th id="tipsTitle">${bundle("goods.content.buyInfo.tipsTitle")}:</th>
 								<td>
 									<div id="tipsContent" class="tipsContent">
 										<#list goods.specificationSet as specification>
 											${specification.name} 
 										</#list>
 									</div>
-									<div id="closeHighlight" class="closeHighlight" title="关闭"></div>
+									<div id="closeHighlight" class="closeHighlight" title="${bundle("goods.content.buyInfo.closeHighlight")}"></div>
 								</td>
 							</tr>
 							<#list goods.specificationSet as specification>
@@ -178,7 +178,7 @@
 													<#if specificationValueSet.contains(specificationValue)>
 														<li class="${specificationValue.id}" title="${specificationValue.name}" specificationValueId="${specificationValue.id}">
 															${specificationValue.name}
-															<span title="点击取消选择"></span>
+															<span title="${bundle("goods.content.buyInfo.clickCancel")}"></span>
 														</li>
 													</#if>
 												</#list>
@@ -198,7 +198,7 @@
 															<#else>
 																<img src="${base}/template/shop/images/default_specification.gif" />
 															</#if>
-															<span title="点击取消选择"></span>
+															<span title="goods.content.buyInfo.clickCancel"></span>
 														</li>
 													</#if>
 												</#list>
@@ -209,11 +209,11 @@
 							</#list>
 						</#if>
 						<tr>
-							<th>购买数量:</th>
+							<th>${bundle("goods.content.buyInfo.buy.number")}:</th>
 							<td>
 								<input type="text" id="quantity" value="1" />
 								<#if setting.scoreType == "goodsSet" && goods.score != 0>
-									&nbsp;&nbsp;( 所得积分: ${goods.score} )
+									&nbsp;&nbsp;( ${bundle("goods.content.buyInfo.goods.score")}: ${goods.score} )
 								</#if>
 							</td>
 						</tr>
@@ -257,21 +257,21 @@
 			<div class="goodsBottom">
 				<ul id="goodsParameterTab" class="goodsParameterTab">
 					<li>
-						<a href="javascript: void(0);" class="current" hidefocus>商品介绍</a>
+						<a href="javascript: void(0);" class="current" hidefocus>${bundle("goods.content.bottom.options.introduce")}</a>
 					</li>
 					<li>
-						<a href="javascript: void(0);" name="goodsAttribute" hidefocus>商品参数</a>
+						<a href="javascript: void(0);" name="goodsAttribute" hidefocus>${bundle("goods.content.bottom.options.attribute")}</a>
 					</li>
 					<li>
-						<a href="javascript: void(0);" name="relateGoods" hidefocus>相关产品</a>
+						<a href="javascript: void(0);" name="relateGoods" hidefocus>${bundle("goods.content.bottom.options.relate")}</a>
 					</li>
 					<#if setting.isCommentEnabled>
 						<li>
-							<a href="javascript: void(0);" hidefocus>商品评论</a>
+							<a href="javascript: void(0);" hidefocus>${bundle("goods.content.bottom.options.comment")}</a>
 						</li>
 					</#if>
 					<li>
-						<a href="javascript: void(0);" name="goodsHelp" hidefocus>帮助文件</a>
+						<a href="javascript: void(0);" name="goodsHelp" hidefocus>${bundle("goods.content.bottom.options.help")}</a>
 					</li>
 				</ul>
 				<div class="tabContent goodsIntroduction">
@@ -306,32 +306,16 @@
 				</div>
 				<#if setting.isCommentEnabled>
 					<div id="comment" class="tabContent comment">
-						<@comment_list goods_id=goods.id count=20; commentList>
 						<div id="mt">
                         	<ul class="tab" id="cmtTab">
-								<li id="cmtTab0"><a href="javascript:;">全部评价<em id="totalCount">(${totalCount})</em></a></li>
-								<li><a href="javascript:;">好评<em id="goodCount">(${goodCount})</em></a></li>
-                                <li><a href="javascript:;">中评<em id="middleCount">(${middleCount})</em></a></li>
-                                <li><a href="javascript:;">差评<em id="badCount">(${badCount})</em></a></li>
+								<li id="cmtTab0"><a href="javascript:;">${bundle("goods.content.bottom.comment.all")}<em id="totalCount">(${totalCount})</em></a></li>
+								<li><a href="javascript:;">${bundle("goods.content.bottom.comment.good")}<em id="goodCount">(${goodCount})</em></a></li>
+                                <li><a href="javascript:;">${bundle("goods.content.bottom.comment.soso")}<em id="middleCount">(${middleCount})</em></a></li>
+                                <li><a href="javascript:;">${bundle("goods.content.bottom.comment.bad")}<em id="badCount">(${badCount})</em></a></li>
                             </ul>
 						</div>
 						<div id="commentList">
 							<div class="commentTab" id="commentList_0">
-							<#list commentList as comment>
-								<#assign isHasComment = true />
-								<div class="commentItem" id="commentItem${comment.id}">
-									<p><span class="red">${(comment.username)!"游客"}</span>&nbsp;&nbsp;&nbsp;&nbsp<span><img src="${base}/template/shop/images/discuss_s${comment.score}.gif" /></span>&nbsp;&nbsp;&nbsp;&nbsp;${comment.createDate?string("yyyy-MM-dd HH: mm")} <a href="#commentForm" class="commentReply" forCommentId="${comment.id}">[回复此评论]</a></p>
-									<p><pre>${comment.content}</pre></p>
-									<#list comment.replyCommentSet as replyComment>
-										<#if replyComment.isShow>
-											<div class="reply">
-												<p><span class="red"><#if replyComment.isAdminReply>管理员<#else>${(replyComment.username)!"游客"}</#if></span> ${replyComment.createDate?string("yyyy-MM-dd HH: mm")}</p>
-												<p><pre>${replyComment.content}</pre></p>
-											</div>
-										</#if>
-									</#list>
-								</div>
-							</#list>
 							</div>
 							<div class="commentTab" id="commentList_1">
 							</div>
@@ -339,12 +323,9 @@
 							</div>
 							<div class="commentTab" id="commentList_3">
 							</div>
-							<#if (commentList?size > 0)>
-								<div class="info">
-									<a href="${base}/shop/comment_list/${goods.id}.htm">查看所有评论&gt;&gt;</a>
-								</div>
-							</#if>
-						</@comment_list>
+							<div class="info">
+								<a href="${base}/shop/comment_list/${goods.id}.htm">${bundle("goods.content.bottom.comment.list")}&gt;&gt;</a>
+							</div>
 						</div>
 						<form id="commentForm" name="commentForm" method="post">
 							<input type="hidden" name="comment.goods.id" value="${goods.id}" />
@@ -352,10 +333,10 @@
 							<table class="sendTable">
 								<tr class="title">
 									<td width="100">
-										<span id="sendTitle">发表评论</span>
+										<span id="sendTitle">${bundle("goods.content.bottom.comment.say")}</span>
 									</td>
 									<td>
-										<a href="javascript: void(0);" id="sendComment" class="sendComment">切换到发表新评论&gt;&gt;</a>
+										<a href="javascript: void(0);" id="sendComment" class="sendComment">${bundle("goods.content.bottom.comment.switchNew")}&gt;&gt;</a>
 									</td>
 								</tr>
 								<tr>
@@ -374,7 +355,7 @@
 								</tr>
 								<tr>
 									<th>
-										评论内容: 
+										${bundle("goods.content.bottom.comment.context")}: 
 									</th>
 									<td>
 										<textarea id="commentContent" name="comment.content" class="formTextarea"></textarea>
@@ -382,7 +363,7 @@
 								</tr>
 								<tr>
 									<th>
-										联系方式: 
+										${bundle("goods.content.bottom.comment.contact")}: 
 									</th>
 									<td>
 										<input type="text" name="comment.contact" class="formText" />
@@ -391,11 +372,11 @@
 								<#if setting.isCommentCaptchaEnabled>
 									<tr>
 					                	<th>
-					                		验证码: 
+					                		${bundle("goods.content.bottom.comment.sign")}: 
 					                	</th>
 					                    <td>
 					                    	<input type="text" id="commentCaptcha" name="j_captcha" class="formText captcha" />
-					                    	<img id="commentCaptchaImage" class="captchaImage" src="${base}/captcha.jpeg" alt="换一张" />
+					                    	<img id="commentCaptchaImage" class="captchaImage" src="${base}/captcha.jpeg" alt="${bundle("goods.content.bottom.comment.replace")}" />
 					                    </td>
 					                </tr>
 				                </#if>
@@ -404,7 +385,7 @@
 										&nbsp;
 									</th>
 									<td>
-										<input type="submit" class="formButton" value="提交评论" />
+										<input type="submit" class="formButton" value="${bundle("goods.content.bottom.comment.submit")}" />
 									</td>
 								</tr>
 							</table>
@@ -507,10 +488,10 @@
 					specificationValueSelecteds.push($this.attr("specificationValueId"));
 				});
 				if (tipsContentText != "") {
-					$tipsTitle.text("已选择: ");
+					$tipsTitle.text("${bundle("goods.content.javascript.selected")}: ");
 					$tipsContent.text(tipsContentText);
 				} else {
-					$tipsTitle.text("请选择: ");
+					$tipsTitle.text("${bundle("goods.content.buyInfo.tipsTitle")}: ");
 					$tipsContent.text("<#list goods.specificationSet as specification>${specification.name} </#list>");
 				}
 				$.each(specificationValueDatas, function(i) {
@@ -547,15 +528,15 @@
 					}
 				} else {
 					$buyInfo.addClass("highlight");
-					$tipsTitle.text('系统提示:');
-					$tipsContent.text('请选择商品信息!');
+					$tipsTitle.text('${bundle("goods.content.javascript.sysMsg")}:');
+					$tipsContent.text('${bundle("goods.content.javascript.choose.goods")}!');
 				}
 			});
 			
 			// 关闭购买信息提示
 			$closeHighlight.click(function () {
 				$buyInfo.removeClass("highlight");
-				$tipsTitle.html("请选择: ");
+				$tipsTitle.html("${bundle("goods.content.buyInfo.tipsTitle")}: ");
 				$tipsContent.html("<#list goods.specificationSet as specification>${specification.name} </#list>");
 			});
 			
