@@ -28,7 +28,7 @@ $().ready( function() {
 	$deleteGoodsNotify.click( function() {
 		var $this = $(this);
 		var goodsNotifyId = $this.attr("goodsNotifyId");
-		$.dialog({type: "warn", content: "您确定要删除吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: deleteGoodsNotify});
+		$.dialog({type: "warn", content: "${bundle("goods.notify.javascript.deleteNotice")}?", ok: "${bundle("goods.common.ok")}", cancel: "${bundle("goods.common.cancel")}", modal: true, okCallback: deleteGoodsNotify});
 		function deleteGoodsNotify() {
 			$.ajax({
 				url: "goods_notify!ajaxDelete.action",
@@ -55,48 +55,48 @@ $().ready( function() {
 			<div class="memberInfo">
 				<div class="top"></div>
 				<div class="middle">
-					<p>欢迎您!&nbsp;&nbsp;<span class="username">${loginMember.username}</span>&nbsp;&nbsp;[<a class="userLogout" href="member!logout.action"">退出</a>]</p>
-					<p>会员等级: <span class="red"> ${loginMember.memberRank.name}</span></p>
+					<p>${bundle("goods.notify.memberCenter.welcome")}!&nbsp;&nbsp;<span class="username">${loginMember.username}</span>&nbsp;&nbsp;[<a class="userLogout" href="member!logout.action"">${bundle("goods.common.logout")}</a>]</p>
+					<p>${bundle("goods.notify.memberCenter.memberLevel")}: <span class="red"> ${loginMember.memberRank.name}</span></p>
 				</div>
 				<div class="bottom"></div>
 			</div>
 			<div class="blank"></div>
 			<div class="memberMenu">
 				<div class="top">
-					<a href="member_center!index.action">会员中心首页</a>
+					<a href="member_center!index.action">${bundle("goods.notify.memberCenter.mainPage")}</a>
 				</div>
 				<div class="middle">
 					<ul>
 	                	<li class="order">
 	                    	<ul>
-	                        	<li><a href="order!list.action">我的订单</a></li>
+	                        	<li><a href="order!list.action">${bundle("goods.notify.memberCenter.myOrder")}</a></li>
 	                        </ul>
 	                    </li>
 	                    <li class="category favorite">
 	                    	<ul>
-	                        	<li><a href="favorite!list.action">商品收藏</a></li>
-	                        	<li class="current"><a href="goods_notify!list.action">缺货登记</a></li>
+	                        	<li><a href="favorite!list.action">${bundle("goods.notify.memberCenter.favorite")}</a></li>
+	                        	<li class="current"><a href="goods_notify!list.action">${bundle("goods.notify.memberCenter.notify")}</a></li>
 	                        </ul>
 	                    </li>
 	                  	<li class="message">
 	                    	<ul>
-	                        	<li><a href="message!send.action">发送消息</a></li>
-	                            <li><a href="message!inbox.action">收件箱</a></li>
-	                            <li><a href="message!draftbox.action">草稿箱</a></li>
-	                            <li><a href="message!outbox.action">发件箱</a></li>
+	                        	<li><a href="message!send.action">${bundle("goods.notify.memberCenter.message.send")}</a></li>
+	                            <li><a href="message!inbox.action">${bundle("goods.notify.memberCenter.message.inbox")}</a></li>
+	                            <li><a href="message!draftbox.action">${bundle("goods.notify.memberCenter.message.draftbox")}</a></li>
+	                            <li><a href="message!outbox.action">${bundle("goods.notify.memberCenter.message.outbox")}</a></li>
 	                        </ul>
 	                    </li>
 	                    <li class="profile">
 	                    	<ul>
-	                        	<li><a href="profile!edit.action">个人信息</a></li>
-	                            <li><a href="password!edit.action">修改密码</a></li>
-	                            <li><a href="receiver!list.action">收货地址</a></li>
+	                        	<li><a href="profile!edit.action">${bundle("goods.notify.memberCenter.profile.profile")}</a></li>
+	                            <li><a href="password!edit.action">${bundle("goods.notify.memberCenter.profile.password")}</a></li>
+	                            <li><a href="receiver!list.action">${bundle("goods.notify.memberCenter.profile.receiver")}</a></li>
 	                        </ul>
 	                    </li>
 	                    <li class="deposit">
 	                    	<ul>
-	                    		<li><a href="deposit!list.action">我的预存款</a></li>
-	                        	<li><a href="deposit!recharge.action">预存款充值</a></li>
+	                    		<li><a href="deposit!list.action">${bundle("goods.notify.memberCenter.deposit.store")}</a></li>
+	                        	<li><a href="deposit!recharge.action">${bundle("goods.notify.memberCenter.deposit.charge")}</a></li>
 	                        </ul>
 	                    </li>
 	                </ul>
@@ -106,15 +106,15 @@ $().ready( function() {
 		</div>
 		<div class="bodyRight">
 			<div class="memberCenterDetail">
-				<div class="top">缺货登记</div>
+				<div class="top">${bundle("goods.notify.memberCenter.notify")}</div>
 				<div class="middle">
 					<div class="blank"></div>
 					<table id="goodsNotifyTable" class="listTable">
 						<tr>
-							<th>商品图片</th>
-							<th>商品名称</th>
-							<th>商品价格</th>
-							<th>操作</th>
+							<th>${bundle("goods.notify.memberCenter.goods.image")}</th>
+							<th>${bundle("goods.notify.memberCenter.goods.name")}</th>
+							<th>${bundle("goods.notify.memberCenter.goods.price")}</th>
+							<th>${bundle("goods.notify.memberCenter.goods.operation")}</th>
 						</tr>
 						<#list (pager.result)! as goodsNotify>
 							<#assign product = goodsNotify.product />
@@ -134,7 +134,7 @@ $().ready( function() {
 									${product.price?string(currencyFormat)}
 								</td>
 								<td>
-									<a href="#" class="deleteGoodsNotify" goodsNotifyId="${goodsNotify.id}">删除</a>
+									<a href="#" class="deleteGoodsNotify" goodsNotifyId="${goodsNotify.id}">${bundle("goods.common.delete")}</a>
 								</td>
 							</tr>
 						</#list>

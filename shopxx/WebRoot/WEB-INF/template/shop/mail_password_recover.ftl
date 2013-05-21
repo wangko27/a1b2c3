@@ -2,15 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>密码找回 - Powered By SHOP++</title>
+<title>${bundle("goods.notify.memberCenter.profile.password.find")} - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 </head>
 <body>
-<p>亲爱的${member.username}: </p>
-<p>您好!感谢您使用${setting.shopName}。</p>
+<p>${bundle("goods.head.login.dear")}${member.username}: </p>
+<p>${bundle("goods.head.login.hello")}!${bundle("goods.head.login.thank")}${setting.shopName}。</p>
 <p>
-	您提交了密码找回操作,您可以通过点击<a href="${setting.shopUrl}/shop/member!passwordModify.action?id=${member.id}&passwordRecoverKey=${member.passwordRecoverKey}">更改密码</a>进行密码修改。
+	${bundle("goods.mail.password.notice")}<a href="${setting.shopUrl}/shop/member!passwordModify.action?id=${member.id}&passwordRecoverKey=${member.passwordRecoverKey}">${bundle("goods.notify.memberCenter.profile.password.modify")}</a>${bundle("goods.mail.password.modifyNotice")}
 </p>
 </body>
 </html>

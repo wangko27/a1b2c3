@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>在线留言<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("goods.message.leave.online")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -74,7 +74,7 @@
 		<div class="titleBar">
 			<div class="left"></div>
 			<div class="middle">
-				<span class="icon">&nbsp;</span>在线留言
+				<span class="icon">&nbsp;</span>${bundle("goods.message.leave.online")}
 			</div>
 			<div class="right"></div>
 		</div>
@@ -84,7 +84,7 @@
 				<#list pager.result as leaveMessage>
 					<div class="leaveMessageItem">
 						<p>
-							<span class="red">${(leaveMessage.username)!"游客"}</span> ${leaveMessage.createDate?string("yyyy-MM-dd HH: mm")}
+							<span class="red">${(leaveMessage.username)!"${bundle("goods.content.bottom.comment.guest")}"}</span> ${leaveMessage.createDate?string("yyyy-MM-dd HH: mm")}
 						</p>
 						<p>
 							<pre>${leaveMessage.content}</pre>
@@ -92,7 +92,7 @@
 						<#list leaveMessage.replyLeaveMessageSet as replyLeaveMessage>
 							<div class="reply">
 								<p>
-									<span class="red">管理员</span> ${replyLeaveMessage.createDate?string("yyyy-MM-dd HH: mm")}
+									<span class="red">${bundle("goods.content.bottom.comment.admin")}</span> ${replyLeaveMessage.createDate?string("yyyy-MM-dd HH: mm")}
 								</p>
 								<p>
 									<pre>${replyLeaveMessage.content}</pre>
@@ -111,7 +111,7 @@
          			</@pagination>
 				<#else>
 					<div class="leaveMessageItem">
-						暂无留言!
+						${bundle("goods.message.none")}!
 					</div>
 				</#if>
 				<div class="blank"></div>
@@ -119,7 +119,7 @@
 					<table class="sendTable">
 						<tr class="title">
 							<td width="100">
-								发布留言
+								${bundle("goods.message.push")}
 							</td>
 							<td>
 								&nbsp;
@@ -127,7 +127,7 @@
 						</tr>
 						<tr>
 							<th>
-								标题: 
+								${bundle("goods.message.push.title")}: 
 							</th>
 							<td>
 								<input type="text" id="leaveMessageTitle" name="leaveMessage.title" class="formText" />
@@ -135,7 +135,7 @@
 						</tr>
 						<tr>
 							<th>
-								留言内容: 
+								${bundle("goods.message.push.context")}: 
 							</th>
 							<td>
 								<textarea id="leaveMessageContent" name="leaveMessage.content" class="formTextarea"></textarea>
@@ -143,7 +143,7 @@
 						</tr>
 						<tr>
 							<th>
-								联系方式: 
+								${bundle("goods.content.bottom.comment.contact")}: 
 							</th>
 							<td>
 								<input type="text" name="leaveMessage.contact" class="formText" />
@@ -152,11 +152,11 @@
 						<#if setting.isLeaveMessageCaptchaEnabled>
 							<tr>
 			                	<th>
-			                		验证码: 
+			                		${bundle("goods.content.bottom.comment.sign")}: 
 			                	</th>
 			                    <td>
 			                    	<input type="text" id="leaveMessageCaptcha" name="j_captcha" class="formText captcha" />
-			                   		<img id="leaveMessageCaptchaImage" class="captchaImage" src="${base}/captcha.jpeg" alt="换一张" />
+			                   		<img id="leaveMessageCaptchaImage" class="captchaImage" src="${base}/captcha.jpeg" alt="${bundle("goods.content.bottom.comment.replace")}" />
 			                    </td>
 			                </tr>
 		                </#if>
@@ -165,7 +165,7 @@
 								&nbsp;
 							</th>
 							<td>
-								<input type="submit" class="formButton" value="提 交" />
+								<input type="submit" class="formButton" value="${bundle("goods.message.push.submit")}" />
 							</td>
 						</tr>
 					</table>
@@ -203,16 +203,16 @@
 			
 			$leaveMessageForm.submit( function() {
 				if ($.trim($leaveMessageTitle.val()) == "") {
-					$.dialog({type: "warn", content: "请输入标题!", modal: true, autoCloseTime: 3000});
+					$.dialog({type: "warn", content: "${bundle("goods.message.push.title.input")}!", modal: true, autoCloseTime: 3000});
 					return false;
 				}
 				if ($.trim($leaveMessageContent.val()) == "") {
-					$.dialog({type: "warn", content: "请输入留言内容!", modal: true, autoCloseTime: 3000});
+					$.dialog({type: "warn", content: "${bundle("goods.message.push.context.input")}!", modal: true, autoCloseTime: 3000});
 					return false;
 				}
 				<#if setting.isLeaveMessageCaptchaEnabled>
 					if ($.trim($leaveMessageCaptcha.val()) == "") {
-						$.dialog({type: "warn", content: "请输入验证码!", modal: true, autoCloseTime: 3000});
+						$.dialog({type: "warn", content: "${bundle("goods.message.push.captcha.input")}!", modal: true, autoCloseTime: 3000});
 						return false;
 					}
 				</#if>
@@ -232,7 +232,7 @@
 							<#if setting.leaveMessageDisplayType == "direct">
 								var username = getCookie("memberUsername");
 								if (username == null) {
-									username = "游客";
+									username = "${bundle("goods.content.bottom.comment.guest")}";
 								}
 								var leaveMessageItemHtml = '<div class="leaveMessageItem"><p><span class="red">' + username + '</span> ' + new Date().toLocaleDateString() + '</p><p><pre>' + htmlEscape($leaveMessageContent.val()) + '</pre></p></div><div class="blank"></div>';
 								$leaveMessage.prepend(leaveMessageItemHtml);

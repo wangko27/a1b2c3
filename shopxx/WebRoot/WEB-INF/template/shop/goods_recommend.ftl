@@ -1,4 +1,4 @@
-<div class="title"><strong>同类推荐</strong></div>
+<div class="title"><strong>${bundle("goods.recommend")}</strong></div>
 <ul class="menu">
 	<#list recommendList as recommendGoods>
 		<li>

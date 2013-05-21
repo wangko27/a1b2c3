@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>${(pager.keyword)!} 商品搜索结果<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${(pager.keyword)!} ${bundle("goods.picture.search.result")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <meta name="keywords" content="${pager.keyword}" />
@@ -22,7 +22,7 @@
 	<div class="body">
 		<div class="bodyLeft">
 			<div class="goodsCategory">
-            	<div class="top">商品分类</div>
+            	<div class="top">${bundle("goods.picture.list.category")}</div>
             	<div class="middle">
             		<ul id="goodsCategoryMenu" class="menu">
             			<@goods_category_tree; goodsCategoryTree>
@@ -53,7 +53,7 @@
 			</div>
 			<div class="blank"></div>
 			<div class="hotGoods">
-				<div class="top">热销排行</div>
+				<div class="top">${bundle("goods.picture.list.rank")}</div>
 				<div class="middle">
 					<ul>
 						<@goods_list type="hot" count=10; goodsList>
@@ -70,7 +70,7 @@
 			</div>
 			<div class="blank"></div>
 			<div id="goodsHistory" class="goodsHistory">
-				<div class="top">浏览记录</div>
+				<div class="top">${bundle("goods.picture.list.history")}</div>
 				<div class="middle">
 					<ul id="goodsHistoryListDetail"></ul>
 				</div>
@@ -86,9 +86,9 @@
 					<div class="left"></div>
 					<div class="middle">
 						<div class="path">
-							<a href="${base}/" class="shop"><span class="icon">&nbsp;</span>首页</a> &gt; 搜索 "${pager.keyword}" 结果列表
+							<a href="${base}/" class="shop"><span class="icon">&nbsp;</span>${bundle("goods.common.main")}</a> &gt; ${bundle("goods.common.search")} "${pager.keyword}" ${bundle("goods.picture.list.result")}
 						</div>
-						<div class="total">共计: ${pager.totalCount} 款商品</div>
+						<div class="total">${bundle("goods.picture.list.calculate")}: ${pager.totalCount} ${bundle("goods.picture.list.calculate.object")}</div>
 					</div>
 					<div class="right"></div>
 				</div>
@@ -96,18 +96,18 @@
 				<div class="operateBar">
 					<div class="left"></div>
 					<div class="middle">
-						<span class="tableIcon">&nbsp;</span><a id="tableType" class="tableType" href="#">列表</a>
-						<span class="pictureDisabledIcon">&nbsp;</span>图片
+						<span class="tableIcon">&nbsp;</span><a id="tableType" class="tableType" href="#">${bundle("goods.picture.list")}</a>
+						<span class="pictureDisabledIcon">&nbsp;</span>${bundle("goods.picture.list.picture")}
 						<span class="separator">&nbsp;</span>
 						<select id="orderType" name="orderType">
-							<option value="default"<#if orderType == "default"> selected="selected"</#if>>默认排序</option>
-							<option value="priceAsc"<#if orderType == "priceAsc"> selected="selected"</#if>>价格从低到高</option>
-							<option value="priceDesc"<#if orderType == "priceDesc"> selected="selected"</#if>>价格从高到低</option>
-							<option value="dateDesc"<#if orderType == "dateDesc"> selected="selected"</#if>>按上架时间排序</option>
-							<option value="salesDesc"<#if orderType == "salesDesc"> selected="selected"</#if>>按热销度排序</option>
-							<option value="discountAsc"<#if orderType == "discountAsc"> selected="selected"</#if>>按折扣排序</option>
+							<option value="default"<#if orderType == "default"> selected="selected"</#if>>${bundle("goods.picture.list.sort.default")}</option>
+							<option value="priceAsc"<#if orderType == "priceAsc"> selected="selected"</#if>>${bundle("goods.picture.list.sort.priceASC")}</option>
+							<option value="priceDesc"<#if orderType == "priceDesc"> selected="selected"</#if>>${bundle("goods.picture.list.sort.priceDESC")}</option>
+							<option value="dateDesc"<#if orderType == "dateDesc"> selected="selected"</#if>>${bundle("goods.picture.list.sort.time")}</option>
+							<option value="salesDesc"<#if orderType == "salesDesc"> selected="selected"</#if>>${bundle("goods.picture.list.sort.hot")}</option>
+							<option value="discountAsc"<#if orderType == "discountAsc"> selected="selected"</#if>>${bundle("goods.picture.list.sort.discount")}</option>
 	                    </select>
-	                    <span class="separator">&nbsp;</span> 显示数量: 
+	                    <span class="separator">&nbsp;</span> ${bundle("goods.picture.list.sort.numberShow")}: 
 						<select name="pager.pageSize" id="pageSize">
 							<option value="12" <#if pager.pageSize == 12>selected="selected" </#if>>
 								12
@@ -146,14 +146,14 @@
 										</#if>
 									</div>
 									<div class="buttonArea">
-										<a href="${base}${goods.htmlPath}" class="addCartItemButton">购买</a>
-										<input type="button" class="addFavoriteButton addFavorite" value="收藏" goodsId="${goods.id}" hidefocus />
+										<a href="${base}${goods.htmlPath}" class="addCartItemButton">${bundle("goods.picture.list.goods.buy")}</a>
+										<input type="button" class="addFavoriteButton addFavorite" value="${bundle("goods.picture.list.goods.store")}" goodsId="${goods.id}" hidefocus />
 									</div>
 								</div>
 							</li>
 						</#list>
 						<#if (pager.result?size == 0)!>
-                			<li class="noRecord">非常抱歉,没有找到相关商品!</li>
+                			<li class="noRecord">${bundle("goods.picture.list.goods.sorry")}!</li>
                 		</#if>
 					</ul>
 					<div class="blank"></div>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>密码找回<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("goods.notify.memberCenter.profile.password.find")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -35,19 +35,19 @@
 	
 		$passwordRecoverForm.submit( function() {
 			if ($.trim($memberUsername.val()) == "") {
-				$.dialog({type: "warn", content: "请输入用户名!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "${bundle("goods.notify.javascript.username.input")}!", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if ($.trim($memberEmail.val()) == "") {
-				$.dialog({type: "warn", content: "请输入E-mail!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "${bundle("goods.notify.javascript.email.input")}E-mail!", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if (!/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/.test($memberEmail.val())) {
-				$.dialog({type: "warn", content: "E-mail格式错误!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "E-mail${bundle("goods.notify.javascript.email.error")}!", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if ($memberSafeAnswer.attr("disabled") == false && $.trim($memberSafeAnswer.val()) == "") {
-				$.dialog({type: "warn", content: "请输入密码保护答案!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "${bundle("goods.notify.javascript.safeAnswer.input")}!", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			
@@ -58,7 +58,7 @@
 				dataType: "json",
 				cache: false,
 				beforeSend: function(data) {
-					$status.html('<span class="loadingIcon">&nbsp;</span>正在检测密码保护状态,请稍后...');
+					$status.html('<span class="loadingIcon">&nbsp;</span>${bundle("goods.notify.javascript.safeAnswer.check")}...');
 					$submitButton.attr("disabled", true);
 				},
 				success: function(data) {
@@ -104,7 +104,7 @@
 		<div class="titleBar">
 			<div class="left"></div>
 			<div class="middle">
-				<span class="icon">&nbsp;</span>找回密码
+				<span class="icon">&nbsp;</span>${bundle("goods.notify.memberCenter.profile.password.findpwd")}
 			</div>
 			<div class="right"></div>
 		</div>
@@ -113,7 +113,7 @@
 			<form id="passwordRecoverForm">
 				<table class="inputTable">
 					<tr>
-						<th>用户名: </th>
+						<th>${bundle("goods.notify.memberCenter.profile.username")}: </th>
 						<td>
 							<input type="text" id="memberUsername" name="member.username" class="formText" />
 						</td>
@@ -125,13 +125,13 @@
 						</td>
 					</tr>
 					<tr id="memberSafeQuestionTr" class="hidden">
-						<th>密码保护问题: </th>
+						<th>${bundle("goods.notify.memberCenter.profile.safequestion")}: </th>
 						<td>
 							<span id="memberSafeQuestion"></span>
 						</td>
 					</tr>
 					<tr id="memberSafeAnswerTr" class="hidden">
-						<th>密码保护答案: </th>
+						<th>${bundle("goods.notify.memberCenter.profile.safeanswer")}: </th>
 						<td>
 							<input type="text" id="memberSafeAnswer" name="member.safeAnswer" class="formText" disabled />
 						</td>
@@ -139,7 +139,7 @@
 					<tr>
 						<th>&nbsp;</th>
 						<td>
-							<input type="submit" id="submitButton" class="formButton" value="确  定" hidefocus />
+							<input type="submit" id="submitButton" class="formButton" value="${bundle("goods.common.ok")}" hidefocus />
 						</td>
 					</tr>
 					<tr>
@@ -151,7 +151,7 @@
 					<tr>
 						<th>&nbsp;</th>
 						<td>
-							<span class="warnIcon">&nbsp;</span>如果忘记密码,请填写您的用户名和注册邮箱重新获取密码!
+							<span class="warnIcon">&nbsp;</span>${bundle("goods.notify.memberCenter.profile.password.forget")}!
 						</td>
 					</tr>
 				</table>

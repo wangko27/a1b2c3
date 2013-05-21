@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>密码修改<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("goods.notify.memberCenter.profile.passwordmodify")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -23,17 +23,17 @@ $().ready( function() {
 	$passwordModifyForm.submit( function() {
 		if ($.trim($memberPassword.val()) == "") {
 			$memberPassword.focus();
-			$.dialog({type: "warn", content: "请输入新密码!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "${bundle("goods.notify.memberCenter.profile.password.inputnew")}!", modal: true, autoCloseTime: 3000});
 			return false;
 		}
 		if ($.trim($reMemberPassword.val()) == "") {
 			$reMemberPassword.focus();
-			$.dialog({type: "warn", content: "请输入确认新密码!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "${bundle("goods.notify.memberCenter.profile.password.reinputnew")}!", modal: true, autoCloseTime: 3000});
 			return false;
 		}
 		if ($.trim($memberPassword.val()) != $.trim($reMemberPassword.val())) {
 			$reMemberPassword.focus();
-			$.dialog({type: "warn", content: "两次密码输入不相同!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "${bundle("goods.notify.memberCenter.profile.password.notsame")}!", modal: true, autoCloseTime: 3000});
 			return false;
 		}
 		$submitButton.attr("disabled", true);
@@ -55,7 +55,7 @@ $().ready( function() {
 		<div class="titleBar">
 			<div class="left"></div>
 			<div class="middle">
-				<span class="icon">&nbsp;</span>密码修改
+				<span class="icon">&nbsp;</span>${bundle("goods.notify.memberCenter.profile.passwordmodify")}
 			</div>
 			<div class="right"></div>
 		</div>
@@ -66,13 +66,13 @@ $().ready( function() {
 				<input type="hidden" name="passwordRecoverKey" value="${passwordRecoverKey}" />
 				<table class="inputTable">
 					<tr>
-						<th>新密码: </th>
+						<th>${bundle("goods.notify.memberCenter.profile.password.new")}: </th>
 						<td>
 							<input type="password" id="memberPassword" name="member.password" class="formText" />
 						</td>
 					</tr>
 					<tr>
-						<th>确认新密码: </th>
+						<th>${bundle("goods.notify.memberCenter.profile.password.renew")}: </th>
 						<td>
 							<input type="password" id="reMemberPassword" name="rePassword" class="formText" />
 						</td>
@@ -80,7 +80,7 @@ $().ready( function() {
 					<tr>
 						<th>&nbsp;</th>
 						<td>
-							<input type="submit" id="submitButton" class="formButton" value="确  定" hidefocus />
+							<input type="submit" id="submitButton" class="formButton" value="${bundle("goods.common.ok")}" hidefocus />
 						</td>
 					</tr>
 				</table>

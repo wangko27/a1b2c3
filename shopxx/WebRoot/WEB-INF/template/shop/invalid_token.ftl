@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>提示信息<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("goods.content.javascript.message")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link href="${base}/template/shop/css/base.css" rel="stylesheet" type="text/css" />
@@ -12,10 +12,10 @@
 	<div class="body">
 		<div class="errorBox">
 			<div class="errorMessage">
-				请勿重复提交请求!
+				${bundle("goods.content.javascript.message.duplicate")}!
 			</div>
 			<div class="errorUrl">
-				点击此处<a href="javascript: void(0);" onclick="window.history.back(); return false;">返回</a>.或回到<a href="${base}/">首页</a>
+				${bundle("goods.common.clickhere")}<a href="javascript: void(0);" onclick="window.history.back(); return false;">${bundle("goods.common.return")}</a>.${bundle("goods.invalid.token.msg.or")}<a href="${base}/">${bundle("goods.common.main")}</a>
 			</div>
 		</div>
 	</div>

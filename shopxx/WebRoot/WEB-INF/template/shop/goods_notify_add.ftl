@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>缺货登记<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("goods.notify.memberCenter.notify")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -29,11 +29,11 @@
 		// 表单验证
 		$goodsNotifyForm.submit( function() {
 			if ($.trim($goodsNotifyEmail.val()) == "") {
-				$.dialog({type: "warn", content: "请输入您的邮箱!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "${bundle("goods.notify.javascript.email")}!", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if (!/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/.test($goodsNotifyEmail.val())) {
-				$.dialog({type: "warn", content: "E-mail格式错误!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "E-mail${bundle("goods.notify.javascript.email.error")}!", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			$submitButton.attr("disabled", true);
@@ -48,7 +48,7 @@
 		<div class="titleBar">
 			<div class="left"></div>
 			<div class="middle">
-				<span class="icon">&nbsp;</span>缺货登记
+				<span class="icon">&nbsp;</span>${bundle("goods.notify.memberCenter.notify")}
 			</div>
 			<div class="right"></div>
 		</div>
@@ -58,19 +58,19 @@
 				<input type="hidden" name="product.id" value="${product.id}" />
 				<table class="inputTable">
 					<tr>
-						<th>商品名称: </th>
+						<th>${bundle("goods.notify.memberCenter.goods.name")}: </th>
 						<td>
 							${product.name}
 						</td>
 					</tr>
 					<tr>
-						<th>货品编号: </th>
+						<th>${bundle("goods.notify.product.sn")}: </th>
 						<td>
 							${product.productSn}
 						</td>
 					</tr>
 					<tr>
-						<th>您的邮箱: </th>
+						<th>${bundle("goods.notify.memberCenter.email")}: </th>
 						<td>
 							<input type="text" id="goodsNotifyEmail" name="goodsNotify.email" class="formText" value="${(loginMember.email)!}" />
 						</td>
@@ -78,13 +78,13 @@
 					<tr>
 						<th>&nbsp;</th>
 						<td>
-							<input type="submit" id="submitButton" class="formButton" value="确  定" hidefocus />
+							<input type="submit" id="submitButton" class="formButton" value="${bundle("goods.common.ok")}" hidefocus />
 						</td>
 					</tr>
 					<tr>
 						<th>&nbsp;</th>
 						<td>
-							<span class="warnIcon">&nbsp;</span>该货品暂时缺货,请输入您的E-mail,当我们有现货供应时我们会及时发送邮件通知您!
+							<span class="warnIcon">&nbsp;</span>${bundle("goods.picture.list.goods.unfind")}!
 						</td>
 					</tr>
 				</table>

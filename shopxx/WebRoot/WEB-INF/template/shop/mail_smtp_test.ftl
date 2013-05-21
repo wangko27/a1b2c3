@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>SMTP邮箱配置测试邮件 - Powered By SHOP++</title>
+<title>SMTP${bundle("goods.notify.javascript.email.config")} - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 </head>
 <body>
-<strong>SMTP邮箱配置测试邮件</strong>
-<p>您的[${setting.shopName}]邮箱配置正常</p>
+<strong>SMTP${bundle("goods.notify.javascript.email.config")}</strong>
+<p>您的[${setting.shopName}]${bundle("goods.notify.javascript.email.config.OK")}</p>
 </body>
 </html>
