@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>发货单列表 - Powered By SHOP++</title>
+<title><@s.text name="shipping.list.pagetitle"/>- Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,30 +15,30 @@
 </head>
 <body class="list">
 	<div class="bar">
-		发货单列表&nbsp;总记录数: ${pager.totalCount} (共${pager.pageCount}页)
+		<@s.text name="shipping.list.pagetitle"/>&nbsp;<@s.text name="shipping.list.pager.title1"/>: ${pager.totalCount} (<@s.text name="shipping.list.pager.title2"/>${pager.pageCount}<@s.text name="shipping.list.pager.title3"/>)
 	</div>
 	<div class="body">
 		<form id="listForm" action="shipping!list.action" method="post">
 			<div class="listBar">
-				<label>查找: </label>
+				<label><@s.text name="goods.specification.list.search.label"/>: </label>
 				<select name="pager.searchBy">
 					<option value="shippingSn"<#if pager.searchBy == "shippingSn"> selected</#if>>
-						发货编号
+						<@s.text name="shipping.shippingSn"/>
 					</option>
 					<option value="deliverySn"<#if pager.searchBy == "deliverySn"> selected</#if>>
-						物流单号
+						<@s.text name="shipping.deliverySn"/>
 					</option>
 					<option value="shipName"<#if pager.searchBy == "shipName"> selected</#if>>
-						收货人姓名
+						<@s.text name="shipping.shipName"/>
 					</option>
 					<option value="shipAreaStore"<#if pager.searchBy == "shipAreaStore"> selected</#if>>
-						收货地区
+						<@s.text name="shipping.shipArea.displayName"/>
 					</option>
 				</select>
 				<input type="text" name="pager.keyword" value="${pager.keyword!}" />
-				<input type="button" id="searchButton" class="formButton" value="搜 索" hidefocus />
+				<input type="button" id="searchButton" class="formButton" value="<@s.text name="goods.specification.list.search.button"/>" hidefocus />
 				&nbsp;&nbsp;
-				<label>每页显示: </label>
+				<label><@s.text name="goods.specification.list.search.result"/>: </label>
 				<select name="pager.pageSize" id="pageSize">
 					<option value="10"<#if pager.pageSize == 10> selected</#if>>
 						10
@@ -60,31 +60,31 @@
 						<input type="checkbox" class="allCheck" />
 					</th>
 					<th>
-						<a href="#" class="sort" name="shippingSn" hidefocus>发货编号</a>
+						<a href="#" class="sort" name="shippingSn" hidefocus><@s.text name="shipping.shippingSn"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="deliveryTypeName" hidefocus>配送方式名称</a>
+						<a href="#" class="sort" name="deliveryTypeName" hidefocus><@s.text name="shipping.deliveryTypeName"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="deliveryCorpName" hidefocus>物流公司名称</a>
+						<a href="#" class="sort" name="deliveryCorpName" hidefocus><@s.text name="shipping.deliveryCorpName"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="deliverySn" hidefocus>物流单号</a>
+						<a href="#" class="sort" name="deliverySn" hidefocus><@s.text name="shipping.deliverySn"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="deliveryFee" hidefocus>物流费用</a>
+						<a href="#" class="sort" name="deliveryFee" hidefocus><@s.text name="shipping.deliveryFee"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="shipName" hidefocus>收货人姓名</a>
+						<a href="#" class="sort" name="shipName" hidefocus><@s.text name="shipping.shipName"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="shipAreaStore" hidefocus>收货地区</a>
+						<a href="#" class="sort" name="shipAreaStore" hidefocus><@s.text name="shipping.shipArea.displayName"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="createDate" hidefocus>发货时间</a>
+						<a href="#" class="sort" name="createDate" hidefocus><@s.text name="shipping.createDate"/></a>
 					</th>
 					<th>
-						<span>操作</span>
+						<span><@s.text name="goods.specification.list.search.result.header.operation"/></span>
 					</th>
 				</tr>
 				<#list pager.result as shipping>
@@ -117,7 +117,7 @@
 							<span title="${shipping.createDate?string("yyyy-MM-dd HH:mm:ss")}">${shipping.createDate}</span>
 						</td>
 						<td>
-							<a href="shipping!view.action?id=${shipping.id}" title="查看">[查看]</a>
+							<a href="shipping!view.action?id=${shipping.id}" title="<@s.text name="shipping.list.single.view"/>">[<@s.text name="shipping.list.single.view"/>]</a>
 						</td>
 					</tr>
 				</#list>
@@ -125,14 +125,14 @@
 			<#if (pager.result?size > 0)>
 				<div class="pagerBar">
 					<div class="delete">
-						<input type="button" id="deleteButton" class="formButton" url="shipping!delete.action" value="删 除" disabled hidefocus />
+						<input type="button" id="deleteButton" class="formButton" url="shipping!delete.action" value="<@s.text name="goods.specification.list.search.result.header.delete"/>" disabled hidefocus />
 					</div>
 					<div class="pager">
 						<#include "/WEB-INF/template/admin/pager.ftl" />
 					</div>
 				<div>
 			<#else>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="goods.specification.list.search.result.empty"/></div>
 			</#if>
 		</form>
 	</div>

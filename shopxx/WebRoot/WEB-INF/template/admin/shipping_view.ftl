@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>查看发货单 - Powered By SHOP++</title>
+<title><@s.text name="shipping.view.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -14,19 +14,19 @@
 </head>
 <body class="input">
 	<div class="bar">
-		查看发货单
+		<@s.text name="ship.view.pagetitle"/>
 	</div>
 	<div class="body">
 		<table class="inputTable">
 			<tr>
 				<th>
-					发货编号: 
+					<@s.text name="shipping.shippingSn"/>: 
 				</th>
 				<td>
 					${shipping.shippingSn}
 				</td>
 				<th>
-					订单编号: 
+					<@s.text name="shipping.order.orderSn"/>: 
 				</th>
 				<td>
 					${(shipping.order.orderSn)!}
@@ -34,13 +34,13 @@
 			</tr>
 			<tr>
 				<th>
-					发货日期: 
+					<@s.text name="shipping.createDate"/>: 
 				</th>
 				<td>
 					${shipping.createDate?string("yyyy-MM-dd HH:mm:ss")}
 				</td>
 				<th>
-					配送方式名称: 
+					<@s.text name="shipping.deliveryTypeName"/>: 
 				</th>
 				<td>
 					${shipping.deliveryTypeName}
@@ -48,13 +48,13 @@
 			</tr>
 			<tr>
 				<th>
-					物流公司名称: 
+					<@s.text name="shipping.deliveryCorpName"/>: 
 				</th>
 				<td>
 					${shipping.deliveryCorpName}
 				</td>
 				<th>
-					物流单号: 
+					<@s.text name="shipping.deliveryCorpName"/>: 
 				</th>
 				<td>
 					${shipping.deliverySn}
@@ -62,13 +62,13 @@
 			</tr>
 			<tr>
 				<th>
-					物流费用: 
+					<@s.text name="shipping.deliveryCorpName"/>: 
 				</th>
 				<td>
 					${shipping.deliveryFee?string(currencyFormat)}
 				</td>
 				<th>
-					收货人姓名: 
+					<@s.text name="shipping.shipName"/>: 
 				</th>
 				<td>
 					${shipping.shipName}
@@ -76,13 +76,13 @@
 			</tr>
 			<tr>
 				<th>
-					收货地区: 
+					<@s.text name="shipping.shipArea.displayName"/>: 
 				</th>
 				<td>
 					${shipping.shipArea.displayName}
 				</td>
 				<th>
-					收货地址: 
+					<@s.text name="shipping.shipAddress"/>: 
 				</th>
 				<td>
 					${shipping.shipAddress}
@@ -90,13 +90,13 @@
 			</tr>
 			<tr>
 				<th>
-					邮编: 
+					<@s.text name="shipping.shipZipCode"/>: 
 				</th>
 				<td>
 					${shipping.shipZipCode}
 				</td>
 				<th>
-					电话: 
+					<@s.text name="shipping.shipPhone"/>: 
 				</th>
 				<td>
 					${shipping.shipPhone}
@@ -104,13 +104,13 @@
 			</tr>
 			<tr>
 				<th>
-					手机: 
+					<@s.text name="shipping.shipMobile"/>: 
 				</th>
 				<td>
 					${shipping.shipMobile}
 				</td>
 				<th>
-					备注: 
+					<@s.text name="shipping.memo"/>: 
 				</th>
 				<td>
 					${shipping.memo}
@@ -124,9 +124,9 @@
 		</table>
 		<table class="inputTable">
 			<tr class="title">
-				<th>货号</th>
-				<th>商品名称</th>
-				<th>发货数</th>
+				<th><@s.text name="deliveryItem.productSn"/></th>
+				<th><@s.text name="deliveryItem.productName"/></th>
+				<th><@s.text name="deliveryItem.deliveryQuantity"/></th>
 			</tr>
 			<#list shipping.deliveryItemSet as deliveryItem>
 				<tr>
@@ -147,7 +147,7 @@
 			</#list>
 		</table>
 		<div class="buttonArea">
-			<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+			<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 		</div>
 	</div>
 </body>
