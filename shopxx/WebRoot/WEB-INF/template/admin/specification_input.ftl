@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑商品规格 - Powered By SHOP++</title>
+<title><@s.text name="goods.specification.edit.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -55,7 +55,7 @@ $().ready(function() {
 						<input type="text" name="specificationValueList[' + specificationValueIndex + '].orderList" class="formText specificationValueListOrderList" style="width: 30px;" />
 					</td>
 					<td>
-						<span class="deleteIcon deleteSpecificationValueIcon" title="删 除">&nbsp;</span>
+						<span class="deleteIcon deleteSpecificationValueIcon" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 					</td>
 				</tr>';
 			</@compress>
@@ -76,7 +76,7 @@ $().ready(function() {
 						<input type="text" name="specificationValueList[' + specificationValueIndex + '].orderList" class="formText specificationValueListOrderList" style="width: 30px;" />
 					</td>
 					<td>
-						<span class="deleteIcon deleteSpecificationValueIcon" title="删 除">&nbsp;</span>
+						<span class="deleteIcon deleteSpecificationValueIcon" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 					</td>
 				</tr>';
 			</@compress>
@@ -90,7 +90,7 @@ $().ready(function() {
 	$("#specificationTable .deleteSpecificationValueIcon").live("click", function() {
 		var $this = $(this);
 		if ($specificationTable.find(".specificationValueTr").length <= 1) {
-			$.dialog({type: "warn", content: "必须至少保留一个商品规格值!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "<@s.text name="goods.specification.edit.deletewarn"/>", modal: true, autoCloseTime: 3000});
 		} else {
 			$this.parent().parent().remove();
 		}
@@ -108,8 +108,8 @@ $().ready(function() {
 			"specification.orderList": "digits"
 		},
 		messages: {
-			"specification.name": "请填写规格名称",
-			"specification.orderList": "排序必须为零或正整数"
+			"specification.name": "<@s.text name="goods.specification.edit.name.tips"/>",
+			"specification.orderList": "<@s.text name="goods.specification.edit.order.tips"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -117,9 +117,9 @@ $().ready(function() {
 		}
 	});
 	
-	$.validator.addMethod("specificationValueListNameRequired", $.validator.methods.required, "请填写规格值名称");
-	$.validator.addMethod("specificationValueImageListImageFile", $.validator.methods.imageFile, "规格值图片格式错误");
-	$.validator.addMethod("specificationValueListOrderListDigits", $.validator.methods.digits, "规格值排序必须为零或正整数");
+	$.validator.addMethod("specificationValueListNameRequired", $.validator.methods.required, "<@s.text name="goods.specification.edit.message.value.required"/>");
+	$.validator.addMethod("specificationValueImageListImageFile", $.validator.methods.imageFile, "<@s.text name="goods.specification.edit.message.value.imageFile"/>");
+	$.validator.addMethod("specificationValueListOrderListDigits", $.validator.methods.digits, "<@s.text name="goods.specification.edit.message.value.digits"/>");
 	
 	$.validator.addClassRules("specificationValueListName", {
 		specificationValueListNameRequired: true
@@ -136,10 +136,10 @@ $().ready(function() {
 </head>
 <body class="input specification">
 	<div class="bar">
-		<#if isAddAction>添加商品规格<#else>编辑商品规格</#if>
+		<#if isAddAction><@s.text name="goods.specification.edit.bar1"/><#else><@s.text name="goods.specification.edit.bar2"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="goods.specification.edit.errortitle"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -148,7 +148,7 @@ $().ready(function() {
 			<table id="specificationTable" class="inputTable">
 				<tr class="titleTr">
 					<th>
-						规格名称: 
+						<@s.text name="goods.specification.list.search.result.header.name"/>: 
 					</th>
 					<td colspan="4">
 						<input type="text" name="specification.name" class="formText" value="${(specification.name)!}" />
@@ -157,7 +157,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						规格类型: 
+						<@s.text name="goods.specification.list.search.result.header.type"/>: 
 					</th>
 					<td colspan="4">
 						<select id="specificationSpecificationType" name="specification.specificationType">
@@ -171,7 +171,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						备注: 
+						<@s.text name="goods.specification.header.memo"/>: 
 					</th>
 					<td colspan="4">
 						<input type="text" name="specification.memo" class="formText" value="${(specification.memo)!}" />
@@ -179,7 +179,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						排序: 
+						<@s.text name="goods.specification.list.search.result.header.order"/>: 
 					</th>
 					<td colspan="4">
 						<input type="text" name="specification.orderList" class="formText" value="${(specification.orderList)!}" />
@@ -188,13 +188,13 @@ $().ready(function() {
 				<#if (specification.goodsSet?? && specification.goodsSet?size > 0)!>
 					<th>&nbsp;</th>
 					<td colspan="4">
-						<span class="warnInfo">此商品规格被引用,不允许修改规格值名称或删除规格值</span>
+						<span class="warnInfo"><@s.text name="goods.specification.edit.warn"/></span>
 					</td>
 				</#if>
 				<tr class="noneHover">
 					<th>&nbsp;</th>
 					<td colspan="4">
-						<input type="button" id="addSpecificationValueButton" class="formButton" value="增加规格值" hidefocus />
+						<input type="button" id="addSpecificationValueButton" class="formButton" value="<@s.text name="goods.specification.edit.button"/>" hidefocus />
 					</td>
 				</tr>
 				<tr class="title">
@@ -202,16 +202,16 @@ $().ready(function() {
 						&nbsp;
 					</th>
 					<td>
-						规格值名称
+						<@s.text name="goods.specification.header.name"/>
 					</td>
 					<td>
-						规格值图片
+						<@s.text name="goods.specification.header.pic"/>
 					</td>
 					<td>
-						排序
+						<@s.text name="goods.specification.list.search.result.header.order"/>
 					</td>
 					<td>
-						删除
+						<@s.text name="goods.specification.list.search.result.header.delete"/>
 					</td>
 				</tr>
 				<#if isAddAction>
@@ -229,7 +229,7 @@ $().ready(function() {
 							<input type="text" name="specificationValueList[0].orderList" class="formText specificationValueListOrderList" style="width: 30px;" />
 						</td>
 						<td>
-							<span class="deleteIcon deleteSpecificationValueIcon" title="删 除">&nbsp;</span>
+							<span class="deleteIcon deleteSpecificationValueIcon" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 						</td>
 					</tr>
 				</#if>
@@ -242,7 +242,7 @@ $().ready(function() {
 								<input type="hidden" name="specificationValueList[${specificationValue_index}].name" value="${specificationValue.name}" />
 							</td>
 							<td>
-								<input type="text" name="specificationValueList.name" class="formText" value="${specificationValue.name}" title="不允许修改" disabled />
+								<input type="text" name="specificationValueList.name" class="formText" value="${specificationValue.name}" title="<@s.text name="goods.specification.other.title"/>" disabled />
 							</td>
 							<td>
 								<#if (specification.specificationType == "text")!>
@@ -260,7 +260,7 @@ $().ready(function() {
 								<input type="text" name="specificationValueList[${specificationValue_index}].orderList" class="formText specificationValueListOrderList" value="${specificationValue.orderList}" style="width: 30px;" />
 							</td>
 							<td>
-								<span class="deleteIcon" title="不允许删除">&nbsp;</span>
+								<span class="deleteIcon" title="<@s.text name="goods.specification.other.title"/>">&nbsp;</span>
 							</td>
 						</tr>
 					</#list>
@@ -283,22 +283,22 @@ $().ready(function() {
 								<#if specificationValue.imagePath??>
 									&nbsp;&nbsp;<img src="${base}${specificationValue.imagePath}" style="width: 20px; height: 20px; padding: 1px; vertical-align: middle; border: 1px solid #b2d3f4;" />
 								<#else>
-									&nbsp;&nbsp;<img src="${base}/template/shop/images/default_specification.gif" style="width: 20px; height: 20px; padding: 1px; vertical-align: middle; border: 1px solid #b2d3f4;" title="无规格图片" />
+									&nbsp;&nbsp;<img src="${base}/template/shop/images/default_specification.gif" style="width: 20px; height: 20px; padding: 1px; vertical-align: middle; border: 1px solid #b2d3f4;" title="<@s.text name="goods.specification.other.title2"/>" />
 								</#if>
 							</td>
 							<td>
 								<input type="text" name="specificationValueList[${specificationValue_index}].orderList" class="formText specificationValueListOrderList" value="${specificationValue.orderList}" style="width: 30px;" />
 							</td>
 							<td>
-								<span class="deleteIcon deleteSpecificationValueIcon" title="删 除">&nbsp;</span>
+								<span class="deleteIcon deleteSpecificationValueIcon" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 							</td>
 						</tr>
 					</#list>
 				</#if>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>
