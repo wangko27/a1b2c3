@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>查看订单 - Powered By SHOP++</title>
+<title><@s.text name="order.view.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -27,36 +27,36 @@ $().ready( function() {
 </head>
 <body class="input">
 	<div class="bar">
-		查看订单
+		<@s.text name="order.view.pagetitle"/>
 	</div>
 	<div class="body">
 		<ul id="tab" class="tab" style="padding-left: 80px;">
 			<li>
-				<input type="button" value="订单信息" hidefocus />
+				<input type="button" value="<@s.text name="order.view.tab.orderinfo"/>" hidefocus />
 			</li>
 			<li>
-				<input type="button" value="商品信息" hidefocus />
+				<input type="button" value="<@s.text name="order.view.tab.goodsinfo"/>" hidefocus />
 			</li>
 			<li>
-				<input type="button" value="收款记录" hidefocus />
+				<input type="button" value="<@s.text name="order.view.tab.receivemoney"/>" hidefocus />
 			</li>
 			<li>
-				<input type="button" value="退款记录" hidefocus />
+				<input type="button" value="<@s.text name="order.view.tab.refund"/>" hidefocus />
 			</li>
 			<li>
-				<input type="button" value="收货记录" hidefocus />
+				<input type="button" value="<@s.text name="order.view.tab.receivegoods"/>" hidefocus />
 			</li>
 			<li>
-				<input type="button" value="退货记录" hidefocus />
+				<input type="button" value="<@s.text name="order.view.tab.returngoods"/>" hidefocus />
 			</li>
 			<li>
-				<input type="button" value="订单日志" hidefocus />
+				<input type="button" value="<@s.text name="order.view.tab.orderlog"/>" hidefocus />
 			</li>
 		</ul>
 		<table class="inputTable tabContent">
 			<tr>
 				<th>
-					订单状态: 
+					<@s.text name="order.orderStatus"/>: 
 				</th>
 				<td colspan="3">
 					<span class="red">
@@ -73,13 +73,13 @@ $().ready( function() {
 			</tr>
 			<tr>
 				<th>
-					订单编号: 
+					<@s.text name="order.orderSn"/>: 
 				</th>
 				<td>
 					${order.orderSn}
 				</td>
 				<th>
-					下单时间: 
+					<@s.text name="order.createDate"/>: 
 				</th>
 				<td>
 					${order.createDate?string("yyyy-MM-dd HH:mm:ss")}
@@ -87,28 +87,28 @@ $().ready( function() {
 			</tr>
 			<tr>
 				<th>
-					商品总金额: 
+					<@s.text name="order.totalProductPrice"/>: 
 				</th>
 				<td>
 					<span class="red">${order.totalProductPrice?string(currencyFormat)}</span>
 				</td>
 				<th>
-					订单总金额: 
+					<@s.text name="order.totalAmount"/>: 
 				</th>
 				<td>
 					<span class="red">${order.totalAmount?string(currencyFormat)}</span>&nbsp;&nbsp;
-					<strong class="red">[已付金额: ${order.paidAmount?string(currencyFormat)}]</strong>
+					<strong class="red">[<@s.text name="order.paidAmount"/>: ${order.paidAmount?string(currencyFormat)}]</strong>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					配送方式: 
+					<@s.text name="order.deliveryTypeName"/>: 
 				</th>
 				<td>
 					${order.deliveryTypeName}
 				</td>
 				<th>
-					支付方式: 
+					<@s.text name="order.deliveryTypeName"/>: 
 				</th>
 				<td>
 					${order.paymentConfigName}
@@ -116,13 +116,13 @@ $().ready( function() {
 			</tr>
 			<tr>
 				<th>
-					配送费用: 
+					<@s.text name="order.deliveryFee"/>: 
 				</th>
 				<td>
 					${order.deliveryFee?string(currencyFormat)}
 				</td>
 				<th>
-					支付手续费: 
+					<@s.text name="order.paymentFee"/>: 
 				</th>
 				<td>
 					${order.paymentFee?string(currencyFormat)}
@@ -130,13 +130,13 @@ $().ready( function() {
 			</tr>
 			<tr>
 				<th>
-					商品总重量: 
+					<@s.text name="order.totalProductWeight"/>: 
 				</th>
 				<td>
-					${order.totalProductWeight} 克
+					${order.totalProductWeight} <@s.text name="order.totalProductWeightunit"/>
 				</td>
 				<th>
-					附言: 
+					<@s.text name="order.memo"/>: 
 				</th>
 				<td>
 					${(order.memo)!}
@@ -149,13 +149,13 @@ $().ready( function() {
 			</tr>
 			<tr>
 				<th>
-					收货人姓名: 
+					<@s.text name="order.shipName"/>: 
 				</th>
 				<td>
 					${order.shipName}
 				</td>
 				<th>
-					收货地区: 
+					<@s.text name="order.shipArea.displayName"/>: 
 				</th>
 				<td>
 					${order.shipArea.displayName}
@@ -163,13 +163,13 @@ $().ready( function() {
 			</tr>
 			<tr>
 				<th>
-					收货地址: 
+					<@s.text name="order.shipAddress"/>: 
 				</th>
 				<td>
 					${order.shipAddress}
 				</td>
 				<th>
-					邮编: 
+					<@s.text name="order.shipZipCode"/>: 
 				</th>
 				<td>
 					${order.shipZipCode}
@@ -177,13 +177,13 @@ $().ready( function() {
 			</tr>
 			<tr>
 				<th>
-					电话: 
+					<@s.text name="order.shipPhone"/>: 
 				</th>
 				<td>
 					${order.shipPhone}
 				</td>
 				<th>
-					手机: 
+					<@s.text name="order.shipMobile"/>: 
 				</th>
 				<td>
 					${order.shipMobile}
@@ -198,18 +198,18 @@ $().ready( function() {
 				<#assign member = order.member />
 				<tr>
 					<th>
-						用户名: 
+						<@s.text name="member.username"/>: 
 					</th>
 					<td>
 						${member.username}
 					</td>
 					<th>
-						会员等级: 
+						<@s.text name="member.memberRank"/>: 
 					</th>
 					<td>
 						${member.memberRank.name}
 						<#if member.memberRank.preferentialScale != 100>
-							<span class="red">[优惠百分比: ${member.memberRank.preferentialScale}%]</span>
+							<span class="red">[<@s.text name="member.memberRank.preferentialScale"/>: ${member.memberRank.preferentialScale}%]</span>
 						</#if>
 					</td>
 				</tr>
@@ -221,7 +221,7 @@ $().ready( function() {
 						${member.email}
 					</td>
 					<th>
-						最后登录IP: 
+						<@s.text name="member.loginIp"/>: 
 					</th>
 					<td>
 						${member.loginIp}
@@ -229,13 +229,13 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						预存款余额: 
+						<@s.text name="member.deposit"/>: 
 					</th>
 					<td>
 						${member.deposit?string(currencyFormat)}
 					</td>
 					<th>
-						积分: 
+						<@s.text name="member.score"/>: 
 					</th>
 					<td>
 						${member.score}
@@ -244,20 +244,20 @@ $().ready( function() {
 			<#else>
 				<tr>
 					<th>
-						会员状态: 
+						<@s.text name="member.status"/>: 
 					</th>
 					<td colspan="3">
-						<span class="red">会员不存在</span>
+						<span class="red"><@s.text name="member.status.none"/></span>
 					</td>
 				</tr>
 			</#if>
 		</table>
 		<table class="inputTable tabContent">
 			<tr class="title">
-				<th>货号</th>
-				<th>商品名称</th>
-				<th>价格</th>
-				<th>购买数量</th>
+				<th><@s.text name="order.orderItem.productSn"/></th>
+				<th><@s.text name="order.orderItem.productName"/></th>
+				<th><@s.text name="order.orderItem.productPrice"/></th>
+				<th><@s.text name="order.orderItem.productQuantity"/></th>
 			</tr>
 			<#list order.orderItemSet as orderItem>
 				<tr>
@@ -282,15 +282,15 @@ $().ready( function() {
 		</table>
 		<table class="inputTable tabContent">
 			<tr class="title">
-				<th>序号</th>
-				<th>支付编号</th>
-				<th>支付类型</th>
-				<th>支付方式</th>
-				<th>支付金额</th>
-				<th>支付手续费</th>
-				<th>付款人</th>
-				<th>支付状态</th>
-				<th>支付时间</th>
+				<th><@s.text name="payment.index"/></th>
+				<th><@s.text name="payment.paymentSn"/></th>
+				<th><@s.text name="payment.paymentType"/></th>
+				<th><@s.text name="payment.paymentConfigName"/></th>
+				<th><@s.text name="payment.totalAmount"/></th>
+				<th><@s.text name="payment.paymentFee"/></th>
+				<th><@s.text name="payment.payer"/></th>
+				<th><@s.text name="payment.paymentStatus"/></th>
+				<th><@s.text name="payment.createDate"/></th>
 			</tr>
 			<#list order.paymentSet as payment>
 				<tr>
@@ -326,13 +326,13 @@ $().ready( function() {
 		</table>
 		<table class="inputTable tabContent">
 			<tr class="title">
-				<th>序号</th>
-				<th>退款编号</th>
-				<th>退款类型</th>
-				<th>支付方式</th>
-				<th>退款金额</th>
-				<th>收款人</th>
-				<th>退款时间</th>
+				<th><@s.text name="refund.index"/></th>
+				<th><@s.text name="refund.refundSn"/></th>
+				<th><@s.text name="refund.refundType"/></th>
+				<th><@s.text name="refund.paymentConfigName"/></th>
+				<th><@s.text name="refund.totalAmount"/></th>
+				<th><@s.text name="refund.payee"/></th>
+				<th><@s.text name="refund.createDate"/></th>
 			</tr>
 			<#list order.refundSet as refund>
 				<tr>
@@ -362,15 +362,15 @@ $().ready( function() {
 		</table>
 		<table class="inputTable tabContent">
 			<tr class="title">
-				<th>序号</th>
-				<th>发货编号</th>
-				<th>配送方式名称</th>
-				<th>物流公司名称</th>
-				<th>物流单号</th>
-				<th>物流费用</th>
-				<th>收货人姓名</th>
-				<th>收货地区</th>
-				<th>发货时间</th>
+				<th><@s.text name="shipping.index"/></th>
+				<th><@s.text name="shipping.shippingSn"/></th>
+				<th><@s.text name="shipping.deliveryTypeName"/></th>
+				<th><@s.text name="shipping.deliveryCorpName"/></th>
+				<th><@s.text name="shipping.deliverySn"/></th>
+				<th><@s.text name="shipping.deliveryFee"/></th>
+				<th><@s.text name="shipping.shipName"/></th>
+				<th><@s.text name="shipping.shipArea.displayName"/></th>
+				<th><@s.text name="shipping.createDate"/></th>
 			</tr>
 			<#list order.shippingSet as shipping>
 				<tr>
@@ -406,15 +406,15 @@ $().ready( function() {
 		</table>
 		<table class="inputTable tabContent">
 			<tr class="title">
-				<th>序号</th>
-				<th>退货编号</th>
-				<th>配送方式名称</th>
-				<th>物流公司名称</th>
-				<th>物流单号</th>
-				<th>物流费用</th>
-				<th>退货人姓名</th>
-				<th>退货地区</th>
-				<th>退货时间</th>
+				<th><@s.text name="reship.index"/></th>
+				<th><@s.text name="reship.reshipSn"/></th>
+				<th><@s.text name="reship.deliveryTypeName"/></th>
+				<th><@s.text name="reship.deliveryCorpName"/></th>
+				<th><@s.text name="reship.deliverySn"/></th>
+				<th><@s.text name="reship.deliveryFee"/></th>
+				<th><@s.text name="reship.reshipName"/></th>
+				<th><@s.text name="reship.reshipArea.displayName"/></th>
+				<th><@s.text name="reship.createDate"/></th>
 			</tr>
 			<#list order.reshipSet as reship>
 				<tr>
@@ -450,11 +450,11 @@ $().ready( function() {
 		</table>
 		<table class="inputTable tabContent">
 			<tr class="title">
-				<th>序号</th>
-				<th>日志类型</th>
-				<th>操作员</th>
-				<th>日志信息</th>
-				<th>操作日间</th>
+				<th><@s.text name="orderLog.index"/></th>
+				<th><@s.text name="orderLog.orderLogType"/></th>
+				<th><@s.text name="orderLog.operator"/></th>
+				<th><@s.text name="orderLog.info"/></th>
+				<th><@s.text name="orderLog.createDate"/></th>
 			</tr>
 			<#list order.orderLogSet as orderLog>
 				<tr>
@@ -463,7 +463,7 @@ $().ready( function() {
 						${action.getText("OrderLogType." + orderLog.orderLogType)}
 					</td>
 					<td>
-						${orderLog.operator!"[用户]"}
+						${orderLog.operator!"[<@s.text name="orderLog.operator.user"/>]"}
 					</td>
 					<td>
 						${orderLog.info!"-"}
@@ -475,7 +475,7 @@ $().ready( function() {
 			</#list>
 		</table>
 		<div class="buttonArea">
-			<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+			<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 		</div>
 	</div>
 </body>

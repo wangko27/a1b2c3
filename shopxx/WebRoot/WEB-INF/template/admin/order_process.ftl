@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>处理订单 - Powered By SHOP++</title>
+<title><@s.text name="order.process.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -66,7 +66,7 @@ $().ready( function() {
 	// 订单完成
 	$completedProcessButton.click( function() {
 		var $this = $(this);
-		$.dialog({type: "warn", content: "订单完成后将不允许对此订单进行任何操作,确认执行?", ok: "确 定", cancel: "取 消", width: 420, modal: true, okCallback: orderCompleted});
+		$.dialog({type: "warn", content: "<@s.text name="order.process.complete.content"/>", ok: "<@s.text name="button.name.confirm"/>", cancel: "<@s.text name="button.name.cancel"/>", width: 420, modal: true, okCallback: orderCompleted});
 		function orderCompleted() {
 			$.ajax({
 				url: "order!completed.action",
@@ -112,7 +112,7 @@ $().ready( function() {
 	// 作废
 	$invalidProcessButton.click( function() {
 		var $this = $(this);
-		$.dialog({type: "warn", content: "订单作废后将不允许对此订单进行任何操作,确认执行?", ok: "确 定", cancel: "取 消", modal: true, okCallback: orderInvalid});
+		$.dialog({type: "warn", content: "<@s.text name="order.process.invalid.content"/>", ok: "<@s.text name="button.name.confirm"/>", cancel: "<@s.text name="button.name.cancel"/>", modal: true, okCallback: orderInvalid});
 		function orderInvalid() {
 			$.ajax({
 				url: "order!invalid.action",
@@ -177,7 +177,7 @@ $().ready( function() {
 		var $this = $(this);
 		var maxDeliveryQuantity = $this.attr("maxDeliveryQuantity");
 		if (/^[0-9]*[1-9][0-9]*$/.test($this.val()) && parseInt($this.val()) > parseInt(maxDeliveryQuantity)) {
-			$.dialog({type: "warn", content: "本次发货数超出应发货数!", modal: true, autoCloseTime: 2000});
+			$.dialog({type: "warn", content: "<@s.text name="order.process.delivery.content"/>", modal: true, autoCloseTime: 2000});
 			$this.val(maxDeliveryQuantity);
 			return false;
 		}

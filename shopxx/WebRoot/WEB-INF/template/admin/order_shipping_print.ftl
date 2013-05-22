@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>配送单打印</title>
+<title><@s.text name="shipping.print.pagetitle"/></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -111,7 +111,7 @@ try {
 <body class="print">
 	<div class="header">
 		<div class="printBar">
-			<input type="button" id="printButton" class="formButton" value="打 印" />
+			<input type="button" id="printButton" class="formButton" value="<@s.text name="shipping.print.button"/>" />
 		</div>
 	</div>
 	<div class="body">
@@ -128,19 +128,19 @@ try {
 					&nbsp;
 				</td>
 				<td colspan="2">
-					客户名称: ${order.shipName}<br />
-					会员名称: ${(order.member.username)!"-"}
+					<@s.text name="shipping.print.shipName"/>: ${order.shipName}<br />
+					<@s.text name="shipping.print.username"/>: ${(order.member.username)!"-"}
 				</td>
 			</tr>
 			<tr class="separated">
 				<th colspan="2">
-					订单编号: ${order.orderSn}
+					<@s.text name="shipping.print.order.orderSn"/>: ${order.orderSn}
 				</th>
 				<th colspan="2">
-					订购日期: ${order.createDate?string("yyyy-MM-dd")}
+					<@s.text name="shipping.print.order.createDate"/>: ${order.createDate?string("yyyy-MM-dd")}
 				</th>
 				<th colspan="2">
-					打印日期: <strong>${currentDate?string("yyyy-MM-dd")}</strong>
+					<@s.text name="shipping.print.order.printDate"/>: <strong>${currentDate?string("yyyy-MM-dd")}</strong>
 				</th>
 			</tr>
 			<tr>
@@ -150,22 +150,22 @@ try {
 			</tr>
 			<tr class="separated">
 				<th>
-					序号
+					<@s.text name="order.orderItem.index"/>
 				</th>
 				<th>
-					货号
+					<@s.text name="order.orderItem.productSn"/>
 				</th>
 				<th>
-					商品名称
+					<@s.text name="order.orderItem.productName"/>
 				</th>
 				<th>
-					单价
+					<@s.text name="order.orderItem.productPrice"/>
 				</th>
 				<th>
-					数量
+					<@s.text name="order.orderItem.productName"/>
 				</th>
 				<th>
-					配送状态
+					<@s.text name="order.orderItem.shippingStatus"/>
 				</th>
 			</tr>
 			<#list order.orderItemSet as orderItem>
@@ -200,12 +200,12 @@ try {
 					&nbsp;
 				</td>
 				<td colspan="3">
-					收 货 人: ${order.shipName}<br />
-					收货地址: ${order.shipArea.displayName}${order.shipAddress}<br />
-					邮政编码: ${order.shipZipCode}<br />
-					联系电话: ${order.shipPhone}<br />
-					联系手机: ${order.shipMobile}<br />
-					配送方式: ${order.deliveryTypeName}
+					<@s.text name="order.shipName"/>: ${order.shipName}<br />
+					<@s.text name="order.shipAddress"/>: ${order.shipArea.displayName}${order.shipAddress}<br />
+					<@s.text name="order.shipZipCode"/>: ${order.shipZipCode}<br />
+					<@s.text name="order.shipPhone"/>: ${order.shipPhone}<br />
+					<@s.text name="order.shipMobile"/>: ${order.shipMobile}<br />
+					<@s.text name="order.deliveryTypeName"/>: ${order.deliveryTypeName}
 				</td>
 			</tr>
 			<tr>
