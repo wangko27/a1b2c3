@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑支付方式 - Powered By SHOP++</title>
+<title><@s.text name="payment.config.input.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -41,16 +41,16 @@ $().ready(function() {
 			"paymentConfig.orderList": "digits"
 		},
 		messages: {
-			"paymentConfig.name": "请填写支付方式名称",
+			"paymentConfig.name": "<@s.text name="payment.config.message.name"/>",
 			<#if paymentConfig.paymentConfigType == "online">
-				"paymentConfig.bargainorId": "请填写商户ID",
-				"paymentConfig.bargainorKey": "请填写密钥",
+				"paymentConfig.bargainorId": "<@s.text name="payment.config.message.bargainorId"/>",
+				"paymentConfig.bargainorKey": "<@s.text name="payment.config.message.bargainorKey"/>",
 			</#if>
 			"paymentConfig.paymentFee": {
-				required: "请填写支付费率/固定费用",
-				min: "支付费率/固定费用必须为零或正数"
+				required: "<@s.text name="payment.config.message.paymentFee.required"/>",
+				min: "<@s.text name="payment.config.message.paymentFee.min"/>"
 			},
-			"paymentConfig.orderList": "排序必须为零或正整数"
+			"paymentConfig.orderList": "<@s.text name="payment.config.message.orderList"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -63,10 +63,10 @@ $().ready(function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加支付方式<#else>编辑支付方式</#if>
+		<#if isAddAction><@s.text name="payment.config.input.title1"/><#else><@s.text name="payment.config.input.title2"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="common.validateErrorTitle"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -77,7 +77,7 @@ $().ready(function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						支付方式类型: 
+						<@s.text name="payment.config.paymentConfigType"/>: 
 					</th>
 					<td>
 						<#if paymentConfig.paymentConfigType != "online">
@@ -89,7 +89,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						支付方式名称: 
+						<@s.text name="payment.config.name"/>: 
 					</th>
 					<td>
 						<input type="text" name="paymentConfig.name" class="formText" value="${(paymentConfig.name)!}" />
@@ -99,7 +99,7 @@ $().ready(function() {
 				<#if paymentConfig.paymentConfigType == "online">
 					<tr>
 						<th>
-							${(payment.bargainorIdName)!"商户ID"}: 
+							${(payment.bargainorIdName)!"<@s.text name="payment.config.bargainorId"/>"}: 
 						</th>
 						<td>
 							<input type="text" name="paymentConfig.bargainorId" class="formText" value="${(paymentConfig.bargainorId)!}" />
@@ -108,7 +108,7 @@ $().ready(function() {
 					</tr>
 					<tr>
 						<th>
-							${(payment.bargainorKeyName)!"密钥"}: 
+							${(payment.bargainorKeyName)!"<@s.text name="payment.config.bargainorKey"/>"}: 
 						</th>
 						<td>
 							<input type="text" name="paymentConfig.bargainorKey" class="formText" value="${(paymentConfig.bargainorKey)!}" />
@@ -118,7 +118,7 @@ $().ready(function() {
 				</#if>
 				<tr>
 					<th>
-						支付手续费设置: 
+						<@s.text name="payment.config.paymentFeeType"/>: 
 					</th>
 					<td>
 						<#list paymentFeeTypeList as list>
@@ -130,7 +130,7 @@ $().ready(function() {
 					</td>
 				</tr>
 					<th>
-						支付费率/固定费用: 
+						<@s.text name="payment.config.paymentFee"/>: 
 					</th>
 					<td>
 						<input type="text" name="paymentConfig.paymentFee" class="formText" value="${(paymentConfig.paymentFee)!"0"}" />
@@ -139,7 +139,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						排序: 
+						<@s.text name="payment.config.order"/>: 
 					</th>
 					<td>
 						<input type="text" name="paymentConfig.orderList" class="formText" value="${(paymentConfig.orderList)!}" title="只允许输入零或正整数" />
@@ -147,7 +147,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						介绍: 
+						<@s.text name="payment.config.desc"/>: 
 					</th>
 					<td>
 						<textarea name="paymentConfig.description" id="editor" class="editor">${(paymentConfig.description)!}</textarea>
@@ -155,8 +155,8 @@ $().ready(function() {
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="button.name.confirm"/>" hidefocus />
 			</div>
 		</form>
 	</div>

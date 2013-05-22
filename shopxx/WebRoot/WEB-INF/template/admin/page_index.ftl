@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>管理中心首页 - Powered By SHOP++</title>
+<title><@s.text name="page.index.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -14,103 +14,46 @@
 </head>
 <body class="index">
 	<div class="bar">
-		欢迎使用SHOP++网店管理系统！
+		<@s.text name="page.index.bar"/>
 	</div>
 	<div class="body">
 		<div class="bodyLeft">
 			<table class="listTable">
 				<tr>
 					<th colspan="2">
-						软件信息
+						<@s.text name="page.index.waitforhandle"/>
 					</th>
 				</tr>
 				<tr>
 					<td width="110">
-						系统名称: 
+						<@s.text name="page.index.waitforhandle.unprocessedOrderCount"/>: 
 					</td>
 					<td>
-						${setting.systemName}
-					</td>
-				</tr>
-				<tr>
-					<td>
-						系统版本: 
-					</td>
-					<td>
-						${setting.systemVersion} 商业版
-					</td>
-				</tr>
-				<tr>
-					<td>
-						官方网站: 
-					</td>
-					<td>
-						<a href="http://www.shopxx.net">http://www.shopxx.net</a>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						交流论坛: 
-					</td>
-					<td>
-						<a href="http://bbs.shopxx.net">http://bbs.shopxx.net</a>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						BUG反馈邮箱: 
-					</td>
-					<td>
-						<a href="mailto:bug@shopxx.net">bug@shopxx.net</a>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						商业授权: 
-					</td>
-					<td>
-						未取得商业授权之前,您不能将本软件应用于商业用途
-						<a class="red" href="http://www.shopxx.net/license.html" target="_blank">[授权查询]</a>
-					</td>
-				</tr>
-			</table>
-			<div class="blank"></div>
-			<table class="listTable">
-				<tr>
-					<th colspan="2">
-						待处理事务
-					</th>
-				</tr>
-				<tr>
-					<td width="110">
-						未处理订单: 
-					</td>
-					<td>
-						${unprocessedOrderCount} <a href="order!list.action">[订单列表]</a>
+						${unprocessedOrderCount} <a href="order!list.action">[<@s.text name="page.index.waitforhandle.unprocessedOrderCount.link"/>]</a>
 					</td>
 				</tr>
 				<tr>
 					<td width="110">
-						等待发货订单数: 
+						<@s.text name="page.index.waitforhandle.paidUnshippedOrderCount"/>: 
 					</td>
 					<td>
-						${paidUnshippedOrderCount} <a href="order!list.action">[订单列表]</a>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						未读消息: 
-					</td>
-					<td>
-						${unreadMessageCount} <a href="message!inbox.action">[收件箱]</a>
+						${paidUnshippedOrderCount} <a href="order!list.action">[<@s.text name="page.index.waitforhandle.unprocessedOrderCount.link"/>]</a>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						未处理缺货登记数: 
+						<@s.text name="page.index.waitforhandle.unreadMessageCount"/>: 
 					</td>
 					<td>
-						${unprocessedGoodsNotifyCount} <a href="goods_notify!list.action">[到货通知]</a>
+						${unreadMessageCount} <a href="message!inbox.action">[<@s.text name="page.index.waitforhandle.unreadMessageCount.link"/>]</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<@s.text name="page.index.waitforhandle.unprocessedGoodsNotifyCount"/>: 
+					</td>
+					<td>
+						${unprocessedGoodsNotifyCount} <a href="goods_notify!list.action">[<@s.text name="page.index.waitforhandle.unprocessedGoodsNotifyCount.link"/>]</a>
 					</td>
 				</tr>
 			</table>
@@ -119,68 +62,12 @@
 			<table class="listTable">
 				<tr>
 					<th colspan="2">
-						系统信息
+						<@s.text name="page.index.infostat"/>
 					</th>
 				</tr>
 				<tr>
 					<td width="110">
-						Java版本: 
-					</td>
-					<td>
-						${javaVersion}
-					</td>
-				</tr>
-				<tr>
-					<td>
-						操作系统名称: 
-					</td>
-					<td>
-						${osName}
-					</td>
-				</tr>
-				<tr>
-					<td>
-						操作系统构架: 
-					</td>
-					<td>
-						${osArch}
-					</td>
-				</tr>
-				<tr>
-					<td>
-						操作系统版本: 
-					</td>
-					<td>
-						${osVersion}
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Server信息: 
-					</td>
-					<td>
-						${serverInfo}
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Servlet版本: 
-					</td>
-					<td>
-						${servletVersion}
-					</td>
-				</tr>
-			</table>
-			<div class="blank"></div>
-			<table class="listTable">
-				<tr>
-					<th colspan="2">
-						信息统计
-					</th>
-				</tr>
-				<tr>
-					<td width="110">
-						已上架商品: 
+						<@s.text name="page.index.infostat.marketableGoodsCount"/>: 
 					</td>
 					<td>
 						${marketableGoodsCount}
@@ -188,7 +75,7 @@
 				</tr>
 				<tr>
 					<td>
-						已下架商品: 
+						<@s.text name="page.index.infostat.unMarketableGoodsCount"/>: 
 					</td>
 					<td>
 						${unMarketableGoodsCount}
@@ -196,7 +83,7 @@
 				</tr>
 				<tr>
 					<td>
-						会员总数: 
+						<@s.text name="page.index.infostat.memberTotalCount"/>: 
 					</td>
 					<td>
 						${memberTotalCount}
@@ -204,7 +91,7 @@
 				</tr>
 				<tr>
 					<td>
-						文章总数: 
+						<@s.text name="page.index.infostat.articleTotalCount"/>: 
 					</td>
 					<td>
 						${articleTotalCount}

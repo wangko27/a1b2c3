@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>页面模板列表 - Powered By SHOP++</title>
+<title><@s.text name="pageTemplateConfig.list.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -13,22 +13,22 @@
 <script type="text/javascript" src="${base}/template/admin/js/admin.js"></script>
 </head>
 <body class="list">
-	<div class="bar">页面模板列表</div>
+	<div class="bar"><@s.text name="pageTemplateConfig.list.pagetitle"/></div>
 	<div class="body">
 		<div class="blank"></div>
 		<table id="listTable" class="listTable">
 			<tr>
 				<th>
-					<span>模板名称</span>
+					<span><@s.text name="pageTemplateConfig.name"/></span>
 				</th>
 				<th>
-					<span>描述</span>
+					<span><@s.text name="pageTemplateConfig.description"/></span>
 				</th>
 				<th>
-					<span>模板文件路径</span>
+					<span><@s.text name="pageTemplateConfig.templatePath"/></span>
 				</th>
 				<th>
-					<span>操作</span>
+					<span><@s.text name="common.button.operate"/></span>
 				</th>
 			</tr>
 			<#list allPageTemplateConfigList as pageTemplateConfig>
@@ -43,7 +43,7 @@
 						${pageTemplateConfig.templatePath}
 					</td>
 					<td>
-						<a href="page_template!edit.action?pageTemplateConfig.name=${pageTemplateConfig.name}" title="[编辑]">[编辑]</a>
+						<a href="page_template!edit.action?pageTemplateConfig.name=${pageTemplateConfig.name}" title="[<@s.text name="common.button.edit"/>]">[<@s.text name="common.button.edit"/>]</a>
 					</td>
 				</tr>
 			</#list>

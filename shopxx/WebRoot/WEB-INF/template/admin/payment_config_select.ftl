@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>请选择支付方式类型 - Powered By SHOP++</title>
+<title><@s.text name="payment.config.select.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,7 +15,7 @@
 </head>
 <body class="list paymentConfig">
 	<div class="bar">
-		请选择支付方式种类
+		<@s.text name="payment.config.select.pagetitle"/>
 	</div>
 	<div class="body">
 		<div class="blank"></div>
@@ -25,13 +25,13 @@
 					<img src="${base}/template/admin/images/payment/deposit_icon.gif" />
 				</td>
 				<td>
-					<strong>预付款支付</strong>
+					<strong><@s.text name="payment.config.deposit"/></strong>
 				</td>
 				<td>
-					预存款是客户在您网站上的虚拟资金帐户
+					<@s.text name="payment.config.deposit.desc"/>
 				</td>
 				<td>
-					<a href="payment_config!add.action?paymentConfig.paymentConfigType=deposit" class="formButton">添 加</a>
+					<a href="payment_config!add.action?paymentConfig.paymentConfigType=deposit" class="formButton"><@s.text name="common.button.add"/></a>
 				</td>
 			</tr>
 			<tr>
@@ -39,13 +39,13 @@
 					<img src="${base}/template/admin/images/payment/offline_icon.gif" />
 				</td>
 				<td>
-					<strong>线下支付</strong>
+					<strong><@s.text name="payment.config.offline"/></strong>
 				</td>
 				<td>
-					您可以通过现金付款或银行转帐的方式进行收款
+					<@s.text name="payment.config.offline.desc"/>
 				</td>
 				<td>
-					<a href="payment_config!add.action?paymentConfig.paymentConfigType=offline" class="formButton">添 加</a>
+					<a href="payment_config!add.action?paymentConfig.paymentConfigType=offline" class="formButton"><@s.text name="common.button.add"/></a>
 				</td>
 			</tr>
 			<#list paymentProductList as paymentProduct>
@@ -64,7 +64,7 @@
 						${paymentProduct.description}
 					</td>
 					<td>
-						<a href="payment_config!add.action?paymentConfig.paymentConfigType=online&paymentConfig.paymentProductId=${paymentProduct.id}" class="formButton">添 加</a>
+						<a href="payment_config!add.action?paymentConfig.paymentConfigType=online&paymentConfig.paymentProductId=${paymentProduct.id}" class="formButton"><@s.text name="common.button.add"/></a>
 					</td>
 				</tr>
 			</#list>

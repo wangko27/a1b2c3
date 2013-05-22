@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>编辑页面模板 - Powered By SHOP++</title>
+<title><@s.text name="pageTemplateConfig.input.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -14,7 +14,7 @@
 </head>
 <body class="input">
 	<div class="bar">
-		页面模板[${(pageTemplateConfig.description)!}]
+		<@s.text name="pageTemplateConfig.input.title"/>[${(pageTemplateConfig.description)!}]
 	</div>
 	<div class="body">
 		<form action="page_template!update.action" method="post">
@@ -27,8 +27,8 @@
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>
