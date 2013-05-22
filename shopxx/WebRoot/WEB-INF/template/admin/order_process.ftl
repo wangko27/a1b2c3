@@ -161,9 +161,9 @@ $().ready( function() {
 		},
 		messages: {
 			"payment.totalAmount": {
-				required: "请输入付款金额",
-				positive: "付款金额必须为正数",
-				max: "付款金额必须小于等于${order.totalAmount - order.paidAmount}"
+				required: "<@s.text name="goods.order.payment.require"/>",
+				positive: "<@s.text name="goods.order.payment.positive"/>",
+				max: "<@s.text name="goods.order.payment.minimize"/>${order.totalAmount - order.paidAmount}"
 			}
 		},
 		submitHandler: function(form) {
@@ -205,15 +205,15 @@ $().ready( function() {
 		},
 		messages: {
 			"shipping.deliveryFee": {
-				required: "请输入配送费用",
-				min: "配送费用必须为零或正数"
+				required: "<@s.text name="goods.order.payment.shipFee"/>",
+				min: "<@s.text name="goods.order.payment.number"/>"
 			},
-			"shipping.shipName": "请输入收货人姓名",
-			"shipAreaId": "请选择收货地区",
-			"shipping.shipAddress": "请输入收货地址",
-			"shipping.shipZipCode": "请输入邮编",
+			"shipping.shipName": "<@s.text name="goods.receiver.input.name"/>",
+			"shipAreaId": "<@s.text name="goods.order.payment.areaId"/>",
+			"shipping.shipAddress": "<@s.text name="goods.order.payment.areaId.input"/>",
+			"shipping.shipZipCode": "<@s.text name="goods.receiver.input.zipcode"/>",
 			"shipping.shipMobile": {
-				"requiredOne": "电话、手机必须填写其中一项"
+				"requiredOne": "<@s.text name="goods.order.payment.mobile.requireOne"/>"
 			}
 		},
 		submitHandler: function(form) {
@@ -223,7 +223,7 @@ $().ready( function() {
 				totalShippingDeliveryQuantity += $this.val();
 			});
 			if (totalShippingDeliveryQuantity == 0) {
-				$.dialog({type: "warn", content: "发货总数不允许为0!", modal: true, autoCloseTime: 2000});
+				$.dialog({type: "warn", content: "<@s.text name="goods.order.payment.warn.total"/>!", modal: true, autoCloseTime: 2000});
 			} else {
 				$(form).find(":submit").attr("disabled", true);
 				form.submit();
@@ -231,8 +231,8 @@ $().ready( function() {
 		}
 	});
 	
-	$.validator.addMethod("shippingDeliveryQuantityRequired", $.validator.methods.required, "请填写本次发货数");
-	$.validator.addMethod("shippingDeliveryQuantityDigits", $.validator.methods.digits, "本次发货数必须为零或正整数");
+	$.validator.addMethod("shippingDeliveryQuantityRequired", $.validator.methods.required, "<@s.text name="goods.order.payment.total"/>");
+	$.validator.addMethod("shippingDeliveryQuantityDigits", $.validator.methods.digits, "<@s.text name="goods.order.payment.total.require"/>");
 	
 	$.validator.addClassRules("shippingDeliveryQuantity", {
 		shippingDeliveryQuantityRequired: true,
@@ -255,9 +255,9 @@ $().ready( function() {
 		},
 		messages: {
 			"refund.totalAmount": {
-				required: "请输入退款金额",
-				positive: "退款金额必须为正数",
-				max: "退款金额必须小于等于${order.paidAmount}"
+				required: "<@s.text name="goods.order.payment.refund"/>",
+				positive: "<@s.text name="goods.order.payment.refund.number"/>",
+				max: "<@s.text name="goods.order.payment.refund.max"/>${order.paidAmount}"
 			}
 		},
 		submitHandler: function(form) {
@@ -271,7 +271,7 @@ $().ready( function() {
 		var $this = $(this);
 		var maxDeliveryQuantity = $this.attr("maxDeliveryQuantity");
 		if (/^[0-9]*[1-9][0-9]*$/.test($this.val()) && parseInt($this.val()) > parseInt(maxDeliveryQuantity)) {
-			$.dialog({type: "warn", content: "本次退货数超出已发货数!", modal: true, autoCloseTime: 2000});
+			$.dialog({type: "warn", content: "<@s.text name="goods.order.payment.refund.warn"/>!", modal: true, autoCloseTime: 2000});
 			$this.val(maxDeliveryQuantity);
 			return false;
 		}
@@ -299,15 +299,15 @@ $().ready( function() {
 		},
 		messages: {
 			"reship.deliveryFee": {
-				required: "请输入物流费用",
-				min: "配送费用必须为零或正数"
+				required: "<@s.text name="goods.order.payment.refund.fee"/>",
+				min: "<@s.text name="goods.order.payment.number"/>"
 			},
-			"reship.reshipName": "请输入退货人姓名",
-			"reshipAreaId": "请选择退货地区",
-			"reship.reshipAddress": "请输入退货地址",
-			"reship.reshipZipCode": "请输入邮编",
+			"reship.reshipName": "<@s.text name="goods.order.payment.refund.name"/>",
+			"reshipAreaId": "<@s.text name="goods.order.payment.refund.area"/>",
+			"reship.reshipAddress": "<@s.text name="goods.order.payment.refund.address"/>",
+			"reship.reshipZipCode": "<@s.text name="goods.receiver.input.zipcode"/>",
 			"reship.reshipMobile": {
-				"requiredOne": "电话、手机必须填写其中一项"
+				"requiredOne": "<@s.text name="goods.order.payment.mobile.requireOne"/>"
 			}
 		},
 		submitHandler: function(form) {
@@ -317,7 +317,7 @@ $().ready( function() {
 				totalReshipDeliveryQuantity += $this.val();
 			});
 			if (totalReshipDeliveryQuantity == 0) {
-				$.dialog({type: "warn", content: "退货总数不允许为0!", modal: true, autoCloseTime: 2000});
+				$.dialog({type: "warn", content: "<@s.text name="goods.order.payment.refund.warn.total"/>!", modal: true, autoCloseTime: 2000});
 			} else {
 				$(form).find(":submit").attr("disabled", true);
 				form.submit();
@@ -325,8 +325,8 @@ $().ready( function() {
 		}
 	});
 	
-	$.validator.addMethod("reshipDeliveryQuantityRequired", $.validator.methods.required, "请填写本次退货数");
-	$.validator.addMethod("reshipDeliveryQuantityDigits", $.validator.methods.digits, "本次退货数必须为零或正整数");
+	$.validator.addMethod("reshipDeliveryQuantityRequired", $.validator.methods.required, "<@s.text name="goods.order.payment.refund.total"/>");
+	$.validator.addMethod("reshipDeliveryQuantityDigits", $.validator.methods.digits, "<@s.text name="goods.order.payment.refund.total.require"/>");
 	
 	$.validator.addClassRules("reshipDeliveryQuantity", {
 		reshipDeliveryQuantityRequired: true,
@@ -337,52 +337,52 @@ $().ready( function() {
 </script>
 </head>
 <body class="input">
-	<div class="bar">处理订单</div>
+	<div class="bar"><@s.text name="order.process.pagetitle"/></div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="goods.message.reply.title.error.validate"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
 		<ul id="tab" class="tab">
 			<li>
-				<input type="button" value="基本信息" hidefocus />
+				<input type="button" value="<@s.text name="goods.compare.head1"/>" hidefocus />
 			</li>
 			<li>
-				<input type="button" value="商品信息" hidefocus />
+				<input type="button" value="<@s.text name="order.view.tab.goodsinfo"/>" hidefocus />
 			</li>
 			<li>
-				<input type="button" id="paymentTabButton" value="订单支付"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.paymentStatus == "paid" || order.paymentStatus == "partRefund" || order.paymentStatus == "refunded"> disabled</#if> hidefocus />
+				<input type="button" id="paymentTabButton" value="<@s.text name="goods.order.payment.payment"/>"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.paymentStatus == "paid" || order.paymentStatus == "partRefund" || order.paymentStatus == "refunded"> disabled</#if> hidefocus />
 			</li>
 			<li>
-				<input type="button" id="shippingTabButton" value="订单发货"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.shippingStatus == "shipped"> disabled</#if> hidefocus />
+				<input type="button" id="shippingTabButton" value="<@s.text name="goods.order.payment.shipping"/>"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.shippingStatus == "shipped"> disabled</#if> hidefocus />
 			</li>
 			<li>
-				<input type="button" id="refundTabButton" value="退款"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.paymentStatus == "unpaid" || order.paymentStatus == "refunded"> disabled</#if> hidefocus />
+				<input type="button" id="refundTabButton" value="<@s.text name="goods.order.refund"/>"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.paymentStatus == "unpaid" || order.paymentStatus == "refunded"> disabled</#if> hidefocus />
 			</li>
 			<li>
-				<input type="button" id="reshipTabButton" value="退货"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.shippingStatus == "unshipped" || order.shippingStatus == "reshiped"> disabled</#if> hidefocus />
+				<input type="button" id="reshipTabButton" value="<@s.text name="goods.order.reship"/>"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.shippingStatus == "unshipped" || order.shippingStatus == "reshiped"> disabled</#if> hidefocus />
 			</li>
 		</ul>
 		<div class="tabContent">
 			<table class="inputTable">
 				<tr>
 					<th>
-						订单状态操作: 
+						<@s.text name="goods.order.status.operator"/>: 
 					</th>
 					<td>
-						<input type="button" id="paymentProcessButton" name="paymentProcess" class="formButton" value="订单支付"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.paymentStatus == "paid" || order.paymentStatus == "partRefund" || order.paymentStatus == "refunded"> disabled</#if> hidefocus />
-						<input type="button" id="shippingProcessButton" name="shippingProcess" class="formButton" value="订单发货"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.shippingStatus == "shipped"> disabled</#if> hidefocus />
-						<input type="button" id="completedProcessButton" name="completedProcess" class="formButton" value="订单完成"<#if order.orderStatus == "completed" || order.orderStatus == "invalid"> disabled</#if> hidefocus />
+						<input type="button" id="paymentProcessButton" name="paymentProcess" class="formButton" value="<@s.text name="goods.order.payment.payment"/>"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.paymentStatus == "paid" || order.paymentStatus == "partRefund" || order.paymentStatus == "refunded"> disabled</#if> hidefocus />
+						<input type="button" id="shippingProcessButton" name="shippingProcess" class="formButton" value="<@s.text name="goods.order.payment.shipping"/>"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.shippingStatus == "shipped"> disabled</#if> hidefocus />
+						<input type="button" id="completedProcessButton" name="completedProcess" class="formButton" value="<@s.text name="goods.order.payment.complete"/>"<#if order.orderStatus == "completed" || order.orderStatus == "invalid"> disabled</#if> hidefocus />
 					</td>
 					<td colspan="2">
-						<input type="button" id="refundProcessButton" name="refundProcess" class="formButton" value="退款"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.paymentStatus == "unpaid" || order.paymentStatus == "refunded"> disabled</#if> hidefocus />
-						<input type="button" id="reshipProcessButton" name="reshipProcess" class="formButton" value="退货"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.shippingStatus == "unshipped" || order.shippingStatus == "reshiped"> disabled</#if> hidefocus />
-						<input type="button" id="invalidProcessButton" name="invalidProcess" class="formButton" value="作废"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.paymentStatus != "unpaid" || order.shippingStatus != "unshipped"> disabled</#if> hidefocus />
+						<input type="button" id="refundProcessButton" name="refundProcess" class="formButton" value="<@s.text name="goods.order.refund"/>"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.paymentStatus == "unpaid" || order.paymentStatus == "refunded"> disabled</#if> hidefocus />
+						<input type="button" id="reshipProcessButton" name="reshipProcess" class="formButton" value="<@s.text name="goods.order.reship"/>"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.shippingStatus == "unshipped" || order.shippingStatus == "reshiped"> disabled</#if> hidefocus />
+						<input type="button" id="invalidProcessButton" name="invalidProcess" class="formButton" value="<@s.text name="goods.order.invalid"/>"<#if order.orderStatus == "completed" || order.orderStatus == "invalid" || order.paymentStatus != "unpaid" || order.shippingStatus != "unshipped"> disabled</#if> hidefocus />
 					</td>
 				</tr>
 				<tr>
 					<th>
-						订单状态: 
+						<@s.text name="goods.order.status"/>: 
 					</th>
 					<td colspan="3">
 						<span class="red">
@@ -399,13 +399,13 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						订单编号: 
+						<@s.text name="refund.order.orderSn"/>: 
 					</th>
 					<td>
 						${order.orderSn}
 					</td>
 					<th>
-						下单时间: 
+						<@s.text name="order.createDate"/>: 
 					</th>
 					<td>
 						${order.createDate?string("yyyy-MM-dd HH:mm:ss")}
@@ -413,28 +413,28 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						商品总金额: 
+						<@s.text name="order.totalProductPrice"/>: 
 					</th>
 					<td>
 						<span id="totalProductPrice" class="red">${order.totalProductPrice?string(currencyFormat)}</span>
 					</td>
 					<th>
-						订单总金额: 
+						<@s.text name="order.totalAmount"/>: 
 					</th>
 					<td>
 						<span id="totalAmount" class="red">${order.totalAmount?string(currencyFormat)}</span>&nbsp;&nbsp;
-						<strong class="red">[已付金额: ${order.paidAmount?string(currencyFormat)}]</strong>
+						<strong class="red">[<@s.text name="order.paidAmount"/>: ${order.paidAmount?string(currencyFormat)}]</strong>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						配送方式: 
+						<@s.text name="order.deliveryTypeName"/>: 
 					</th>
 					<td>
 						${order.deliveryTypeName}
 					</td>
 					<th>
-						支付方式: 
+						<@s.text name="order.paymentConfigName"/>: 
 					</th>
 					<td>
 						${order.paymentConfigName}
@@ -442,13 +442,13 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						配送费用: 
+						<@s.text name="order.deliveryFee"/>: 
 					</th>
 					<td>
 						${order.deliveryFee?string(currencyFormat)}
 					</td>
 					<th>
-						支付手续费: 
+						<@s.text name="order.paymentFee"/>: 
 					</th>
 					<td>
 						${order.paymentFee?string(currencyFormat)}
@@ -456,13 +456,13 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						商品重量: 
+						<@s.text name="goods.order.weight"/>: 
 					</th>
 					<td>
-						${order.totalProductWeight} 克
+						${order.totalProductWeight} <@s.text name="order.totalProductWeightunit"/>
 					</td>
 					<th>
-						附言: 
+						<@s.text name="order.memo"/>: 
 					</th>
 					<td>
 						${(order.memo)!}
@@ -475,13 +475,13 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						收货人姓名: 
+						<@s.text name="shipping.shipName"/>: 
 					</th>
 					<td>
 						${order.shipName}
 					</td>
 					<th>
-						收货地区: 
+						<@s.text name="order.shipArea.displayName"/>: 
 					</th>
 					<td>
 						${order.shipArea.displayName}
@@ -489,13 +489,13 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						收货地址: 
+						<@s.text name="order.shipAddress"/>: 
 					</th>
 					<td>
 						${order.shipAddress}
 					</td>
 					<th>
-						邮编: 
+						<@s.text name="shipping.shipZipCode"/>: 
 					</th>
 					<td>
 						${order.shipZipCode}
@@ -503,13 +503,13 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						电话: 
+						<@s.text name="shipping.shipPhone"/>: 
 					</th>
 					<td>
 						${order.shipPhone}
 					</td>
 					<th>
-						手机: 
+						<@s.text name="shipping.shipMobile"/>: 
 					</th>
 					<td>
 						${order.shipMobile}
@@ -524,18 +524,18 @@ $().ready( function() {
 					<#assign member = order.member />
 					<tr>
 						<th>
-							用户名: 
+							<@s.text name="member.username"/>: 
 						</th>
 						<td>
 							${member.username}
 						</td>
 						<th>
-							会员等级: 
+							<@s.text name="member.memberRank"/>: 
 						</th>
 						<td>
 							${member.memberRank.name}
 							<#if member.memberRank.preferentialScale != 100>
-								<span class="red">[优惠百分比: ${member.memberRank.preferentialScale}%]</span>
+								<span class="red">[<@s.text name="member.memberRank.preferentialScale"/>: ${member.memberRank.preferentialScale}%]</span>
 							</#if>
 						</td>
 					</tr>
@@ -547,7 +547,7 @@ $().ready( function() {
 							${member.email}
 						</td>
 						<th>
-							最后登录IP: 
+							<@s.text name="member.loginIp"/>: 
 						</th>
 						<td>
 							${member.loginIp}
@@ -555,13 +555,13 @@ $().ready( function() {
 					</tr>
 					<tr>
 						<th>
-							预存款余额: 
+							<@s.text name="member.deposit"/>: 
 						</th>
 						<td>
 							${member.deposit?string(currencyFormat)}
 						</td>
 						<th>
-							积分: 
+							<@s.text name="member.score"/>: 
 						</th>
 						<td>
 							${member.score}
@@ -570,17 +570,17 @@ $().ready( function() {
 					<tr>
 						<td colspan="4">
 							<div class="buttonArea">
-								<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+								<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 							</div>
 						</td>
 					</tr>
 				<#else>
 					<tr>
 						<th>
-							会员状态: 
+							<@s.text name="member.status"/>: 
 						</th>
 						<td colspan="3">
-							<span class="red">会员不存在</span>
+							<span class="red"><@s.text name="member.status.none"/></span>
 						</td>
 					</tr>
 				</#if>
@@ -589,10 +589,10 @@ $().ready( function() {
 		<div class="tabContent">
 			<table class="inputTable">
 				<tr class="title">
-					<th>货号</th>
-					<th>商品名称</th>
-					<th>价格</th>
-					<th>购买数量</th>
+					<th><@s.text name="order.orderItem.productSn"/></th>
+					<th><@s.text name="order.orderItem.productName"/></th>
+					<th><@s.text name="order.orderItem.productPrice"/></th>
+					<th><@s.text name="order.orderItem.productQuantity"/></th>
 				</tr>
 				<#list order.orderItemSet as orderItem>
 					<tr>
@@ -617,7 +617,7 @@ $().ready( function() {
 				<tr>
 					<td colspan="4">
 						<div class="buttonArea">
-							<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+							<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 						</div>
 					</td>
 				</tr>
@@ -630,13 +630,13 @@ $().ready( function() {
 					<table class="inputTable">
 						<tr>
 							<th>
-								订单编号: 
+								<@s.text name="shipping.order.orderSn"/>: 
 							</th>
 							<td>
 								${order.orderSn}
 							</td>
 							<th>
-								下单时间: 
+								<@s.text name="order.createDate"/>: 
 							</th>
 							<td>
 								${order.createDate?string("yyyy-MM-dd HH:mm:ss")}
@@ -644,13 +644,13 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								订单总金额: 
+								<@s.text name="order.totalAmount"/>: 
 							</th>
 							<td>
 								<span class="red">${order.totalAmount?string(currencyFormat)}</span>
 							</td>
 							<th>
-								已付金额: 
+								<@s.text name="order.paidAmount"/>: 
 							</th>
 							<td>
 								<span class="red">${order.paidAmount?string(currencyFormat)}</span>
@@ -658,13 +658,13 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								收款银行: 
+								<@s.text name="goods.order.bank.name"/>: 
 							</th>
 							<td>
 								<input type="text" name="payment.bankName" class="formText" />
 							</td>
 							<th>
-								收款账号: 
+								<@s.text name="goods.order.bank.account"/>: 
 							</th>
 							<td>
 								<input type="text" name="payment.bankAccount" class="formText" />
@@ -672,7 +672,7 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								支付类型: 
+								<@s.text name="payment.paymentType"/>: 
 							</th>
 							<td>
 								<select name="payment.paymentType">
@@ -684,7 +684,7 @@ $().ready( function() {
 								</select>
 							</td>
 							<th>
-								支付方式: 
+								<@s.text name="payment.paymentConfigName"/>: 
 							</th>
 							<td>
 								<select name="paymentConfig.id">
@@ -698,13 +698,13 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								付款金额: 
+								<@s.text name="goods.order.payment.fees"/>: 
 							</th>
 							<td>
 								<input type="text" name="payment.totalAmount" class="formText" value="${order.totalAmount - order.paidAmount}" />
 							</td>
 							<th>
-								付款人: 
+								<@s.text name="payment.payer"/>: 
 							</th>
 							<td>
 								<input type="text" name="payment.payer" class="formText" />
@@ -712,7 +712,7 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								收款单备注: 
+								<@s.text name="goods.order.payment.memo"/>: 
 							</th>
 							<td colspan="3">
 								<input type="text" name="payment.memo" class="formText" />
@@ -721,8 +721,8 @@ $().ready( function() {
 						<tr>
 							<td colspan="4">
 								<div class="buttonArea">
-									<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-									<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+									<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+									<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 								</div>
 							</td>
 						</tr>
@@ -737,13 +737,13 @@ $().ready( function() {
 					<table class="inputTable">
 						<tr>
 							<th>
-								订单编号: 
+								<@s.text name="order.orderSn"/>: 
 							</th>
 							<td>
 								${order.orderSn}
 							</td>
 							<th>
-								下单时间: 
+								<@s.text name="order.createDate"/>: 
 							</th>
 							<td>
 								${order.createDate?string("yyyy-MM-dd HH:mm:ss")}
@@ -751,7 +751,7 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								配送方式: 
+								<@s.text name="order.deliveryTypeName"/>: 
 							</th>
 							<td>
 								<select name="deliveryType.id">
@@ -763,7 +763,7 @@ $().ready( function() {
 								</select>
 							</td>
 							<th>
-								配送费用: 
+								<@s.text name="order.deliveryFee"/>: 
 							</th>
 							<td>
 								<span class="red">${order.deliveryFee?string(currencyFormat)}</span>
@@ -771,7 +771,7 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								物流公司: 
+								<@s.text name="goods.order.delivery.company"/>: 
 							</th>
 							<td>
 								<select name="deliveryCorp.id">
@@ -783,7 +783,7 @@ $().ready( function() {
 								</select>
 							</td>
 							<th>
-								物流单号: 
+								<@s.text name="reship.deliverySn"/>: 
 							</th>
 							<td>
 								<input type="text" name="shipping.deliverySn" class="formText" />
@@ -791,7 +791,7 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								物流费用: 
+								<@s.text name="reship.deliveryFee"/>: 
 							</th>
 							<td colspan="3">
 								<input type="text" name="shipping.deliveryFee" class="formText" value="${order.deliveryFee}" />
@@ -805,14 +805,14 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								收货人姓名: 
+								<@s.text name="goods.order.ship.username"/>: 
 							</th>
 							<td>
 								<input type="text" name="shipping.shipName" class="formText" value="${order.shipName}" />
 								<label class="requireField">*</label>
 							</td>
 							<th>
-								收货地区: 
+								<@s.text name="goods.order.ship.area"/>: 
 							</th>
 							<td>
 								<input type="text" name="shipAreaId" class="areaSelect" value="${order.shipArea.id}" defaultSelectedPath="${order.shipArea.path}" />
@@ -821,14 +821,14 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								收货地址: 
+								<@s.text name="goods.order.ship.address"/>: 
 							</th>
 							<td>
 								<input type="text" name="shipping.shipAddress" class="formText" value="${order.shipAddress}" />
 								<label class="requireField">*</label>
 							</td>
 							<th>
-								邮编: 
+								<@s.text name="goods.order.ship.zipcode"/>: 
 							</th>
 							<td>
 								<input type="text" name="shipping.shipZipCode" class="formText" value="${order.shipZipCode}" />
@@ -837,14 +837,14 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								电话: 
+								<@s.text name="goods.order.ship.phone"/>: 
 							</th>
 							<td>
 								<input type="text" id="shipPhone" name="shipping.shipPhone" class="formText" value="${order.shipPhone}" />
 								<label class="requireField">*</label>
 							</td>
 							<th>
-								手机: 
+								<@s.text name="goods.order.ship.mobile"/>: 
 							</th>
 							<td>
 								<input type="text" name="shipping.shipMobile" class="formText" value="${order.shipMobile}" />
@@ -853,7 +853,7 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								发货备注: 
+								<@s.text name="goods.order.storage.pay.memo"/>: 
 							</th>
 							<td colspan="3">
 								<input type="text" name="shipping.memo" class="formText" />
@@ -867,12 +867,12 @@ $().ready( function() {
 					</table>
 					<table class="inputTable">
 						<tr class="title">
-							<th>货号</th>
-							<th>商品名称</th>
-							<th>购买数量</th>
-							<th>当前库存</th>
-							<th>已发货数</th>
-							<th>本次发货数</th>
+							<th><@s.text name="order.orderItem.productSn"/></th>
+							<th><@s.text name="order.orderItem.productName"/></th>
+							<th><@s.text name="order.orderItem.productQuantity"/></th>
+							<th><@s.text name="goods.order.storage.current"/></th>
+							<th><@s.text name="goods.order.storage.pay"/></th>
+							<th><@s.text name="goods.order.storage.this"/></th>
 						</tr>
 						<#list order.orderItemSet as orderItem>
 							<tr>
@@ -893,9 +893,9 @@ $().ready( function() {
 								<td>
 									<#if (orderItem.product.store)??>
 										${orderItem.product.store}
-										[被占用: ${orderItem.product.freezeStore}]
+										[<@s.text name="goods.order.storage.freeze"/>: ${orderItem.product.freezeStore}]
 									<#else>
-										不计库存
+										<@s.text name="goods.order.storage.not.calculate"/>
 									</#if>
 								</td>
 								<td>
@@ -909,8 +909,8 @@ $().ready( function() {
 						<tr>
 							<td colspan="6">
 								<div class="buttonArea">
-									<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-									<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+									<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+									<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 								</div>
 							</td>
 						</tr>
@@ -925,13 +925,13 @@ $().ready( function() {
 					<table class="inputTable">
 						<tr>
 							<th>
-								订单编号: 
+								<@s.text name="order.orderSn"/>: 
 							</th>
 							<td>
 								${order.orderSn}
 							</td>
 							<th>
-								下单时间: 
+								<@s.text name="order.createDate"/>: 
 							</th>
 							<td>
 								${order.createDate?string("yyyy-MM-dd HH:mm:ss")}
@@ -939,13 +939,13 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								订单总金额: 
+								<@s.text name="order.totalAmount"/>: 
 							</th>
 							<td>
 								<span class="red">${order.totalAmount?string(currencyFormat)}</span>
 							</td>
 							<th>
-								已付金额: 
+								<@s.text name="order.paidAmount"/>: 
 							</th>
 							<td>
 								<span class="red">${order.paidAmount?string(currencyFormat)}</span>
@@ -953,13 +953,13 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								退款银行: 
+								<@s.text name="goods.order.bank.refund.name"/>: 
 							</th>
 							<td>
 								<input type="text" name="refund.bankName" class="formText" />
 							</td>
 							<th>
-								退款账号: 
+								<@s.text name="goods.order.bank.refund.account"/>: 
 							</th>
 							<td>
 								<input type="text" name="refund.bankAccount" class="formText" />
@@ -967,7 +967,7 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								退款类型: 
+								<@s.text name="refund.refundType"/>: 
 							</th>
 							<td>
 								<select name="refund.refundType">
@@ -979,7 +979,7 @@ $().ready( function() {
 								</select>
 							</td>
 							<th>
-								退款方式: 
+								<@s.text name="refund.paymentConfigName"/>: 
 							</th>
 							<td>
 								<select name="paymentConfig.id">
@@ -993,14 +993,14 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								退款金额: 
+								<@s.text name="refund.totalAmount"/>: 
 							</th>
 							<td>
 								<input type="text" name="refund.totalAmount" class="formText" value="${order.paidAmount}" />
 								<label class="requireField">*</label>
 							</td>
 							<th>
-								收款人: 
+								<@s.text name="refund.payee"/>: 
 							</th>
 							<td>
 								<input type="text" name="refund.payee" class="formText" />
@@ -1008,7 +1008,7 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								退款备注: 
+								<@s.text name="goods.order.bank.refund.memo"/>: 
 							</th>
 							<td colspan="3">
 								<input type="text" name="refund.memo" class="formText" />
@@ -1033,13 +1033,13 @@ $().ready( function() {
 					<table class="inputTable">
 						<tr>
 							<th>
-								订单编号: 
+								<@s.text name="order.orderSn"/>: 
 							</th>
 							<td>
 								${order.orderSn}
 							</td>
 							<th>
-								下单时间: 
+								<@s.text name="order.createDate"/>: 
 							</th>
 							<td>
 								${order.createDate?string("yyyy-MM-dd HH:mm:ss")}
@@ -1047,7 +1047,7 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								配送方式: 
+								<@s.text name="order.deliveryTypeName"/>: 
 							</th>
 							<td>
 								<select name="deliveryType.id">
@@ -1059,7 +1059,7 @@ $().ready( function() {
 								</select>
 							</td>
 							<th>
-								物流公司: 
+								<@s.text name="goods.order.delivery.company"/>: 
 							</th>
 							<td>
 								<select name="deliveryCorp.id">
@@ -1073,14 +1073,14 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								物流费用: 
+								<@s.text name="shipping.deliveryFee"/>: 
 							</th>
 							<td>
 								<input type="text" name="reship.deliveryFee" class="formText" value="${order.deliveryFee}" />
 								<label class="requireField">*</label>
 							</td>
 							<th>
-								物流单号: 
+								<@s.text name="shipping.deliverySn"/>: 
 							</th>
 							<td>
 								<input type="text" name="reship.deliverySn" class="formText" />
@@ -1093,14 +1093,14 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								退货人姓名: 
+								<@s.text name="reship.reshipName"/>: 
 							</th>
 							<td>
 								<input type="text" name="reship.reshipName" class="formText" value="${order.shipName}" />
 								<label class="requireField">*</label>
 							</td>
 							<th>
-								退货地区: 
+								<@s.text name="reship.reshipArea.displayName"/>: 
 							</th>
 							<td>
 								<input type="text" name="reshipAreaId" class="areaSelect" value="${order.shipArea.id}" defaultSelectedPath="${order.shipArea.path}" />
@@ -1109,14 +1109,14 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								退货地址: 
+								<@s.text name="reship.reshipAddress"/>: 
 							</th>
 							<td>
 								<input type="text" name="reship.reshipAddress" class="formText" value="${order.shipAddress}" />
 								<label class="requireField">*</label>
 							</td>
 							<th>
-								邮编: 
+								<@s.text name="reship.reshipZipCode"/>: 
 							</th>
 							<td>
 								<input type="text" name="reship.reshipZipCode" class="formText" value="${order.shipZipCode}" />
@@ -1125,14 +1125,14 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								电话: 
+								<@s.text name="reship.reshipPhone"/>: 
 							</th>
 							<td>
 								<input type="text" id="reshipPhone" name="reship.reshipPhone" class="formText" value="${order.shipPhone}" />
 								<label class="requireField">*</label>
 							</td>
 							<th>
-								手机: 
+								<@s.text name="reship.reshipMobile"/>: 
 							</th>
 							<td>
 								<input type="text" name="reship.reshipMobile" class="formText" value="${order.shipMobile}" />
@@ -1141,7 +1141,7 @@ $().ready( function() {
 						</tr>
 						<tr>
 							<th>
-								退货备注: 
+								<@s.text name="goods.order.storage.refund.memo"/>: 
 							</th>
 							<td colspan="3">
 								<input type="text" name="reship.memo" class="formText" />
@@ -1155,11 +1155,11 @@ $().ready( function() {
 					</table>
 					<table class="inputTable">
 						<tr class="title">
-							<th>货号</th>
-							<th>商品名称</th>
-							<th>购买数量</th>
-							<th>已发货数</th>
-							<th>本次退货数</th>
+							<th><@s.text name="reship.deliveryItem.productSn"/></th>
+							<th><@s.text name="reship.deliveryItem.productName"/></th>
+							<th><@s.text name="order.orderItem.productQuantity"/></th>
+							<th><@s.text name="goods.order.storage.pay"/></th>
+							<th><@s.text name="goods.order.storage.refund.this"/></th>
 						</tr>
 						<#list order.orderItemSet as orderItem>
 							<tr>
@@ -1188,8 +1188,8 @@ $().ready( function() {
 						<tr>
 							<td colspan="6">
 								<div class="buttonArea">
-									<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-									<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+									<input type="submit" class="formButton" value="<@s.text name="caritem.delete.confirm"/>" hidefocus />&nbsp;&nbsp;
+									<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 								</div>
 							</td>
 						</tr>
