@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>填写订单信息<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("goods.order.fillin")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -132,18 +132,18 @@ $().ready( function() {
 			}
 		},
 		messages: {
-			"receiver.id": "请选择收货地址",
-			"receiver.name": "请填写收货人姓名",
-			"areaId": "请选择地区",
-			"receiver.address": "请填写地址",
+			"receiver.id": "${bundle("goods.receiver.input.address.id")}",
+			"receiver.name": "${bundle("goods.receiver.input.username")}",
+			"areaId": "${bundle("goods.receiver.select.area")}",
+			"receiver.address": "${bundle("goods.receiver.input.address.fill")}",
 			"receiver.mobile": {
-				"requiredOne": "电话或手机必须填写其中一项"
+				"requiredOne": "${bundle("goods.receiver.input.invalid")}"
 			},
-			"receiver.zipCode": "请填写邮编",
-			"deliveryType.id": "请选择配送方式",
-			"paymentConfig.id": "请选择支付方式",
+			"receiver.zipCode": "${bundle("goods.receiver.input.zipcode")}",
+			"deliveryType.id": "${bundle("goods.receiver.input.delivery")}",
+			"paymentConfig.id": "${bundle("goods.receiver.input.payment")}",
 			"memo": {
-				maxlength: "附言长度必须小于等于200"
+				maxlength: "${bundle("goods.receiver.input.length")}"
 			}
 		},
 		submitHandler: function(form) {
@@ -159,7 +159,7 @@ $().ready( function() {
 	<#include "/WEB-INF/template/shop/header.ftl">
 	<div class="body">
 		<div id="validateErrorContainer" class="validateErrorContainer">
-			<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+			<div class="validateErrorTitle">${bundle("goods.message.reply.title.error.validate")}</div>
 			<ul></ul>
 		</div>
 		<div class="orderInfoDetail">
@@ -167,33 +167,33 @@ $().ready( function() {
 				<@s.token />
 				<table class="orderInfoTable">
 					<tr id="receiverTr">
-						<th>收货信息</th>
+						<th>${bundle("goods.order.ship.info")}</th>
 						<td>
 							<ul>
 								<#list loginMember.receiverSet as receiver>
 									<li>
 										<label>
 											<input type="radio" name="receiver.id" class="receiverId" value="${receiver.id}"<#if receiver.isDefault> checked</#if> />
-											<strong>收货人: </strong>${receiver.name}&nbsp;&nbsp;
+											<strong>${bundle("goods.order.ship.name")}: </strong>${receiver.name}&nbsp;&nbsp;
 											<#if receiver.mobile?? && receiver.mobile != "">
-												<strong>手机: </strong>${receiver.mobile}&nbsp;&nbsp;
+												<strong>${bundle("goods.order.ship.mobile")}: </strong>${receiver.mobile}&nbsp;&nbsp;
 											<#else>
-												<strong>电话: </strong>${receiver.phone}&nbsp;&nbsp;
+												<strong>${bundle("goods.order.ship.phone")}: </strong>${receiver.phone}&nbsp;&nbsp;
 											</#if>
-											<strong>收货地址: </strong>${receiver.area.displayName}${receiver.address}
+											<strong>${bundle("goods.order.ship.address")}: </strong>${receiver.area.displayName}${receiver.address}
 										</label>
 									</li>
 								</#list>
 								<li>
 									<label>
 										<input type="radio" id="otherReceiver" name="receiver.id"  class="receiverId" value=""<#if (!loginMember.receiverSet?? || loginMember.receiverSet?size == 0)> checked</#if> />
-										<strong>填写收货地址</strong>
+										<strong>${bundle("goods.order.ship.address.fill")}</strong>
 									</label>
 									<div class="blank"></div>
 									<table id="otherReceiverTable" class="otherReceiverTable">
 										<tr>
 											<th>
-												收货人姓名: 
+												${bundle("goods.order.ship.username")}: 
 											</th>
 											<td>
 												<input type="text" name="receiver.name" class="formText" />
@@ -202,7 +202,7 @@ $().ready( function() {
 										</tr>
 										<tr>
 											<th>
-												地区: 
+												${bundle("goods.common.area")}: 
 											</th>
 											<td>
 												<input type="text" id="areaSelect" name="areaId" class="hidden" />
@@ -211,7 +211,7 @@ $().ready( function() {
 										</tr>
 										<tr>
 											<th>
-												地址: 
+												${bundle("goods.common.address")}: 
 											</th>
 											<td>
 												<input type="text" name="receiver.address" class="formText" />
@@ -220,7 +220,7 @@ $().ready( function() {
 										</tr>
 										<tr>
 											<th>
-												电话: 
+												${bundle("goods.order.ship.phone")}: 
 											</th>
 											<td>
 												<input type="text" id="receiverPhone" name="receiver.phone" class="formText" />
@@ -229,7 +229,7 @@ $().ready( function() {
 										</tr>
 										<tr>
 											<th>
-												手机: 
+												${bundle("goods.order.ship.mobile")}: 
 											</th>
 											<td>
 												<input type="text" name="receiver.mobile" class="formText" />
@@ -238,7 +238,7 @@ $().ready( function() {
 										</tr>
 										<tr>
 											<th>
-												邮编: 
+												${bundle("goods.order.ship.zipcode")}: 
 											</th>
 											<td>
 												<input type="text" name="receiver.zipCode" class="formText" />
@@ -247,11 +247,11 @@ $().ready( function() {
 										</tr>
 										<tr>
 											<th>
-												设置: 
+												${bundle("goods.common.setting")}: 
 											</th>
 											<td>
 												<label>
-													<@checkbox name="isSaveReceiver" value="true" />保存收货地址
+													<@checkbox name="isSaveReceiver" value="true" />${bundle("goods.order.ship.address.save")}
 												</label>
 											</td>
 										</tr>
@@ -261,7 +261,7 @@ $().ready( function() {
 						</td>
 					</tr>
 					<tr>
-						<th>配送方式</th>
+						<th>${bundle("goods.payment.delivery")}</th>
 						<td>
 							<table id="deliveryTypeTable" class="deliveryTypeTable">
 								<#list allDeliveryTypeList as deliveryType>
@@ -283,7 +283,7 @@ $().ready( function() {
 						</td>
 					</tr>
 					<tr id="paymentConfigTr" class="paymentConfigTr">
-						<th>支付方式</th>
+						<th>${bundle("goods.payment.way")}</th>
 						<td>
 							<table id="paymentConfigTable" class="paymentConfigTable">
 								<#list allPaymentConfigList as paymentConfig>
@@ -295,9 +295,9 @@ $().ready( function() {
 										</th>
 										<td>
 											<#if paymentConfig.paymentFeeType == "scale" && paymentConfig.paymentFee != 0>
-												[支付费率: ${paymentConfig.paymentFee}%]
+												[${bundle("goods.payment.ratio")}: ${paymentConfig.paymentFee}%]
 											<#elseif paymentConfig.paymentFeeType == "fixed" && paymentConfig.paymentFee != 0>
-												[支付费用: ${paymentConfig.paymentFee?string(currencyFormat)}]
+												[${bundle("goods.payment.fee")}: ${paymentConfig.paymentFee?string(currencyFormat)}]
 											</#if>
 											<#if paymentConfig.description??>
 												<p>${paymentConfig.description}</p>
@@ -312,7 +312,7 @@ $().ready( function() {
 						<td colspan="2">&nbsp;</td>
 					</tr>
 					<tr>
-						<th>附言</th>
+						<th>${bundle("goods.order.ship.addition")}</th>
 						<td>
 							<input type="text" name="memo" class="formText" />
 						</td>
@@ -324,15 +324,15 @@ $().ready( function() {
 				<div class="blank"></div>
 				<table class="cartItemTable">
 					<tr>
-						<th>商品图片</th>
-						<th>商品名称</th>
-						<th>销售价格</th>
+						<th>${bundle("goods.notify.memberCenter.goods.image")}</th>
+						<th>${bundle("goods.notify.memberCenter.goods.name")}</th>
+						<th>${bundle("goods.order.sale.price")}</th>
 						<#if (loginMember.memberRank.preferentialScale != 100)!>
-							<th>优惠价格</th>
+							<th>${bundle("goods.order.sale.scale")}</th>
 						</#if>
-						<th>商品重量</th>
-						<th>小计</th>
-						<th>数量</th>
+						<th>${bundle("goods.order.weight")}</th>
+						<th>${bundle("goods.order.calculate")}</th>
+						<th>${bundle("goods.common.number")}</th>
 					</tr>
 					<#list cartItemSet as cartItem>
 						<#assign product = cartItem.product />
@@ -361,7 +361,7 @@ $().ready( function() {
 								</td>
 							</#if>
 							<td>
-								${product.weight} 克
+								${product.weight} ${bundle("goods.common.unit.gram")}
 							</td>
 							<td>
 								<span class="subtotalPrice">${cartItem.subtotalPrice?string(currencyFormat)}</span>
@@ -373,20 +373,20 @@ $().ready( function() {
 					</#list>
 					<tr>
 						<td class="info" colspan="<#if (loginMember.memberRank.preferentialScale != 100)!>7<#else>6</#if>">
-							商品共计: <span class="red">${totalProductQuantity}</span> 件&nbsp;&nbsp;
+							${bundle("goods.order.total")}: <span class="red">${totalProductQuantity}</span> ${bundle("goods.common.unit.goods")}&nbsp;&nbsp;
 							<#if setting.scoreType != "disable">
-								积分: <span id="totalScore" class="red">${totalScore}</span>&nbsp;&nbsp;
+								${bundle("goods.common.score")}: <span id="totalScore" class="red">${totalScore}</span>&nbsp;&nbsp;
 							</#if>
-							商品总金额: <span id="totalProductPrice" class="red">${totalProductPrice?string(currencyFormat)}</span>&nbsp;&nbsp;
-							配送费用: <span id="deliveryFee" class="red">${0?string(currencyFormat)}</span>&nbsp;&nbsp;
-							支付手续费: <span id="paymentFee" class="red">${0?string(currencyFormat)}</span>&nbsp;&nbsp;
-							订单总金额: <span id="orderAmount" class="red">${(totalProductPrice)?string(currencyFormat)}</span>
+							${bundle("goods.payment.goods.cost")}: <span id="totalProductPrice" class="red">${totalProductPrice?string(currencyFormat)}</span>&nbsp;&nbsp;
+							${bundle("goods.order.price")}: <span id="deliveryFee" class="red">${0?string(currencyFormat)}</span>&nbsp;&nbsp;
+							${bundle("goods.payment.goods.payment.fee")}: <span id="paymentFee" class="red">${0?string(currencyFormat)}</span>&nbsp;&nbsp;
+							${bundle("goods.payment.order.cost")}: <span id="orderAmount" class="red">${(totalProductPrice)?string(currencyFormat)}</span>
 						</td>
 					</tr>
 				</table>
 				<div class="blank"></div>
-				<a class="backCartItem" href="${base}/shop/cart_item!list.action"><span class="icon">&nbsp;</span>返回购物车</a>
-				<input type="submit" class="formButton" value="去结算" />
+				<a class="backCartItem" href="${base}/shop/cart_item!list.action"><span class="icon">&nbsp;</span>${bundle("goods.order.return")}</a>
+				<input type="submit" class="formButton" value="${bundle("goods.order.payment")}" />
 				<div class="blank"></div>
 			</form>
 		</div>

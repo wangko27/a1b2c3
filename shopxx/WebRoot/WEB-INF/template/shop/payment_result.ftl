@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>支付结果<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("goods.payment.result")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -24,12 +24,12 @@
 			<#if payment.paymentType == "deposit">
 				<h2>
 					<span class="icon success">&nbsp;</span>
-					预存款支付成功,支付总金额<span class="red">${payment.totalAmount?string(currencyFormat)}</span>
+					${bundle("goods.payment.result.success")}<span class="red">${payment.totalAmount?string(currencyFormat)}</span>
 				</h2>
 			<#elseif payment.paymentType == "offline">
 				<h2>
 					<span class="icon success">&nbsp;</span>
-					请根据您选择的支付方式进行付款,支付总金额<span class="red">${payment.totalAmount?string(currencyFormat)}</span>
+					${bundle("goods.payment.result.way")}<span class="red">${payment.totalAmount?string(currencyFormat)}</span>
 				</h2>
 				<p>
 					${(payment.paymentConfig.description)!}
@@ -37,11 +37,11 @@
 			<#else>
 				<h2>
 					<span class="icon success">&nbsp;</span>
-					在线支付成功,支付总金额<span class="red">${payment.totalAmount?string(currencyFormat)}</span>
+					${bundle("goods.payment.online.success")}<span class="red">${payment.totalAmount?string(currencyFormat)}</span>
 				</h2>
 			</#if>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" onclick="location.href='${base}/'" value="返回首页" />
+				<input type="submit" class="formButton" onclick="location.href='${base}/'" value="${bundle("goods.common.returnMain")}" />
 			</div>
 		</div>
 		<div class="blank"></div>

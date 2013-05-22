@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>查看退货单 - Powered By SHOP++</title>
+<title><@s.text name="reship.view.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -14,19 +14,19 @@
 </head>
 <body class="input">
 	<div class="bar">
-		查看退货单
+		<@s.text name="reship.list.pagetitle"/>
 	</div>
 	<div class="body">
 		<table class="inputTable">
 			<tr>
 				<th>
-					退货编号: 
+					<@s.text name="reship.reshipSn"/>: 
 				</th>
 				<td>
 					${reship.reshipSn}
 				</td>
 				<th>
-					订单编号: 
+					<@s.text name="reship.order.orderSn"/>: 
 				</th>
 				<td>
 					${(reship.order.orderSn)!}
@@ -34,13 +34,13 @@
 			</tr>
 			<tr>
 				<th>
-					退货日期: 
+					<@s.text name="reship.createDate"/>: 
 				</th>
 				<td>
 					${reship.createDate?string("yyyy-MM-dd HH:mm:ss")}
 				</td>
 				<th>
-					配送方式名称: 
+					<@s.text name="reship.deliveryTypeName"/>: 
 				</th>
 				<td>
 					${reship.deliveryTypeName}
@@ -48,13 +48,13 @@
 			</tr>
 			<tr>
 				<th>
-					物流公司名称: 
+					<@s.text name="reship.deliveryCorpName"/>: 
 				</th>
 				<td>
 					${reship.deliveryCorpName}
 				</td>
 				<th>
-					物流单号: 
+					<@s.text name="reship.deliverySn"/>: 
 				</th>
 				<td>
 					${reship.deliverySn}
@@ -62,13 +62,13 @@
 			</tr>
 			<tr>
 				<th>
-					物流费用: 
+					<@s.text name="reship.deliveryFee"/>: 
 				</th>
 				<td>
 					${reship.deliveryFee?string(currencyFormat)}
 				</td>
 				<th>
-					退货人姓名: 
+					<@s.text name="reship.reshipName"/>:
 				</th>
 				<td>
 					${reship.reshipName}
@@ -76,13 +76,13 @@
 			</tr>
 			<tr>
 				<th>
-					退货地区: 
+					<@s.text name="reship.reshipArea.displayName"/>:
 				</th>
 				<td>
 					${reship.reshipArea.displayName}
 				</td>
 				<th>
-					退货地址: 
+					<@s.text name="reship.reshipAddress"/>:
 				</th>
 				<td>
 					${reship.reshipAddress}
@@ -90,13 +90,13 @@
 			</tr>
 			<tr>
 				<th>
-					邮编: 
+					<@s.text name="reship.reshipZipCode"/>: 
 				</th>
 				<td>
 					${reship.reshipZipCode}
 				</td>
 				<th>
-					电话: 
+					<@s.text name="reship.reshipPhone"/>: 
 				</th>
 				<td>
 					${reship.reshipPhone}
@@ -104,13 +104,13 @@
 			</tr>
 			<tr>
 				<th>
-					手机: 
+					<@s.text name="reship.reshipMobile"/>: 
 				</th>
 				<td>
 					${reship.reshipMobile}
 				</td>
 				<th>
-					备注: 
+					<@s.text name="reship.memo"/>: 
 				</th>
 				<td>
 					${reship.memo}
@@ -124,9 +124,9 @@
 		</table>
 		<table class="inputTable">
 			<tr class="title">
-				<th>货号</th>
-				<th>商品名称</th>
-				<th>退货数</th>
+				<th><@s.text name="reship.deliveryItem.productSn"/></th>
+				<th><@s.text name="reship.deliveryItem.productName"/></th>
+				<th><@s.text name="reship.deliveryItem.deliveryQuantity"/></th>
 			</tr>
 			<#list reship.deliveryItemSet as deliveryItem>
 				<tr>
@@ -147,7 +147,7 @@
 			</#list>
 		</table>
 		<div class="buttonArea">
-			<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+			<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 		</div>
 	</div>
 </body>

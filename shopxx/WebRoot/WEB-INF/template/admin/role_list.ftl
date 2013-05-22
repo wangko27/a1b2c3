@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>角色列表 - Powered By SHOP++</title>
+<title><@s.text name="role.list.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,23 +15,23 @@
 </head>
 <body class="list">
 	<div class="bar">
-		角色管理&nbsp;总记录数: ${pager.totalCount} (共${pager.pageCount}页)
+		<@s.text name="role.list.page.tips1"/>&nbsp;<@s.text name="role.list.page.tips2"/>: ${pager.totalCount} (<@s.text name="role.list.page.tips3"/>${pager.pageCount}<@s.text name="role.list.page.tips4"/>)
 	</div>
 	<div class="body">
 		<form id="listForm" action="role!list.action" method="post">
 			<div class="listBar">
-				<input type="button" class="formButton" onclick="location.href='role!add.action'" value="添加角色" hidefocus />
+				<input type="button" class="formButton" onclick="location.href='role!add.action'" value="<@s.text name="role.list.button.add"/>" hidefocus />
 				&nbsp;&nbsp;
-				<label>查找: </label>
+				<label><@s.text name="role.list.search.label"/>: </label>
 				<select name="pager.searchBy">
 					<option value="name"<#if pager.searchBy == "name"> selected</#if>>
-						角色名称
+						<@s.text name="role.list.search.option"/>
 					</option>
 				</select>
 				<input type="text" name="pager.keyword" value="${pager.keyword!}" />
-				<input type="button" id="searchButton" class="formButton" value="搜 索" hidefocus />
+				<input type="button" id="searchButton" class="formButton" value="<@s.text name="role.list.search.button"/>" hidefocus />
 				&nbsp;&nbsp;
-				<label>每页显示: </label>
+				<label><@s.text name="role.list.search.page.head"/>: </label>
 				<select name="pager.pageSize" id="pageSize">
 					<option value="10"<#if pager.pageSize == 10> selected</#if>>
 						10
@@ -53,25 +53,25 @@
 						<input type="checkbox" class="allCheck" />
 					</th>
 					<th>
-						<a href="#" class="sort" name="name" hidefocus>角色名称</a>
+						<a href="#" class="sort" name="name" hidefocus><@s.text name="role.name"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="isSystem" hidefocus>系统内置</a>
+						<a href="#" class="sort" name="isSystem" hidefocus><@s.text name="role.system"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="description" hidefocus>描述</a>
+						<a href="#" class="sort" name="description" hidefocus><@s.text name="role.description"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="createDate" hidefocus>创建日期</a>
+						<a href="#" class="sort" name="createDate" hidefocus><@s.text name="role.createDate"/></a>
 					</th>
 					<th>
-						<span>操作</span>
+						<span><@s.text name="common.button.operate"/></span>
 					</th>
 				</tr>
 				<#list pager.result as role>
 					<tr>
 						<td>
-							<input type="checkbox"<#if role.isSystem> disabled title="系统内置权限不允许删除!"<#else> name="ids" value="${role.id}"</#if> />
+							<input type="checkbox"<#if role.isSystem> disabled title="<@s.text name="role.delete.title"/>"<#else> name="ids" value="${role.id}"</#if> />
 						</td>
 						<td>
 							${role.name}
@@ -88,7 +88,7 @@
 							</span>
 						</td>
 						<td>
-							<a href="role!edit.action?id=${role.id}" title="编辑">[编辑]</a>
+							<a href="role!edit.action?id=${role.id}" title="<@s.text name="common.button.edit"/>">[<@s.text name="common.button.edit"/>]</a>
 						</td>
 					</tr>
 				</#list>
@@ -96,14 +96,14 @@
 			<#if (pager.result?size > 0)>
 				<div class="pagerBar">
 					<div class="delete">
-						<input type="button" id="deleteButton" class="formButton" url="role!delete.action" value="删 除" disabled hidefocus />
+						<input type="button" id="deleteButton" class="formButton" url="role!delete.action" value="<@s.text name="common.button.delete"/>" disabled hidefocus />
 					</div>
 					<div class="pager">
 						<#include "/WEB-INF/template/admin/pager.ftl" />
 					</div>
 				<div>
 			<#else>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="common.empty"/></div>
 			</#if>
 		</form>
 	</div>

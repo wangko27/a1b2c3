@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>订单结果<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
+<title>${bundle("goods.order.result")}<#if setting.isShowPoweredInfo> - Powered By SHOP++</#if></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -26,31 +26,31 @@
 	<div class="body">
 		<div class="blank"></div>
 		<div class="orderResultDetail">
-			<div class="message"><span class="icon">&nbsp;</span>&nbsp;&nbsp;您的订单已经成功提交!</div>
+			<div class="message"><span class="icon">&nbsp;</span>&nbsp;&nbsp;${bundle("goods.order.submited")}!</div>
 			<div class="blank"></div>
 			<table class="listTable">
 				<tr>
-					<th colspan="2">订单信息</th>
+					<th colspan="2">${bundle("goods.order.info")}</th>
 				</tr>
 				<tr>
-					<td class="title">订单编号</td>
+					<td class="title">${bundle("goods.notify.memberCenter.order.sn")}</td>
 					<td>
 						${order.orderSn}
-						<a href="${base}/shop/order!view.action?id=${order.id}">[查看订单详情]</a>
+						<a href="${base}/shop/order!view.action?id=${order.id}">[${bundle("goods.order.view.show")}]</a>
 					</td>
 				</tr>
 				<tr>
-					<td class="title">订单总金额</td>
+					<td class="title">${bundle("goods.payment.order.cost")}</td>
 					<td><span class="red">${order.totalAmount?string(currencyFormat)}</span></td>
 				</tr>
 			</table>
 			<div class="blank"></div>
 			<table class="listTable">
 				<tr>
-					<th colspan="2">配送信息</th>
+					<th colspan="2">${bundle("goods.payment.delivery.info")}</th>
 				</tr>
 				<tr>
-					<td class="title">配送方式</td>
+					<td class="title">${bundle("goods.payment.delivery")}</td>
 					<td>${order.deliveryTypeName}</td>
 				</tr>
 			</table>
@@ -68,15 +68,15 @@
 					<div class="blank"></div>
 					<table class="listTable">
 						<tr>
-							<th colspan="2">支付信息</th>
+							<th colspan="2">${bundle("goods.payment.info")}</th>
 						</tr>
 						<tr>
-							<td class="title">支付方式</td>
+							<td class="title">${bundle("goods.payment.way")}</td>
 							<td>${order.paymentConfigName}</td>
 						</tr>
 						<tr>
 							<td colspan="2">
-								<input type="submit" class="formButton" value="立即支付" />
+								<input type="submit" class="formButton" value="${bundle("goods.payment.rightnow")}" />
 							</td>
 						</tr>
 					</table>
@@ -84,15 +84,15 @@
 			<#else>
 				<table class="listTable">
 					<tr>
-						<th colspan="2">支付信息</th>
+						<th colspan="2">${bundle("goods.payment.info")}</th>
 					</tr>
 					<tr>
-						<td class="title">支付方式</td>
+						<td class="title">${bundle("goods.payment.way")}</td>
 						<td>${order.paymentConfigName}</td>
 					</tr>
 					<tr>
 						<td colspan="2">
-							<input type="button" class="formButton" onclick="window.location.href='${base}/'" value="确 定" />
+							<input type="button" class="formButton" onclick="window.location.href='${base}/'" value="${bundle("goods.common.ok")}" />
 						</td>
 					</tr>
 				</table>

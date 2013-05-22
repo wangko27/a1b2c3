@@ -1,26 +1,26 @@
 <#if (pageCount > 1)>
 	<ul class="pager">
 		<li class="pageInfo">
-			共 ${pageCount} 页
+			${bundle("goods.common.total")} ${pageCount} ${bundle("goods.common.page")}
 		</li>
 		
 		<#if (pageNumber > 1)>
 			<li class="firstPage">
-				<a href="${base}${firstPageUrl}">首页</a>
+				<a href="${base}${firstPageUrl}">${bundle("goods.common.main")}</a>
 			</li>
 		<#else>
 			<li class="firstPage">
-				<span>首页</span>
+				<span>${bundle("goods.common.main")}</span>
 			</li>
 		</#if>
 		
 		<#if (pageNumber > 1)>
 			<li class="prePage">
-				<a href="${base}${prePageUrl}">上一页</a>
+				<a href="${base}${prePageUrl}">${bundle("goods.common.page.prev")}</a>
 			</li>
 		<#else>
 			<li class="prePage">
-				<span>上一页</span>
+				<span>${bundle("goods.common.page.prev")}</span>
 			</li>
 		</#if>
 		
@@ -44,21 +44,21 @@
 	    
 		<#if (pageNumber < pageCount)>
 			<li class="nextPage">
-				<a href="${base}${nextPageUrl}">下一页</a>
+				<a href="${base}${nextPageUrl}">${bundle("goods.common.page.next")}</a>
 			</li>
 		<#else>
 			<li class="nextPage">
-				<span>下一页</span>
+				<span>${bundle("goods.common.page.next")}</span>
 			</li>
 		</#if>
 		
 		<#if (pageNumber < pageCount)>
 			<li class="lastPage">
-				<a href="${base}${lastPageUrl}">末页</a>
+				<a href="${base}${lastPageUrl}">${bundle("goods.common.page.last")}</a>
 			</li>
 		<#else>
 			<li class="lastPage">
-				<span>末页</span>
+				<span>${bundle("goods.common.page.last")}</span>
 			</li>
 		</#if>
 	</ul>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>查看退款单 - Powered By SHOP++</title>
+<title><@s.text name="refund.view.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -14,19 +14,19 @@
 </head>
 <body class="input">
 	<div class="bar">
-		查看退款单
+		<@s.text name="refund.view.pagetitle"/>
 	</div>
 	<div class="body">
 		<table class="inputTable">
 			<tr>
 				<th>
-					退款编号: 
+					<@s.text name="refund.refundSn"/>: 
 				</th>
 				<td>
 					${refund.refundSn}
 				</td>
 				<th>
-					订单编号: 
+					<@s.text name="refund.order.orderSn"/>: 
 				</th>
 				<td>
 					${(refund.order.orderSn)!}
@@ -34,13 +34,13 @@
 			</tr>
 			<tr>
 				<th>
-					退款类型: 
+					<@s.text name="refund.refundType"/>: 
 				</th>
 				<td>
 					${action.getText("PaymentType." + refund.refundType)}
 				</td>
 				<th>
-					退款方式: 
+					<@s.text name="refund.paymentConfigName"/>: 
 				</th>
 				<td>
 					${refund.paymentConfigName}
@@ -48,13 +48,13 @@
 			</tr>
 			<tr>
 				<th>
-					退款银行名称: 
+					<@s.text name="refund.bankName"/>: 
 				</th>
 				<td>
 					${refund.bankName}
 				</td>
 				<th>
-					退款银行账号: 
+					<@s.text name="refund.bankAccount"/>: 
 				</th>
 				<td>
 					${refund.bankAccount}
@@ -62,13 +62,13 @@
 			</tr>
 			<tr>
 				<th>
-					支付金额: 
+					<@s.text name="refund.totalAmount"/>: 
 				</th>
 				<td>
 					${refund.totalAmount?string(currencyFormat)}
 				</td>
 				<th>
-					收款人: 
+					<@s.text name="refund.payee"/>: 
 				</th>
 				<td>
 					${refund.payee}
@@ -76,13 +76,13 @@
 			</tr>
 			<tr>
 				<th>
-					操作员: 
+					<@s.text name="refund.operator"/>: 
 				</th>
 				<td>
 					${refund.operator}
 				</td>
 				<th>
-					备注: 
+					<@s.text name="refund.memo"/>: 
 				</th>
 				<td>
 					${refund.memo}
@@ -90,7 +90,7 @@
 			</tr>
 		</table>
 		<div class="buttonArea">
-			<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+			<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 		</div>
 	</div>
 </body>

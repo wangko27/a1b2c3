@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>查看收款单 - Powered By SHOP++</title>
+<title><@s.text name="payment.view.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -14,19 +14,19 @@
 </head>
 <body class="input">
 	<div class="bar">
-		查看收款单
+		<@s.text name="payment.view.pagetitle"/>
 	</div>
 	<div class="body">
 		<table class="inputTable">
 			<tr>
 				<th>
-					支付编号: 
+					<@s.text name="payment.paymentSn"/>: 
 				</th>
 				<td>
 					${payment.paymentSn}
 				</td>
 				<th>
-					订单编号: 
+					<@s.text name="payment.order.orderSn"/>: 
 				</th>
 				<td>
 					${(payment.order.orderSn)!}
@@ -34,13 +34,13 @@
 			</tr>
 			<tr>
 				<th>
-					支付类型: 
+					<@s.text name="payment.paymentType"/>: 
 				</th>
 				<td>
 					${action.getText("PaymentType." + payment.paymentType)}
 				</td>
 				<th>
-					支付方式: 
+					<@s.text name="payment.paymentConfigName"/>: 
 				</th>
 				<td>
 					${payment.paymentConfigName}
@@ -48,13 +48,13 @@
 			</tr>
 			<tr>
 				<th>
-					收款银行名称: 
+					<@s.text name="payment.bankName"/>: 
 				</th>
 				<td>
 					${payment.bankName}
 				</td>
 				<th>
-					收款银行账号: 
+					<@s.text name="payment.bankAccount"/>: 
 				</th>
 				<td>
 					${payment.bankAccount}
@@ -62,13 +62,13 @@
 			</tr>
 			<tr>
 				<th>
-					支付金额: 
+					<@s.text name="payment.totalAmount"/>: 
 				</th>
 				<td>
 					${payment.totalAmount?string(currencyFormat)}
 				</td>
 				<th>
-					支付手续费: 
+					<@s.text name="payment.paymentFee"/>: 
 				</th>
 				<td>
 					${payment.paymentFee?string(currencyFormat)}
@@ -76,13 +76,13 @@
 			</tr>
 			<tr>
 				<th>
-					付款人: 
+					<@s.text name="payment.payer"/>: 
 				</th>
 				<td>
 					${payment.payer}
 				</td>
 				<th>
-					操作员: 
+					<@s.text name="payment.operator"/>: 
 				</th>
 				<td>
 					${payment.operator}
@@ -90,13 +90,13 @@
 			</tr>
 			<tr>
 				<th>
-					支付状态: 
+					<@s.text name="payment.paymentStatus"/>:  
 				</th>
 				<td>
 					${action.getText("PaymentStatus." + payment.paymentStatus)}
 				</td>
 				<th>
-					备注: 
+					<@s.text name="payment.memo"/>: 
 				</th>
 				<td>
 					${payment.memo}
@@ -104,7 +104,7 @@
 			</tr>
 		</table>
 		<div class="buttonArea">
-			<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+			<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 		</div>
 	</div>
 </body>

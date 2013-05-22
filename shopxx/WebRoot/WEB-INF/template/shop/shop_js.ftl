@@ -84,36 +84,36 @@ $().ready( function() {
 				'<form id="loginWindowForm">
 					<table>
 						<tr>
-							<th>用户名: </th>
+							<th>${bundle("goods.notify.memberCenter.profile.username")}: </th>
 							<td>
 								<input type="text" id="loginWindowMemberUsername" name="member.username" class="formText" />
 							</td>
 						</tr>
 						<tr>
-							<th>密&nbsp;&nbsp;&nbsp;码: </th>
+							<th>${bundle("goods.common.password")}: </th>
 							<td>
 								<input type="password" id="loginWindowMemberPassword" name="member.password" class="formText" />
 							</td>
 						</tr>
 						<tr>
-							<th>验证码: </th>
+							<th>${bundle("goods.content.bottom.comment.sign")}: </th>
 							<td>
 								<input type="text" id="loginWindowCaptcha" name="j_captcha" class="formText loginWindowCaptcha" />
-								<img id="loginWindowCaptchaImage" class="loginWindowCaptchaImage" src="' + shopxx.base + '/captcha.jpeg?timestamp=' + (new Date()).valueOf() + '" alt="换一张" />
+								<img id="loginWindowCaptchaImage" class="loginWindowCaptchaImage" src="' + shopxx.base + '/captcha.jpeg?timestamp=' + (new Date()).valueOf() + '" alt="${bundle("goods.content.bottom.comment.replace")}" />
 							</td>
 						</tr>
 							<tr>
 								<th>&nbsp;</th>
 							<td>
 								<span class="warnIcon">&nbsp;</span>
-								<a href="' + shopxx.base + '/shop/member!passwordRecover.action">忘记了密码? 点击找回!</a>
+								<a href="' + shopxx.base + '/shop/member!passwordRecover.action">${bundle("goods.password.forget")}? ${bundle("goods.common.clickfind")}!</a>
 							</td>
 						</tr>
 					</table>
 				</form>';
 			</@compress>
 			
-			$.dialog({title: "会员登录", content: loginWindowHtml, ok: "登 录", cancel: "取 消", id: "loginWindow", className: "loginWindow", width: 420, okCallback: login, modal: true});
+			$.dialog({title: "${bundle("goods.common.member.login")}", content: loginWindowHtml, ok: "${bundle("goods.common.login")}", cancel: "${bundle("goods.common.cancel")}", id: "loginWindow", className: "loginWindow", width: 420, okCallback: login, modal: true});
 			
 			var $loginWindowForm = $("#loginWindowForm");
 			var $loginWindowMemberUsername = $("#loginWindowMemberUsername");
@@ -132,17 +132,17 @@ $().ready( function() {
 			function login() {
 				if ($.trim($loginWindowMemberUsername.val()) == "") {
 					$loginWindowMemberUsername.focus();
-					$.message({type: "warn", content: "请输入用户名!"});
+					$.message({type: "warn", content: "${bundle("goods.notify.javascript.username.input")}!"});
 					return false;
 				}
 				if ($.trim($loginWindowMemberPassword.val()) == "") {
 					$loginWindowMemberPassword.focus();
-					$.message({type: "warn", content: "请输入密码!"});
+					$.message({type: "warn", content: "${bundle("goods.notify.javascript.password.input")}!"});
 					return false;
 				}
 				if ($.trim($loginWindowCaptcha.val()) == "") {
 					$loginWindowCaptcha.focus();
-					$.message({type: "warn", content: "请输入验证码!"});
+					$.message({type: "warn", content: "${bundle("goods.message.push.captcha.input")}!"});
 					return false;
 				}
 				
@@ -182,21 +182,21 @@ $().ready( function() {
 				<form id="registerWindowForm">
 					<table>
 						<tr>
-							<th>用户名: </th>
+							<th>${bundle("goods.notify.memberCenter.profile.username")}: </th>
 							<td>
-								<input type="text" id="registerWindowMemberUsername" name="member.username" class="formText" title="用户名只允许包含中文、英文、数字和下划线!" />
+								<input type="text" id="registerWindowMemberUsername" name="member.username" class="formText" title="${bundle("goods.common.user.require")}!" />
 							</td>
 						</tr>
 						<tr>
-							<th>密&nbsp;&nbsp;&nbsp;码: </th>
+							<th>${bundle("goods.common.password")}: </th>
 							<td>
 								<input type="password" id="registerWindowMemberPassword" name="member.password" class="formText" />
 							</td>
 						</tr>
 						<tr>
-							<th>重复密码: </th>
+							<th>${bundle("goods.common.repassword")}: </th>
 							<td>
-								<input type="password" id="registerWindowReMemberPassword" name="reMemberPassword" class="formText" title="密码长度只允许在4-20之间!" />
+								<input type="password" id="registerWindowReMemberPassword" name="reMemberPassword" class="formText" title="${bundle("goods.common.password.require")}!" />
 							</td>
 						</tr>
 						<tr>
@@ -206,18 +206,18 @@ $().ready( function() {
 							</td>
 						</tr>
 						<tr>
-							<th>验证码: </th>
+							<th>${bundle("goods.content.bottom.comment.sign")}: </th>
 							<td>
 								<input type="text" id="registerWindowCaptcha" name="j_captcha" class="formText registerWindowCaptcha" />
-								<img id="registerWindowCaptchaImage" class="registerWindowCaptchaImage" src="' + shopxx.base + '/captcha.jpeg?timestamp=' + (new Date()).valueOf() + '" alt="换一张" />
+								<img id="registerWindowCaptchaImage" class="registerWindowCaptchaImage" src="' + shopxx.base + '/captcha.jpeg?timestamp=' + (new Date()).valueOf() + '" alt="${bundle("goods.content.bottom.comment.replace")}" />
 							</td>
 						</tr>
 						<tr>
 							<th>&nbsp;</th>
 							<td>
 								<label>
-									<input type="checkbox" id="registerWindowIsAgreeAgreement" name="isAgreeAgreement" value="true" checked />已阅读并同意
-									<a id="registerWindowShowAgreementWindow" class="showAgreementWindow" href="javascript: void(0);" title="查看会员注册协议">《会员注册协议》</a>
+									<input type="checkbox" id="registerWindowIsAgreeAgreement" name="isAgreeAgreement" value="true" checked />${bundle("goods.register.agree")}
+									<a id="registerWindowShowAgreementWindow" class="showAgreementWindow" href="javascript: void(0);" title="${bundle("goods.register.member.law.show")}">${bundle("goods.register.member.law")}</a>
 								</label>
 							</td>
 						</tr>
@@ -225,7 +225,7 @@ $().ready( function() {
 				</form>';
 			</@compress>
 			
-			$.dialog({title: "会员注册", content: registerWindowHtml, ok: "注 册", cancel: "取 消", id: "registerWindow", className: "registerWindow", width: 480, okCallback: register, modal: true});
+			$.dialog({title: "${bundle("goods.register.member")}", content: registerWindowHtml, ok: "${bundle("goods.common.register")}", cancel: "${bundle("goods.common.cancel")}", id: "registerWindow", className: "registerWindow", width: 480, okCallback: register, modal: true});
 			
 			var $registerWindowForm = $("#registerWindowForm");
 			var $registerWindowMemberUsername = $("#registerWindowMemberUsername");
@@ -252,57 +252,57 @@ $().ready( function() {
 			function register() {
 				if ($.trim($registerWindowMemberUsername.val()) == "") {
 					$registerWindowMemberUsername.focus();
-					$.message({type: "warn", content: "请输入用户名!"});
+					$.message({type: "warn", content: "${bundle("goods.notify.javascript.username.input")}!"});
 					return false;
 				}
 				if (!/^[\u0391-\uFFE5\w]+$/.test($registerWindowMemberUsername.val())) {
 					$registerWindowMemberUsername.focus();
-					$.message({type: "warn", content: "用户名只允许包含中文、英文、数字和下划线!"});
+					$.message({type: "warn", content: "${bundle("goods.notify.javascript.username.error")}!"});
 					return false;
 				}
 				if ($.trim($registerWindowMemberUsername.val()).length < 2 || $.trim($registerWindowMemberUsername.val()).length > 20) {
 					$registerWindowMemberUsername.focus();
-					$.message({type: "warn", content: "用户名长度只允许在2-20之间!"});
+					$.message({type: "warn", content: "${bundle("goods.notify.javascript.username.length")}!"});
 					return false;
 				}
 				if ($.trim($registerWindowMemberPassword.val()) == "") {
 					$registerWindowMemberPassword.focus();
-					$.message({type: "warn", content: "请输入密码!"});
+					$.message({type: "warn", content: "${bundle("goods.notify.javascript.password.input")}!"});
 					return false;
 				}
 				if ($.trim($registerWindowMemberPassword.val()).length < 4 || $.trim($registerWindowMemberPassword.val()).length > 20) {
 					$registerWindowMemberPassword.focus();
-					$.message({type: "warn", content: "密码长度只允许在4-20之间!"});
+					$.message({type: "warn", content: "${bundle("goods.notify.javascript.password.length")}!"});
 					return false;
 				}
 				if ($.trim($registerWindowReMemberPassword.val()) == "") {
 					$registerWindowReMemberPassword.focus();
-					$.message({type: "warn", content: "请输入重复密码!"});
+					$.message({type: "warn", content: "${bundle("goods.notify.javascript.password.reinput")}!"});
 					return false;
 				}
 				if ($.trim($registerWindowReMemberPassword.val()) != $.trim($registerWindowMemberPassword.val())) {
 					$registerWindowReMemberPassword.focus();
-					$.message({type: "warn", content: "两次密码输入不相同!"});
+					$.message({type: "warn", content: "${bundle("goods.notify.javascript.password.different")}!"});
 					return false;
 				}
 				if ($.trim($registerWindowMemberEmail.val()) == "") {
 					$registerWindowMemberEmail.focus();
-					$.message({type: "warn", content: "请输入E-mail!"});
+					$.message({type: "warn", content: "${bundle("goods.notify.javascript.email.input")}E-mail!"});
 					return false;
 				}
 				if (!/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/.test($registerWindowMemberEmail.val())) {
 					$registerWindowMemberEmail.focus();
-					$.message({type: "warn", content: "E-mail格式错误!"});
+					$.message({type: "warn", content: "E-mail${bundle("goods.notify.javascript.email.error")}!"});
 					return false;
 				}
 				if ($.trim($registerWindowCaptcha.val()) == "") {
 					$registerWindowCaptcha.focus();
-					$.message({type: "warn", content: "请输入验证码!"});
+					$.message({type: "warn", content: "${bundle("goods.message.push.captcha.input")}!"});
 					return false;
 				}
 				if (!$registerWindowIsAgreeAgreement.attr("checked")) {
 					$registerWindowIsAgreeAgreement.focus();
-					$.message({type: "warn", content: "注册前必须阅读并同意《注册协议》!"});
+					$.message({type: "warn", content: "${bundle("goods.register.member.register.pre")}!"});
 					return false;
 				}
 				
@@ -337,7 +337,7 @@ $().ready( function() {
 							});
 						} else {
 							$registerWindowMemberUsername.focus();
-							$.message({type: "warn", content: "用户名已存在,请重新输入!"});
+							$.message({type: "warn", content: "${bundle("goods.register.member.username.exist")}!"});
 						}
 					}
 				});
@@ -354,7 +354,7 @@ $().ready( function() {
 					$registerWindowIsAgreeAgreement.attr("checked", true);
 				}
 			
-				$.dialog({title: "注册协议", content: agreementWindowHtml, ok: "同 意", cancel: "取 消", id: "agreementWindow", className: "agreementWindow", width: 520, okCallback: agreeAgreement});
+				$.dialog({title: "${bundle("goods.register.member.law.title")}", content: agreementWindowHtml, ok: "${bundle("goods.common.agree")}", cancel: "${bundle("goods.common.cancel")}", id: "agreementWindow", className: "agreementWindow", width: 520, okCallback: agreeAgreement});
 				
 				var $agreementWindowContent = $("#agreementWindowContent");
 				
@@ -362,7 +362,7 @@ $().ready( function() {
 					url: shopxx.base + "/html/register_agreement.html",
 					datatype: "html",
 					beforeSend: function(data) {
-						$agreementWindowContent.html('<span class="loadingIcon">&nbsp;</span> 加载中...');
+						$agreementWindowContent.html('<span class="loadingIcon">&nbsp;</span> ${bundle("goods.common.loading")}...');
 					},
 					success: function(data) {
 						$agreementWindowContent.html(data);
@@ -503,10 +503,10 @@ $().ready( function() {
 	$.clearCompare= function() {
 		$('#pop-compare').show();
 		$.cookie('items-compare', '', { path: '/' });
-		var html = '<dl class="item-empty"><dt>1</dt><dd>您还可以继续添加</dd></dl>'
-		         + '<dl class="item-empty"><dt>2</dt><dd>您还可以继续添加</dd></dl>'
-		         + '<dl class="item-empty"><dt>3</dt><dd>您还可以继续添加</dd></dl>'
-		         + '<dl class="item-empty"><dt>4</dt><dd>您还可以继续添加</dd></dl>';
+		var html = '<dl class="item-empty"><dt>1</dt><dd>${bundle("goods.order.add")}</dd></dl>'
+		         + '<dl class="item-empty"><dt>2</dt><dd>${bundle("goods.order.add")}</dd></dl>'
+		         + '<dl class="item-empty"><dt>3</dt><dd>${bundle("goods.order.add")}</dd></dl>'
+		         + '<dl class="item-empty"><dt>4</dt><dd>${bundle("goods.order.add")}</dd></dl>';
 		$('#diff-items').html(html);
 		$('#goto-contrast').attr('class', 'btn-compare-b');
 	}
@@ -516,11 +516,11 @@ $().ready( function() {
 	
 	$.addCartItem = function(id, quantity) {
 		if ($.trim(id) == "") {
-			$.dialog({type: "warn", content: "请选择购买商品!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "${bundle("goods.purchase.select")}!", modal: true, autoCloseTime: 3000});
 			return false;
 		}
 		if (!/^[0-9]*[1-9][0-9]*$/.test($.trim(quantity))) {
-			$.dialog({type: "warn", content: "商品品数量必须为正整数!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "${bundle("goods.purchase.number")}!", modal: true, autoCloseTime: 3000});
 			return false;
 		}
 
@@ -532,7 +532,7 @@ $().ready( function() {
 			cache: false,
 			success: function(data) {
 				if (data.status == "success") {
-					$.dialog({type: "success", content: "<span class=\"red\">" + data.message + "</span><br />商品总计: " + data.totalProductQuantity + " 件, 总金额: " + currencyFormat(data.totalProductPrice), width: 360, modal: true, autoCloseTime: 3000});
+					$.dialog({type: "success", content: "<span class=\"red\">" + data.message + "</span><br />${bundle("goods.purchase.total")}: " + data.totalProductQuantity + " ${bundle("goods.common.unit.goods")}, ${bundle("goods.purchase.cost")}: " + currencyFormat(data.totalProductPrice), width: 360, modal: true, autoCloseTime: 3000});
 				} else {
 					$.dialog({type: data.status, content: data.message, modal: true, autoCloseTime: 3000});
 				}
@@ -729,7 +729,7 @@ $().ready( function() {
 			forCommentId = $this.attr("forCommentId");
 			$forCommentId.val(forCommentId);
 			ajaxUrl = shopxx.base + "/shop/comment!ajaxReply.action";
-			$sendTitle.html("回复评论");
+			$sendTitle.html("${bundle("goods.comment.reply")}");
 			$sendComment.show();
 		});
 		
@@ -737,7 +737,7 @@ $().ready( function() {
 			forCommentId = null;
 			$forCommentId.val("");
 			ajaxUrl = shopxx.base + "/shop/comment!ajaxSave.action";
-			$sendTitle.html("发表评论");
+			$sendTitle.html("${bundle("goods.content.bottom.comment.say")}");
 			$sendComment.hide();
 		});
 		
@@ -751,7 +751,7 @@ $().ready( function() {
 		
 		$commentForm.submit( function() {
 			<#if !setting.isCommentEnabled>
-				$.dialog({type: "warn", content: "本站商品评论功能已关闭!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "${bundle("goods.comment.close")}!", modal: true, autoCloseTime: 3000});
 				return false;
 			</#if>
 			<#if setting.commentAuthority != "anyone">
@@ -761,12 +761,12 @@ $().ready( function() {
 				}
 			</#if>
 			if ($.trim($commentContent.val()) == "") {
-				$.dialog({type: "warn", content: "请输入评论内容!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "${bundle("goods.comment.content.input")}!", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			<#if setting.isCommentCaptchaEnabled>
 				if ($.trim($commentCaptcha.val()) == "") {
-					$.dialog({type: "warn", content: "请输入验证码!", modal: true, autoCloseTime: 3000});
+					$.dialog({type: "warn", content: "${bundle("goods.comment.captcha")}!", modal: true, autoCloseTime: 3000});
 					return false;
 				}
 			</#if>
@@ -787,7 +787,7 @@ $().ready( function() {
 						<#if setting.commentDisplayType == "direct">
 							var username = getCookie("memberUsername");
 							if (username == null) {
-								username = "游客";
+								username = "${bundle("goods.content.bottom.comment.guest")}";
 							}
 							if (forCommentId == null) {
 								var commentItemHtml = '<div class="commentItem"><p><span class="red">' + username + '</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><img src="${base}/template/shop/images/discuss_s' + score + '.gif" /></span>&nbsp;&nbsp;&nbsp;&nbsp;' + new Date().toLocaleDateString() + '</p><p><pre>' + htmlEscape($commentContent.val()) + '</pre></p></div><div class="blank"></div>';
@@ -936,19 +936,19 @@ $().ready( function() {
 									<dd>
 										<#if instantMessaging.instantMessagingType == "qq">
 											<a href="http://wpa.qq.com/msgrd?v=3&uin=${instantMessaging.value}&site=SHOPXX_NET&menu=yes" target="_blank">
-												<img src="http://wpa.qq.com/pa?p=2:${instantMessaging.value}:45" alt="QQ在线客服" align="absmiddle" /> ${instantMessaging.title}
+												<img src="http://wpa.qq.com/pa?p=2:${instantMessaging.value}:45" alt="QQ${bundle("goods.common.customer.service")}" align="absmiddle" /> ${instantMessaging.title}
 											</a>
 										<#elseif instantMessaging.instantMessagingType == "msn">
 											<a href="msnim:chat?contact=${instantMessaging.value}" target="_blank">
-												<img src="${base}/template/shop/images/instant_messaging_msn.gif" alt="MSN在线客服" align="absmiddle" /> ${instantMessaging.title}
+												<img src="${base}/template/shop/images/instant_messaging_msn.gif" alt="MSN${bundle("goods.common.customer.service")}" align="absmiddle" /> ${instantMessaging.title}
 											</a>
 										<#elseif instantMessaging.instantMessagingType == "wangwang">
 											<a href="http://amos1.taobao.com/msg.ww?v=2&uid=${instantMessaging.value}&s=2" target="_blank">
-												<img src="${base}/template/shop/images/instant_messaging_wangwang.gif" alt="旺旺在线客服" align="absmiddle" /> ${instantMessaging.title}
+												<img src="${base}/template/shop/images/instant_messaging_wangwang.gif" alt="${bundle("goods.common.chart.wangwang")}${bundle("goods.common.customer.service")}" align="absmiddle" /> ${instantMessaging.title}
 											</a>
 										<#elseif instantMessaging.instantMessagingType == "skype">
 											<a href="callto://${instantMessaging.value}" target="_blank">
-												<img src="${base}/template/shop/images/instant_messaging_skype.gif" alt="Skype在线客服" align="absmiddle" /> ${instantMessaging.title}
+												<img src="${base}/template/shop/images/instant_messaging_skype.gif" alt="Skype${bundle("goods.common.customer.service")}" align="absmiddle" /> ${instantMessaging.title}
 											</a>
 										</#if>
 									</dd>
@@ -956,7 +956,7 @@ $().ready( function() {
 							</@instant_messaging_list>
 						</dl>
 					</div>
-					<div id="closeInstantMessagingMain" class="bottom" title="关 闭"></div>
+					<div id="closeInstantMessagingMain" class="bottom" title="${bundle("goods.content.buyInfo.closeHighlight")}"></div>
 				</div>
 			</div>';
 		</@compress>

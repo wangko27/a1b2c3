@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>系统设置 - Powered By SHOP++</title>
+<title><@s.text name="setting.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -57,44 +57,44 @@ $().ready(function() {
 	// 邮箱测试
 	$smtpTest.click( function() {
 		var $this = $(this);
-		if ($this.val() == "邮箱测试") {
-			$this.val("发送邮件");
+		if ($this.val() == "<@s.text name="setting.emailtest.title"/>") {
+			$this.val("<@s.text name="setting.emailtest.content"/>");
 			$smtpToMailWrap.show();
 		} else {
 			if ($.trim($smtpFromMail.val()) == "") {
-				$.dialog({type: "warn", content: "请输入发件人邮箱!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "<@s.text name="setting.emailtest.sender"/>", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if (!/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/.test($.trim($smtpFromMail.val()))) {
-				$.dialog({type: "warn", content: "发件人邮箱格式错误!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "<@s.text name="setting.emailtest.sender.format"/>", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if ($.trim($smtpHost.val()) == "") {
-				$.dialog({type: "warn", content: "请输入SMTP服务器地址!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "<@s.text name="setting.emailtest.smtpaddress"/>", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if ($.trim($smtpPort.val()) == "") {
-				$.dialog({type: "warn", content: "请输入SMTP服务器端口!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "<@s.text name="setting.emailtest.smtpport"/>", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if (!/^[0-9]+$/.test($.trim($smtpPort.val()))) {
-				$.dialog({type: "warn", content: "SMTP服务器端口格式错误!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "<@s.text name="setting.emailtest.smtpport.format"/>", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if ($.trim($smtpUsername.val()) == "") {
-				$.dialog({type: "warn", content: "请输入SMTP用户名!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "<@s.text name="setting.emailtest.smptusername"/>", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if ($.trim($smtpPassword.val()) == "") {
-				$.dialog({type: "warn", content: "请输入SMTP密码!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "<@s.text name="setting.emailtest.smptpassword"/>", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if ($.trim($smtpToMail.val()) == "") {
-				$.dialog({type: "warn", content: "请输入收件人邮箱!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "<@s.text name="setting.emailtest.receiver"/>", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			if (!/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/.test($.trim($smtpToMail.val()))) {
-				$.dialog({type: "warn", content: "收件人邮箱格式错误!", modal: true, autoCloseTime: 3000});
+				$.dialog({type: "warn", content: "<@s.text name="setting.emailtest.receiver.format"/>", modal: true, autoCloseTime: 3000});
 				return false;
 			}
 			
@@ -105,13 +105,13 @@ $().ready(function() {
 				dataType: "json",
 				cache: false,
 				beforeSend: function(data) {
-					$smtpTestStatus.html('<span class="loadingIcon">&nbsp;</span>正在发送测试邮件,请稍后...');
+					$smtpTestStatus.html('<span class="loadingIcon">&nbsp;</span><@s.text name="setting.emailtest.loadingmessage"/>');
 					$this.attr("disabled", true);
 				},
 				success: function(data) {
 					$smtpTestStatus.empty();
 					$this.attr("disabled", false);
-					$.dialog({type: data.status, content: data.message, width: 400, ok: "确 定", modal: true});
+					$.dialog({type: data.status, content: data.message, width: 400, ok: "<@s.text name="button.name.confirm"/>", modal: true});
 				}
 			});
 		}
@@ -214,78 +214,78 @@ $().ready(function() {
 			}
 		},
 		messages: {
-			"setting.shopName": "请填写网店名称",
-			"setting.shopUrl": "请填写网店网址",
-			"shopLogo": "网店LOGO格式错误",
-			"setting.email": "E-mail格式不正确",
+			"setting.shopName": "<@s.text name="setting.messages.shopName"/>",
+			"setting.shopUrl": "<@s.text name="setting.messages.shopUrl"/>",
+			"shopLogo": "<@s.text name="setting.messages.shopLogo"/>",
+			"setting.email": "<@s.text name="setting.messages.email"/>",
 			"setting.bigGoodsImageWidth": {
-				required: "请填写商品图片(大)的宽度",
-				positiveInteger: "商品图片(大)的宽度必须为正整数"
+				required: "<@s.text name="setting.messages.bigGoodsImageWidth.required"/>",
+				positiveInteger: "<@s.text name="setting.messages.bigGoodsImageWidth.positiveInteger"/>"
 			},
 			"setting.bigGoodsImageHeight": {
-				required: "请填写商品图片(大)的高度",
-				positiveInteger: "商品图片(大)的高度必须为正整数"
+				required: "<@s.text name="setting.messages.bigGoodsImageHeight.required"/>",
+				positiveInteger: "<@s.text name="setting.messages.bigGoodsImageHeight.positiveInteger"/>"
 			},
 			"setting.smallGoodsImageWidth": {
-				required: "请填写商品图片(小)的宽度",
-				positiveInteger: "商品图片(小)的宽度必须为正整数"
+				required: "<@s.text name="setting.messages.smallGoodsImageWidth.required"/>",
+				positiveInteger: "<@s.text name="setting.messages.smallGoodsImageWidth.positiveInteger"/>"
 			},
 			"setting.smallGoodsImageHeight": {
-				required: "请填写商品图片(小)的高度",
-				positiveInteger: "商品图片(小)的高度必须为正整数"
+				required: "<@s.text name="setting.messages.smallGoodsImageHeight.required"/>",
+				positiveInteger: "<@s.text name="setting.messages.smallGoodsImageHeight.positiveInteger"/>"
 			},
 			"setting.thumbnailGoodsImageWidth": {
-				required: "请填写商品缩略图的宽度",
-				positiveInteger: "商品缩略图的宽度必须为正整数"
+				required: "<@s.text name="setting.messages.thumbnailGoodsImageWidth.required"/>",
+				positiveInteger: "<@s.text name="setting.messages.thumbnailGoodsImageWidth.positiveInteger"/>"
 			},
 			"setting.thumbnailGoodsImageHeight": {
-				required: "请填写商品缩略图的高度",
-				positiveInteger: "商品缩略图的高度必须为正整数"
+				required: "<@s.text name="setting.messages.thumbnailGoodsImageHeight.required"/>",
+				positiveInteger: "<@s.text name="setting.messages.thumbnailGoodsImageHeight.positiveInteger"/>"
 			},
-			"defaultBigGoodsImage": "默认商品图片(大)格式错误",
-			"defaultSmallGoodsImage": "默认商品图片(小)格式错误",
-			"defaultThumbnailGoodsImage": "默认缩略图格式错误",
-			"watermarkImage": "水印图片格式错误",
+			"defaultBigGoodsImage": "<@s.text name="setting.messages.defaultBigGoodsImage"/>",
+			"defaultSmallGoodsImage": "<@s.text name="setting.messages.defaultSmallGoodsImage"/>",
+			"defaultThumbnailGoodsImage": "<@s.text name="setting.messages.defaultThumbnailGoodsImage"/>",
+			"watermarkImage": "<@s.text name="setting.messages.watermarkImage"/>",
 			"setting.watermarkAlpha": {
-				required: "请填写水印透明度",
-				digits: "水印透明度必须为零或正整数"
+				required: "<@s.text name="setting.messages.watermarkAlpha.required"/>",
+				digits: "<@s.text name="setting.messages.watermarkAlpha.digits"/>"
 			},
 			"setting.defaultMarketPriceNumber": {
-				required: "请填写默认市场价运算基数",
-				number: "默认市场价运算基数必须为数字"
+				required: "<@s.text name="setting.messages.defaultMarketPriceNumber.required"/>",
+				number: "<@s.text name="setting.messages.defaultMarketPriceNumber.number"/>"
 			},
 			"setting.loginFailureLockCount": {
-				required: "请填写连续登录失败最大次数",
-				positiveInteger: "连续登录失败最大次数请输入合法的正整数"
+				required: "<@s.text name="setting.messages.loginFailureLockCount.required"/>",
+				positiveInteger: "<@s.text name="setting.messages.loginFailureLockCount.positiveInteger"/>"
 			},
 			"setting.loginFailureLockTime": {
-				required: "请填写自动解锁时间",
-				digits: "自动解锁时间必须为零或正整数"
+				required: "<@s.text name="setting.messages.loginFailureLockTime.required"/>",
+				digits: "<@s.text name="setting.messages.loginFailureLockTime.digits"/>"
 			},
 			"setting.smtpFromMail": {
-				required: "请填写发件人邮箱",
-				email: "发件人邮箱格式错误"
+				required: "<@s.text name="setting.messages.smtpFromMail.required"/>",
+				email: "<@s.text name="setting.messages.smtpFromMail.email"/>"
 			},
-			"setting.smtpHost": "请填写SMTP服务器地址",
+			"setting.smtpHost": "<@s.text name="setting.messages.smtpHost"/>",
 			"setting.smtpPort": {
-				required: "请填写SMTP服务器端口",
-				digits: "SMTP服务器端口必须为零或正整数"
+				required: "<@s.text name="setting.messages.smtpPort.required"/>",
+				digits: "<@s.text name="setting.messages.smtpPort.digits"/>"
 			},
-			"setting.smtpUsername": "请填写SMTP用户名",
-			"setting.currencyType": "请选择货币种类",
-			"setting.currencySign": "请填写货币符号",
-			"setting.currencyUnit": "请填写货币单位",
+			"setting.smtpUsername": "<@s.text name="setting.messages.smtpUsername"/>",
+			"setting.currencyType": "<@s.text name="setting.messages.currencyType"/>",
+			"setting.currencySign": "<@s.text name="setting.messages.currencySign"/>",
+			"setting.currencyUnit": "<@s.text name="setting.messages.currencyUnit"/>",
 			"setting.storeAlertCount": {
-				required: "请填写商品库存报警数量",
-				digits: "商品库存报警数量必须为零或正整数"
+				required: "<@s.text name="setting.messages.storeAlertCount.required"/>",
+				digits: "<@s.text name="setting.messages.storeAlertCount.digits"/>"
 			},
 			"setting.scoreScale": {
-				required: "请填写积分换算比率",
-				min: "积分换算比率必须为零或正数"
+				required: "<@s.text name="setting.messages.scoreScale.required"/>",
+				min: "<@s.text name="setting.messages.scoreScale.min"/>"
 			},
 			"setting.buildHtmlDelayTime": {
-				required: "请填写HTML自动生成延时",
-				digits: "HTML自动生成延时必须为正整数"
+				required: "<@s.text name="setting.messages.buildHtmlDelayTime.required"/>",
+				digits: "<@s.text name="setting.messages.buildHtmlDelayTime.digits"/>"
 			}
 		},
 		submitHandler: function(form) {
@@ -299,35 +299,35 @@ $().ready(function() {
 </head>
 <body class="input">
 	<div class="bar">
-		系统设置
+		<@s.text name="setting.pagetitle"/>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="setting.validateErrorTitle"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
 		<form id="validateForm" class="form" action="setting!update.action" enctype="multipart/form-data" method="post">
 			<ul id="tab" class="tab">
 				<li>
-					<input type="button" value="基本设置" hidefocus />
+					<input type="button" value="<@s.text name="setting.tab.base"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="显示设置" hidefocus />
+					<input type="button" value="<@s.text name="setting.tab.display"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="安全设置" hidefocus />
+					<input type="button" value="<@s.text name="setting.tab.security"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="邮件设置" hidefocus />
+					<input type="button" value="<@s.text name="setting.tab.mail"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="其它设置" hidefocus />
+					<input type="button" value="<@s.text name="setting.tab.other"/>" hidefocus />
 				</li>
 			</ul>
 			<table class="inputTable tabContent">
 				<tr>
 					<th>
-						网店名称: 
+						<@s.text name="setting.shopName"/>: 
 					</th>
 					<td>
 						<input type="text" name="setting.shopName" class="formText" value="${setting.shopName}" />
@@ -336,7 +336,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						网店网址: 
+						<@s.text name="setting.shopUrl"/>: 
 					</th>
 					<td>
 						<input type="text" name="setting.shopUrl" class="formText" value="${setting.shopUrl}" />
@@ -345,24 +345,24 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						网店LOGO: 
+						<@s.text name="setting.shopLogoPath"/>: 
 					</th>
 					<td>
 						<input type="file" name="shopLogo" />
-						<a href="${base}${setting.shopLogoPath}" target="_blank">查看</a>
+						<a href="${base}${setting.shopLogoPath}" target="_blank"><@s.text name="common.button.view"/></a>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						热门搜索关键词: 
+						<@s.text name="setting.hotSearch"/>: 
 					</th>
 					<td>
-						<input type="text" name="setting.hotSearch" class="formText" value="${setting.hotSearch}" title="页面显示的热门搜索关键字,多个关键字请以 , 分隔" />
+						<input type="text" name="setting.hotSearch" class="formText" value="${setting.hotSearch}"/>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						联系地址: 
+						<@s.text name="setting.address"/>: 
 					</th>
 					<td>
 						<input type="text" name="setting.address" class="formText" value="${setting.address}" />
@@ -370,7 +370,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						服务电话: 
+						<@s.text name="setting.phone"/>: 
 					</th>
 					<td>
 						<input type="text" name="setting.phone" class="formText" value="${setting.phone}" />
@@ -378,7 +378,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						邮编: 
+						<@s.text name="setting.zipCode"/>: 
 					</th>
 					<td>
 						<input type="text" name="setting.zipCode" class="formText" value="${setting.zipCode}" />
@@ -394,23 +394,23 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						备案号: 
+						<@s.text name="setting.certtext"/>: 
 					</th>
 					<td>
-						<input type="text" name="setting.certtext" class="formText" value="${setting.certtext}" title="填写您在工信部备案管理网站申请的备案编号" />
+						<input type="text" name="setting.certtext" class="formText" value="${setting.certtext}"/>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						首页页面关键词: 
+						<@s.text name="setting.metaKeywords"/>: 
 					</th>
 					<td>
-						<input type="text" name="setting.metaKeywords" class="formText" value="${setting.metaKeywords}" title="多个关键字请以(,)分隔" />
+						<input type="text" name="setting.metaKeywords" class="formText" value="${setting.metaKeywords}"/>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						首页页面描述: 
+						<@s.text name="setting.metaDescription"/>: 
 					</th>
 					<td>
 						<textarea name="setting.metaDescription" class="formTextarea">${setting.metaDescription}</textarea>
@@ -420,73 +420,73 @@ $().ready(function() {
 			<table class="inputTable tabContent">
 				<tr>
 					<th>
-						商品图片(大): 
+						<@s.text name="setting.bigGoodsImage"/>: 
 					</th>
 					<td>
-						<span class="fieldTitle">宽度: </span>
-						<input type="text" name="setting.bigGoodsImageWidth" class="formText" value="${setting.bigGoodsImageWidth}" style="width: 50px;" title="单位: 像素, 只允许输入正整数" />
+						<span class="fieldTitle"><@s.text name="setting.GoodsImageWidth"/>: </span>
+						<input type="text" name="setting.bigGoodsImageWidth" class="formText" value="${setting.bigGoodsImageWidth}" style="width: 50px;"/>
 						<label class="requireField">*</label>
-						<span class="fieldTitle">高度: </span>
-						<input type="text" name="setting.bigGoodsImageHeight" class="formText" value="${setting.bigGoodsImageHeight}" style="width: 50px;" title="单位: 像素, 只允许输入正整数" />
+						<span class="fieldTitle"><@s.text name="setting.GoodsImageHeight"/>: </span>
+						<input type="text" name="setting.bigGoodsImageHeight" class="formText" value="${setting.bigGoodsImageHeight}" style="width: 50px;"/>
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						商品图片(小): 
+						<@s.text name="setting.smallGoodsImage"/>: 
 					</th>
 					<td>
-						<span class="fieldTitle">宽度: </span>
-						<input type="text" name="setting.smallGoodsImageWidth" class="formText" value="${setting.smallGoodsImageWidth}" style="width: 50px;" title="单位: 像素, 只允许输入正整数" />
+						<span class="fieldTitle"><@s.text name="setting.GoodsImageWidth"/>: </span>
+						<input type="text" name="setting.smallGoodsImageWidth" class="formText" value="${setting.smallGoodsImageWidth}" style="width: 50px;"/>
 						<label class="requireField">*</label>
-						<span class="fieldTitle">高度: </span>
-						<input type="text" name="setting.smallGoodsImageHeight" class="formText" value="${setting.smallGoodsImageHeight}" style="width: 50px;" title="单位: 像素, 只允许输入正整数" />
+						<span class="fieldTitle"><@s.text name="setting.GoodsImageHeight"/>: </span>
+						<input type="text" name="setting.smallGoodsImageHeight" class="formText" value="${setting.smallGoodsImageHeight}" style="width: 50px;"/>
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						商品缩略图: 
+						<@s.text name="setting.thumbnailGoodsImage"/>: 
 					</th>
 					<td>
-						<span class="fieldTitle">宽度: </span>
-						<input type="text" name="setting.thumbnailGoodsImageWidth" class="formText" value="${setting.thumbnailGoodsImageWidth}" style="width: 50px;" title="单位: 像素, 只允许输入正整数" />
+						<span class="fieldTitle"><@s.text name="setting.GoodsImageWidth"/>: </span>
+						<input type="text" name="setting.thumbnailGoodsImageWidth" class="formText" value="${setting.thumbnailGoodsImageWidth}" style="width: 50px;"/>
 						<label class="requireField">*</label>
-						<span class="fieldTitle">高度: </span>
-						<input type="text" name="setting.thumbnailGoodsImageHeight" class="formText" value="${setting.thumbnailGoodsImageHeight}" style="width: 50px;" title="单位: 像素, 只允许输入正整数" />
+						<span class="fieldTitle"><@s.text name="setting.GoodsImageHeight"/>: </span>
+						<input type="text" name="setting.thumbnailGoodsImageHeight" class="formText" value="${setting.thumbnailGoodsImageHeight}" style="width: 50px;"/>
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						默认商品图片(大): 
+						<@s.text name="setting.thumbnailGoodsImage"/>: 
 					</th>
 					<td>
 						<input type="file" name="defaultBigGoodsImage" />
-						<a href="${base}${setting.defaultBigGoodsImagePath}" target="_blank">查看</a>
+						<a href="${base}${setting.defaultBigGoodsImagePath}" target="_blank"><@s.text name="common.button.view"/></a>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						默认商品图片(小): 
+						<@s.text name="setting.defaultSmallGoodsImage"/>: 
 					</th>
 					<td>
 						<input type="file" name="defaultSmallGoodsImage" />
-						<a href="${base}${setting.defaultSmallGoodsImagePath}" target="_blank">查看</a>
+						<a href="${base}${setting.defaultSmallGoodsImagePath}" target="_blank"><@s.text name="common.button.view"/></a>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						默认缩略图: 
+						<@s.text name="setting.defaultThumbnailGoodsImage"/>: 
 					</th>
 					<td>
 						<input type="file" name="defaultThumbnailGoodsImage" />
-						<a href="${base}${setting.defaultThumbnailGoodsImagePath}" target="_blank">查看</a>
+						<a href="${base}${setting.defaultThumbnailGoodsImagePath}" target="_blank"><@s.text name="common.button.view"/></a>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						同类产品排序: 
+						<@s.text name="setting.defaultSameGoodsOrder"/>: 
 					</th>
 					<td>
 						<select name="setting.defaultSameGoodsOrder">
@@ -500,16 +500,16 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						水印图片: 
+						<@s.text name="setting.watermarkImagePath"/>: 
 					</th>
 					<td>
 						<input type="file" name="watermarkImage" />
-						<a href="${base}${setting.watermarkImagePath}" target="_blank">查看</a>
+						<a href="${base}${setting.watermarkImagePath}" target="_blank"><@s.text name="common.button.view"/></a>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						水印位置: 
+						<@s.text name="setting.watermarkPosition"/>: 
 					</th>
 					<td>
 						<#list watermarkPositionList as watermarkPosition>
@@ -522,29 +522,29 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						水印透明度: 
+						<@s.text name="setting.watermarkAlpha"/>: 
 					</th>
 					<td>
-						<input type="text" name="setting.watermarkAlpha" class="formText" value="${setting.watermarkAlpha}" title="取值范围: 0-100,  0代表完全透明" />
+						<input type="text" name="setting.watermarkAlpha" class="formText" value="${setting.watermarkAlpha}" title="<@s.text name="setting.watermarkAlpha.tips"/>" />
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						市场价显示设置: 
+						<@s.text name="setting.isShowMarketPrice"/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox name="setting.isShowMarketPrice" value="${setting.isShowMarketPrice}" />前台是否显示市场价
+							<@checkbox name="setting.isShowMarketPrice" value="${setting.isShowMarketPrice}" /><@s.text name="setting.isShowMarketPrice.tips"/>
 						</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						默认市场价运算: 
+						<@s.text name="setting.defaultMarketPriceOperator"/>: 
 					</th>
 					<td>
-						市场价 = 销售价
+						<@s.text name="setting.defaultMarketPriceOperator.tips1"/> = <@s.text name="setting.defaultMarketPriceOperator.tips2"/>
 						<select name="setting.defaultMarketPriceOperator">
 							<#list operatorList as operator>
 								<option value="${operator}"<#if operator == setting.defaultMarketPriceOperator> selected</#if>>
@@ -559,38 +559,38 @@ $().ready(function() {
 			<table class="inputTable tabContent">
 				<tr>
 					<th>
-						会员注册设置: 
+						<@s.text name="setting.register.position"/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox name="setting.isRegisterEnabled" value="${setting.isRegisterEnabled}" />开放注册
+							<@checkbox name="setting.isRegisterEnabled" value="${setting.isRegisterEnabled}" /><@s.text name="etting.isRegisterEnabled"/>
 						</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						是否自动锁定账号: 
+						<@s.text name="setting.register.FailureLock"/>: 
 					</th>
 					<td>
-						<label><input type="radio" name="setting.isLoginFailureLock" class="isLoginFailureLock" value="true"<#if setting.isLoginFailureLock> checked</#if> />是</label>
-						<label><input type="radio" name="setting.isLoginFailureLock" class="isLoginFailureLock" value="false"<#if !setting.isLoginFailureLock> checked</#if> />否</label>
+						<label><input type="radio" name="setting.isLoginFailureLock" class="isLoginFailureLock" value="true"<#if setting.isLoginFailureLock> checked</#if> /><@s.text name="setting.register.FailureLock.yes"/></label>
+						<label><input type="radio" name="setting.isLoginFailureLock" class="isLoginFailureLock" value="false"<#if !setting.isLoginFailureLock> checked</#if> /><@s.text name="setting.register.FailureLock.no"/></label>
 					</td>
 				</tr>
 				<tr id="loginFailureLockCountTr"<#if !setting.isLoginFailureLock> class="hidden"</#if>>
 					<th>
-						连续登录失败最大次数: 
+						<@s.text name="setting.loginFailureLockCount"/>: 
 					</th>
 					<td>
-						<input type="text" name="setting.loginFailureLockCount" class="formText" value="${setting.loginFailureLockCount}" title="只允许输入正整数,当连续登录失败次数超过设定值时,系统将自动锁定该账号" />
+						<input type="text" name="setting.loginFailureLockCount" class="formText" value="${setting.loginFailureLockCount}" title="<@s.text name="setting.loginFailureLockCount.tips"/>" />
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr id="loginFailureLockTimeTr"<#if !setting.isLoginFailureLock> class="hidden"</#if>>
 					<th>
-						自动解锁时间: 
+						<@s.text name="setting.loginFailureLockTime"/>: 
 					</th>
 					<td>
-						<input type="text" name="setting.loginFailureLockTime" class="formText" value="${setting.loginFailureLockTime}" title="只允许输入零或正整数,账号锁定后,自动解除锁定的时间,单位: 分钟,0表示永久锁定" />
+						<input type="text" name="setting.loginFailureLockTime" class="formText" value="${setting.loginFailureLockTime}" title="<@s.text name="setting.loginFailureLockTime.tips"/>" />
 						<label class="requireField">*</label>
 					</td>
 				</tr>
@@ -598,7 +598,7 @@ $().ready(function() {
 			<table class="inputTable tabContent">
 				<tr>
 					<th>
-						发件人邮箱: 
+						<@s.text name="setting.smtpFromMail"/>: 
 					</th>
 					<td>
 						<input type="text" id="smtpFromMail" name="setting.smtpFromMail" class="formText" value="${setting.smtpFromMail}" />
@@ -607,7 +607,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						SMTP服务器地址: 
+						<@s.text name="setting.smtpHost"/>: 
 					</th>
 					<td>
 						<input type="text" id="smtpHost" name="setting.smtpHost" class="formText" value="${setting.smtpHost}" />
@@ -616,16 +616,16 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						SMTP服务器端口: 
+						<@s.text name="setting.smtpPort"/>: 
 					</th>
 					<td>
-						<input type="text" id="smtpPort" name="setting.smtpPort" class="formText" value="${setting.smtpPort}" title="默认端口为25" />
+						<input type="text" id="smtpPort" name="setting.smtpPort" class="formText" value="${setting.smtpPort}" title="<@s.text name="setting.smtpPort.tips"/>" />
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						SMTP用户名: 
+						<@s.text name="setting.smtpUsername"/>: 
 					</th>
 					<td>
 						<input type="text" id="smtpUsername" name="setting.smtpUsername" class="formText" value="${setting.smtpUsername}" />
@@ -634,22 +634,22 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						SMTP密码: 
+						<@s.text name="setting.smtpPassword"/>: 
 					</th>
 					<td>
-						<input type="password" id="smtpPassword" name="setting.smtpPassword" class="formText" title="留空则不进行密码修改" />
+						<input type="password" id="smtpPassword" name="setting.smtpPassword" class="formText" title="<@s.text name="setting.smtpPassword.tips"/>" />
 					</td>
 				</tr>
 				<tr>
 					<th>
-						邮箱配置测试: 
+						<@s.text name="setting.smtptest.title"/>: 
 					</th>
 					<td>
 						<span id="smtpToMailWrap" class="hidden">
-							<div>收件人邮箱: </div>
+							<div><@s.text name="setting.smtptest.receiver"/>: </div>
 							<input type="text" id="smtpToMail" name="smtpToMail" class="formText" />
 						</span>
-						<input type="button" id="smtpTest" class="formButton" value="邮箱测试" hidefocus />
+						<input type="button" id="smtpTest" class="formButton" value="<@s.text name="setting.smtptest.button"/>" hidefocus />
 						<span id="smtpTestStatus"></span>
 					</td>
 				</tr>
@@ -657,11 +657,11 @@ $().ready(function() {
 			<table class="inputTable tabContent">
 				<tr>
 					<th>
-						货币种类: 
+						<@s.text name="setting.currencyType"/>: 
 					</th>
 					<td>
 						<select id="currencyType" name="setting.currencyType">
-							<option value="">请选择...</option>
+							<option value=""><@s.text name="common.tips.select"/></option>
 							<#list currencyTypeList as currencyType>
 								<option value="${currencyType}"<#if currencyType == setting.currencyType> selected</#if>>
 									${action.getText("CurrencyType." + currencyType)}
@@ -673,7 +673,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						货币符号: 
+						<@s.text name="setting.currencySign"/>: 
 					</th>
 					<td>
 						<input type="text" name="setting.currencySign" class="formText" value="${setting.currencySign}" />
@@ -682,7 +682,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						货币单位: 
+						<@s.text name="setting.currencyUnit"/>: 
 					</th>
 					<td>
 						<input type="text" name="setting.currencyUnit" class="formText" value="${setting.currencyUnit}" />
@@ -691,31 +691,31 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						价格精确位数: 
+						<@s.text name="setting.priceScale"/>: 
 					</th>
 					<td>
 						<select name="setting.priceScale">
 							<option value="0" <#if setting.priceScale == 0> selected</#if>>
-								无小数位
+								<@s.text name="setting.priceScale.option1"/>
 							</option>
 							<option value="1" <#if setting.priceScale == 1> selected</#if>>
-								1位小数
+								1<@s.text name="setting.priceScale.option2"/>
 							</option>
 							<option value="2" <#if setting.priceScale == 2> selected</#if>>
-								2位小数
+								2<@s.text name="setting.priceScale.option2"/>
 							</option>
 							<option value="3" <#if setting.priceScale == 3> selected</#if>>
-								3位小数
+								3<@s.text name="setting.priceScale.option2"/>
 							</option>
 							<option value="4" <#if setting.priceScale == 4> selected</#if>>
-								4位小数
+								4<@s.text name="setting.priceScale.option2"/>
 							</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						价格精确方式: 
+						<@s.text name="setting.priceRoundType"/>: 
 					</th>
 					<td>
 						<select name="setting.priceRoundType">
@@ -729,19 +729,19 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						商品库存报警数量: 
+						<@s.text name="setting.storeAlertCount"/>: 
 					</th>
 					<td>
-						<input type="text" name="setting.storeAlertCount" class="formText" value="${setting.storeAlertCount}" title="只允许输入零或正整数" />
+						<input type="text" name="setting.storeAlertCount" class="formText" value="${setting.storeAlertCount}" title="" />
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						库存预占时间点: 
+						<@s.text name="setting.storeFreezeTime"/>: 
 					</th>
 					<td>
-						<label title="设置库存预先扣除(占用)的时间点,而系统实际扣除库存点是发货操作">
+						<label title="<@s.text name="setting.storeFreezeTime.tips"/>">
 							<select name="setting.storeFreezeTime" class="requireField">
 								<#list storeFreezeTimeList as storeFreezeTime>
 									<option value="${storeFreezeTime}"<#if storeFreezeTime == setting.storeFreezeTime> selected</#if>>
@@ -754,7 +754,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						积分获取方式: 
+						<@s.text name="setting.scoreType"/>: 
 					</th>
 					<td>
 						<#list scoreTypeList as scoreType>
@@ -767,29 +767,29 @@ $().ready(function() {
 				</tr>
 				<tr id="scoreScaleTr"<#if setting.scoreType != "orderAmount"> class="hidden"</#if>>
 					<th>
-						积分换算比率: 
+						<@s.text name="setting.scoreScale"/>: 
 					</th>
 					<td>
-						<input type="text" id="scoreScale" name="setting.scoreScale" class="formText" value="${setting.scoreScale}" title="每消费1元可获得积分数" />
+						<input type="text" id="scoreScale" name="setting.scoreScale" class="formText" value="${setting.scoreScale}" title="<@s.text name="setting.scoreScale.tips"/>" />
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						HTML自动生成延时: 
+						<@s.text name="setting.buildHtmlDelayTime"/>: 
 					</th>
 					<td>
-						<input type="text" name="setting.buildHtmlDelayTime" class="formText" value="${setting.buildHtmlDelayTime}" title="单位: 秒,设置延时值过小可能会造成服务器压力过大" />
+						<input type="text" name="setting.buildHtmlDelayTime" class="formText" value="${setting.buildHtmlDelayTime}" title="<@s.text name="setting.buildHtmlDelayTime.tips"/>" />
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						GZIP设置: 
+						<@s.text name="setting.gzipset"/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox name="setting.isGzipEnabled" value="${setting.isGzipEnabled}" />启用
+							<@checkbox name="setting.isGzipEnabled" value="${setting.isGzipEnabled}" /><@s.text name="setting.isGzipEnabled"/>
 						</label>
 					</td>
 				</tr>
@@ -798,13 +798,13 @@ $().ready(function() {
 						
 					</th>
 					<td>
-						<span class="warnInfo">若您的WEB服务器已启用了GZIP功能,请关闭此处的GZIP功能</span>
+						<span class="warnInfo"><@s.text name="setting.gzipwarn"/></span>
 					</td>
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>
