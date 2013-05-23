@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>管理菜单 - Powered By SHOP++</title>
+<title><@s.text name="menu.pagetitle"/></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,16 +15,16 @@
 		<@sec.authorize ifAnyGranted="ROLE_ADMIN,ROLE_ROLE">
 			<dl>
 				<dt>
-					<span>管理员&nbsp;</span>
+					<span><@s.text name="menu.manage.admin"/>&nbsp;</span>
 				</dt>
 				<@sec.authorize ifAnyGranted="ROLE_ADMIN">
 					<dd>
-						<a href="admin!list.action" target="mainFrame">管理员列表</a>
+						<a href="admin!list.action" target="mainFrame"><@s.text name="menu.manage.admin.list"/></a>
 					</dd>
 				</@sec.authorize>
 				<@sec.authorize ifAnyGranted="ROLE_ROLE">
 					<dd>
-						<a href="role!list.action" target="mainFrame">角色管理</a>
+						<a href="role!list.action" target="mainFrame"><@s.text name="menu.manage.admin.role"/></a>
 					</dd>
 				</@sec.authorize>
 			</dl>
@@ -32,23 +32,23 @@
 		<@sec.authorize ifAnyGranted="ROLE_MESSAGE">
 			<dl>
 				<dt>
-					<span>站内消息&nbsp;</span>
+					<span><@s.text name="menu.manage.message"/>&nbsp;</span>
 				</dt>
 				<dd>
-					<a href="message!inbox.action" target="mainFrame">收件箱</a>
+					<a href="message!inbox.action" target="mainFrame"><@s.text name="menu.manage.inbox"/></a>
 				</dd>
 				<dd>
-					<a href="message!outbox.action" target="mainFrame">发件箱</a>
+					<a href="message!outbox.action" target="mainFrame"><@s.text name="menu.manage.outbox"/></a>
 				</dd>
 			</dl>
 		</@sec.authorize>
 		<@sec.authorize ifAnyGranted="ROLE_LOG">
 			<dl>
 				<dt>
-					<span>操作日志&nbsp;</span>
+					<span><@s.text name="menu.manage.operatelog"/>&nbsp;</span>
 				</dt>
 				<dd>
-					<a href="log!list.action" target="mainFrame">查看日志</a>
+					<a href="log!list.action" target="mainFrame"><@s.text name="menu.manage.operatelog.view"/></a>
 				</dd>
 			</dl>
 		</@sec.authorize>

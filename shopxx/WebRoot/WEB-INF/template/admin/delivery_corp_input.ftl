@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑物流公司 - Powered By SHOP++</title>
+<title><@s.text name="delivery.corp.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -32,8 +32,8 @@ $().ready(function() {
 			"deliveryCorp.orderList": "digits"
 		},
 		messages: {
-			"deliveryCorp.name": "请填写物流公司名称",
-			"deliveryCorp.orderList": "排序必须为零或正整数"
+			"deliveryCorp.name": "<@s.text name="delivery.corp.input.name"/>",
+			"deliveryCorp.orderList": "<@s.text name="goods.specification.edit.order.tips"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -46,10 +46,10 @@ $().ready(function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加物流公司<#else>编辑物流公司</#if>
+		<#if isAddAction><@s.text name="delivery.corp.input.add"/><#else><@s.text name="delivery.corp.input.edit"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -58,7 +58,7 @@ $().ready(function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						物流公司名称: 
+						<@s.text name="shipping.deliveryCorpName"/>: 
 					</th>
 					<td>
 						<input type="text" name="deliveryCorp.name" class="formText" value="${(deliveryCorp.name)!}" />
@@ -67,7 +67,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						物流公司网址: 
+						<@s.text name="delivery.corp.input.website"/>: 
 					</th>
 					<td>
 						<input type="text" name="deliveryCorp.url" class="formText" value="${(deliveryCorp.url)!}" />
@@ -75,16 +75,16 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						排序: 
+						<@s.text name="payment.config.order"/>: 
 					</th>
 					<td>
-						<input type="text" name="deliveryCorp.orderList" class="formText" value="${(deliveryCorp.orderList)!}" title="只允许输入零或正整数" />
+						<input type="text" name="deliveryCorp.orderList" class="formText" value="${(deliveryCorp.orderList)!}" title="<@s.text name="admin.category.article.require.positive"/>" />
 					</td>
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

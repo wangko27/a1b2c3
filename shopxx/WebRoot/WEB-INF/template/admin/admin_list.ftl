@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>管理员列表 - Powered By SHOP++</title>
+<title><@s.text name="admin.list"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,25 +15,25 @@
 </head>
 <body class="list">
 	<div class="bar">
-		管理员列表&nbsp;总记录数: ${pager.totalCount} (共${pager.pageCount}页)
+		<@s.text name="admin.list"/>&nbsp;<@s.text name="goods.specification.list.page.tips1"/>: ${pager.totalCount} (<@s.text name="goods.specification.list.page.tips2"/>${pager.pageCount}<@s.text name="goods.specification.list.page.tips3"/>)
 	</div>
 	<div class="body">
 		<form id="listForm" action="admin!list.action" method="post">
 			<div class="listBar">
-				<input type="button" class="formButton" onclick="location.href='admin!add.action'" value="添加管理员" hidefocus />
+				<input type="button" class="formButton" onclick="location.href='admin!add.action'" value="<@s.text name="admin.list.add"/>" hidefocus />
 				&nbsp;&nbsp;
 				<select name="pager.searchBy">
 					<option value="username"<#if pager.searchBy == "username"> selected</#if>>
-						用户名
+						<@s.text name="member.username"/>
 					</option>
 					<option value="name"<#if pager.searchBy == "name"> selected</#if>>
-						姓名
+						<@s.text name="admin.list.name"/>
 					</option> 
 				</select>
 				<input type="text" name="pager.keyword" value="${pager.keyword!}" />
-				<input type="button" id="searchButton" class="formButton" value="搜 索" hidefocus />
+				<input type="button" id="searchButton" class="formButton" value="<@s.text name="goods.specification.list.search.button"/>" hidefocus />
 				&nbsp;&nbsp;
-				<label>每页显示: </label>
+				<label><@s.text name="goods.specification.list.search.result"/>: </label>
 				<select name="pager.pageSize" id="pageSize">
 					<option value="10"<#if pager.pageSize == 10> selected</#if>>
 						10
@@ -55,31 +55,31 @@
 						<input type="checkbox" class="allCheck" />
 					</th>
 					<th>
-						<a href="#" class="sort" name="username" hidefocus>用户名</a>
+						<a href="#" class="sort" name="username" hidefocus><@s.text name="member.username"/></a>
 					</th>
 					<th>
 						<a href="#" class="sort" name="email" hidefocus>E-mail</a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="name" hidefocus>姓名</a>
+						<a href="#" class="sort" name="name" hidefocus><@s.text name="admin.list.name"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="department" hidefocus>所属部门</a>
+						<a href="#" class="sort" name="department" hidefocus><@s.text name="admin.list.department"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="loginDate" hidefocus>最后登录时间</a>
+						<a href="#" class="sort" name="loginDate" hidefocus><@s.text name="admin.list.lastLoginTime"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="loginIp" hidefocus>最后登录IP</a>
+						<a href="#" class="sort" name="loginIp" hidefocus><@s.text name="member.loginIp"/></a>
 					</th>
 					<th>
-						<span>状态</span>
+						<span><@s.text name="admin.list.status"/></span>
 					</th>
 					<th>
-						<a href="#" class="sort" name="createDate" hidefocus>创建日期</a>
+						<a href="#" class="sort" name="createDate" hidefocus><@s.text name="role.createDate"/></a>
 					</th>
 					<th>
-						<span>操作</span>
+						<span><@s.text name="common.button.operate"/></span>
 					</th>
 				</tr>
 				<#list pager.result as admin>
@@ -111,22 +111,22 @@
 						</td>
 						<td>
 							<#if admin.isAccountEnabled && !admin.isAccountLocked && !admin.isAccountExpired && !admin.isCredentialsExpired>
-								<span class="green">正常</span>
+								<span class="green"><@s.text name="admin.list.status.ok"/></span>
 							<#elseif !admin.isAccountEnabled>
-								<span class="red"> 未启用 </span>
+								<span class="red"> <@s.text name="admin.list.status.enabled"/> </span>
 							<#elseif admin.isAccountLocked>
-								<span class="red"> 已锁定 </span>
+								<span class="red"> <@s.text name="admin.list.status.locked"/> </span>
 							<#elseif admin.isAccountExpired>
-								<span class="red"> 已过期 </span>
+								<span class="red"> <@s.text name="admin.list.status.expired"/> </span>
 							<#elseif admin.isCredentialsExpired>
-								<span class="red"> 凭证过期 </span>
+								<span class="red"> <@s.text name="admin.list.status.credentialsExpired"/> </span>
 							</#if>
 						</td>
 						<td>
 							<span title="${admin.createDate?string("yyyy-MM-dd HH:mm:ss")}">${admin.createDate}</span>
 						</td>
 						<td>
-							<a href="admin!edit.action?id=${admin.id}" title="编辑">[编辑]</a>
+							<a href="admin!edit.action?id=${admin.id}" title="<@s.text name="goods.specification.list.search.result.header.edit"/>">[<@s.text name="goods.specification.list.search.result.header.edit"/>]</a>
 						</td>
 					</tr>
 				</#list>
@@ -134,14 +134,14 @@
 			<#if (pager.result?size > 0)>
 				<div class="pagerBar">
 					<div class="delete">
-						<input type="button" id="deleteButton" class="formButton" url="admin!delete.action" value="删 除" disabled hidefocus />
+						<input type="button" id="deleteButton" class="formButton" url="admin!delete.action" value="<@s.text name="goods.specification.list.search.result.header.delete"/>" disabled hidefocus />
 					</div>
 					<div class="pager">
 						<#include "/WEB-INF/template/admin/pager.ftl" />
 					</div>
 				<div>
 			<#else>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="goods.specification.list.search.result.empty"/></div>
 			</#if>
 		</form>
 	</div>

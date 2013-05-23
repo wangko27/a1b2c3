@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>地区列表 - Powered By SHOP++</title>
+<title><@s.text name="area.list.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -19,7 +19,7 @@ $().ready( function() {
 	// 地区删除
 	$deleteArea.click( function() {
 		var $this = $(this);
-		$.dialog({type: "warn", content: "您确定删除吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: deleteArea});
+		$.dialog({type: "warn", content: "<@s.text name="area.list.delete.tipmessage"/>?", ok: "<@s.text name="button.name.confirm"/>", cancel: "<@s.text name="button.name.cancel"/>", modal: true, okCallback: deleteArea});
 		function deleteArea() {
 			var id = $this.attr("areaId");
 			$.ajax({
@@ -43,17 +43,17 @@ $().ready( function() {
 </head>
 <body class="list">
 	<div class="bar">
-		地区管理&nbsp;总记录数: ${areaList?size}
+		<@s.text name="role.sitemanage.ROLE_AREA"/>&nbsp;<@s.text name="goods.specification.list.page.tips1"/>: ${areaList?size}
 	</div>
 	<div class="body">
 		<form id="listForm" action="area!list.action" method="post">
 			<div class="listBar">
-				<input type="button" class="formButton" onclick="location.href='area!add.action<#if parent??>?parentId=${parentId}</#if>'" value="添加地区" hidefocus />
+				<input type="button" class="formButton" onclick="location.href='area!add.action<#if parent??>?parentId=${parentId}</#if>'" value="<@s.text name="area.input.area.add"/>" hidefocus />
 			</div>
 			<table id="listTable" class="listTable">
 				<tr>
 					<th colspan="5" class="green" style="text-align: center;">
-						<#if parent??>上级地区 - [${(parent.name)!}]<#else>顶级地区</#if>
+						<#if parent??><@s.text name="area.input.area.super"/> - [${(parent.name)!}]<#else><@s.text name="area.input.area.top"/></#if>
 					</th>
 				</tr>
 				<#list areaList as area>
@@ -61,9 +61,9 @@ $().ready( function() {
 						<tr>
 					</#if>
 					<td>
-						<a href="area!list.action?parentId=${area.id}" title="查看下级地区">${area.name}</a>
-						<a href="area!edit.action?id=${area.id}" title="编辑">[编辑]</a>
-						<a href="#" class="deleteArea" title="删除" areaId="${area.id}">[删除]</a>
+						<a href="area!list.action?parentId=${area.id}" title="<@s.text name="area.input.area.subArea.show"/>">${area.name}</a>
+						<a href="area!edit.action?id=${area.id}" title="<@s.text name="goods.specification.list.search.result.header.edit"/>">[<@s.text name="goods.specification.list.search.result.header.edit"/>]</a>
+						<a href="#" class="deleteArea" title="<@s.text name="common.button.delete"/>" areaId="${area.id}">[<@s.text name="common.button.delete"/>]</a>
 					</td>
 					<#if (area_index + 1) % 5 == 0 && area_has_next>
 						</tr>
@@ -80,7 +80,7 @@ $().ready( function() {
 				<#if areaList?size == 0>
 					<tr>
 						<td colspan="5" style="text-align: center; color: red;">
-							无下级地区! <a href="area!add.action<#if parent??>?parentId=${parentId}</#if>" style="color: gray">点击添加</a>
+							<@s.text name="area.input.area.subArea.none"/>! <a href="area!add.action<#if parent??>?parentId=${parentId}</#if>" style="color: gray"><@s.text name="area.input.area.subArea.addClick"/></a>
 						</td>
 					</tr>
 				</#if>
@@ -88,9 +88,9 @@ $().ready( function() {
 			<#if parent??>
 				<div class="blank"></div>
 				<#if parent.parent??>
-					<input type="button" class="formButton" onclick="location.href='area!list.action?parentId=${parent.parent.id}'" value="上级地区" hidefocus />
+					<input type="button" class="formButton" onclick="location.href='area!list.action?parentId=${parent.parent.id}'" value="<@s.text name="area.input.area.super"/>" hidefocus />
 				<#else>
-					<input type="button" class="formButton" onclick="location.href='area!list.action'" value="上级地区" hidefocus />
+					<input type="button" class="formButton" onclick="location.href='area!list.action'" value="<@s.text name="area.input.area.super"/>" hidefocus />
 				</#if>
 			</#if>
 		</form>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑地区 - Powered By SHOP++</title>
+<title><@s.text name="area.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -32,8 +32,8 @@ $().ready(function() {
 			"area.orderList": "digits"
 		},
 		messages: {
-			"area.name": "请填写名称",
-			"area.orderList": "排序必须为零或正整数"
+			"area.name": "<@s.text name="area.input.area.name"/>",
+			"area.orderList": "<@s.text name="area.input.area.order"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -46,10 +46,10 @@ $().ready(function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加地区<#else>编辑地区</#if>
+		<#if isAddAction><@s.text name="area.input.area.add"/><#else><@s.text name="area.input.area.edit"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -59,15 +59,15 @@ $().ready(function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						上级地区: 
+						<@s.text name="area.input.area.super"/>: 
 					</th>
 					<td>
-						<#if parent??>${(parent.name)!}<#else>一级地区</#if>
+						<#if parent??>${(parent.name)!}<#else><@s.text name="area.input.area.level1"/></#if>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						名称: 
+						<@s.text name="goods.specification.list.search.option1"/>: 
 					</th>
 					<td>
 						<input type="text" name="area.name" class="formText" value="${(area.name)!}" />
@@ -76,7 +76,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						排序: 
+						<@s.text name="goods.specification.list.search.result.header.order"/>: 
 					</th>
 					<td>
 						<input type="text" name="area.orderList" class="formText" value="${(area.orderList)!}" />
@@ -84,8 +84,8 @@ $().ready(function() {
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="caritem.delete.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

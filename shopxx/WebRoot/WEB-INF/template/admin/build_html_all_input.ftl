@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>一键网站更新 - Powered By SHOP++</title>
+<title><@s.text name="build.html.all.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -42,11 +42,11 @@ $().ready( function() {
 			var endDateInputValue = $("#endDateInput").val();
 			var maxResultsInputValue = $("#maxResultsInput").val();
 			if ($.trim(maxResultsInputValue) == "") {
-				$.message({type: "warn", content: "请输入每次更新数!"});
+				$.message({type: "warn", content: "<@s.text name="build.html.all.input.title.input"/>!"});
 				return false;
 			}
 			if (!/^[1-9]\d*$/.test(maxResultsInputValue)) {
-				$.message({type: "warn", content: "每次更新数必须为正整数!"});
+				$.message({type: "warn", content: "<@s.text name="build.html.all.input.title.input.positive"/>!"});
 				return false;
 			}
 			
@@ -58,52 +58,52 @@ $().ready( function() {
 				$("#endDateInput").attr("disabled", true);
 				$("#submitButton").attr("disabled", true);
 				$("#statusTr").show();
-				$("#status").text("正在更新首页,请稍后...");
+				$("#status").text("<@s.text name="build.html.all.input.title.update.main"/>...");
 			}
 		},
 		success: function(data) {
 			buildCount += data.buildCount;
 			buildTime += data.buildTime;
 			if (data.status == "indexFinish") {
-				$("#status").text("正在更新登录页,请稍后...");
+				$("#status").text("<@s.text name="build.html.all.input.title.update.login"/>...");
 				$("#buildContent").val("login");
 				$("#inputForm").submit();
 			} else if (data.status == "loginFinish") {
-				$("#status").text("正在更新注册协议页,请稍后...");
+				$("#status").text("<@s.text name="build.html.all.input.title.update.register"/>...");
 				$("#buildContent").val("registerAgreement");
 				$("#inputForm").submit();
 			} else if (data.status == "registerAgreementFinish") {
-				$("#status").text("正在更新ADMIN.JS,请稍后...");
+				$("#status").text("<@s.text name="build.html.all.input.title.update"/>ADMIN.JS,<@s.text name="build.html.all.input.title.waiting"/>...");
 				$("#buildContent").val("adminJs");
 				$("#inputForm").submit();
 			} else if (data.status == "adminJsFinish") {
-				$("#status").text("正在更新SHOP.JS,请稍后...");
+				$("#status").text("<@s.text name="build.html.all.input.title.update"/>SHOP.JS,<@s.text name="build.html.all.input.title.waiting"/>...");
 				$("#buildContent").val("shopJs");
 				$("#inputForm").submit();
 			} else if (data.status == "shopJsFinish") {
-				$("#status").text("正在自定义错误页,请稍后...");
+				$("#status").text("<@s.text name="build.html.all.input.title.update.error"/>...");
 				$("#buildContent").val("errorPage");
 				$("#inputForm").submit();
 			} else if (data.status == "errorPageFinish") {
-				$("#status").text("正在更新文章,请稍后...");
+				$("#status").text("<@s.text name="build.html.all.input.title.update.articleWait"/>...");
 				$("#buildContent").val("article");
 				$("#inputForm").submit();
 			} else if (data.status == "articleBuilding") {
 				var maxResults = Number($("#maxResults").val());
 				var firstResult = data.firstResult;
-				$("#status").text("正在更新文章[" + (firstResult + 1) + " - " + (firstResult + maxResults) + "],请稍后...");
+				$("#status").text("<@s.text name="build.html.all.input.title.update.article"/>[" + (firstResult + 1) + " - " + (firstResult + maxResults) + "],<@s.text name="build.html.all.input.title.waiting"/>...");
 				$("#buildContent").val("article");
 				$("#firstResult").val(firstResult);
 				$("#inputForm").submit();
 			} else if (data.status == "articleFinish") {
-				$("#status").text("正在更新商品,请稍后...");
+				$("#status").text("<@s.text name="build.html.all.input.title.update.goodsWait"/>...");
 				$("#buildContent").val("goods");
 				$("#firstResult").val("0");
 				$("#inputForm").submit();
 			} else if (data.status == "goodsBuilding") {
 				var maxResults = Number($("#maxResults").val());
 				var firstResult = data.firstResult;
-				$("#status").text("正在更新商品[" + (firstResult + 1) + " - " + (firstResult + maxResults) + "],请稍后...");
+				$("#status").text("<@s.text name="build.html.all.input.title.update.goods"/>[" + (firstResult + 1) + " - " + (firstResult + maxResults) + "],<@s.text name="build.html.all.input.title.waiting"/>...");
 				$("#buildContent").val("goods");
 				$("#firstResult").val(firstResult);
 				$("#inputForm").submit();
@@ -119,11 +119,11 @@ $().ready( function() {
 				
 				var time;
 				if (buildTime < 60000) {
-					time = (buildTime / 1000).toFixed(2) + "秒";
+					time = (buildTime / 1000).toFixed(2) + "<@s.text name="build.html.all.input.title.unit.second"/>";
 				} else {
-					time = (buildTime / 60000).toFixed(2) + "分";
+					time = (buildTime / 60000).toFixed(2) + "<@s.text name="build.html.all.input.title.unit.minute"/>";
 				}
-				$.dialog({type: "success", content: "网站更新成功! [更新总数: " + buildCount + " 耗时: " + time + "]", width: 380, modal: true, autoCloseTime: 3000});
+				$.dialog({type: "success", content: "<@s.text name="build.html.all.input.title.update.success"/>! [<@s.text name="build.html.all.input.title.update.total"/>: " + buildCount + " <@s.text name="build.html.all.input.title.update.cost"/>: " + time + "]", width: 380, modal: true, autoCloseTime: 3000});
 				isInitialized = false;
 				buildCount = 0;
 				buildTime = 0;
@@ -136,7 +136,7 @@ $().ready( function() {
 </head>
 <body class="input">
 	<div class="bar">
-		一键网站更新
+		<@s.text name="build.html.all.input.title"/>
 	</div>
 	<div class="body">
 		<form id="inputForm" action="build_html!all.action" method="post">
@@ -149,32 +149,32 @@ $().ready( function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						更新选项: 
+						<@s.text name="build.html.all.input.update.selector"/>: 
 					</th>
 					<td>
-						<label><input type="radio" name="buildTypeInput" class="buildTypeInput" value="date" checked />指定日期</label>&nbsp;&nbsp;
-						<label><input type="radio" name="buildTypeInput" class="buildTypeInput" value="all" />更新所有</label>
+						<label><input type="radio" name="buildTypeInput" class="buildTypeInput" value="date" checked /><@s.text name="build.html.all.input.update.theDate"/></label>&nbsp;&nbsp;
+						<label><input type="radio" name="buildTypeInput" class="buildTypeInput" value="all" /><@s.text name="build.html.all.input.update.all"/></label>
 					</td>
 				</tr>
 				<tr class="dateTr">
 					<th>
-						起始日期: 
+						<@s.text name="build.html.all.input.update.begin"/>: 
 					</th>
 					<td>
-						<input type="text" id="beginDateInput" name="" class="formText" value="${(defaultBeginDate?string("yyyy-MM-dd"))!}" title="留空则从最早的内容开始更新" onclick="WdatePicker()" />
+						<input type="text" id="beginDateInput" name="" class="formText" value="${(defaultBeginDate?string("yyyy-MM-dd"))!}" title="<@s.text name="build.html.all.input.update.begin.blank"/>" onclick="WdatePicker()" />
 					</td>
 				</tr>
 				<tr class="dateTr">
 					<th>
-						结束日期: 
+						<@s.text name="build.html.all.input.update.end"/>: 
 					</th>
 					<td>
-						<input type="text" id="endDateInput" name="" class="formText" value="${(defaultEndDate?string("yyyy-MM-dd"))!}" title="留空则更新至最后的内容" onclick="WdatePicker()" />
+						<input type="text" id="endDateInput" name="" class="formText" value="${(defaultEndDate?string("yyyy-MM-dd"))!}" title="<@s.text name="build.html.all.input.update.end.blank"/>" onclick="WdatePicker()" />
 					</td>
 				</tr>
 				<tr>
 					<th>
-						每次更新数
+						<@s.text name="build.html.all.input.update.frequency"/>
 					</th>
 					<td>
 						<input type="text" id="maxResultsInput" name="" class="formText" value="50" />
@@ -191,8 +191,8 @@ $().ready( function() {
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" id="submitButton" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" id="submitButton" class="formButton" value="<@s.text name="caritem.delete.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

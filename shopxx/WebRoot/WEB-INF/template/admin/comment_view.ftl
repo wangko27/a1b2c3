@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>查看商品评论 - Powered By SHOP++</title>
+<title><@s.text name="comment.view.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -28,7 +28,7 @@ $().ready(function() {
 	
 	$hiddenComment.click( function() {
 		var $this = $(this);
-		$.dialog({type: "warn", content: "您确定要关闭显示吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: hiddenComment});
+		$.dialog({type: "warn", content: "<@s.text name="comment.view.closeMsg"/>?", ok: "<@s.text name="button.name.confirm"/>", cancel: "<@s.text name="button.name.cancel"/>", modal: true, okCallback: hiddenComment});
 		function hiddenComment() {
 			$.ajax({
 				url: "comment!ajaxHiddenComment.action",
@@ -47,7 +47,7 @@ $().ready(function() {
 	
 	$showComment.click( function() {
 		var $this = $(this);
-		$.dialog({type: "warn", content: "您确定要显示到页面吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: showComment});
+		$.dialog({type: "warn", content: "<@s.text name="comment.view.showMsg"/>?", ok: "<@s.text name="button.name.confirm"/>", cancel: "<@s.text name="button.name.cancel"/>", modal: true, okCallback: showComment});
 		function showComment() {
 			$.ajax({
 				url: "comment!ajaxShowComment.action",
@@ -67,7 +67,7 @@ $().ready(function() {
 	$deleteReply.click( function() {
 		var $this = $(this);
 		var replyId = $this.attr("replyId");
-		$.dialog({type: "warn", content: "您确定要删除吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: deleteReply});
+		$.dialog({type: "warn", content: "<@s.text name="item.delete.tipmessage"/>", ok: "<@s.text name="button.name.confirm"/>", cancel: "<@s.text name="button.name.cancel"/>", modal: true, okCallback: deleteReply});
 		function deleteReply() {
 			$.ajax({
 				url: "comment!ajaxDeleteReply.action",
@@ -88,7 +88,7 @@ $().ready(function() {
 	$hiddenReply.click( function() {
 		var $this = $(this);
 		var replyId = $this.attr("replyId");
-		$.dialog({type: "warn", content: "您确定要关闭显示吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: hiddenReply});
+		$.dialog({type: "warn", content: "<@s.text name="comment.view.closeMsg"/>?", ok: "<@s.text name="button.name.confirm"/>", cancel: "<@s.text name="button.name.cancel"/>", modal: true, okCallback: hiddenReply});
 		function hiddenReply() {
 			$.ajax({
 				url: "comment!ajaxHiddenReply.action",
@@ -108,7 +108,7 @@ $().ready(function() {
 	$showReply.click( function() {
 		var $this = $(this);
 		var replyId = $this.attr("replyId");
-		$.dialog({type: "warn", content: "您确定要显示到页面吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: showReply});
+		$.dialog({type: "warn", content: "<@s.text name="comment.view.showMsg"/>?", ok: "<@s.text name="button.name.confirm"/>", cancel: "<@s.text name="button.name.cancel"/>", modal: true, okCallback: showReply});
 		function showReply() {
 			$.ajax({
 				url: "comment!ajaxShowReply.action",
@@ -136,7 +136,7 @@ $().ready(function() {
 			"comment.content": "required"
 		},
 		messages: {
-			"comment.content": "请输入回复内容"
+			"comment.content": "<@s.text name="comment.view.reply.content"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -148,10 +148,10 @@ $().ready(function() {
 </script>
 </head>
 <body class="input">
-	<div class="bar">查看商品评论</div>
+	<div class="bar"><@s.text name="comment.list.title"/></div>
 	<div class="body">
 		<div id="validateErrorContainer" class="validateErrorContainer">
-			<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+			<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 			<ul></ul>
 		</div>
 		<form id="validateForm" action="comment!reply.action" method="post">
@@ -160,27 +160,27 @@ $().ready(function() {
 				<table class="inputTable">
 					<tr>
 						<th colspan="2" class="title">
-							商品评论
+							<@s.text name="comment.list.title"/>
 						</th>
 					</tr>
 					<tr>
 						<th>
-							评论人: 
+							<@s.text name="comment.list.comment.username"/>: 
 						</th>
 						<td>
-							${(comment.username)!"游客"}
+							${(comment.username)!"<@s.text name="comment.username.anonymous"/>"}
 							<#if comment.isShow>
-								<a href="javascript: void(0);" id="showComment" class="red hidden">[显示到页面]</a>
-								<a href="javascript: void(0);" id="hiddenComment" class="red">[关闭显示]</a>
+								<a href="javascript: void(0);" id="showComment" class="red hidden">[<@s.text name="comment.view.show"/>]</a>
+								<a href="javascript: void(0);" id="hiddenComment" class="red">[<@s.text name="comment.view.close"/>]</a>
 							<#else>
-								<a href="javascript: void(0);" id="showComment" class="red">[显示到页面]</a>
-								<a href="javascript: void(0);" id="hiddenComment" class="red hidden">[关闭显示]</a>
+								<a href="javascript: void(0);" id="showComment" class="red">[<@s.text name="comment.view.show"/>]</a>
+								<a href="javascript: void(0);" id="hiddenComment" class="red hidden">[<@s.text name="comment.view.close"/>]</a>
 							</#if>
 						</td>
 					</tr>
 					<tr>
 						<th>
-							评论商品: 
+							<@s.text name="comment.list.comment.goods"/>: 
 						</th>
 						<td>
 							<a href="${base}${comment.goods.htmlPath}" target="_blank" title="${comment.goods.name}">
@@ -190,7 +190,7 @@ $().ready(function() {
 					</tr>
 					<tr>
 						<th>
-							内容: 
+							<@s.text name="goods.message.context"/>: 
 						</th>
 						<td>
 							${comment.content}
@@ -198,7 +198,7 @@ $().ready(function() {
 					</tr>
 					<tr>
 						<th>
-							联系方式: 
+							<@s.text name="goods.content.bottom.comment.contact"/>: 
 						</th>
 						<td>
 							${comment.contact}
@@ -206,7 +206,7 @@ $().ready(function() {
 					</tr>
 					<tr>
 						<th>
-							评论日期: 
+							<@s.text name="comment.list.comment.date"/>: 
 						</th>
 						<td>
 							${comment.createDate?string("yyyy-MM-dd HH:mm:ss")}
@@ -225,32 +225,32 @@ $().ready(function() {
 					<div class="blank"></div>
 					<table class="inputTable">
 						<tr>
-							<th colspan="2" class="title">回复</th>
+							<th colspan="2" class="title"><@s.text name="goods.common.reply"/></th>
 						</tr>
 						<#list comment.replyCommentSet as replyComment>
 							<tr class="${replyComment.id}">
 								<th>
-									回复人: 
+									<@s.text name="comment.view.reply.user"/>: 
 								</th>
 								<td>
 									<#if replyComment.isAdminReply>
-										管理员
+										<@s.text name="comment.admin"/>
 									<#else>
-										${(replyComment.username)!"游客"}
+										${(replyComment.username)!"<@s.text name="comment.username.anonymous"/>"}
 									</#if>
-									<a href="javascript: void(0);" class="red deleteReply" replyId="${replyComment.id}">[删除]</a>
+									<a href="javascript: void(0);" class="red deleteReply" replyId="${replyComment.id}">[<@s.text name="goods.common.delete"/>]</a>
 									<#if replyComment.isShow>
-										<a href="javascript: void(0);" class="red hidden showReply" replyId="${replyComment.id}">[显示到页面]</a>
-										<a href="javascript: void(0);" class="red hiddenReply" replyId="${replyComment.id}">[关闭显示]</a>
+										<a href="javascript: void(0);" class="red hidden showReply" replyId="${replyComment.id}">[<@s.text name="comment.view.show"/>]</a>
+										<a href="javascript: void(0);" class="red hiddenReply" replyId="${replyComment.id}">[<@s.text name="comment.view.close"/>]</a>
 									<#else>
-										<a href="javascript: void(0);" class="red showReply" replyId="${replyComment.id}">[显示到页面]</a>
-										<a href="javascript: void(0);" class="red hidden hiddenReply" replyId="${replyComment.id}">[关闭显示]</a>
+										<a href="javascript: void(0);" class="red showReply" replyId="${replyComment.id}">[<@s.text name="comment.view.show"/>]</a>
+										<a href="javascript: void(0);" class="red hidden hiddenReply" replyId="${replyComment.id}">[<@s.text name="comment.view.close"/>]</a>
 									</#if>
 								</td>
 							</tr>
 							<tr class="${replyComment.id}">
 								<th>
-									回复内容: 
+									<@s.text name="comment.view.reply.content"/>: 
 								</th>
 								<td>
 									${replyComment.content}
@@ -258,7 +258,7 @@ $().ready(function() {
 							</tr>
 							<tr class="${replyComment.id}">
 								<th>
-									回复时间: 
+									<@s.text name="comment.view.reply.time"/>: 
 								</th>
 								<td>
 									${replyComment.createDate?string("yyyy-MM-dd HH: mm")}
@@ -278,12 +278,12 @@ $().ready(function() {
 				<table class="inputTable">
 					<tr>
 						<th colspan="2" class="title">
-							管理员回复
+							<@s.text name="comment.view.reply.admin"/>
 						</th>
 					</tr>
 					<tr>
 						<th>
-							回复内容: 
+							<@s.text name="comment.view.reply.content"/>: 
 						</th>
 						<td>
 							<textarea name="comment.content" class="formTextarea"></textarea>
@@ -291,8 +291,8 @@ $().ready(function() {
 					</tr>
 				</table>
 				<div class="buttonArea">
-					<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-					<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+					<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+					<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 				</div>
 			</div>
 		</form>

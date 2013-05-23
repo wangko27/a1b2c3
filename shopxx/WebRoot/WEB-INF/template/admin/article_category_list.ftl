@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>文章分类列表 - Powered By SHOP++</title>
+<title><@s.text name="article.category.list.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -19,7 +19,7 @@ $(document).ready(function() {
 
 	// 删除商品分类
 	$deleteArticleCategory.click( function() {
-		if (confirm("您确定要删除此文章分类吗?") == false) {
+		if (confirm("<@s.text name="article.category.list.delete"/>?") == false) {
 			return false;
 		}
 	});
@@ -53,23 +53,23 @@ $(document).ready(function() {
 </head>
 <body class="list">
 	<div class="bar">
-		文章分类列表&nbsp;总记录数: ${articleCategoryTreeList?size}
+		<@s.text name="article.category.list.title"/>&nbsp;<@s.text name="goods.specification.list.page.tips1"/>: ${articleCategoryTreeList?size}
 	</div>
 	<div class="body articleCategory">
 		<form id="listForm" action="article_category!list.action" method="post">
 			<div class="listBar">
-				<input type="button" class="formButton" onclick="location.href='article_category!add.action'" value="添加分类" hidefocus />
+				<input type="button" class="formButton" onclick="location.href='article_category!add.action'" value="<@s.text name="article.category.list.add"/>" hidefocus />
 			</div>
 			<table id="listTable" class="listTable">
 				<tr>
 					<th>
-						<span>分类名称</span>
+						<span><@s.text name="admin.category.name"/></span>
 					</th>
 					<th>
-						<span>排序</span>
+						<span><@s.text name="goods.specification.list.search.result.header.order"/></span>
 					</th>
 					<th>
-						<span>操作</span>
+						<span><@s.text name="goods.specification.list.search.result.header.operation"/></span>
 					</th>
 				</tr>
 				<#list articleCategoryTreeList as articleCategory>
@@ -89,19 +89,19 @@ $(document).ready(function() {
 							${articleCategory.orderList}
 						</td>
 						<td>
-							<a href="${base}${articleCategory.url}" target="_blank" title="浏览">[浏览]</a>
+							<a href="${base}${articleCategory.url}" target="_blank" title="<@s.text name="article.category.list.browse"/>">[<@s.text name="article.category.list.browse"/>]</a>
 							<#if (articleCategory.children?size > 0)>
-								<span title="无法删除">[删除]</span>
+								<span title="<@s.text name="article.category.list.delete.error"/>">[<@s.text name="button.name.delete"/>]</span>
 							<#else>
-								<a href="article_category!delete.action?id=${articleCategory.id}" class="deleteArticleCategory" title="删除">[删除]</a>
+								<a href="article_category!delete.action?id=${articleCategory.id}" class="deleteArticleCategory" title="<@s.text name="button.name.delete"/>">[<@s.text name="button.name.delete"/>]</a>
 							</#if>
-							<a href="article_category!edit.action?id=${articleCategory.id}" title="编辑">[编辑]</a>
+							<a href="article_category!edit.action?id=${articleCategory.id}" title="<@s.text name="goods.common.edit"/>">[<@s.text name="goods.common.edit"/>]</a>
 						</td>
 					</tr>
 				</#list>
 			</table>
 			<#if articleCategoryTreeList?size == 0>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="common.empty"/></div>
 			</#if>
 		</form>
 	</div>

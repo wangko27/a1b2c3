@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑文章 - Powered By SHOP++</title>
+<title><@s.text name="article.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -34,9 +34,9 @@ $().ready(function() {
 			"article.articleCategory.id": "required"
 		},
 		messages: {
-			"article.title": "请填写文章标题",
-			"article.content": "请填写文章内容",
-			"article.articleCategory.id": "请选择文章分类"
+			"article.title": "<@s.text name="article.input.head"/>",
+			"article.content": "<@s.text name="article.input.content"/>",
+			"article.articleCategory.id": "<@s.text name="article.input.category"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -49,10 +49,10 @@ $().ready(function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加文章<#else>编辑文章</#if>
+		<#if isAddAction><@s.text name="article.input.add"/><#else><@s.text name="article.input.edit"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -61,7 +61,7 @@ $().ready(function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						文章标题: 
+						<@s.text name="article.input.article"/>: 
 					</th>
 					<td>
 						<input type="text" name="article.title" class="formText" value="${(article.title)!}" />
@@ -70,11 +70,11 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						文章分类: 
+						<@s.text name="article.input.article.category"/>: 
 					</th>
 					<td>
 						<select name="article.articleCategory.id" >
-							<option value="">请选择...</option>
+							<option value=""><@s.text name="goods.content.buyInfo.tipsTitle"/>...</option>
 							<#list articleCategoryTreeList as articleCategoryTree>
 								<option value="${articleCategoryTree.id}"<#if (articleCategoryTree == article.articleCategory)!> selected</#if>>
 									<#if articleCategoryTree.grade != 0>
@@ -91,7 +91,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						作者: 
+						<@s.text name="article.author.title"/>: 
 					</th>
 					<td>
 						<input type="text" class="formText" name="article.author" value="${(article.author)!}" />
@@ -99,23 +99,23 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						设置: 
+						<@s.text name="goods.common.setting"/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox name="article.isPublication" value="${(article.isPublication)!true}" />发布
+							<@checkbox name="article.isPublication" value="${(article.isPublication)!true}" /><@s.text name="article.input.operation.publish"/>
 						</label>
 						<label>
-							<@checkbox name="article.isRecommend" value="${(article.isRecommend)!false}" />推荐
+							<@checkbox name="article.isRecommend" value="${(article.isRecommend)!false}" /><@s.text name="article.input.operation.recommend"/>
 						</label>
 						<label>
-							<@checkbox name="article.isTop" value="${(article.isTop)!false}" />置顶
+							<@checkbox name="article.isTop" value="${(article.isTop)!false}" /><@s.text name="article.input.operation.setTop"/>
 						</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						内容: 
+						<@s.text name="goods.message.context"/>: 
 					</th>
 					<td>
 						<textarea id="editor" name="article.content" class="editor">${(article.content)!}</textarea>
@@ -127,12 +127,12 @@ $().ready(function() {
 						&nbsp;
 					</th>
 					<td>
-						<span class="warnInfo"><span class="icon">&nbsp;</span>提示: 若需要强制分页,请在文章内容中插入 {nextPage} 标记</span>
+						<span class="warnInfo"><span class="icon">&nbsp;</span><@s.text name="article.input.operation.page.notice"/> {nextPage} <@s.text name="article.input.operation.page.sign"/></span>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						页面关键词: 
+						<@s.text name="admin.category.article.pageKey"/>: 
 					</th>
 					<td>
 						<input type="text" class="formText" name="article.metaKeywords" value="${(article.metaKeywords)!}" />
@@ -140,7 +140,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						页面描述: 
+						<@s.text name="admin.category.article.pageDescription"/>: 
 					</th>
 					<td>
 						<textarea name="article.metaDescription" class="formTextarea">${(article.metaDescription)!}</textarea>
@@ -148,8 +148,8 @@ $().ready(function() {
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

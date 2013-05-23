@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑配送方式 - Powered By SHOP++</title>
+<title><@s.text name="delivery.type.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -51,25 +51,25 @@ $().ready(function() {
 			}
 		},
 		messages: {
-			"deliveryType.name": "请填写配送方式名称",
+			"deliveryType.name": "<@s.text name="delivery.type.input.name"/>",
 			"deliveryType.firstWeight": {
-				required: "请填写首重量",
-				digits: "首重量必须为零或正整数"
+				required: "<@s.text name="delivery.type.input.firstWeight"/>",
+				digits: "<@s.text name="delivery.type.input.firstWeight.require"/>"
 			},
 			"deliveryType.continueWeight": {
-				required: "请填写续重量",
-				positiveInteger: "续重量必须为正整数"
+				required: "<@s.text name="delivery.type.input.continueWeight"/>",
+				positiveInteger: "<@s.text name="delivery.type.input.continueWeight.require"/>"
 			},
 			"deliveryType.firstWeightPrice": {
-				required: "请填写首重价格",
-				min: "首重价格必须为零或正数"
+				required: "<@s.text name="delivery.type.input.firstPrice"/>",
+				min: "<@s.text name="delivery.type.input.firstPrice.require"/>"
 			},
 			"deliveryType.continueWeightPrice": {
-				required: "请填写续重价格",
-				min: "续重价格必须为零或正数"
+				required: "<@s.text name="delivery.type.input.continuePrice"/>",
+				min: "<@s.text name="delivery.type.input.continuePrice.require"/>"
 			},
 			"deliveryType.orderList": {
-				digits: "排序必须为零或正整数"
+				digits: "<@s.text name="goods.specification.edit.order.tips"/>"
 			}
 		},
 		submitHandler: function(form) {
@@ -83,10 +83,10 @@ $().ready(function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加配送方式<#else>编辑配送方式</#if>
+		<#if isAddAction><@s.text name="delivery.type.input.add"/><#else><@s.text name="delivery.type.input.edit"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -95,7 +95,7 @@ $().ready(function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						配送方式名称: 
+						<@s.text name="shipping.deliveryTypeName"/>: 
 					</th>
 					<td>
 						<input type="text" name="deliveryType.name" class="formText" value="${(deliveryType.name)!}" />
@@ -104,7 +104,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						配送类型: 
+						<@s.text name="delivery.type.list.type"/>: 
 					</th>
 					<td>
 						<select name="deliveryType.deliveryMethod">
@@ -118,11 +118,11 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						默认物流公司: 
+						<@s.text name="delivery.type.input.company.default"/>: 
 					</th>
 					<td>
 						<select name="deliveryType.defaultDeliveryCorp.id">
-							<option value="">请选择...</option>
+							<option value=""><@s.text name="goods.content.buyInfo.tipsTitle"/>...</option>
 							<#list allDeliveryCorpList as deliveryCorp>
 								<option value="${deliveryCorp.id}" <#if (deliveryCorp == deliveryType.defaultDeliveryCorp)!> selected</#if>>
 									${deliveryCorp.name}
@@ -133,25 +133,25 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						首重量: 
+						<@s.text name="delivery.type.input.first"/>: 
 					</th>
 					<td>
-						<input type="text" name="deliveryType.firstWeight" class="formText" value="${(deliveryType.firstWeight)!}" title="单位: 克" />
+						<input type="text" name="deliveryType.firstWeight" class="formText" value="${(deliveryType.firstWeight)!}" title="<@s.text name="delivery.type.input.unit"/>: <@s.text name="goods.common.unit.gram"/>" />
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						续重量: 
+						<@s.text name="delivery.type.input.continue"/>: 
 					</th>
 					<td>
-						<input type="text" name="deliveryType.continueWeight" class="formText" value="${(deliveryType.continueWeight)!}" title="单位: 克" />
+						<input type="text" name="deliveryType.continueWeight" class="formText" value="${(deliveryType.continueWeight)!}" title="<@s.text name="delivery.type.input.unit"/>: <@s.text name="goods.common.unit.gram"/>" />
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						首重价格: 
+						<@s.text name="delivery.type.list.weightPrice"/>: 
 					</th>
 					<td>
 						<input type="text" name="deliveryType.firstWeightPrice" class="formText" value="${(deliveryType.firstWeightPrice)!}" />
@@ -160,7 +160,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						续重价格: 
+						<@s.text name="delivery.type.list.continueweight"/>: 
 					</th>
 					<td>
 						<input type="text" name="deliveryType.continueWeightPrice" class="formText" value="${(deliveryType.continueWeightPrice)!}" />
@@ -169,15 +169,15 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						排序: 
+						<@s.text name="goods.specification.list.search.result.header.order"/>: 
 					</th>
 					<td>
-						<input type="text" name="deliveryType.orderList" class="formText" value="${(deliveryType.orderList)!}" title="只允许输入零或正整数" />
+						<input type="text" name="deliveryType.orderList" class="formText" value="${(deliveryType.orderList)!}" title="<@s.text name="admin.category.article.require.positive"/>" />
 					</td>
 				</tr>
 				<tr>
 					<th>
-						介绍: 
+						<@s.text name="payment.config.desc"/>: 
 					</th>
 					<td>
 						<textarea name="deliveryType.description" id="editor" class="editor">${(deliveryType.description)!}</textarea>
@@ -185,8 +185,8 @@ $().ready(function() {
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>友情链接列表 - Powered By SHOP++</title>
+<title><@s.text name="friend.link.list.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,14 +15,14 @@
 </head>
 <body class="list">
 	<div class="bar">
-		友情链接管理&nbsp;总记录数: ${pager.totalCount} (共${pager.pageCount}页)
+		<@s.text name="friend.link.list.manage"/>&nbsp;<@s.text name="goods.specification.list.page.tips1"/>: ${pager.totalCount} (<@s.text name="goods.specification.list.page.tips2"/>${pager.pageCount}<@s.text name="goods.specification.list.page.tips3"/>)
 	</div>
 	<div class="body">
 		<form id="listForm" action="friend_link!list.action" method="post">
 			<div class="listBar">
-				<input type="button" class="formButton" onclick="location.href='friend_link!add.action'" value="添加链接" hidefocus />
+				<input type="button" class="formButton" onclick="location.href='friend_link!add.action'" value="<@s.text name="friend.link.list.add"/>" hidefocus />
 				&nbsp;&nbsp;
-				<label>每页显示: </label>
+				<label><@s.text name="goods.specification.list.search.result"/>: </label>
 				<select name="pager.pageSize" id="pageSize">
 					<option value="10"<#if pager.pageSize == 10> selected</#if>>
 						10
@@ -44,22 +44,22 @@
 						<input type="checkbox" class="allCheck" />
 					</th>
 					<th>
-						<a href="#" class="sort" name="name" hidefocus>友情链接名称</a>
+						<a href="#" class="sort" name="name" hidefocus><@s.text name="friend.link.list.name"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="url" hidefocus>链接地址</a>
+						<a href="#" class="sort" name="url" hidefocus><@s.text name="friend.link.list.address"/></a>
 					</th>
 					<th>
 						<a href="#" class="sort" name="logoPath" hidefocus>LOGO</a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="orderList" hidefocus>排序</a>
+						<a href="#" class="sort" name="orderList" hidefocus><@s.text name="goods.specification.list.search.result.header.order"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="createDate" hidefocus>添加时间</a>
+						<a href="#" class="sort" name="createDate" hidefocus><@s.text name="comment.view.reply.time.add"/></a>
 					</th>
 					<th>
-						<span>操作</span>
+						<span><@s.text name="favorite.list.header.operation"/></span>
 					</th>
 				</tr>
 				<#list pager.result as friendLink>
@@ -77,7 +77,7 @@
 						</td>
 						<td>
 							<#if (friendLink.logoPath??)!>
-								<a href="${base}${friendLink.logoPath}" target="_blank">查看</a>
+								<a href="${base}${friendLink.logoPath}" target="_blank"><@s.text name="shipping.list.single.view"/></a>
 							<#else>
 								-
 							</#if>
@@ -89,7 +89,7 @@
 							<span title="${friendLink.createDate?string("yyyy-MM-dd HH:mm:ss")}">${friendLink.createDate}</span>
 						</td>
 						<td>
-							<a href="friend_link!edit.action?id=${friendLink.id}" title="编辑">[编辑]</a>
+							<a href="friend_link!edit.action?id=${friendLink.id}" title="<@s.text name="goods.common.edit"/>">[<@s.text name="goods.common.edit"/>]</a>
 						</td>
 					</tr>
 				</#list>
@@ -97,14 +97,14 @@
 			<#if (pager.result?size > 0)>
 				<div class="pagerBar">
 					<div class="delete">
-						<input type="button" id="deleteButton" class="formButton" url="friend_link!delete.action" value="删 除" disabled hidefocus />
+						<input type="button" id="deleteButton" class="formButton" url="friend_link!delete.action" value="<@s.text name="goods.specification.list.search.result.header.delete"/>" disabled hidefocus />
 					</div>
 					<div class="pager">
 						<#include "/WEB-INF/template/admin/pager.ftl" />
 					</div>
 				<div>
 			<#else>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="common.empty"/></div>
 			</#if>
 		</form>
 	</div>

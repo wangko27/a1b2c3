@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>快递单模板列表 - Powered By SHOP++</title>
+<title><@s.text name="delivery.template.list.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,12 +15,12 @@
 </head>
 <body class="list">
 	<div class="bar">
-		快递单模板管理&nbsp;总记录数: ${pager.totalCount} (共${pager.pageCount}页)
+		<@s.text name="delivery.template.list.manage"/>&nbsp;<@s.text name="goods.specification.list.page.tips1"/>: ${pager.totalCount} (<@s.text name="goods.specification.list.page.tips2"/>${pager.pageCount}<@s.text name="goods.specification.list.page.tips3"/>)
 	</div>
 	<div class="body">
 		<form id="listForm" action="delivery_template!list.action" method="post">
 			<div class="listBar">
-				<input type="button" class="formButton" onclick="location.href='delivery_template!add.action'" value="添加模板" hidefocus />
+				<input type="button" class="formButton" onclick="location.href='delivery_template!add.action'" value="<@s.text name="delivery.template.list.add"/>" hidefocus />
 			</div>
 			<table id="listTable" class="listTable">
 				<tr>
@@ -28,16 +28,16 @@
 						<input type="checkbox" class="allCheck" />
 					</th>
 					<th>
-						<a href="#" class="sort" name="name" hidefocus>模板名称</a>
+						<a href="#" class="sort" name="name" hidefocus><@s.text name="delivery.template.name"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="isDefault" hidefocus>是否默认</a>
+						<a href="#" class="sort" name="isDefault" hidefocus><@s.text name="delivery.template.isDefault"/></a>
 					</th>
 					<th>
-						<span>备注</span>
+						<span><@s.text name="goods.specification.list.search.option2"/></span>
 					</th>
 					<th>
-						<span>操作</span>
+						<span><@s.text name="goods.specification.list.search.result.header.operation"/></span>
 					</th>
 				</tr>
 				<#list pager.result as deliveryTemplate>
@@ -55,7 +55,7 @@
 							${deliveryTemplate.memo}
 						</td>
 						<td>
-							<a href="delivery_template!edit.action?id=${deliveryTemplate.id}" title="编辑">[编辑]</a>
+							<a href="delivery_template!edit.action?id=${deliveryTemplate.id}" title="<@s.text name="goods.common.edit"/>">[<@s.text name="goods.common.edit"/>]</a>
 						</td>
 					</tr>
 				</#list>
@@ -63,14 +63,14 @@
 			<#if (pager.result?size > 0)>
 				<div class="pagerBar">
 					<div class="delete">
-						<input type="button" id="deleteButton" class="formButton" url="delivery_template!delete.action" value="删 除" disabled hidefocus />
+						<input type="button" id="deleteButton" class="formButton" url="delivery_template!delete.action" value="<@s.text name="goods.specification.list.search.result.header.delete"/>" disabled hidefocus />
 					</div>
 					<div class="pager">
 						<#include "/WEB-INF/template/admin/pager.ftl" />
 					</div>
 				<div>
 			<#else>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="common.empty"/></div>
 			</#if>
 		</form>
 	</div>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑商品分类 - Powered By SHOP++</title>
+<title><@s.text name="goods.category.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -66,13 +66,13 @@ $().ready( function() {
 			"goodsCategory.orderList": "digits"
 		},
 		messages: {
-			"goodsCategory.name": "请填写分类名称",
+			"goodsCategory.name": "<@s.text name="admin.category.article.name"/>",
 			"goodsCategory.sign": {
-				required: "请填写标识",
-				alphanumeric: "标识只允许包含英文、数字和下划线",
-				remote: "标识已存在"
+				required: "<@s.text name="admin.category.article.require"/>",
+				alphanumeric: "<@s.text name="goods.category.input.sign.require"/>",
+				remote: "<@s.text name="admin.category.article.require.exist"/>"
 			},
-			"goodsCategory.orderList": "排序必须为零或正整数"
+			"goodsCategory.orderList": "<@s.text name="area.input.area.order"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -85,10 +85,10 @@ $().ready( function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加商品分类<#else>编辑商品分类</#if>
+		<#if isAddAction><@s.text name="goods.category.input.add"/><#else><@s.text name="goods.category.input.edit"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -97,7 +97,7 @@ $().ready( function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						分类名称: 
+						<@s.text name="admin.category.name"/>: 
 					</th>
 					<td>
 						<input type="text" id="goodsCategoryName" name="goodsCategory.name" class="formText" value="${(goodsCategory.name)!}" />
@@ -106,12 +106,12 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						上级分类: 
+						<@s.text name="admin.category.super"/>: 
 					</th>
 					<td>
 						<#if isAddAction>
 							<select name="parentId">
-								<option value="">顶级分类</option>
+								<option value=""><@s.text name="admin.category.top"/></option>
 								<#list goodsCategoryTreeList as goodsCategoryTree>
 									<option value="${goodsCategoryTree.id}">
 										<#if goodsCategoryTree.grade != 0>
@@ -124,17 +124,17 @@ $().ready( function() {
 								</#list>
 							</select>
 						<#else>
-							${(goodsCategory.parent.name)!'顶级分类'}
+							${(goodsCategory.parent.name)!'<@s.text name="admin.category.top"/>'}
 						</#if>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						商品类型: 
+						<@s.text name="goods.category.input.type"/>: 
 					</th>
 					<td>
 						<select name="goodsCategory.goodsType.id">
-							<option value="">通用商品类型</option>
+							<option value=""><@s.text name="goods.category.input.type.common"/></option>
 							<#list allGoodsTypeList as goodsType>
 								<option value="${goodsType.id}"<#if (goodsType == goodsCategory.goodsType)!> selected</#if>>
 									${goodsType.name}
@@ -145,25 +145,25 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						标识: 
+						<@s.text name="admin.category.article.require.sign"/>: 
 					</th>
 					<td>
-						<input type="text" id="goodsCategorySign" name="goodsCategory.sign" class="formText" value="${(goodsCategory.sign)!}" title="该分类的唯一标识,用于分类路径和模板标识" />
+						<input type="text" id="goodsCategorySign" name="goodsCategory.sign" class="formText" value="${(goodsCategory.sign)!}" title="<@s.text name="admin.category.article.require.sign.unique"/>" />
 						<label class="requireField">*</label>
 						<span id="goodsCategorySignLoadingIcon" class="loadingIcon hidden">&nbsp;</span>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						排序: 
+						<@s.text name="goods.specification.list.search.result.header.order"/>: 
 					</th>
 					<td>
-						<input type="text" name="goodsCategory.orderList" class="formText" value="${(goodsCategory.orderList)!}" title="只允许输入零或正整数" />
+						<input type="text" name="goodsCategory.orderList" class="formText" value="${(goodsCategory.orderList)!}" title="<@s.text name="admin.category.article.require.positive"/>" />
 					</td>
 				</tr>
 				<tr>
 					<th>
-						页面关键词: 
+						<@s.text name="admin.category.article.pageKey"/>: 
 					</th>
 					<td>
 						<input type="text" name="goodsCategory.metaKeywords" class="formText" value="${(goodsCategory.metaKeywords)!}" />
@@ -171,7 +171,7 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						页面描述: 
+						<@s.text name="admin.category.article.pageDescription"/>: 
 					</th>
 					<td>
 						<textarea name="goodsCategory.metaDescription" class="formTextarea">${(goodsCategory.metaDescription)!}</textarea>
@@ -182,13 +182,13 @@ $().ready( function() {
 						&nbsp;
 					</th>
 					<td>
-						<span class="warnInfo"><span class="icon">&nbsp;</span>页面关键词、页面描述可以更好的使用户通过搜索引擎搜索到站点</span>
+						<span class="warnInfo"><span class="icon">&nbsp;</span><@s.text name="admin.category.article.pageSearch"/></span>
 					</td>
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

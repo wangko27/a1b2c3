@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>评论设置 - Powered By SHOP++</title>
+<title><@s.text name="comment.setting.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -16,14 +16,14 @@
 </head>
 <body class="input">
 	<div class="bar">
-		评论设置
+		<@s.text name="comment.setting.title"/>
 	</div>
 	<div class="body">
 		<form id="validateForm" action="comment!settingUpdate.action" method="post">
 			<table class="inputTable">
 				<tr>
 					<th>
-						发表评论权限: 
+						<@s.text name="comment.setting.publish.authorized"/>: 
 					</th>
 					<td>
 						<select name="commentAuthority">
@@ -37,7 +37,7 @@
 				</tr>
 				<tr>
 					<th>
-						显示方式: 
+						<@s.text name="comment.setting.publish.show"/>: 
 					</th>
 					<td>
 						<select name="commentDisplayType">
@@ -51,21 +51,21 @@
 				</tr>
 				<tr>
 					<th>
-						设置
+						<@s.text name="goods.common.setting"/>
 					</th>
 					<td>
 						<label>
-							<@checkbox name="isCommentEnabled" value="${setting.isCommentEnabled}" />启用评论功能
+							<@checkbox name="isCommentEnabled" value="${setting.isCommentEnabled}" /><@s.text name="comment.setting.publish.start"/>
 						</label>
 						<label>
-							<@checkbox name="isCommentCaptchaEnabled" value="${setting.isCommentCaptchaEnabled}" />启用验证码
+							<@checkbox name="isCommentCaptchaEnabled" value="${setting.isCommentCaptchaEnabled}" /><@s.text name="comment.setting.captcha.start"/>
 						</label>
 					</td>
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

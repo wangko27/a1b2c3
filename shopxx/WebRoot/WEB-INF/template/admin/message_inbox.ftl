@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>收件箱 - Powered By SHOP++</title>
+<title><@s.text name="message.inbox.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -67,24 +67,24 @@ $().ready( function() {
 </head>
 <body class="list message">
 	<div class="bar">
-		收件箱&nbsp;总记录数: ${pager.totalCount} (共${pager.pageCount}页)
+		<@s.text name="message.inbox.pagetitle"/>&nbsp;<@s.text name="common.list.page.title1"/>: ${pager.totalCount} (<@s.text name="common.list.page.title2"/>${pager.pageCount}<@s.text name="common.list.page.title3"/>)
 	</div>
 	<div class="body">
 		<form id="listForm" action="message!inbox.action" method="post">
 			<div class="listBar">
-				<input type="button" class="formButton" onclick="location.href='message!send.action'" value="发送消息" hidefocus />
-				<label>查找: </label>
+				<input type="button" class="formButton" onclick="location.href='message!send.action'" value="<@s.text name="message.send.button"/>" hidefocus />
+				<label><@s.text name="common.search.title"/>: </label>
 				<select name="pager.searchBy">
 					<option value="fromMember.username"<#if pager.searchBy == "fromMember.username"> selected</#if>>
-						发件人
+						<@s.text name="message.fromMember"/>
 					</option>
 					<option value="title"<#if pager.searchBy == "title"> selected</#if>>
-						标题
+						<@s.text name="message.title"/>
 					</option>
 				</select>
 				<input type="text" name="pager.keyword" value="${pager.keyword!}" />
-				<input type="button" id="searchButton" class="formButton" value="搜 索" hidefocus />
-				<label>每页显示: </label>
+				<input type="button" id="searchButton" class="formButton" value="<@s.text name="common.search.button"/>" hidefocus />
+				<label><@s.text name="common.search.tips"/>: </label>
 				<select name="pager.pageSize" id="pageSize">
 					<option value="10"<#if pager.pageSize == 10> selected</#if>>
 						10
@@ -106,19 +106,19 @@ $().ready( function() {
 						<input type="checkbox" class="allCheck" />
 					</th>
 					<th>
-						<a href="#" class="sort" name="title" hidefocus>标题</a>
+						<a href="#" class="sort" name="title" hidefocus><@s.text name="message.title"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="fromMember" hidefocus>发件人</a>
+						<a href="#" class="sort" name="fromMember" hidefocus><@s.text name="message.fromMember"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="isRead" hidefocus>已读</a>
+						<a href="#" class="sort" name="isRead" hidefocus><@s.text name="message.isRead"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="createDate" hidefocus>日期</a>
+						<a href="#" class="sort" name="createDate" hidefocus><@s.text name="message.createDate"/></a>
 					</th>
 					<th>
-						<span>操作</span>
+						<span><@s.text name="common.button.operate"/></span>
 					</th>
 				</tr>
 				<#list pager.result as message>
@@ -135,16 +135,16 @@ $().ready( function() {
 						</td>
 						<td>
 							<#if message.isRead>
-								是
+								<@s.text name="common.label.yes"/>
 							<#else>
-								<span class="red">否</span>
+								<span class="red"><@s.text name="common.label.no"/></span>
 							</#if>
 						</td>
 						<td>
 							${message.createDate?string("yyyy-MM-dd HH: mm")}
 						</td>
 						<td>
-							<a href="message!reply.action?id=${message.id}">[回复]</a>
+							<a href="message!reply.action?id=${message.id}">[<@s.text name=""/>回复]</a>
 						</td>
 					</tr>
 					<tr class="messageContentTr">
@@ -156,14 +156,14 @@ $().ready( function() {
 			<#if (pager.result?size > 0)>
 				<div class="pagerBar">
 					<div class="delete">
-						<input type="button" id="deleteButton" class="formButton" url="message!delete.action" value="删 除" disabled hidefocus />
+						<input type="button" id="deleteButton" class="formButton" url="message!delete.action" value="<@s.text name="button.name.delete"/>" disabled hidefocus />
 					</div>
 					<div class="pager">
 						<#include "/WEB-INF/template/admin/pager.ftl" />
 					</div>
 				<div>
 			<#else>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="common.empty"/></div>
 			</#if>
 		</form>
 	</div>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>编辑个人资料 - Powered By SHOP++</title>
+<title><@s.text name="profile.edit.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -46,19 +46,19 @@ $().ready(function() {
 		},
 		messages: {
 			"currentPassword": {
-				remote: "当前密码错误"
+				remote: "<@s.text name="profile.edit.password.error"/>"
 			},
 			"admin.password": {
-				requiredTo: "请填写新密码",
-				minlength: "密码必须大于等于4",
-				maxlength: 	 "密码必须小于等于20"
+				requiredTo: "<@s.text name="goods.password.input.new"/>",
+				minlength: "<@s.text name="profile.edit.password.min4"/>",
+				maxlength: 	 "<@s.text name="profile.edit.password.max20"/>"
 			},
 			"rePassword": {
-				equalTo: "两次密码输入不一致"
+				equalTo: "<@s.text name="goods.password.input.different"/>"
 			},
 			"admin.email": {
-				required: "请填写E-mail",
-				email: "E-mail格式不正确"
+				required: "<@s.text name="goods.profile.input"/>E-mail",
+				email: "E-mail<@s.text name="goods.profile.input.invalid"/>"
 			}
 		},
 		submitHandler: function(form) {
@@ -72,10 +72,10 @@ $().ready(function() {
 </head>
 <body class="input">
 	<div class="bar">
-		编辑个人资料
+		<@s.text name="profile.edit.title"/>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="common.validateErrorTitle"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -83,7 +83,7 @@ $().ready(function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						用户名: 
+						<@s.text name="login.field.username"/>: 
 					</th>
 					<td>
 						${(admin.username)!}
@@ -91,7 +91,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						姓&nbsp;&nbsp;&nbsp;名: 
+						<@s.text name="profile.edit.username"/>: 
 					</th>
 					<td>
 						${(admin.name)!}
@@ -99,7 +99,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						部&nbsp;&nbsp;&nbsp;门: 
+						<@s.text name="profile.edit.department"/>: 
 					</th>
 					<td>
 						${(admin.department)!}
@@ -107,7 +107,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						当前密码: 
+						<@s.text name="profile.edit.password.current"/>: 
 					</th>
 					<td>
 						<input type="password" id="currentPassword" name="currentPassword" class="formText"  />
@@ -115,15 +115,15 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						新密码: 
+						<@s.text name="goods.notify.memberCenter.profile.password.new"/>: 
 					</th>
 					<td>
-						<input type="password" id="password" name="admin.password" class="formText" title="密码长度只允许在4-20之间" />
+						<input type="password" id="password" name="admin.password" class="formText" title="<@s.text name="goods.notify.javascript.password.length"/>" />
 					</td>
 				</tr>
 				<tr>
 					<th>
-						确认新密码: 
+						<@s.text name="goods.notify.memberCenter.profile.password.renew"/>: 
 					</th>
 					<td>
 						<input type="password" name="rePassword" class="formText" />
@@ -143,13 +143,13 @@ $().ready(function() {
 						&nbsp;
 					</th>
 					<td>
-						<span class="warnInfo"><span class="icon">&nbsp;</span>系统提示: 如需修改密码请先填写当前密码,若留空则密码保持不变</span>
+						<span class="warnInfo"><span class="icon">&nbsp;</span><@s.text name="profile.edit.password.notice"/></span>
 					</td>
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

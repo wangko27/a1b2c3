@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑友情链接 - Powered By SHOP++</title>
+<title><@s.text name="friend.link.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -34,10 +34,10 @@ $().ready(function() {
 			"friendLink.orderList": "digits"
 		},
 		messages: {
-			"friendLink.name": "请填写友情链接名称",
-			"friendLink.url": "请填写链接地址",
-			"logo": "LOGO格式错误",
-			"friendLink.orderList": "排序必须为零或正整数"
+			"friendLink.name": "<@s.text name="friend.link.input.name"/>",
+			"friendLink.url": "<@s.text name="friend.link.input.url"/>",
+			"logo": "LOGO<@s.text name="goods.notify.javascript.email.error"/>",
+			"friendLink.orderList": "<@s.text name="goods.specification.edit.order.tips"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -50,10 +50,10 @@ $().ready(function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加友情链接<#else>编辑友情链接</#if>
+		<#if isAddAction><@s.text name="friend.link.input.add"/><#else><@s.text name="friend.link.input.edit"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="goods.specification.edit.errortitle"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -62,7 +62,7 @@ $().ready(function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						友情链接名称: 
+						<@s.text name="friend.link.list.name"/>: 
 					</th>
 					<td>
 						<input type="text" name="friendLink.name" class="formText" value="${(friendLink.name)!}" />
@@ -71,7 +71,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						链接地址: 
+						<@s.text name="friend.link.list.address"/>: 
 					</th>
 					<td>
 						<input type="text" name="friendLink.url" class="formText" value="${(friendLink.url)!}" />
@@ -85,22 +85,22 @@ $().ready(function() {
 					<td>
 						<input type="file" name="logo" />
 							<#if (friendLink.logoPath??)!>
-								&nbsp;&nbsp;&nbsp;<a href="${base}${friendLink.logoPath}" target="_blank">查看</a>
+								&nbsp;&nbsp;&nbsp;<a href="${base}${friendLink.logoPath}" target="_blank"><@s.text name="shipping.list.single.view"/></a>
 							</#if>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						排序: 
+						<@s.text name="payment.config.order"/>: 
 					</th>
 					<td>
-						<input type="text" name="friendLink.orderList" class="formText" value="${(friendLink.orderList)!}" title="只允许输入零或正整数" />
+						<input type="text" name="friendLink.orderList" class="formText" value="${(friendLink.orderList)!}" title="<@s.text name="admin.category.article.require.positive"/>" />
 					</td>
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

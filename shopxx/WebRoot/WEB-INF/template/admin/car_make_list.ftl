@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>适用车型信息维护 - Powered By SHOP++</title>
+<title><@s.text name="car.make.list.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -14,7 +14,7 @@
 <script type="text/javascript" src="${base}/template/admin/js/admin.js"></script>
 <script type="text/javascript">
 	function gotoAddCarMake(){
-		var carMake = prompt("请输入制造商","");
+		var carMake = prompt("<@s.text name="car.make.producer"/>","");
 		var url = shopxx.base + "/admin/car_make!save.action";
 		$.ajax({
 			url: url,
@@ -31,10 +31,10 @@
 	}
 	
 	function gotoAddCarMode(){
-		var carMode = prompt("请输入汽车型号","");
+		var carMode = prompt("<@s.text name="car.make.type"/>","");
 		var carMakeId = $('#carMakeId').val();
 		if(!carMakeId || carMakeId == null || carMakeId == '') {
-			$.message({type: 'error', content: '请选选择制造商'});
+			$.message({type: 'error', content: '<@s.text name="car.make.producer.choose"/>'});
 			return;
 		}
 		var url = shopxx.base + "/admin/car_mode!save.action";
@@ -73,11 +73,11 @@
 	function gotoAddCarStyle(){
 		var carModeId = $('#carModeId').val();
 		if(!carModeId || carModeId == null || carModeId == '') {
-			$.message({type: 'error', content: '请选择车型'});
+			$.message({type: 'error', content: '<@s.text name="car.make.type.choose"/>'});
 			return;
 		}
-		var carStyle = prompt("请输入汽车规格","");
-		var yearMade = prompt("请输入生产年代","");
+		var carStyle = prompt("<@s.text name="car.make.style"/>","");
+		var yearMade = prompt("<@s.text name="car.make.generate.age"/>","");
 		var url = shopxx.base + "/admin/car_style!save.action";
 		$.ajax({
 			url: url,
@@ -116,13 +116,13 @@
 		<tr>
 		<td style="width: 100px">
 		<div class="bar">
-			制造商
+			<@s.text name="car.make.maker"/>
 		</div>
 		<div class="body">
 			<form id="listForm" action="brand!list.action" method="post">
 				<div class="listBar">
-					<input type="button" class="formButton" onclick="gotoAddCarMake()" value="添加" hidefocus />
-					<input type="button" class="formButton" onclick="gotoDeleteCarMake()" value="删除" hidefocus />
+					<input type="button" class="formButton" onclick="gotoAddCarMake()" value="<@s.text name="common.button.add"/>" hidefocus />
+					<input type="button" class="formButton" onclick="gotoDeleteCarMake()" value="<@s.text name="common.button.delete"/>" hidefocus />
 				</div>
 				<ul id="carMakeList">
 					<#list carMakeList as carMake>
@@ -134,12 +134,12 @@
 		</td>
 		<td style="width: 100px">
 		<div class="bar">
-			车型
+			<@s.text name="car.make.car.type"/>
 		</div>
 		<input type="hidden" id="carMakeId" value="" />
 		<div class="listBar">
-			<input type="button" class="formButton" onclick="gotoAddCarMode()" value="添加" hidefocus />
-			<input type="button" class="formButton" onclick="gotoDeleteCarMake()" value="删除" hidefocus />
+			<input type="button" class="formButton" onclick="gotoAddCarMode()" value="<@s.text name="common.button.add"/>" hidefocus />
+			<input type="button" class="formButton" onclick="gotoDeleteCarMake()" value="<@s.text name="common.button.delete"/>" hidefocus />
 		</div>
 		<ul id="carModeList">
 		</ul>
@@ -147,11 +147,11 @@
 		<td style="width: 100px">
 		<input type="hidden" id="carModeId" value="" />
 		<div class="bar">
-			出厂年限
+			<@s.text name="car.make.maker.age"/>
 		</div>
 		<div class="listBar">
-			<input type="button" class="formButton" onclick="gotoAddCarStyle()" value="添加" hidefocus />
-			<input type="button" class="formButton" onclick="gotoDeleteCarMake()" value="删除" hidefocus />
+			<input type="button" class="formButton" onclick="gotoAddCarStyle()" value="<@s.text name="common.button.add"/>" hidefocus />
+			<input type="button" class="formButton" onclick="gotoDeleteCarMake()" value="<@s.text name="common.button.delete"/>" hidefocus />
 		</div>
 		<ul id="carStyleList">
 		</ul>

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>管理菜单 - Powered By SHOP++</title>
+<title><@s.text name="menu.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,26 +15,26 @@
 		<@sec.authorize ifAnyGranted="ROLE_NAVIGATION,ROLE_ARTICLEE,ROLE_ARTICLE_CATEGORY,ROLE_FRIEND_LINK">
 			<dl>
 				<dt>
-					<span>内容管理</span>
+					<span><@s.text name="menu.manage.content"/></span>
 				</dt>
 				<@sec.authorize ifAnyGranted="ROLE_NAVIGATION">
 					<dd>
-						<a href="navigation!list.action" target="mainFrame">导航管理</a>
+						<a href="navigation!list.action" target="mainFrame"><@s.text name="menu.manage.content.navigation"/></a>
 					</dd>
 				</@sec.authorize>
 				<@sec.authorize ifAnyGranted="ROLE_ARTICLEE">
 					<dd>
-						<a href="article!list.action" target="mainFrame">文章管理</a>
+						<a href="article!list.action" target="mainFrame"><@s.text name="menu.manage.content.article"/></a>
 					</dd>
 				</@sec.authorize>
 				<@sec.authorize ifAnyGranted="ROLE_ARTICLE_CATEGORY">
 					<dd>
-						<a href="article_category!list.action" target="mainFrame">文章分类</a>
+						<a href="article_category!list.action" target="mainFrame"><@s.text name="menu.manage.content.article_category"/></a>
 					</dd>
 				</@sec.authorize>
 				<@sec.authorize ifAnyGranted="ROLE_FRIEND_LINK">
 					<dd>
-						<a href="friend_link!list.action" target="mainFrame">友情链接</a>
+						<a href="friend_link!list.action" target="mainFrame"><@s.text name="menu.manage.content.friend_link"/></a>
 					</dd>
 				</@sec.authorize>
 			</dl>
@@ -42,21 +42,21 @@
 		<@sec.authorize ifAnyGranted="ROLE_PAGE_TEMPLATE,ROLE_MAIL_TEMPLATE,ROLE_PRINT_TEMPLATE">
 			<dl>
 				<dt>
-					<span>模板管理</span>
+					<span><@s.text name="menu.manage.content.template"/></span>
 				</dt>
 				<@sec.authorize ifAnyGranted="ROLE_PAGE_TEMPLATE">
 					<dd>
-						<a href="page_template!list.action" target="mainFrame">页面模板管理</a>
+						<a href="page_template!list.action" target="mainFrame"><@s.text name="menu.manage.content.template.page"/></a>
 					</dd>
 				</@sec.authorize>
 				<@sec.authorize ifAnyGranted="ROLE_MAIL_TEMPLATE">
 					<dd>
-						<a href="mail_template!list.action" target="mainFrame">邮件模板管理</a>
+						<a href="mail_template!list.action" target="mainFrame"><@s.text name="menu.manage.content.template.mail"/></a>
 					</dd>
 				</@sec.authorize>
 				<@sec.authorize ifAnyGranted="ROLE_PRINT_TEMPLATE">
 					<dd>
-						<a href="print_template!list.action" target="mainFrame">打印模板管理</a>
+						<a href="print_template!list.action" target="mainFrame"><@s.text name="menu.manage.content.template.print"/></a>
 					</dd>
 				</@sec.authorize>
 			</dl>
@@ -64,26 +64,26 @@
 		<@sec.authorize ifAnyGranted="ROLE_CACHE">
 			<dl>
 				<dt>
-					<span>缓存管理</span>
+					<span><@s.text name="menu.manage.cache"/></span>
 				</dt>
 				<dd>
-					<a href="cache!flush.action" target="mainFrame">更新缓存</a>
+					<a href="cache!flush.action" target="mainFrame"><@s.text name="menu.manage.cache.update"/></a>
 				</dd>
 			</dl>
 		</@sec.authorize>
 		<@sec.authorize ifAnyGranted="ROLE_BUILD_HTML">
 			<dl>
 				<dt>
-					<span>网站更新管理</span>
+					<span><@s.text name="menu.manage.buildhtml"/></span>
 				</dt>
 				<dd>
-					<a href="build_html!allInput.action" target="mainFrame">一键网站更新</a>
+					<a href="build_html!allInput.action" target="mainFrame"><@s.text name="menu.manage.buildhtml.all"/></a>
 				</dd>
 				<dd>
-					<a href="build_html!articleInput.action" target="mainFrame">文章更新</a>
+					<a href="build_html!articleInput.action" target="mainFrame"><@s.text name="menu.manage.buildhtml.article"/></a>
 				</dd>
 				<dd>
-					<a href="build_html!goodsInput.action" target="mainFrame">商品更新</a>
+					<a href="build_html!goodsInput.action" target="mainFrame"><@s.text name="menu.manage.buildhtml.goods"/></a>
 				</dd>
 			</dl>
 		</@sec.authorize>

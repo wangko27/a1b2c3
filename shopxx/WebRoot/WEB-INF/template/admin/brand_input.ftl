@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑品牌 - Powered By SHOP++</title>
+<title><@s.text name="brand.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -34,9 +34,9 @@ $().ready(function() {
 			"brand.orderList": "digits"
 		},
 		messages: {
-			"brand.name": "请填写品牌名称",
-			"logo": "LOGO格式错误",
-			"brand.orderList": "排序必须为零或正整数"
+			"brand.name": "<@s.text name="brand.input.brand.name"/>",
+			"logo": "LOGO<@s.text name="goods.notify.javascript.email.error"/>",
+			"brand.orderList": "<@s.text name="goods.specification.edit.order.tips"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -49,10 +49,10 @@ $().ready(function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加品牌<#else>编辑品牌</#if>
+		<#if isAddAction><@s.text name="brand.list.add"/><#else><@s.text name="brand.list.edit"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -61,7 +61,7 @@ $().ready(function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						品牌名称: 
+						<@s.text name="goods.compare.result.brand"/>: 
 					</th>
 					<td>
 						<input type="text" name="brand.name" class="formText" value="${(brand.name)!}" />
@@ -70,7 +70,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						网址: 
+						<@s.text name="brand.list.website"/>: 
 					</th>
 					<td>
 						<input type="text" name="brand.url" class="formText" value="${(brand.url)!}" />
@@ -83,21 +83,21 @@ $().ready(function() {
 					<td>
 						<input type="file" name="logo" />
 						<#if (brand.logoPath??)!>
-							&nbsp;&nbsp;&nbsp;<a href="${base}${brand.logoPath}" target="_blank">查看</a>
+							&nbsp;&nbsp;&nbsp;<a href="${base}${brand.logoPath}" target="_blank"><@s.text name="shipping.list.single.view"/></a>
 						</#if>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						排序: 
+						<@s.text name="payment.config.order"/>: 
 					</th>
 					<td>
-						<input type="text" name="brand.orderList" class="formText" value="${(brand.orderList)!}" title="只允许输入零或正整数" />
+						<input type="text" name="brand.orderList" class="formText" value="${(brand.orderList)!}" title="<@s.text name="admin.category.article.require.positive"/>" />
 					</td>
 				</tr>
 				<tr>
 					<th>
-						介绍: 
+						<@s.text name="payment.config.desc"/>: 
 					</th>
 					<td>
 						<textarea name="brand.introduction" id="editor" class="editor">${(brand.introduction)!}</textarea>
@@ -105,8 +105,8 @@ $().ready(function() {
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

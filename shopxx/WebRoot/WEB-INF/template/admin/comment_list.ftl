@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>商品评论列表 - Powered By SHOP++</title>
+<title><@s.text name="comment.list.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,26 +15,26 @@
 </head>
 <body class="list">
 	<div class="bar">
-		商品评论列表&nbsp;总记录数: ${pager.totalCount} (共${pager.pageCount}页)
+		<@s.text name="comment.list.title"/>&nbsp;<@s.text name="goods.specification.list.page.tips1"/>: ${pager.totalCount} (<@s.text name="goods.specification.list.page.tips2"/>${pager.pageCount}<@s.text name="goods.specification.list.page.tips3"/>)
 	</div>
 	<div class="body">
 		<form id="listForm" action="comment!list.action" method="post">
 			<div class="listBar">
 				<select name="pager.searchBy">
 					<option value="username"<#if pager.searchBy == "username"> selected</#if>>
-						评论人
+						<@s.text name="comment.list.comment.username"/>
 					</option>
 					<option value="content"<#if pager.searchBy == "content"> selected</#if>>
-						内容
+						<@s.text name="goods.message.context"/>
 					</option>
 					<option value="contact"<#if pager.searchBy == "contact"> selected</#if>>
-						联系方式
+						<@s.text name="comment.new.title.contact"/>
 					</option>
 				</select>
 				<input type="text" name="pager.keyword" value="${pager.keyword!}" />
-				<input type="button" id="searchButton" class="formButton" value="搜 索" hidefocus />
+				<input type="button" id="searchButton" class="formButton" value="<@s.text name="goods.specification.list.search.button"/>" hidefocus />
 				&nbsp;&nbsp;
-				<label>每页显示: </label>
+				<label><@s.text name="goods.specification.list.search.result"/>: </label>
 				<select name="pager.pageSize" id="pageSize">
 					<option value="10"<#if pager.pageSize == 10> selected</#if>>
 						10
@@ -56,22 +56,22 @@
 						<input type="checkbox" class="allCheck" />
 					</th>
 					<th>
-						<a href="#" class="sort" name="username" hidefocus>评论人</a>
+						<a href="#" class="sort" name="username" hidefocus><@s.text name="comment.list.comment.username"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="goods" hidefocus>评论商品</a>
+						<a href="#" class="sort" name="goods" hidefocus><@s.text name="comment.list.comment.goods"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="isShow" hidefocus>是否显示</a>
+						<a href="#" class="sort" name="isShow" hidefocus><@s.text name="comment.list.comment.show"/></a>
 					</th>
 					<th>
-						<span>已回复</span>
+						<span><@s.text name="comment.list.comment.replyed"/></span>
 					</th>
 					<th>
-						<a href="#" class="sort" name="createDate" hidefocus>评论日期</a>
+						<a href="#" class="sort" name="createDate" hidefocus><@s.text name="comment.list.comment.date"/></a>
 					</th>
 					<th>
-						<span>操作</span>
+						<span><@s.text name="favorite.list.header.operation"/></span>
 					</th>
 				</tr>
 				<#list pager.result as comment>
@@ -80,7 +80,7 @@
 							<input type="checkbox" name="ids" value="${comment.id}" />
 						</td>
 						<td>
-							${(comment.username)!"游客"}
+							${(comment.username)!"<@s.text name="goods.content.bottom.comment.guest"/>"}
 						</td>
 						<td>
 							<#assign goods = comment.goods />
@@ -102,7 +102,7 @@
 							<span title="${comment.createDate?string("yyyy-MM-dd HH:mm:ss")}">${comment.createDate}</span>
 						</td>
 						<td>
-							<a href="comment!view.action?id=${comment.id}" title="查看/回复">[查看/回复]</a>
+							<a href="comment!view.action?id=${comment.id}" title="<@s.text name="shipping.list.single.view"/>/<@s.text name="goods.common.reply"/>">[<@s.text name="shipping.list.single.view"/>/<@s.text name="goods.common.reply"/>]</a>
 						</td>
 					</tr>
 				</#list>
@@ -110,14 +110,14 @@
 			<#if (pager.result?size > 0)>
 				<div class="pagerBar">
 					<div class="delete">
-						<input type="button" id="deleteButton" class="formButton" url="comment!delete.action" value="删 除" disabled hidefocus />
+						<input type="button" id="deleteButton" class="formButton" url="comment!delete.action" value="<@s.text name="goods.specification.list.search.result.header.delete"/>" disabled hidefocus />
 					</div>
 					<div class="pager">
 						<#include "/WEB-INF/template/admin/pager.ftl" />
 					</div>
 				<div>
 			<#else>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="common.empty"/></div>
 			</#if>
 		</form>
 	</div>

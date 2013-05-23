@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑管理员 - Powered By SHOP++</title>
+<title><@s.text name="admin.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -67,31 +67,31 @@ $().ready( function() {
 		messages: {
 			<#if isAddAction>
 				"admin.username": {
-					required: "请填写用户名",
-					username: "用户名只允许包含中文、英文、数字和下划线",
-					minlength: "用户名必须大于等于2",
-					maxlength: 	 "用户名必须小于等于20",
-					remote: "用户名已存在"
+					required: "<@s.text name="admin.input.admin.username"/>",
+					username: "<@s.text name="admin.input.admin.username.require"/>",
+					minlength: "<@s.text name="admin.input.admin.username.require.min"/>",
+					maxlength: 	 "<@s.text name="admin.input.admin.username.require.max"/>",
+					remote: "<@s.text name="admin.input.admin.username.require.exist"/>"
 				},
 			</#if>
 			"admin.password": {
 				<#if isAddAction>
-					required: "请填写密码",
+					required: "<@s.text name="admin.input.admin.password"/>",
 				</#if>
-				minlength: "密码必须大于等于4",
-				maxlength: 	 "密码必须小于等于20"
+				minlength: "<@s.text name="profile.edit.password.min4"/>",
+				maxlength: 	 "<@s.text name="profile.edit.password.max20"/>"
 			},
 			"rePassword": {
 				<#if isAddAction>
-					required: "请填写重复密码",
+					required: "<@s.text name="admin.input.admin.repassword"/>",
 				</#if>
-				equalTo: "两次密码输入不一致"
+				equalTo: "<@s.text name="goods.password.input.different"/>"
 			},
 			"admin.email": {
-				required: "请填写E-mail",
-				email: "E-mail格式不正确"
+				required: "<@s.text name="goods.profile.input"/>E-mail",
+				email: "E-mail<@s.text name="goods.profile.input.invalid"/>"
 			},
-			"roleList.id": "请选择管理角色"
+			"roleList.id": "<@s.text name="admin.input.admin.role.choose"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -104,10 +104,10 @@ $().ready( function() {
 </head>
 <body class="input admin">
 	<div class="bar">
-		<#if isAddAction>添加管理员<#else>编辑管理员</#if>
+		<#if isAddAction><@s.text name="admin.list.add"/><#else><@s.text name="admin.list.edit"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -115,20 +115,20 @@ $().ready( function() {
 			<input type="hidden" name="id" value="${id}" />
 			<ul id="tab" class="tab">
 				<li>
-					<input type="button" value="基本信息" hidefocus />
+					<input type="button" value="<@s.text name="goods.compare.head1"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="个人资料" hidefocus />
+					<input type="button" value="<@s.text name="page.header.menu.profile"/>" hidefocus />
 				</li>
 			</ul>
 			<table class="inputTable tabContent">
 				<tr>
 					<th>
-						用户名: 
+						<@s.text name="member.username"/>: 
 					</th>
 					<td>
 						<#if isAddAction>
-							<input type="text" name="admin.username" class="formText" title="用户名只允许包含中文、英文、数字和下划线" />
+							<input type="text" name="admin.username" class="formText" title="<@s.text name="admin.input.admin.username.require"/>" />
 							<label class="requireField">*</label>
 						<#else>
 							${(admin.username)!}
@@ -138,16 +138,16 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						密 码: 
+						<@s.text name="goods.common.password"/>: 
 					</th>
 					<td>
-						<input type="password" name="admin.password" id="password" class="formText" title="密码长度只允许在4-20之间" />
+						<input type="password" name="admin.password" id="password" class="formText" title="<@s.text name="goods.common.password.require"/>" />
 						<#if isAddAction><label class="requireField">*</label></#if>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						重复密码: 
+						<@s.text name="goods.common.repassword"/>: 
 					</th>
 					<td>
 						<input type="password" name="rePassword" class="formText" />
@@ -165,7 +165,7 @@ $().ready( function() {
 				</tr>
 				<tr class="roleList">
 					<th>
-						管理角色: 
+						<@s.text name="admin.input.admin.role"/>: 
 					</th>
 					<td>
 						<#assign roleSet = (admin.roleSet)! />
@@ -179,11 +179,11 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						设置: 
+						<@s.text name="goods.common.setting"/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox name="admin.isAccountEnabled" value="${(admin.isAccountEnabled)!true}" />启用
+							<@checkbox name="admin.isAccountEnabled" value="${(admin.isAccountEnabled)!true}" /><@s.text name="setting.isGzipEnabled"/>
 						</label>
 					</td>
 				</tr>
@@ -191,7 +191,7 @@ $().ready( function() {
 					<tr>
 						<th>&nbsp;</th>
 						<td>
-							<span class="warnInfo"><span class="icon">&nbsp;</span>如果要修改密码,请填写密码,若留空,密码将保持不变!</span>
+							<span class="warnInfo"><span class="icon">&nbsp;</span><@s.text name="admin.input.admin.password.modifyNotice"/>!</span>
 						</td>
 					</tr>
 				</#if>
@@ -199,7 +199,7 @@ $().ready( function() {
 			<table class="inputTable tabContent">
 				<tr>
 					<th>
-						部门: 
+						<@s.text name="admin.input.admin.department"/>: 
 					</th>
 					<td>
 						<input type="text" name="admin.department" class="formText" value="${(admin.department)!}" />
@@ -207,7 +207,7 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						姓名: 
+						<@s.text name="admin.list.name"/>: 
 					</th>
 					<td>
 						<input type="text" name="admin.name" class="formText" value="${(admin.name)!}" />
@@ -215,8 +215,8 @@ $().ready( function() {
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

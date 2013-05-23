@@ -88,7 +88,7 @@ $().ready( function() {
 		$deleteButton.click( function() {
 			var url = $(this).attr("url");
 			var $idsCheckedCheck = $("#listTable input[name='ids']:checked");
-			$.dialog({type: "warn", content: "您确定要删除吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: batchDelete});
+			$.dialog({type: "warn", content: "<@s.text name="item.delete.tipmessage"/>", ok: "<@s.text name="button.name.confirm"/>", cancel: "<@s.text name="button.name.cancel"/>", modal: true, okCallback: batchDelete});
 			function batchDelete() {
 				$.ajax({
 					url: url,

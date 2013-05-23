@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑快递单模板 - Powered By SHOP++</title>
+<title><@s.text name="delivery.template.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -42,8 +42,8 @@ $().ready( function() {
 			"deliveryTemplate.content": "required"
 		},
 		messages: {
-			"deliveryTemplate.name": "请填写模板名称",
-			"deliveryTemplate.content": "请填写模板内容"
+			"deliveryTemplate.name": "<@s.text name="delivery.template.input.name"/>",
+			"deliveryTemplate.content": "<@s.text name="delivery.template.input.content"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -56,10 +56,10 @@ $().ready( function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加快递单模板<#else>编辑快递单模板</#if>
+		<#if isAddAction><@s.text name="delivery.template.input.add"/><#else><@s.text name="delivery.template.input.edit"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -68,7 +68,7 @@ $().ready( function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						模板名称: 
+						<@s.text name="printConfigTemplate.name"/>: 
 					</th>
 					<td>
 						<input type="text" name="deliveryTemplate.name" class="formText" value="${(deliveryTemplate.name)!}" />
@@ -77,53 +77,53 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						插入标签: 
+						<@s.text name="delivery.template.input.insert"/>: 
 					</th>
 					<td>
 						<#noparse>
 							<select id="deliveryTemplateTag">
-								<option value="">请选择...</option>
-								<option value="${deliveryCenter.name}">发货人 - 姓名</option>
-								<option value="${deliveryCenter.area.displayName}">发货人 - 地区</option>
-								<option value="${deliveryCenter.address}">发货人 - 地址</option>
-								<option value="${deliveryCenter.zipCode}">发货人 - 邮编</option>
-								<option value="${deliveryCenter.phone}">发货人 - 电话</option>
-								<option value="${deliveryCenter.mobile}">发货人 - 手机</option>
+								<option value=""><@s.text name="goods.content.buyInfo.tipsTitle"/>...</option>
+								<option value="${deliveryCenter.name}"><@s.text name="delivery.center.list.consignor"/> - <@s.text name="admin.list.name"/></option>
+								<option value="${deliveryCenter.area.displayName}"><@s.text name="delivery.center.list.consignor"/> - <@s.text name="goods.common.area"/></option>
+								<option value="${deliveryCenter.address}"><@s.text name="delivery.center.list.consignor"/> - <@s.text name="goods.common.address"/></option>
+								<option value="${deliveryCenter.zipCode}"><@s.text name="delivery.center.list.consignor"/> - <@s.text name="goods.order.ship.zipcode"/></option>
+								<option value="${deliveryCenter.phone}"><@s.text name="delivery.center.list.consignor"/> - <@s.text name="goods.order.ship.phone"/></option>
+								<option value="${deliveryCenter.mobile}"><@s.text name="delivery.center.list.consignor"/> - <@s.text name="goods.order.ship.mobile"/></option>
 								<option value=""></option>
-								<option value="${order.shipName}">收货人 - 姓名</option>
-								<option value="${order.shipArea.displayName}">收货人 - 地区</option>
-								<option value="${order.shipAddress}">收货人 - 地址</option>
-								<option value="${order.shipZipCode}">收货人 - 邮编</option>
-								<option value="${order.shipPhone}">收货人 - 电话</option>
-								<option value="${order.shipMobile}">收货人 - 手机</option>
+								<option value="${order.shipName}"><@s.text name="goods.order.ship.name"/> - <@s.text name="admin.list.name"/></option>
+								<option value="${order.shipArea.displayName}"><@s.text name="goods.order.ship.name"/> - <@s.text name="goods.common.area"/></option>
+								<option value="${order.shipAddress}"><@s.text name="goods.order.ship.name"/> - <@s.text name="goods.common.address"/></option>
+								<option value="${order.shipZipCode}"><@s.text name="goods.order.ship.name"/> - <@s.text name="goods.order.ship.zipcode"/></option>
+								<option value="${order.shipPhone}"><@s.text name="goods.order.ship.name"/> - <@s.text name="goods.order.ship.phone"/></option>
+								<option value="${order.shipMobile}"><@s.text name="goods.order.ship.name"/> - <@s.text name="goods.order.ship.mobile"/></option>
 								<option value=""></option>
-								<option value="${currentYear}">当前日期 - 年</option>
-								<option value="${currentMonth}">当前日期 - 月</option>
-								<option value="${currentDay}">当前日期 - 日</option>
+								<option value="${currentYear}"><@s.text name="delivery.template.input.currentDate"/> - <@s.text name="delivery.template.date.year"/></option>
+								<option value="${currentMonth}"><@s.text name="delivery.template.input.currentDate"/> - <@s.text name="delivery.template.date.month"/></option>
+								<option value="${currentDay}"><@s.text name="delivery.template.input.currentDate"/> - <@s.text name="delivery.template.date.day"/></option>
 								<option value=""></option>
-								<option value="${order.orderSn}">订单 - 订单编号</option>
-								<option value="${order.totalProductPrice}">订单 - 总商品价格</option>
-								<option value="${order.deliveryFee}">订单 - 配送费用</option>
-								<option value="${order.paymentFee}">订单 - 支付费用</option>
-								<option value="${order.totalAmount}">订单 - 订单总额</option>
-								<option value="${order.totalProductWeight}">订单 - 总商品重量</option>
-								<option value="${order.totalProductQuantity}">订单 - 总商品数量</option>
-								<option value="${order.totalAmount}">订单 - 订单总额</option>
-								<option value="${order.memo}">订单 - 附言</option>
+								<option value="${order.orderSn}"><@s.text name="delivery.template.input.order"/> - <@s.text name="goods.notify.memberCenter.order.sn"/></option>
+								<option value="${order.totalProductPrice}">}"><@s.text name="delivery.template.input.order"/> - <@s.text name="delivery.template.goods.payment"/></option>
+								<option value="${order.deliveryFee}">}"><@s.text name="delivery.template.input.order"/> - <@s.text name="goods.order.price"/></option>
+								<option value="${order.paymentFee}">}"><@s.text name="delivery.template.input.order"/> - <@s.text name="goods.payment.fee"/></option>
+								<option value="${order.totalAmount}">}"><@s.text name="delivery.template.input.order"/> - <@s.text name="delivery.template.order.payment"/></option>
+								<option value="${order.totalProductWeight}">}"><@s.text name="delivery.template.input.order"/> - <@s.text name="order.totalProductWeight"/></option>
+								<option value="${order.totalProductQuantity}">}"><@s.text name="delivery.template.input.order"/> - <@s.text name="delivery.template.goods.total"/></option>
+								<option value="${order.totalAmount}">}"><@s.text name="delivery.template.input.order"/> - <@s.text name="delivery.template.order.payment"/></option>
+								<option value="${order.memo}">}"><@s.text name="delivery.template.input.order"/> - <@s.text name="order.memo"/></option>
 								<option value=""></option>
-								<option value="${setting.shopName}">网站 - 名称</option>
-								<option value="${setting.shopUrl}">网站 - 网址</option>
-								<option value="${setting.address}">网站 - 地址</option>
-								<option value="${setting.phone}">网站 - 电话</option>
-								<option value="${setting.zipCode}">网站 - 邮编</option>
-								<option value="${setting.email}">网站 - Email</option>
+								<option value="${setting.shopName}">}"><@s.text name="delivery.template.input.web"/> - <@s.text name="goods.specification.list.search.option1"/></option>
+								<option value="${setting.shopUrl}"><@s.text name="delivery.template.input.web"/> - <@s.text name="brand.list.website"/></option>
+								<option value="${setting.address}"><@s.text name="delivery.template.input.web"/> - <@s.text name="goods.common.address"/></option>
+								<option value="${setting.phone}"><@s.text name="delivery.template.input.web"/> - <@s.text name="goods.order.ship.phone"/></option>
+								<option value="${setting.zipCode}"><@s.text name="delivery.template.input.web"/> - <@s.text name="goods.order.ship.zipcode"/></option>
+								<option value="${setting.email}"><@s.text name="delivery.template.input.web"/> - Email</option>
 							</select>
 						</#noparse>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						模板内容: 
+						<@s.text name="delivery.template.input.content"/>: 
 					</th>
 					<td>
 						<textarea id="editor" name="deliveryTemplate.content" class="editor">${(deliveryTemplate.content)!}</textarea>
@@ -131,17 +131,17 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						设置: 
+						<@s.text name="goods.common.setting"/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox name="deliveryTemplate.isDefault" value="${(deliveryTemplate.isDefault)!false}" />是否默认
+							<@checkbox name="deliveryTemplate.isDefault" value="${(deliveryTemplate.isDefault)!false}" /><@s.text name="delivery.template.isDefault"/>
 						</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						备注: 
+						<@s.text name="refund.memo"/>: 
 					</th>
 					<td>
 						<textarea name="deliveryTemplate.memo" class="formTextarea">${(deliveryTemplate.memo)!}</textarea>
@@ -149,8 +149,8 @@ $().ready( function() {
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

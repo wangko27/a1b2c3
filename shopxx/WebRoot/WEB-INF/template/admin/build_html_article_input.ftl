@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>文章更新 - Powered By SHOP++</title>
+<title><@s.text name="build.html.article.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -28,11 +28,11 @@ $().ready(function() {
 		beforeSubmit: function(data) {
 			var maxResultsInputValue = $("#maxResultsInput").val();
 			if ($.trim(maxResultsInputValue) == "") {
-				$.message({type: "warn", content: "请输入每次更新数!"});
+				$.message({type: "warn", content: "<@s.text name="build.html.all.input.title.input"/>!"});
 				return false;
 			}
 			if (!/^[1-9]\d*$/.test(maxResultsInputValue)) {
-				$.message({type: "warn", content: "每次更新数必须为正整数!"});
+				$.message({type: "warn", content: "<@s.text name="build.html.all.input.title.input.positive"/>!"});
 				return false;
 			}
 			
@@ -42,7 +42,7 @@ $().ready(function() {
 				$("#maxResultsInput").attr("disabled", true);
 				$("#submitButton").attr("disabled", true);
 				$("#statusTr").show();
-				$("#status").text("正在进行更新操作,请稍后...");
+				$("#status").text("<@s.text name="build.html.article.input.update.notice"/>...");
 			}
 		},
 		success: function(data) {
@@ -51,7 +51,7 @@ $().ready(function() {
 			if (data.status == "ARTICLE_BUILDING") {
 				var maxResults = Number($("#maxResults").val());
 				var firstResult = Number(data.firstResult);
-				$("#status").text("正在更新文章[" + (firstResult + 1) + " - " + (firstResult + maxResults) + "],请稍后...");
+				$("#status").text("<@s.text name="build.html.all.input.title.update.article"/>[" + (firstResult + 1) + " - " + (firstResult + maxResults) + "],<@s.text name="build.html.all.input.title.waiting"/>...");
 				$("#firstResult").val(firstResult);
 				$("#inputForm").submit();
 			} else if (data.status == "ARTICLE_FINISH") {
@@ -63,11 +63,11 @@ $().ready(function() {
 				
 				var time;
 				if (buildTime < 60000) {
-					time = (buildTime / 1000).toFixed(2) + "秒";
+					time = (buildTime / 1000).toFixed(2) + "<@s.text name="build.html.all.input.title.unit.second"/>";
 				} else {
-					time = (buildTime / 60000).toFixed(2) + "分";
+					time = (buildTime / 60000).toFixed(2) + "<@s.text name="build.html.all.input.title.unit.minute"/>";
 				}
-				$.dialog({type: "success", content: "文章更新成功! [更新总数: " + buildCount + " 耗时: " + time + "]", width: 380, modal: true, autoCloseTime: 3000});
+				$.dialog({type: "success", content: "<@s.text name="build.html.article.input.update.success"/>! [<@s.text name="build.html.all.input.title.update.total"/>: " + buildCount + " <@s.text name="build.html.all.input.title.update.cost"/>: " + time + "]", width: 380, modal: true, autoCloseTime: 3000});
 				isInitialized = false;
 				buildCount = 0;
 				buildTime = 0;
@@ -81,7 +81,7 @@ $().ready(function() {
 <body class="input">
 	<div class="body">
 		<div class="bar">
-			文章更新
+			<@s.text name="build.html.article.input.title"/>
 		</div>
 		<form id="inputForm" action="build_html!article.action" method="post">
 			<input type="hidden" id="id" name="id" value="" />
@@ -90,11 +90,11 @@ $().ready(function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						文章分类: 
+						<@s.text name="article.input.article.category"/>: 
 					</th>
 					<td>
 						<select id="idSelect" name="">
-							<option value="">更新所有分类</option>
+							<option value=""><@s.text name="build.html.article.input.update.category.all"/></option>
 							<#list articleCategoryTreeList as articleCategoryTree>
 								<option value="${articleCategoryTree.id}">
 									<#if articleCategoryTree.grade != 0>
@@ -110,7 +110,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						每次更新数
+						<@s.text name="build.html.all.input.update.frequency"/>
 					</th>
 					<td>
 						<input type="text" id="maxResultsInput" name="" class="formText" value="50" />
@@ -127,8 +127,8 @@ $().ready(function() {
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" id="submitButton" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" id="submitButton" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="common.button.back" hidefocus />
 			</div>
 		</form>
 	</div>

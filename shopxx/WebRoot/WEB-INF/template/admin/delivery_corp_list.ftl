@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>物流公司列表 - Powered By SHOP++</title>
+<title><@s.text name="delivery.corp.list.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,12 +15,12 @@
 </head>
 <body class="list">
 	<div class="bar">
-		物流公司管理&nbsp;总记录数: ${pager.totalCount} (共${pager.pageCount}页)
+		<@s.text name="role.sitemanage.ROLE_DELIVERY_CORP"/>&nbsp;<@s.text name="role.list.page.tips2"/>: ${pager.totalCount} (<@s.text name="role.list.page.tips3"/>${pager.pageCount}<@s.text name="role.list.page.tips4"/>)
 	</div>
 	<div class="body">
 		<form id="listForm" action="delivery_corp!list.action" method="post">
 			<div class="listBar">
-				<input type="button" class="formButton" onclick="location.href='delivery_corp!add.action'" value="添加公司" hidefocus />
+				<input type="button" class="formButton" onclick="location.href='delivery_corp!add.action'" value="<@s.text name="delivery.corp.list.add"/>" hidefocus />
 			</div>
 			<table id="listTable" class="listTable">
 				<tr>
@@ -28,16 +28,16 @@
 						<input type="checkbox" class="allCheck" />
 					</th>
 					<th>
-						<a href="#" class="sort" name="name" hidefocus>物流公司名称</a>
+						<a href="#" class="sort" name="name" hidefocus><@s.text name="shipping.deliveryCorpName"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="url" hidefocus>公司网址</a>
+						<a href="#" class="sort" name="url" hidefocus><@s.text name="delivery.corp.website"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="orderList" hidefocus>排序</a>
+						<a href="#" class="sort" name="orderList" hidefocus><@s.text name="goods.specification.list.search.result.header.order"/></a>
 					</th>
 					<th>
-						<span>操作</span>
+						<span><@s.text name="goods.specification.list.search.result.header.operation"/></span>
 					</th>
 				</tr>
 				<#list pager.result as deliveryCorp>
@@ -55,7 +55,7 @@
 							${deliveryCorp.orderList}
 						</td>
 						<td>
-							<a href="delivery_corp!edit.action?id=${deliveryCorp.id}" title="编辑">[编辑]</a>
+							<a href="delivery_corp!edit.action?id=${deliveryCorp.id}" title="<@s.text name="goods.common.edit"/>">[<@s.text name="goods.common.edit"/>]</a>
 						</td>
 					</tr>
 				</#list>
@@ -63,14 +63,14 @@
 			<#if (pager.result?size > 0)>
 				<div class="pagerBar">
 					<div class="delete">
-						<input type="button" id="deleteButton" class="formButton" url="delivery_corp!delete.action" value="删 除" disabled hidefocus />
+						<input type="button" id="deleteButton" class="formButton" url="delivery_corp!delete.action" value="<@s.text name="goods.specification.list.search.result.header.delete"/>" disabled hidefocus />
 					</div>
 					<div class="pager">
 						<#include "/WEB-INF/template/admin/pager.ftl" />
 					</div>
 				<div>
 			<#else>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="common.empty"/></div>
 			</#if>
 		</form>
 	</div>

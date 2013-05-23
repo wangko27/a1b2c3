@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑发货点 - Powered By SHOP++</title>
+<title><@s.text name="delivery.center.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -41,10 +41,10 @@ $().ready( function() {
 			"deliveryCenter.address": "required"
 		},
 		messages: {
-			"deliveryCenter.name": "请填写发货点名称",
-			"deliveryCenter.consignor": "请填写发货人",
-			"areaId": "请选择地区",
-			"deliveryCenter.address": "请填写地址"
+			"deliveryCenter.name": "<@s.text name="delivery.center.input.name"/>",
+			"deliveryCenter.consignor": "<@s.text name="delivery.center.input.sender"/>",
+			"areaId": "<@s.text name="goods.receiver.select.area"/>",
+			"deliveryCenter.address": "<@s.text name="goods.receiver.input.address.fill"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -57,10 +57,10 @@ $().ready( function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加发货点<#else>编辑发货点</#if>
+		<#if isAddAction><@s.text name="delivery.center.list.add"/><#else><@s.text name="delivery.center.list.edit"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -69,7 +69,7 @@ $().ready( function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						发货点名称: 
+						<@s.text name="delivery.center.list.name"/>: 
 					</th>
 					<td>
 						<input type="text" name="deliveryCenter.name" class="formText" value="${(deliveryCenter.name)!}" />
@@ -78,7 +78,7 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						发货人: 
+						<@s.text name="delivery.center.list.consignor"/>: 
 					</th>
 					<td>
 						<input type="text" name="deliveryCenter.consignor" class="formText" value="${(deliveryCenter.consignor)!}" />
@@ -87,7 +87,7 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						地区: 
+						<@s.text name="goods.common.area"/>: 
 					</th>
 					<td>
 						<input type="text" id="areaSelect" name="areaId" class="hidden" value="${(deliveryCenter.area.id)!}" defaultSelectedPath="${(deliveryCenter.area.path)!}" />
@@ -96,7 +96,7 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						地址: 
+						<@s.text name="goods.common.address"/>: 
 					</th>
 					<td>
 						<input type="text" name="deliveryCenter.address" class="formText" value="${(deliveryCenter.address)!}" />
@@ -105,7 +105,7 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						邮编: 
+						<@s.text name="goods.order.ship.zipcode"/>: 
 					</th>
 					<td>
 						<input type="text" name="deliveryCenter.zipCode" class="formText" value="${(deliveryCenter.zipCode)!}" />
@@ -113,7 +113,7 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						电话: 
+						<@s.text name="goods.order.ship.phone"/>: 
 					</th>
 					<td>
 						<input type="text" name="deliveryCenter.phone" class="formText" value="${(deliveryCenter.phone)!}" />
@@ -121,7 +121,7 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						手机: 
+						<@s.text name="goods.order.ship.mobile"/>: 
 					</th>
 					<td>
 						<input type="text" name="deliveryCenter.mobile" class="formText" value="${(deliveryCenter.mobile)!}" />
@@ -129,17 +129,17 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						设置: 
+						<@s.text name="goods.common.setting"/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox name="deliveryCenter.isDefault" value="${(deliveryCenter.isDefault)!false}" />是否默认
+							<@checkbox name="deliveryCenter.isDefault" value="${(deliveryCenter.isDefault)!false}" /><@s.text name="delivery.template.isDefault"/>
 						</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						备注: 
+						<@s.text name="goods.specification.list.search.option2"/>: 
 					</th>
 					<td>
 						<textarea name="deliveryCenter.memo" class="formTextarea">${(deliveryCenter.memo)!}</textarea>
@@ -147,8 +147,8 @@ $().ready( function() {
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

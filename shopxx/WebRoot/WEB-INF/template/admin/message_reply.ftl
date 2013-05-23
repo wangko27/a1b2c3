@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>回复消息 - Powered By SHOP++</title>
+<title><@s.text name="message.reply.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -32,8 +32,8 @@ $().ready(function() {
 			"message.content": "required"
 		},
 		messages: {
-			"message.title": "请填写标题",
-			"message.content": "请填写内容"
+			"message.title": "<@s.text name="message.input.messages.title"/>",
+			"message.content": "<@s.text name="message.input.messages.content"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -46,10 +46,10 @@ $().ready(function() {
 </head>
 <body class="input">
 	<div class="bar">
-		回复消息
+		<@s.text name="message.reply.pagetitle"/>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="common.validateErrorTitle"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -58,7 +58,7 @@ $().ready(function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						收件人: 
+						<@s.text name="message.toMemberUsername"/>: 
 					</th>
 					<td>
 						${(message.fromMember.username)!}
@@ -66,7 +66,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						标题: 
+						<@s.text name="message.title"/>: 
 					</th>
 					<td>
 						<input type="text" name="message.title" class="formText" value="${message.title}" />
@@ -75,7 +75,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						内容: 
+						<@s.text name="message.content"/>: 
 					</th>
 					<td>
 						<textarea name="message.content" class="formTextarea" rows="5" cols="50">${message.content}</textarea>
@@ -84,8 +84,8 @@ $().ready(function() {
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>
