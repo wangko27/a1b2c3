@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>订单打印</title>
+<title><@s.text name="order.print.pagetitle"/></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -122,19 +122,19 @@ try {
 					&nbsp;
 				</td>
 				<td colspan="2">
-					客户名称: ${order.shipName}<br />
-					会员名称: ${(order.member.username)!"-"}
+					<@s.text name="order.print.shipName"/>: ${order.shipName}<br />
+					<@s.text name="order.print.member.username"/>: ${(order.member.username)!"-"}
 				</td>
 			</tr>
 			<tr class="separated">
 				<th colspan="2">
-					订单编号: ${order.orderSn}
+					<@s.text name="order.print.orderSn"/>: ${order.orderSn}
 				</th>
 				<th colspan="2">
-					订购日期: ${order.createDate?string("yyyy-MM-dd")}
+					<@s.text name="order.print.createDate"/>: ${order.createDate?string("yyyy-MM-dd")}
 				</th>
 				<th colspan="2">
-					打印日期: <strong>${currentDate?string("yyyy-MM-dd")}</strong>
+					<@s.text name="order.print.printdate"/>: <strong>${currentDate?string("yyyy-MM-dd")}</strong>
 				</th>
 			</tr>
 			<tr>
@@ -144,22 +144,22 @@ try {
 			</tr>
 			<tr class="separated">
 				<th>
-					序号
+					<@s.text name="order.orderItem.index"/>
 				</th>
 				<th>
-					货号
+                    <@s.text name="order.orderItem.productSn"/>
 				</th>
 				<th>
-					商品名称
+                    <@s.text name="order.orderItem.productName"/>
 				</th>
 				<th>
-					单价
+                    <@s.text name="order.orderItem.productPrice"/>
 				</th>
 				<th>
-					数量
+                    <@s.text name="order.orderItem.productQuantity"/>
 				</th>
 				<th>
-					小计
+					<@s.text name="order.orderItem.subtotal"/>
 				</th>
 			</tr>
 			<#list order.orderItemSet as orderItem>
@@ -191,13 +191,13 @@ try {
 			</tr>
 			<tr class="separated">
 				<td colspan="3">
-					订单附言: ${order.memo}<br />
+					<@s.text name="order.print.memo"/>: ${order.memo}<br />
 				</td>
 				<td colspan="3">
-					商品总金额: ${order.totalProductPrice?string(currencyFormat)}<br />
-					配送费用: ${order.deliveryFee?string(currencyFormat)}<br />
-					支付手续费: ${order.paymentFee?string(currencyFormat)}<br />
-					订单总金额: ${order.totalAmount?string(currencyFormat)}
+					<@s.text name="order.print.totalProductPrice"/>: ${order.totalProductPrice?string(currencyFormat)}<br />
+					<@s.text name="order.print.deliveryFee"/>: ${order.deliveryFee?string(currencyFormat)}<br />
+					<@s.text name="order.print.paymentFee"/>: ${order.paymentFee?string(currencyFormat)}<br />
+					<@s.text name="order.print.totalAmount"/>: ${order.totalAmount?string(currencyFormat)}
 				</td>
 			</tr>
 			<tr>
@@ -210,12 +210,12 @@ try {
 					&nbsp;
 				</td>
 				<td colspan="3">
-					收 货 人: ${order.shipName}<br />
-					收货地址: ${order.shipArea.displayName}${order.shipAddress}<br />
-					邮政编码: ${order.shipZipCode}<br />
-					联系电话: ${order.shipPhone}<br />
-					联系手机: ${order.shipMobile}<br />
-					配送方式: ${order.deliveryTypeName}
+					<@s.text name="order.print.shipName"/>: ${order.shipName}<br />
+					<@s.text name="order.print.shipAddress"/>: ${order.shipArea.displayName}${order.shipAddress}<br />
+					<@s.text name="order.print.shipZipCode"/>: ${order.shipZipCode}<br />
+					<@s.text name="order.print.shipPhone"/>: ${order.shipPhone}<br />
+					<@s.text name="order.print.shipMobile"/>: ${order.shipMobile}<br />
+					<@s.text name="order.print.deliveryTypeName"/>: ${order.deliveryTypeName}
 				</td>
 			</tr>
 			<tr>

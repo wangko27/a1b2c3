@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑导航 - Powered By SHOP++</title>
+<title><@s.text name="navigation.input.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -46,9 +46,9 @@ $().ready( function() {
 			"navigation.orderList": 	"digits"
 		},
 		messages: {
-			"navigation.name": "请填写名称",
-			"navigation.url": "请填写链接地址",
-			"navigation.orderList": 	"排序必须为零或正整数"
+			"navigation.name": "<@s.text name="navigation.messages.name"/>",
+			"navigation.url": "<@s.text name="navigation.messages.url"/>",
+			"navigation.orderList": 	"<@s.text name="navigation.messages.orderList"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -61,10 +61,10 @@ $().ready( function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加导航<#else>编辑导航</#if>
+		<#if isAddAction><@s.text name="navigation.input.title1"/><#else><@s.text name="navigation.input.title2"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="common.validateErrorTitle"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -73,7 +73,7 @@ $().ready( function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						名称: 
+						<@s.text name="navigation.name"/>: 
 					</th>
 					<td>
 						<input type="text" id="name" name="navigation.name" class="formText" value="${(navigation.name)!}" />	 
@@ -82,13 +82,13 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						系统内容: 
+						<@s.text name="navigation.systemContent"/>: 
 					</th>
 					<td>
 						<select id="systemUrl">
 							<option value="">------------</option>
-							<option value="<#noparse>${base}/</#noparse>"<#if ("$" + "{base}/" == navigation.url)!> selected</#if>>网站首页</option>
-							<option value="<#noparse>${base}</#noparse>/shop/leave_message.htm"<#if ("$" + "{base}/shop/leave_message.htm" == navigation.url)!> selected</#if>>在线留言</option>
+							<option value="<#noparse>${base}/</#noparse>"<#if ("$" + "{base}/" == navigation.url)!> selected</#if>><@s.text name="navigation.input.url.default1"/></option>
+							<option value="<#noparse>${base}</#noparse>/shop/leave_message.htm"<#if ("$" + "{base}/shop/leave_message.htm" == navigation.url)!> selected</#if>><@s.text name="navigation.input.url.default2"/></option>
 							<#list articleCategoryTreeList as articleCategoryTree>
 								<option value="<#noparse>${base}</#noparse>${articleCategoryTree.url}"<#if (("$" + "{base}" + articleCategoryTree.url) == navigation.url)!> selected</#if>>
 									<#if articleCategoryTree.grade != 0>
@@ -114,7 +114,7 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						链接地址: 
+						<@s.text name="navigation.url"/>: 
 					</th>
 					<td>
 						<input type="text" id="url" name="navigation.url" class="formText" value="${(navigation.url)!}" />
@@ -123,7 +123,7 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						位置: 
+						<@s.text name="navigation.navigationPosition"/>: 
 					</th>
 					<td>
 						<select name="navigation.navigationPosition">
@@ -141,29 +141,29 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						设置: 
+						<@s.text name="navigation.setting"/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox name="navigation.isVisible" value="${(navigation.isVisible)!true}" />显示
+							<@checkbox name="navigation.isVisible" value="${(navigation.isVisible)!true}" /><@s.text name="navigation.visible"/>
 						</label>
 						<label>
-							<@checkbox name="navigation.isBlankTarget" value="${(navigation.isBlankTarget)!false}" />在新窗口中打开
+							<@checkbox name="navigation.isBlankTarget" value="${(navigation.isBlankTarget)!false}" /><@s.text name="navigation.isBlankTarget"/>
 						</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						排序: 
+						<@s.text name="navigation.orderList"/>: 
 					</th>
 					<td>
-						<input type="text" name="navigation.orderList" class="formText" value="${(navigation.orderList)!}" title="只允许输入零或正整数" />
+						<input type="text" name="navigation.orderList" class="formText" value="${(navigation.orderList)!}" title="<@s.text name="navigation.messages.orderList"/>" />
 					</td>
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

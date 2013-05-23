@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>快递单打印</title>
+<title><@s.text name="order.deliverry.print.pagetitle"/></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -91,7 +91,7 @@ try {
 		<div class="printBar">
 			<form id="deliveryPrintForm" action="order!deliveryPrint.action" method="get">
 				<input type="hidden" name="id" value="${id}" />
-				发货点:
+				<@s.text name="order.deliverry.print.center"/>:
 				<select id="deliveryCenterId" name="deliveryCenter.id">
 					<#list allDeliveryCenterList as dc>
 						<option value="${dc.id}"<#if dc = deliveryCenter> selected</#if>>
@@ -100,7 +100,7 @@ try {
 					</#list>
 				</select>
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				快递单模板:
+				<@s.text name="order.deliverry.print.template"/>:
 				<select id="deliveryTemplateId" name="deliveryTemplate.id">
 					<#list allDeliveryTemplateList as dt>
 						<option value="${dt.id}"<#if dt = deliveryTemplate> selected</#if>>
@@ -109,7 +109,7 @@ try {
 					</#list>
 				</select>
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="button" id="printButton" class="formButton" value="打 印" />
+				<input type="button" id="printButton" class="formButton" value="<@s.text name="common.button.print"/>" />
 			</form>
 		</div>
 	</div>

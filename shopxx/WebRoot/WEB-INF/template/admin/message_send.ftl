@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>发送消息 - Powered By SHOP++</title>
+<title><@s.text name=""/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -37,11 +37,11 @@ $().ready(function() {
 		},
 		messages: {
 			"toMemberUsername": {
-				required: "请填写收件人",
-				remote: "收件人不存在"
+				required: "<@s.text name=""/>请填写收件人",
+				remote: "<@s.text name=""/>收件人不存在"
 			},
-			"message.title": "请填写标题",
-			"message.content": "请填写内容"
+			"message.title": "<@s.text name=""/>请填写标题",
+			"message.content": "<@s.text name=""/>请填写内容"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);

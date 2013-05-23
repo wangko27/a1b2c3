@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>导航列表 - Powered By SHOP++</title>
+<title><@s.text name="navigation.list.pagetitle"/>- Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,23 +15,23 @@
 </head>
 <body class="list">
 	<div class="bar">
-		导航列表&nbsp;总记录数: ${pager.totalCount} (共${pager.pageCount}页)
+		<@s.text name="navigation.list.pagetitle"/>&nbsp;<@s.text name="common.list.page.title1"/>: ${pager.totalCount} (<@s.text name="common.list.page.title2"/>${pager.pageCount}<@s.text name="common.list.page.title3"/>)
 	</div>
 	<div class="body">
 		<form id="listForm" action="navigation!list.action" method="post">
 			<div class="listBar">
-				<input type="button" class="formButton" onclick="location.href='navigation!add.action'" value="添加导航" hidefocus />
+				<input type="button" class="formButton" onclick="location.href='navigation!add.action'" value="<@s.text name="navigation.button.add"/>" hidefocus />
 				&nbsp;&nbsp;
-				<label>查找: </label>
+				<label><@s.text name="common.search.title"/>: </label>
 				<select name="pager.searchBy">
 					<option value="name"<#if pager.searchBy == "name"> selected</#if>>
-						名称
+						<@s.text name="navigation.name"/>
 					</option>
 				</select>
 				<input type="text" name="pager.keyword" value="${pager.keyword!}" />
-				<input type="button" id="searchButton" class="formButton" value="搜 索" hidefocus />
+				<input type="button" id="searchButton" class="formButton" value="<@s.text name="common.search.button"/>" hidefocus />
 				&nbsp;&nbsp;
-				<label>每页显示: </label>
+				<label><@s.text name="common.search.tips"/>: </label>
 				<select name="pager.pageSize" id="pageSize">
 					<option value="10"<#if pager.pageSize == 10> selected</#if>>
 						10
@@ -53,22 +53,22 @@
 						<input type="checkbox" class="allCheck" />
 					</th>
 					<th>
-						<span>名称</span>
+						<span><@s.text name="navigation.name"/></span>
 					</th>
 					<th>
-						<span>位置</span>
+						<span><@s.text name="navigation.navigationPosition"/></span>
 					</th>
 					<th>
-						<span>是否显示</span>
+						<span><@s.text name="navigation.isVisible"/></span>
 					</th>
 					<th>
-						<span>是否新窗口</span>
+						<span><@s.text name="navigation.isBlankTarget"/></span>
 					</th>
 					<th>
-						<span>排序</span>
+						<span><@s.text name="navigation.orderList"/></span>
 					</th>
 					<th>
-						<span>操作</span>
+						<span><@s.text name="common.button.operate"/></span>
 					</th>
 				</tr>
 				<#list pager.result as navigation>
@@ -92,7 +92,7 @@
 							${navigation.orderList}
 						</td>
 						<td>
-							<a href="navigation!edit.action?id=${navigation.id}" title="编辑">[编辑]</a>
+							<a href="navigation!edit.action?id=${navigation.id}" title="<@s.text name="common.button.edit"/>">[<@s.text name="common.button.edit"/>]</a>
 						</td>
 					</tr>
 					<#if navigation_has_next>
@@ -107,14 +107,14 @@
 			<#if (pager.result?size > 0)>
 				<div class="pagerBar">
 					<div class="delete">
-						<input type="button" id="deleteButton" class="formButton" url="navigation!delete.action" value="删 除" disabled hidefocus />
+						<input type="button" id="deleteButton" class="formButton" url="navigation!delete.action" value="<@s.text name="common.button.delete"/>" disabled hidefocus />
 					</div>
 					<div class="pager">
 						<#include "/WEB-INF/template/admin/pager.ftl" />
 					</div>
 				<div>
 			<#else>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="common.empty"/></div>
 			</#if>
 		</form>
 	</div>

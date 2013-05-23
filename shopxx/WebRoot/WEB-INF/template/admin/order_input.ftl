@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>编辑订单 - Powered By SHOP++</title>
+<title><@s.text name="order.input.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -71,7 +71,7 @@ $().ready( function() {
 		var deliveryFeeValue = $this.val();
 		if (!/^(([0-9]+\.?[0-9]+)|[0-9])$/.test(deliveryFeeValue)) {
 			$this.val(deliveryFee);
-			$.message({type: "warn", content: "配送费用输入有误!"});
+			$.message({type: "warn", content: "<@s.text name="order.input.error.deliveryFee"/>"});
 		} else {
 			deliveryFee = deliveryFeeValue;
 			modifyTotalAmount();
@@ -84,7 +84,7 @@ $().ready( function() {
 		var paymentFeeValue = $this.val();
 		if (!/^(([0-9]+\.?[0-9]+)|[0-9])$/.test(paymentFeeValue)) {
 			$this.val(paymentFee);
-			$.message({type: "warn", content: "支付手续费输入有误!"});
+			$.message({type: "warn", content: "<@s.text name="order.input.error.paymentFee"/>"});
 		} else {
 			paymentFee = paymentFeeValue;
 			modifyTotalAmount();
@@ -110,7 +110,7 @@ $().ready( function() {
 		if (!/^(([0-9]+\.?[0-9]+)|[0-9])$/.test(productPriceValue)) {
 			var previousProductPrice = $this.data("previousProductPrice");
 			$this.val(previousProductPrice);
-			$.message({type: "warn", content: "商品价格输入有误!"});
+			$.message({type: "warn", content: "<@s.text name="order.input.error.productPrice"/>"});
 		} else {
 			$this.data("previousProductPrice", productPriceValue);
 			modifyTotalProductPrice();
@@ -126,12 +126,12 @@ $().ready( function() {
 		if (!/^[0-9]*[1-9][0-9]*$/.test(productQuantityValue)) {
 			var previousProductQuantity = $this.data("previousProductQuantity");
 			$this.val(previousProductQuantity);
-			$.message({type: "warn", content: "商品数量输入有误!"});
+			$.message({type: "warn", content: "<@s.text name="order.input.error.productQuantity"/>"});
 		} else {
 			if (availableStore != null && parseInt(productQuantityValue) > parseInt(availableStore)) {
 				var previousProductQuantity = $this.data("previousProductQuantity");
 				$this.val(previousProductQuantity);
-				$.message({type: "warn", content: "商品数量超出可用库存数!"});
+				$.message({type: "warn", content: "<@s.text name="order.input.error.productQuantity.over"/>"});
 				return false;
 			}
 			$this.data("previousProductQuantity", productQuantityValue);
@@ -144,10 +144,10 @@ $().ready( function() {
 	$deleteOrderItem.click( function() {
 		$this = $(this);
 		if ($("#orderItemTable input.productPrice").size() <= 1) {
-			$.dialog({type: "warn", content: "请保留至少一个商品!", modal: true, autoCloseTime: 2000});
+			$.dialog({type: "warn", content: "<@s.text name="order.input.error.deleteOrderItem"/>", modal: true, autoCloseTime: 2000});
 			return false;
 		}
-		$.dialog({type: "warn", content: "您确定要删除吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: deleteOrderItem});
+		$.dialog({type: "warn", content: "<@s.text name="item.delete.tipmessage"/>", ok: "<@s.text name="button.name.confirm"/>", cancel: "<@s.text name="button.name.cancel"/>", modal: true, okCallback: deleteOrderItem});
 		function deleteOrderItem() {
 			$this.parent().parent().remove();
 			modifyTotalProductPrice();
@@ -188,22 +188,22 @@ $().ready( function() {
 		},
 		messages: {
 			"order.deliveryFee": {
-				required: "请填写配送费用",
-				min: "配送费用必须为零或正数"
+				required: "<@s.text name="order.input.messages.deliveryFee.required"/>",
+				min: "<@s.text name="order.input.messages.deliveryFee.min"/>"
 			},
 			"order.paymentFee": {
-				required: "请填写支付手续费",
-				min: "支付手续费必须为零或正数"
+				required: "<@s.text name="order.input.messages.paymentFee.required"/>",
+				min: "<@s.text name="order.input.messages.paymentFee.min"/>"
 			},
 			"order.totalProductWeight": {
-				required: "请填写商品总重量",
-				min: "商品总重量必须为零或正数"
+				required: "<@s.text name="order.input.messages.totalProductWeight.required"/>",
+				min: "<@s.text name="order.input.messages.totalProductWeight.min"/>"
 			},
-			"order.shipName": "请填写收货人姓名",
-			"shipAreaId": "请选择收货地区",
-			"order.shipAddress": "请填写收货地址",
+			"order.shipName": "<@s.text name="order.input.messages.shipName"/>",
+			"shipAreaId": "<@s.text name="order.input.messages.shipAreaId"/>",
+			"order.shipAddress": "<@s.text name="order.input.messages.shipAddress"/>",
 			"order.shipMobile": {
-				requiredOne: "电话、手机必须填写其中一项"
+				requiredOne: "<@s.text name="order.input.messages.shipMobile"/>"
 			}
 		},
 		submitHandler: function(form) {
@@ -212,9 +212,9 @@ $().ready( function() {
 		}
 	});
 	
-	$.validator.addMethod("priceRequired", $.validator.methods.required, "请填写商品价格");
-	$.validator.addMethod("priceMin", $.validator.methods.min, "商品价格必须为零或正数");
-	$.validator.addMethod("productQuantityPositiveInteger", $.validator.methods.positiveInteger, "商品数量必须为正整数");
+	$.validator.addMethod("priceRequired", $.validator.methods.required, "<@s.text name="order.input.messages.priceRequired"/>");
+	$.validator.addMethod("priceMin", $.validator.methods.min, "<@s.text name="order.input.messages.priceMin"/>");
+	$.validator.addMethod("productQuantityPositiveInteger", $.validator.methods.positiveInteger, "<@s.text name="order.input.messages.productQuantityPositiveInteger"/>");
 	
 	$.validator.addClassRules("productPrice", {
 		priceRequired: true,
@@ -229,9 +229,9 @@ $().ready( function() {
 </script>
 </head>
 <body class="input">
-	<div class="bar">编辑订单</div>
+	<div class="bar"><@s.text name="order.input.pagetitle"/></div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="common.validateErrorTitle"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -239,22 +239,22 @@ $().ready( function() {
 			<input type="hidden" name="id" value="${order.id}" />
 			<ul id="tab" class="tab">
 				<li>
-					<input type="button" value="订单信息" hidefocus />
+					<input type="button" value="<@s.text name="order.view.tab.orderinfo"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="商品信息" hidefocus />
+					<input type="button" value="<@s.text name="order.view.tab.goodsinfo"/>" hidefocus />
 				</li>
 			</ul>
 			<table class="inputTable tabContent">
 				<tr>
 					<th>
-						订单编号: 
+						<@s.text name="order.orderSn"/>: 
 					</th>
 					<td>
 						${order.orderSn}
 					</td>
 					<th>
-						下单时间: 
+						<@s.text name="order.createDate"/>: 
 					</th>
 					<td>
 						${order.createDate?string("yyyy-MM-dd HH:mm:ss")}
@@ -262,13 +262,13 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						商品总金额: 
+						<@s.text name="order.totalProductPrice"/>: 
 					</th>
 					<td>
 						<span id="totalProductPrice" class="red">${order.totalProductPrice?string(currencyFormat)}</span>
 					</td>
 					<th>
-						订单总金额: 
+						<@s.text name="order.totalAmount"/>: 
 					</th>
 					<td>
 						<span id="totalAmount" class="red">${order.totalAmount?string(currencyFormat)}</span>
@@ -276,7 +276,7 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						配送方式: 
+						<@s.text name="order.deliveryTypeName"/>: 
 					</th>
 					<td>
 						<select name="deliveryType.id">
@@ -289,11 +289,11 @@ $().ready( function() {
 						<label class="requireField">*</label>
 					</td>
 					<th>
-						支付方式: 
+						<@s.text name="order.paymentConfigName"/>: 
 					</th>
 					<td>
 						<select name="paymentConfig.id">
-							<option value="">货到付款</option>
+							<option value=""><@s.text name="order.paymentConfig.offline"/></option>
 							<#list allPaymentConfigList as paymentConfig>
 								<option value="${paymentConfig.id}"<#if (paymentConfig == order.paymentConfig)!> selected</#if>>
 									${paymentConfig.name}
@@ -305,14 +305,14 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						配送费用: 
+						<@s.text name="order.deliveryFee"/>: 
 					</th>
 					<td>
 						<input type="text" id="deliveryFee" name="order.deliveryFee" class="formText" value="${order.deliveryFee}" />
 						<label class="requireField">*</label>
 					</td>
 					<th>
-						支付手续费: 
+						<@s.text name="order.paymentFee"/>: 
 					</th>
 					<td>
 						<input type="text" id="paymentFee" name="order.paymentFee" class="formText" value="${order.paymentFee}" />
@@ -321,13 +321,13 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						商品总重量: 
+						<@s.text name="order.totalProductWeight"/>: 
 					</th>
 					<td>
-						<input type="text" name="order.totalProductWeight" class="formText" value="${order.totalProductWeight}" title="单位: 克" />
+						<input type="text" name="order.totalProductWeight" class="formText" value="${order.totalProductWeight}" title="<@s.text name="order.totalProductWeight.tips"/>" />
 					</td>
 					<th>
-						附言: 
+						<@s.text name="order.memo"/>: 
 					</th>
 					<td>
 						${(order.memo)!}
@@ -340,13 +340,13 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						收货人姓名: 
+						<@s.text name="order.shipName"/>: 
 					</th>
 					<td>
 						<input type="text" name="order.shipName" class="formText" value="${order.shipName}" />
 					</td>
 					<th>
-						收货地区: 
+						<@s.text name="order.shipArea.displayName"/>: 
 					</th>
 					<td>
 						<input type="text" id="areaSelect" name="shipAreaId" class="hidden" value="${(order.shipArea.id)!}" defaultSelectedPath="${(order.shipArea.path)!}" />
@@ -355,13 +355,13 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						收货地址: 
+						<@s.text name="order.shipAddress"/>: 
 					</th>
 					<td>
 						<input type="text" name="order.shipAddress" class="formText" value="${order.shipAddress}" />
 					</td>
 					<th>
-						邮编: 
+						<@s.text name="order.shipZipCode"/>: 
 					</th>
 					<td>
 						<input type="text" name="order.shipZipCode" class="formText" value="${order.shipZipCode}" />
@@ -369,13 +369,13 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						电话: 
+						<@s.text name="order.shipPhone"/>: 
 					</th>
 					<td>
 						<input type="text" id="orderShipPhone" name="order.shipPhone" class="formText" value="${order.shipPhone}" />
 					</td>
 					<th>
-						手机: 
+						<@s.text name="order.shipMobile"/>: 
 					</th>
 					<td>
 						<input type="text" name="order.shipMobile" class="formText" value="${order.shipMobile}" />
@@ -390,18 +390,18 @@ $().ready( function() {
 					<#assign member = order.member />
 					<tr>
 						<th>
-							用户名: 
+							<@s.text name="member.username"/>: 
 						</th>
 						<td>
 							${member.username}
 						</td>
 						<th>
-							会员等级: 
+							<@s.text name="member.memberRank"/>: 
 						</th>
 						<td>
 							${member.memberRank.name}
 							<#if member.memberRank.preferentialScale != 100>
-								<span class="red">[优惠百分比: ${member.memberRank.preferentialScale}%]</span>
+								<span class="red">[<@s.text name="member.memberRank.preferentialScale"/>: ${member.memberRank.preferentialScale}%]</span>
 							</#if>
 						</td>
 					</tr>
@@ -413,7 +413,7 @@ $().ready( function() {
 							${member.email}
 						</td>
 						<th>
-							注册日期: 
+							<@s.text name="member.createDate"/>: 
 						</th>
 						<td>
 							${member.createDate}
@@ -421,13 +421,13 @@ $().ready( function() {
 					</tr>
 					<tr>
 						<th>
-							最后登录日期: 
+							<@s.text name="member.loginDate"/>: 
 						</th>
 						<td>
 							${member.loginDate}
 						</td>
 						<th>
-							最后登录IP: 
+							<@s.text name="member.loginIp"/>: 
 						</th>
 						<td>
 							${member.loginIp}
@@ -435,13 +435,13 @@ $().ready( function() {
 					</tr>
 					<tr>
 						<th>
-							预存款余额: 
+							<@s.text name="member.deposit"/>: 
 						</th>
 						<td>
 							${member.deposit?string(currencyFormat)}
 						</td>
 						<th>
-							积分: 
+							<@s.text name="member.score"/>: 
 						</th>
 						<td>
 							${member.score}
@@ -450,21 +450,21 @@ $().ready( function() {
 				<#else>
 					<tr>
 						<th>
-							会员状态: 
+							<@s.text name="member.status"/>: 
 						</th>
 						<td colspan="3">
-							<span class="red">会员不存在</span>
+							<span class="red"><@s.text name="member.status.none"/></span>
 						</td>
 					</tr>
 				</#if>
 			</table>
 			<table id="orderItemTable" class="inputTable tabContent">
 				<tr class="title">
-					<th>货号</th>
-					<th>商品名称</th>
-					<th>价格</th>
-					<th>购买数量</th>
-					<th>删除</th>
+					<th><@s.text name="order.orderItem.productSn"/></th>
+					<th><@s.text name="order.orderItem.productName"/></th>
+					<th><@s.text name="order.orderItem.productPrice"/></th>
+					<th><@s.text name="order.orderItem.productQuantity"/></th>
+					<th><@s.text name="common.button.delete"/></th>
 				</tr>
 				<#list order.orderItemSet as orderItem>
 					<#assign product = orderItem.product />
@@ -494,14 +494,14 @@ $().ready( function() {
 							<input type="text" name="orderItemList[${orderItem_index}].productQuantity" class="formText productQuantity"<#if product.store??> availableStore="${availableStore}"</#if> value="${orderItem.productQuantity}" style="width: 50px;" />
 						</td>
 						<td>
-							<a href="javascript: void(0);" class="deleteOrderItem">删除</a>
+							<a href="javascript: void(0);" class="deleteOrderItem"><@s.text name="common.button.delete"/></a>
 						</td>
 					</tr>
 				</#list>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>
