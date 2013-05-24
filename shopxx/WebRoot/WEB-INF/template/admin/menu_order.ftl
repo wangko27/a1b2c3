@@ -51,7 +51,7 @@
 				</dt>
 				<@sec.authorize ifAnyGranted="ROLE_DELIVERY_CENTER">
 					<dd>
-						<a href="delivery_center!list.action" target="mainFrame"><@s.text name=""/><@s.text name="menu.manage.delivery.center"/></a>
+						<a href="delivery_center!list.action" target="mainFrame"><@s.text name="menu.manage.delivery.center"/><@s.text name="menu.manage.delivery.center"/></a>
 					</dd>
 				</@sec.authorize>
 				<@sec.authorize ifAnyGranted="ROLE_DELIVERY_TEMPLATE">

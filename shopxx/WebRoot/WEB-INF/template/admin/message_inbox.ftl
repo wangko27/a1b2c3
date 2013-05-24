@@ -144,7 +144,7 @@ $().ready( function() {
 							${message.createDate?string("yyyy-MM-dd HH: mm")}
 						</td>
 						<td>
-							<a href="message!reply.action?id=${message.id}">[<@s.text name=""/>回复]</a>
+							<a href="message!reply.action?id=${message.id}">[<@s.text name="goods.common.reply"/>]</a>
 						</td>
 					</tr>
 					<tr class="messageContentTr">

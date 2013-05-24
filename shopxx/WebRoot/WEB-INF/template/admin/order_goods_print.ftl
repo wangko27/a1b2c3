@@ -104,7 +104,7 @@ try {
 <body class="print">
 	<div class="header">
 		<div class="printBar">
-			<input type="button" id="printButton" class="formButton" value="<@s.text name=""/>打 印" />
+			<input type="button" id="printButton" class="formButton" value="<@s.text name="shipping.print.button"/>" />
 		</div>
 	</div>
 	<div class="body">

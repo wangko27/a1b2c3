@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑会员等级 - Powered By SHOP++</title>
+<title><@s.text name="member.rank.input.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -47,16 +47,16 @@ $().ready(function() {
 		},
 		messages: {
 			"memberRank.name": {
-				required: "请填写等级名称",
-				remote: "等级名称已存在"
+				required: "<@s.text name="member.rank.messages.name.required"/>",
+				remote: "<@s.text name="member.rank.messages.name.remote"/>"
 			},
 			"memberRank.preferentialScale": {
-				required: "请填写优惠百分比",
-				min: "优惠百分比必须为零或正数"
+				required: "<@s.text name="member.rank.messages.preferentialScale.required"/>",
+				min: "<@s.text name="member.rank.messages.preferentialScale.min"/>"
 			},
 			"memberRank.score": {
-				required: "请填写所需积分",
-				digits: "所需积分必须为零或正整数"
+				required: "<@s.text name="member.rank.messages.score.required"/>",
+				digits: "<@s.text name="member.rank.messages.score.digits"/>"
 			}
 		},
 		submitHandler: function(form) {
@@ -70,10 +70,10 @@ $().ready(function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加会员等级<#else>编辑会员等级</#if>
+		<#if isAddAction><@s.text name="member.rank.input.bar1"/><#else><@s.text name="member.rank.input.bar2"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="common.validateErrorTitle"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -82,7 +82,7 @@ $().ready(function() {
 				<input type="hidden" name="id" value="${id}" />
 				<tr>
 					<th>
-						等级名称: 
+						<@s.text name="member.rank.name"/>: 
 					</th>
 					<td>
 						<input type="text" name="memberRank.name" class="formText" value="${(memberRank.name)!}" />
@@ -91,36 +91,36 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						优惠百分比: 
+						<@s.text name="member.rank.preferentialScale"/>: 
 					</th>
 					<td>
-						<input type="text" name="memberRank.preferentialScale" class="formText" value="${(memberRank.preferentialScale)!"100"}" title="单位: %, 若输入90,表示该会员等级以商品价格的90%进行销售" />
+						<input type="text" name="memberRank.preferentialScale" class="formText" value="${(memberRank.preferentialScale)!"100"}" title="<@s.text name="member.rank.preferentialScale.title"/>" />
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						所需积分: 
+						<@s.text name="member.rank.score"/>: 
 					</th>
 					<td>
-						<input type="text" name="memberRank.score" class="formText" value="${(memberRank.score)!}" title="只允许输入零或正整数" />
+						<input type="text" name="memberRank.score" class="formText" value="${(memberRank.score)!}" title="<@s.text name="member.rank.score.title"/>" />
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						设置: 
+						<@s.text name="member.rank.setting"/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox name="memberRank.isDefault" value="${(memberRank.isDefault)!false}" />默认
+							<@checkbox name="memberRank.isDefault" value="${(memberRank.isDefault)!false}" /><@s.text name="member.rank.isDefault.yes"/>
 						</label>
 					</td>
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

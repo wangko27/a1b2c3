@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑会员注册项  - Powered By SHOP++</title>
+<title><@s.text name="member.attribute.input.pagetitle"/>  - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -45,7 +45,7 @@ $().ready(function() {
 	// 删除选项内容
 	$("#memberAttributeTable .deleteOptionIcon").live("click", function() {
 		if ($memberAttributeTable.find(".optionTr").length <= 1) {
-			$.dialog({type: "warn", content: "请至少保留一个选项内容!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "<@s.text name="memberAttribute.messages.content"/>", modal: true, autoCloseTime: 3000});
 		} else {
 			$(this).parent().parent().remove();
 		}
@@ -56,10 +56,10 @@ $().ready(function() {
 		<@compress single_line = true>
 			var optionTrHtml = 
 			'<tr class="optionTr">
-				<th>选项内容: </th>
+				<th><@s.text name="memberAttribute.content"/>: </th>
 				<td>
 					<input type="text" name="optionList" class="formText optionList" />&nbsp;
-					<span class="deleteIcon deleteOptionIcon" title="删 除">&nbsp;</span>
+					<span class="deleteIcon deleteOptionIcon" title="<@s.text name="common.button.delete"/>">&nbsp;</span>
 				</td>
 			</tr>';
 		</@compress>
@@ -80,9 +80,9 @@ $().ready(function() {
 			"memberAttribute.orderList": "digits"
 		},
 		messages: {
-			"memberAttribute.attributeType": "请选择注册项类型",
-			"memberAttribute.name": "请填写注册项名称",
-			"memberAttribute.orderList": "排序必须为零或正整数"
+			"memberAttribute.attributeType": "<@s.text name="memberAttribute.messages.attributeType"/>",
+			"memberAttribute.name": "<@s.text name="memberAttribute.messages.name"/>",
+			"memberAttribute.orderList": "<@s.text name="memberAttribute.messages.orderList"/>"
 		},
 		submitHandler: function(form) {
 			$(form).find(":submit").attr("disabled", true);
@@ -90,7 +90,7 @@ $().ready(function() {
 		}
 	});
 	
-	$.validator.addMethod("optionListRequired", $.validator.methods.required, "请填写选项内容");
+	$.validator.addMethod("optionListRequired", $.validator.methods.required, "<@s.text name="memberAttribute.messages.content.required"/>");
 	
 	$.validator.addClassRules("optionList", {
 		optionListRequired: true
@@ -101,10 +101,10 @@ $().ready(function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加会员注册项<#else>编辑会员注册项</#if>
+		<#if isAddAction><@s.text name="member.attribute.input.bar1"/><#else><@s.text name="member.attribute.input.bar2"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="common.validateErrorTitle"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -113,15 +113,15 @@ $().ready(function() {
 			<table id="memberAttributeTable" class="inputTable">
 				<tr>
 					<th>
-						注册项类型: 
+						<@s.text name="memberAttribute.systemAttributeType"/>: 
 					</th>
 					<td>
 						<#if isAddAction>
 							<#if (memberAttribute.systemAttributeType)??>
-								${action.getText("SystemAttributeType." + memberAttribute.systemAttributeType)} [系统默认]
+								${action.getText("SystemAttributeType." + memberAttribute.systemAttributeType)} [<@s.text name="memberAttribute.systemAttributeType.default"/>]
 							<#else>
 								<select id="memberAttributeType" name="memberAttribute.attributeType">
-									<option value="">请选择...</option>
+									<option value=""><@s.text name="common.tips.select"/></option>
 									<#list attributeTypeList as attributeType>
 										<option value="${attributeType}"<#if (attributeType == memberAttribute.attributeType)!> selected</#if>>
 											${action.getText("AttributeType." + attributeType)}
@@ -133,7 +133,7 @@ $().ready(function() {
 						<#else>
 							<#if memberAttribute.systemAttributeType??>
 								${action.getText("SystemAttributeType." + memberAttribute.systemAttributeType)}
-								[系统默认]
+								[<@s.text name="memberAttribute.systemAttributeType.default"/>]
 							<#else>
 								${action.getText("AttributeType." + memberAttribute.attributeType)}
 							</#if>
@@ -142,7 +142,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						注册项名称: 
+						<@s.text name="memberAttribute.name"/>: 
 					</th>
 					<td>
 						<input type="text" name="memberAttribute.name" class="formText" value="${(memberAttribute.name)!}" />
@@ -151,31 +151,31 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						排序: 
+						<@s.text name="memberAttribute.orderList"/>: 
 					</th>
 					<td>
-						<input type="text" name="memberAttribute.orderList" class="formText" value="${(memberAttribute.orderList)!}" title="只允许输入零或正整数" />
+						<input type="text" name="memberAttribute.orderList" class="formText" value="${(memberAttribute.orderList)!}" title="<@s.text name="memberAttribute.orderList.title"/>" />
 					</td>
 				</tr>
 				<tr>
 					<th>
-						设置: 
+						<@s.text name="memberAttribute.setting"/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox name="memberAttribute.isEnabled" value="${(memberAttribute.isEnabled)!true}" />启用
+							<@checkbox name="memberAttribute.isEnabled" value="${(memberAttribute.isEnabled)!true}" /><@s.text name="memberAttribute.setting.enable"/>
 						</label>
 						<label>
-							<@checkbox name="memberAttribute.isRequired" value="${(memberAttribute.isRequired)!false}" />必填
+							<@checkbox name="memberAttribute.isRequired" value="${(memberAttribute.isRequired)!false}" /><@s.text name="memberAttribute.setting.require"/>
 						</label>
 					</td>
 				</tr>
 				<#if (memberAttribute.systemAttributeType == "gender")!>
 					<tr>
-						<th>选项内容: </th>
+						<th><@s.text name="memberAttribute.content"/>: </th>
 						<td>
-							<label><input type="radio" name="gender" value="male" checked disabled />男</label>
-							<label><input type="radio" name="gender" value="female" disabled />女</label>
+							<label><input type="radio" name="gender" value="male" checked disabled /><@s.text name="common.gender.male"/></label>
+							<label><input type="radio" name="gender" value="female" disabled /><@s.text name="common.gender.female"/></label>
 						</td>
 					</tr>
 				</#if>
@@ -183,28 +183,28 @@ $().ready(function() {
 					<th>&nbsp;</th>
 					<td>
 						<#if (memberAttribute.attributeType == "select" || memberAttribute.attributeType == "checkbox")!>
-							<input type="button" id="addOptionButton" class="formButton" value="增加选项" hidefocus />
+							<input type="button" id="addOptionButton" class="formButton" value="<@s.text name="memberAttribute.input.button.add"/>" hidefocus />
 						<#else>
-							<input type="button" id="addOptionButton" class="hidden formButton" value="增加选项" hidefocus />
+							<input type="button" id="addOptionButton" class="hidden formButton" value="<@s.text name="memberAttribute.input.button.add"/>" hidefocus />
 						</#if>
 					</td>
 				</tr>
 				<#if (memberAttribute.attributeType == "select" || memberAttribute.attributeType == "checkbox")!>
 					<#list memberAttribute.optionList as option>
 						<tr class="optionTr">
-							<th>选项内容: </th>
+							<th><@s.text name="memberAttribute.content"/>: </th>
 							<td>
 								<input type="text" name="optionList" class="formText optionList" value="${option}" />
 								&nbsp;
-								<span class="deleteIcon deleteOptionIcon" title="删 除">&nbsp;</span>
+								<span class="deleteIcon deleteOptionIcon" title="<@s.text name="common.button.delete"/>">&nbsp;</span>
 							</td>
 						</tr>
 					</#list>
 				</#if>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="button.name.confirm"/>" hidefocus />
 			</div>
 		</form>
 	</div>

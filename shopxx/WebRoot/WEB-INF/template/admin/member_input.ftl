@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑会员 - Powered By SHOP++</title>
+<title><@s.text name="member.input.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -98,57 +98,57 @@ $().ready( function() {
 		messages: {
 			<#if isAddAction>
 				"member.username": {
-					required: "请填写用户名",
-					minlength: "用户名长度必须大于等于2",
-					maxlength: "用户名长度必须小于等于20",
-					username: "用户名只允许包含中文、英文、数字和下划线",
-					remote: "用户名已存在"
+					required: "<@s.text name="member.username.required"/>",
+					minlength: "<@s.text name="member.username.minlength"/>",
+					maxlength: "<@s.text name="member.username.maxlength"/>",
+					username: "<@s.text name="member.username.remote"/>",
+					remote: "<@s.text name="member.username.remote"/>"
 				},
 			</#if>
 			"member.password": {
 				<#if isAddAction>
-					required: "请填写密码",
+					required: "<@s.text name="member.password.required"/>",
 				</#if>
-				minlength: "密码长度必须大于等于4",
-				maxlength: "密码长度必须小于等于20"
+				minlength: "<@s.text name="member.password.minlength"/>",
+				maxlength: "<@s.text name="member.password.maxlength"/>"
 			},
 			"rePassword": {
 				<#if isAddAction>
-					required: "请填写重复密码",
+					required: "<@s.text name="member.rePassword.required"/>",
 				</#if>
-				equalTo: "两次密码输入不一致"
+				equalTo: "<@s.text name="member.rePassword.equalTo"/>"
 			},
 			"member.email": {
-				required: "请填写E-mail",
-				email: "E-mail格式不正确"
+				required: "<@s.text name="member.email.required"/>",
+				email: "<@s.text name="member.email.email"/>"
 			},
 			"member.score": {
-				required: "请填写积分",
-				digits: "积分必须为零或正整数"
+				required: "<@s.text name="member.score.required"/>",
+				digits: "<@s.text name="member.score.digits"/>"
 			},
 			"member.deposit": {
-				required: "请填写预存款",
-				min: "预存款必须为零或正数"
+				required: "<@s.text name="member.deposit.required"/>",
+				min: "<@s.text name="member.deposit.min"/>"
 			}
 			<#list memberAttributeList as memberAttribute>
 				<#if memberAttribute.isRequired || memberAttribute.attributeType == "number" || memberAttribute.attributeType == "alphaint">
 					,"memberAttributeValueMap['${memberAttribute.id}']": {
 						<#if memberAttribute.isRequired>
 							<#if memberAttribute.attributeType == "number" || memberAttribute.attributeType == "alphaint">
-								required: "请填写${memberAttribute.name}",
+								required: "<@s.text name="member.attribute.required"/>${memberAttribute.name}",
 							<#else>
-								required: "请填写${memberAttribute.name}"
+								required: "<@s.text name="member.attribute.required"/>${memberAttribute.name}"
 							</#if>
 						</#if>
 						<#if memberAttribute.attributeType == "number">
 							<#if memberAttribute.attributeType == "alphaint">
-								number: "${memberAttribute.name}只允许输入数字",
+								number: "${memberAttribute.name}<@s.text name="member.attribute.digits"/>",
 							<#else>
-								number: "${memberAttribute.name}只允许输入数字"
+								number: "${memberAttribute.name}<@s.text name="member.attribute.digits"/>"
 							</#if>
 						</#if>
 						<#if memberAttribute.attributeType == "alphaint">
-							lettersonly: "${memberAttribute.name}只允许输入字母"
+							lettersonly: "${memberAttribute.name}<@s.text name="member.attribute.char"/>"
 						</#if>
 					}
 				</#if>
@@ -165,10 +165,10 @@ $().ready( function() {
 </head>
 <body class="input">
 	<div class="bar">
-		<#if isAddAction>添加会员<#else>编辑会员</#if>
+		<#if isAddAction><@s.text name="member.input.bar1"/><#else><@s.text name="member.input.bar2"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="common.validateErrorTitle"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -177,7 +177,7 @@ $().ready( function() {
 			<table class="inputTable">
 				<tr>
 					<th>
-						用户名: 
+						<@s.text name="member.username"/>: 
 					</th>
 					<td>
 						<#if isAddAction>
@@ -191,7 +191,7 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						密 码: 
+						<@s.text name="member.password"/>: 
 					</th>
 					<td>
 						<input type="password" id="password" name="member.password" class="formText" />
@@ -200,7 +200,7 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						确认密码: 
+						<@s.text name="member.rePassword"/>: 
 					</th>
 					<td>
 						<input type="password" name="rePassword" class="formText" />
@@ -218,25 +218,25 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						积分: 
+						<@s.text name=""/>member.score: 
 					</th>
 					<td>
-						<input type="text" name="member.score" class="formText" value="${(member.score)!"0"}" title="只允许输入零或正整数" />
+						<input type="text" name="member.score" class="formText" value="${(member.score)!"0"}" title="<@s.text name="member.score.title"/>" />
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						预存款: 
+						<@s.text name="member.deposit"/>: 
 					</th>
 					<td>
-						<input type="text" name="member.deposit" class="formText" value="${(member.deposit)!"0"}" title="只允许输入大于或等于零的数" />
+						<input type="text" name="member.deposit" class="formText" value="${(member.deposit)!"0"}" title="<@s.text name="member.deposit.title"/>" />
 						<label class="requireField">*</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						会员等级
+						<@s.text name="member.memberRank"/>
 					</th>
 					<td>
 						<select name="member.memberRank.id">
@@ -248,11 +248,11 @@ $().ready( function() {
 				</tr>
 				<tr>
 					<th>
-						设置: 
+						<@s.text name="member.setting="/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox name="member.isAccountEnabled" value="${(member.isAccountEnabled)!true}" />启用
+							<@checkbox name="member.isAccountEnabled" value="${(member.isAccountEnabled)!true}" /><@s.text name="memberAttribute.setting.enable"/>
 						</label>
 					</td>
 				</tr>
@@ -267,7 +267,7 @@ $().ready( function() {
 				<#if isEditAction>
 					<tr>
 						<th>
-							注册日期
+							<@s.text name="member.createDate"/>
 						</th>
 						<td>
 							${(member.createDate?string("yyyy-MM-dd HH:mm:ss"))!}
@@ -275,7 +275,7 @@ $().ready( function() {
 					</tr>
 					<tr>
 						<th>
-							注册IP
+							<@s.text name="member.registerIp"/>
 						</th>
 						<td>
 							${(member.registerIp)!}
@@ -293,8 +293,8 @@ $().ready( function() {
 									<input type="text" name="memberAttributeValueMap['${memberAttribute.id}']" class="formText" value="${(member.getMemberAttributeValue(memberAttribute))!}" />
 									<#if memberAttribute.isRequired><label class="requireField">*</label></#if>
 								<#elseif memberAttribute.systemAttributeType == "gender">
-									<label><input type="radio" name="memberAttributeValueMap['${memberAttribute.id}']" value="male"<#if (member.getMemberAttributeValue(memberAttribute) == "male")!> checked</#if> />男</label>
-									<label><input type="radio" name="memberAttributeValueMap['${memberAttribute.id}']" value="female"<#if (member.getMemberAttributeValue(memberAttribute) == "female")!> checked</#if> />女</label>
+									<label><input type="radio" name="memberAttributeValueMap['${memberAttribute.id}']" value="male"<#if (member.getMemberAttributeValue(memberAttribute) == "male")!> checked</#if> /><@s.text name="common.gender.male"/></label>
+									<label><input type="radio" name="memberAttributeValueMap['${memberAttribute.id}']" value="female"<#if (member.getMemberAttributeValue(memberAttribute) == "female")!> checked</#if> /><@s.text name="common.gender.female"/></label>
 									<#if memberAttribute.isRequired><label class="requireField">*</label></#if>
 								<#elseif memberAttribute.systemAttributeType == "birth">
 									<input type="text" name="memberAttributeValueMap['${memberAttribute.id}']" class="formText" value="${(member.getMemberAttributeValue(memberAttribute))!}" onclick="WdatePicker()" />
@@ -327,7 +327,7 @@ $().ready( function() {
 									<#if memberAttribute.isRequired><label class="requireField">*</label></#if>
 								<#elseif memberAttribute.attributeType == "select">
 									<select name="memberAttributeValueMap['${memberAttribute.id}']">
-										<option value="">请选择...</option>
+										<option value=""><@s.text name="common.tips.select"/></option>
 										<#list memberAttribute.optionList as option>
 											<option value="${option}"<#if (option == member.getMemberAttributeValue(memberAttribute))!> selected</#if>>
 												${option}
@@ -353,14 +353,14 @@ $().ready( function() {
 							&nbsp;
 						</th>
 						<td>
-							<span class="warnInfo"><span class="icon">&nbsp;</span>如需修改密码请填写密码,若留空则密码将保持不变</span>
+							<span class="warnInfo"><span class="icon">&nbsp;</span><@s.text name="member.password.warn"/></span>
 						</td>
 					</tr>
 				</#if>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

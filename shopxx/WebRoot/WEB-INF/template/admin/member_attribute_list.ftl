@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>会员注册项管理 - Powered By SHOP++</title>
+<title><@s.text name="member.attribute.input.list.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,12 +15,12 @@
 </head>
 <body class="list">
 	<div class="bar">
-		会员注册项管理&nbsp;总记录数: ${pager.totalCount} (共${pager.pageCount}页)
+		<@s.text name="member.attribute.input.list.pagetitle"/>&nbsp;<@s.text name="common.list.page.title1"/>: ${pager.totalCount} (<@s.text name="common.list.page.title2"/>${pager.pageCount}<@s.text name="common.list.page.title3"/>)
 	</div>
 	<div class="body">
 		<form id="listForm" action="member_attribute!list.action" method="post">
 			<div class="listBar">
-				<input type="button" class="formButton" onclick="location.href='member_attribute!add.action'" value="添加注册项" hidefocus />
+				<input type="button" class="formButton" onclick="location.href='member_attribute!add.action'" value="<@s.text name="memberAttribute.list.button.add"/>" hidefocus />
 			</div>
 			<table id="listTable" class="listTable">
 				<tr>
@@ -28,28 +28,28 @@
 						<input type="checkbox" class="allCheck" />
 					</th>
 					<th>
-						<a href="#" class="sort" name="name" hidefocus>名称</a>
+						<a href="#" class="sort" name="name" hidefocus><@s.text name="memberAttribute.name"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="attributeType" hidefocus>类型</a>
+						<a href="#" class="sort" name="attributeType" hidefocus><@s.text name="memberAttribute.type"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="isRequired" hidefocus>是否必填</a>
+						<a href="#" class="sort" name="isRequired" hidefocus><@s.text name="memberAttribute.isRequired"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="isEnabled" hidefocus>是否启用</a>
+						<a href="#" class="sort" name="isEnabled" hidefocus><@s.text name="memberAttribute.isEnabled"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="orderList" hidefocus>排序</a>
+						<a href="#" class="sort" name="orderList" hidefocus><@s.text name="memberAttribute.orderList"/></a>
 					</th>
 					<th>
-						<span>操作</span>
+						<span><@s.text name="common.button.operate"/></span>
 					</th>
 				</tr>
 				<#list pager.result as memberAttribute>
 					<tr>
 						<td>
-							<input type="checkbox"<#if memberAttribute.systemAttributeType??> disabled title="系统默认注册项不允许删除!"<#else> name="ids" value="${memberAttribute.id}"</#if> />
+							<input type="checkbox"<#if memberAttribute.systemAttributeType??> disabled title="<@s.text name="memberAttribute.systemAttributeType.title"/>"<#else> name="ids" value="${memberAttribute.id}"</#if> />
 						</td>
 						<td>
 							${memberAttribute.name}
@@ -57,7 +57,7 @@
 						<td>
 							<#if memberAttribute.systemAttributeType??>
 								${action.getText("SystemAttributeType." + memberAttribute.systemAttributeType)}
-								[系统默认]
+								[<@s.text name="memberAttribute.systemAttributeType.default"/>]
 							<#else>
 								${action.getText("AttributeType." + memberAttribute.attributeType)}
 							</#if>
@@ -72,7 +72,7 @@
 							${memberAttribute.orderList}
 						</td>
 						<td>
-							<a href="member_attribute!edit.action?id=${memberAttribute.id}" title="编辑">[编辑]</a>
+							<a href="member_attribute!edit.action?id=${memberAttribute.id}" title="<@s.text name="common.button.edit"/>">[<@s.text name="common.button.edit"/>]</a>
 						</td>
 					</tr>
 				</#list>
@@ -80,14 +80,14 @@
 			<#if (pager.result?size > 0)>
 				<div class="pagerBar">
 					<div class="delete">
-						<input type="button" id="deleteButton" class="formButton" url="member_attribute!delete.action" value="删 除" disabled hidefocus />
+						<input type="button" id="deleteButton" class="formButton" url="member_attribute!delete.action" value="<@s.text name="common.button.delete"/>" disabled hidefocus />
 					</div>
 					<div class="pager">
 						<#include "/WEB-INF/template/admin/pager.ftl" />
 					</div>
 				<div>
 			<#else>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="common.empty"/></div>
 			</#if>
 		</form>
 	</div>

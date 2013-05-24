@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>会员列表 - Powered By SHOP++</title>
+<title><@s.text name="member.list.pagetitle"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,26 +15,26 @@
 </head>
 <body class="list">
 	<div class="bar">
-		会员列表&nbsp;总记录数: ${pager.totalCount} (共${pager.pageCount}页)
+		<@s.text name="member.list.pagetitle"/>&nbsp;<@s.text name="common.list.page.title1"/>: ${pager.totalCount} (<@s.text name="common.list.page.title2"/>${pager.pageCount}<@s.text name="common.list.page.title3"/>)
 	</div>
 	<div class="body">
 		<form id="listForm" action="member!list.action" method="post">
 			<div class="listBar">
-				<input type="button" class="formButton" onclick="location.href='member!add.action'" value="添加会员" hidefocus />
+				<input type="button" class="formButton" onclick="location.href='member!add.action'" value="<@s.text name="member.list.button.add"/>" hidefocus />
 				&nbsp;&nbsp;
-				<label>查找: </label>
+				<label><@s.text name="common.search.title"/>: </label>
 				<select name="pager.searchBy">
 					<option value="username"<#if pager.searchBy == "username"> selected</#if>>
-						用户名
+						<@s.text name="member.username"/>
 					</option>
 					<option value="email"<#if pager.searchBy == "email"> selected</#if>>
 						E-mail
 					</option>
 				</select>
 				<input type="text" name="pager.keyword" value="${pager.keyword!}" />
-				<input type="button" id="searchButton" class="formButton" value="搜 索" hidefocus />
+				<input type="button" id="searchButton" class="formButton" value="<@s.text name="common.search.button"/>" hidefocus />
 				&nbsp;&nbsp;
-				<label>每页显示: </label>
+				<label><@s.text name="common.search.tips"/>: </label>
 				<select name="pager.pageSize" id="pageSize">
 					<option value="10"<#if pager.pageSize == 10> selected</#if>>
 						10
@@ -56,22 +56,22 @@
 						<input type="checkbox" class="allCheck" />
 					</th>
 					<th>
-						<a href="#" class="sort" name="username" hidefocus>用户名</a>
+						<a href="#" class="sort" name="username" hidefocus><@s.text name="member.username"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="memberRank" hidefocus>会员等级</a>
+						<a href="#" class="sort" name="memberRank" hidefocus><@s.text name="member.memberRank"/></a>
 					</th>
 					<th>
 						<a href="#" class="sort" name="email" hidefocus>E-mail</a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="createDate" hidefocus>注册日期</a>
+						<a href="#" class="sort" name="createDate" hidefocus><@s.text name="member.createDate"/></a>
 					</th>
 					<th>
-						<span>状态</span>
+						<span><@s.text name="member.status"/></span>
 					</th>
 					<th>
-						<span>操作</span>
+						<span><@s.text name="common.button.operate"/></span>
 					</th>
 				</tr>
 				<#list pager.result as member>
@@ -93,15 +93,15 @@
 						</td>
 						<td>
 							<#if member.isAccountEnabled && !member.isAccountLocked && !member.isAccountExpired && !member.isCredentialsExpired>
-								<span class="green">正常</span>
+								<span class="green"><@s.text name="member.status.enable"/></span>
 							<#elseif !member.isAccountEnabled>
-								<span class="red"> 未启用 </span>
+								<span class="red"> <@s.text name="member.status.disable"/></span>
 							<#elseif member.isAccountLocked>
-								<span class="red"> 已锁定 </span>
+								<span class="red"> <@s.text name="member.status.lock"/></span>
 							</#if>
 						</td>
 						<td>
-							<a href="member!edit.action?id=${member.id}" title="[编辑]">[编辑]</a>
+							<a href="member!edit.action?id=${member.id}" title="[<@s.text name="common.button.edit"/>]">[<@s.text name="common.button.edit"/>]</a>
 						</td>
 					</tr>
 				</#list>
@@ -109,14 +109,14 @@
 			<#if (pager.result?size > 0)>
 				<div class="pagerBar">
 					<div class="delete">
-						<input type="button" id="deleteButton" class="formButton" url="member!delete.action" value="删 除" disabled hidefocus />
+						<input type="button" id="deleteButton" class="formButton" url="member!delete.action" value="<@s.text name="common.button.delete"/>" disabled hidefocus />
 					</div>
 					<div class="pager">
 						<#include "/WEB-INF/template/admin/pager.ftl" />
 					</div>
 				<div>
 			<#else>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="common.empty"/></div>
 			</#if>
 		</form>
 	</div>

@@ -15,7 +15,7 @@
 		<@sec.authorize ifAnyGranted="ROLE_SETTING,ROLE_INSTANT_MESSAGING">
 			<dl>
 				<dt>
-					<span><@s.text name=""/></span>
+					<span><@s.text name="menu.manage.sitesetting"/></span>
 				</dt>
 				<@sec.authorize ifAnyGranted="ROLE_SETTING">
 					<dd>
