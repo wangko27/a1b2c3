@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>在线留言设置 - Powered By SHOP++</title>
+<title><@s.text name="leave.message.setting.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -16,27 +16,27 @@
 </head>
 <body class="input">
 	<div class="bar">
-		在线留言设置
+		<@s.text name="leave.message.setting.title"/>
 	</div>
 	<div class="body">
 		<form id="validateForm" action="leave_message!settingUpdate.action" method="post">
 			<table class="inputTable">
 				<tr>
 					<th>
-						设置: 
+						<@s.text name="goods.common.setting"/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox name="isLeaveMessageEnabled" value="${setting.isLeaveMessageEnabled}" />启用在线留言功能
+							<@checkbox name="isLeaveMessageEnabled" value="${setting.isLeaveMessageEnabled}" /><@s.text name="leave.message.setting.title.start"/>
 						</label>
 						<label>
-							<@checkbox name="isLeaveMessageCaptchaEnabled" value="${setting.isLeaveMessageCaptchaEnabled}" />启用验证码
+							<@checkbox name="isLeaveMessageCaptchaEnabled" value="${setting.isLeaveMessageCaptchaEnabled}" /><@s.text name="comment.setting.captcha.start"/>
 						</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						显示方式: 
+						<@s.text name="comment.setting.publish.show"/>: 
 					</th>
 					<td>
 						<select name="leaveMessageDisplayType">
@@ -50,8 +50,8 @@
 				</tr>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

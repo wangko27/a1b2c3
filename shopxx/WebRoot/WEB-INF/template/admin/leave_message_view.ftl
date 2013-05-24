@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>查看在线留言 - Powered By SHOP++</title>
+<title><@s.text name="leave.message.view"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -26,7 +26,7 @@ $().ready(function() {
 	$deleteReply.click( function() {
 		var $this = $(this);
 		var replyId = $this.attr("replyId");
-		$.dialog({type: "warn", content: "您确定要删除吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: deleteReply});
+		$.dialog({type: "warn", content: "<@s.text name="goods.notify.javascript.deleteNotice"/>?", ok: "<@s.text name="goods.common.ok"/>", cancel: "<@s.text name="goods.common.cancel"/>", modal: true, okCallback: deleteReply});
 		function deleteReply() {
 			$.ajax({
 				url: "leave_message!ajaxDeleteReply.action",
@@ -61,10 +61,10 @@ $().ready(function() {
 		},
 		messages: {
 			"leaveMessage.title": {
-				required: "请填写回复标题"
+				required: "<@s.text name="leave.message.view.reply.title"/>"
 			}, 
 			"leaveMessage.content": {
-				required: "请填写回复内容"
+				required: "<@s.text name="leave.message.view.reply.content"/>"
 			}
 		},
 		submitHandler: function(form) {
@@ -78,10 +78,10 @@ $().ready(function() {
 </head>
 <body class="input">
 	<div class="bar">
-		查看在线留言
+		<@s.text name="leave.message.view"/>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -91,20 +91,20 @@ $().ready(function() {
 				<table class="inputTable">
 					<tr>
 						<th colspan="2" class="title">
-							留言
+							<@s.text name="leave.message.view.leave.message"/>
 						</th>
 					</tr>
 					<tr>
 						<th>
-							发送人: 
+							<@s.text name="leave.message.list.sender"/>: 
 						</th>
 						<td>
-							${(leaveMessage.username)!"游客"}
+							${(leaveMessage.username)!"<@s.text name="comment.username.anonymous"/>"}
 						</td>
 					</tr>
 					<tr>
 						<th>
-							标题: 
+							<@s.text name="goods.message.push.title"/>: 
 						</th>
 						<td>
 							${leaveMessage.title}
@@ -112,7 +112,7 @@ $().ready(function() {
 					</tr>
 					<tr>
 						<th>
-							内容: 
+							<@s.text name="goods.message.context"/>: 
 						</th>
 						<td>
 							${leaveMessage.content}
@@ -120,7 +120,7 @@ $().ready(function() {
 					</tr>
 					<tr>
 						<th>
-							联系方式: 
+							<@s.text name="goods.content.bottom.comment.contact"/>: 
 						</th>
 						<td>
 							${leaveMessage.contact}
@@ -128,7 +128,7 @@ $().ready(function() {
 					</tr>
 					<tr>
 						<th>
-							发送日期: 
+							<@s.text name="leave.message.list.sender.date"/>: 
 						</th>
 						<td>
 							${leaveMessage.createDate?string("yyyy-MM-dd HH:mm:ss")}
@@ -148,22 +148,22 @@ $().ready(function() {
 					<table class="inputTable">
 						<tr>
 							<th colspan="2" class="title">
-								回复
+								<@s.text name="goods.common.reply"/>
 							</th>
 						</tr>
 						<#list leaveMessage.replyLeaveMessageSet as replyLeaveMessage>
 							<tr class="${replyLeaveMessage.id}">
 								<th>
-									回复标题: 
+									<@s.text name="leave.message.view.title"/>: 
 								</th>
 								<td>
 									${replyLeaveMessage.title}
-									<a href="javascript: void(0);" class="red deleteReply" replyId="${replyLeaveMessage.id}">[删除]</a>
+									<a href="javascript: void(0);" class="red deleteReply" replyId="${replyLeaveMessage.id}">[<@s.text name="button.name.delete"/>]</a>
 								</td>
 							</tr>
 							<tr class="${replyLeaveMessage.id}">
 								<th>
-									回复时间: 
+									<@s.text name="comment.view.reply.time"/>: 
 								</th>
 								<td>
 									${replyLeaveMessage.createDate?string("yyyy-MM-dd HH: mm")}
@@ -171,7 +171,7 @@ $().ready(function() {
 							</tr>
 							<tr class="${replyLeaveMessage.id}">
 								<th>
-									回复内容: 
+									<@s.text name="comment.view.reply.content"/>: 
 								</th>
 								<td>
 									${replyLeaveMessage.content}
@@ -191,12 +191,12 @@ $().ready(function() {
 				<table class="inputTable">
 					<tr>
 						<th colspan="2" class="title">
-							管理员回复
+							<@s.text name="comment.view.reply.admin"/>
 						</th>
 					</tr>
 					<tr>
 						<th>
-							回复标题: 
+							<@s.text name="leave.message.view.title"/>: 
 						</th>
 						<td>
 							<input type="text" name="leaveMessage.title" class="formText" />
@@ -204,7 +204,7 @@ $().ready(function() {
 					</tr>
 					<tr>
 						<th>
-							回复内容: 
+							<@s.text name="comment.view.reply.content"/>: 
 						</th>
 						<td>
 							<textarea name="leaveMessage.content" class="formTextarea"></textarea>
@@ -212,8 +212,8 @@ $().ready(function() {
 					</tr>
 				</table>
 				<div class="buttonArea">
-					<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-					<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+					<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+					<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 				</div>
 			</div>
 		</form>

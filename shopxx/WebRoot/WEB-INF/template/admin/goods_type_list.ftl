@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>商品类型列表 - Powered By SHOP++</title>
+<title><@s.text name="goods.type.list"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,23 +15,23 @@
 </head>
 <body class="list">
 	<div class="bar">
-		商品类型列表&nbsp;总记录数: ${pager.totalCount} (共${pager.pageCount}页)
+		<@s.text name="goods.type.list"/>&nbsp;<@s.text name="goods.specification.list.page.tips1"/>: ${pager.totalCount} (<@s.text name="goods.specification.list.page.tips2"/>${pager.pageCount}<@s.text name="goods.specification.list.page.tips3"/>)
 	</div>
 	<div class="body">
 		<form id="listForm" action="goods_type!list.action" method="post">
 			<div class="listBar">
-				<input type="button" class="formButton" onclick="location.href='goods_type!add.action'" value="添加类型" hidefocus />
+				<input type="button" class="formButton" onclick="location.href='goods_type!add.action'" value="<@s.text name="goods.type.add"/>" hidefocus />
 				&nbsp;&nbsp;
-				<label>查找: </label>
+				<label><@s.text name="goods.specification.list.search.label"/>: </label>
 				<select name="pager.searchBy">
 					<option value="name"<#if pager.searchBy == "name"> selected</#if>>
-						类型名称
+						<@s.text name="goods.type.name"/>
 					</option>
 				</select>
 				<input type="text" name="pager.keyword" value="${pager.keyword!}" />
-				<input type="button" id="searchButton" class="formButton" value="搜 索" hidefocus />
+				<input type="button" id="searchButton" class="formButton" value="<@s.text name="goods.specification.list.search.button"/>" hidefocus />
 				&nbsp;&nbsp;
-				<label>每页显示: </label>
+				<label><@s.text name="goods.specification.list.search.result"/>: </label>
 				<select name="pager.pageSize" id="pageSize">
 					<option value="10"<#if pager.pageSize == 10> selected</#if>>
 						10
@@ -53,16 +53,16 @@
 						<input type="checkbox" class="allCheck" />
 					</th>
 					<th>
-						<a href="#" class="sort" name="name" hidefocus>类型名称</a>
+						<a href="#" class="sort" name="name" hidefocus><@s.text name="goods.type.name"/></a>
 					</th>
 					<th>
-						<span>商品属性</span>
+						<span><@s.text name="goods.input.goods.properties"/></span>
 					</th>
 					<th>
-						<a href="#" class="sort" name="createDate" hidefocus>创建日期</a>
+						<a href="#" class="sort" name="createDate" hidefocus><@s.text name="role.createDate"/></a>
 					</th>
 					<th>
-						<span>操作</span>
+						<span><@s.text name="common.button.operate"/></span>
 					</th>
 				</tr>
 				<#list pager.result as goodsType>
@@ -85,7 +85,7 @@
 							<span title="${goodsType.createDate?string("yyyy-MM-dd HH:mm:ss")}">${goodsType.createDate}</span>
 						</td>
 						<td>
-							<a href="goods_type!edit.action?id=${goodsType.id}" title="编辑">[编辑]</a>
+							<a href="goods_type!edit.action?id=${goodsType.id}" title="<@s.text name="common.button.edit"/>">[<@s.text name="common.button.edit"/>]</a>
 						</td>
 					</tr>
 				</#list>
@@ -93,14 +93,14 @@
 			<#if (pager.result?size > 0)>
 				<div class="pagerBar">
 					<div class="delete">
-						<input type="button" id="deleteButton" class="formButton" url="goods_type!delete.action" value="删 除" disabled hidefocus />
+						<input type="button" id="deleteButton" class="formButton" url="goods_type!delete.action" value="<@s.text name="goods.specification.list.search.result.header.delete"/>" disabled hidefocus />
 					</div>
 					<div class="pager">
 						<#include "/WEB-INF/template/admin/pager.ftl" />
 					</div>
 				<div>
 			<#else>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="goods.specification.list.search.result.empty"/></div>
 			</#if>
 		</form>
 	</div>

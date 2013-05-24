@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>到货通知列表 - Powered By SHOP++</title>
+<title><@s.text name="goods.notify.list.msg.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -44,7 +44,7 @@ $().ready(function() {
 	$sendButton.click( function() {
 		var url = "goods_notify!send.action";
 		var $idsCheckedCheck = $("#listTable input[name='ids']:checked");
-		if (confirm("您确定要发送到货通知吗?") == true) {
+		if (confirm("<@s.text name="goods.notify.list.msg.notice"/>?") == true) {
 			$.ajax({
 				url: url,
 				data: $idsCheckedCheck.serialize(),
@@ -69,14 +69,14 @@ $().ready(function() {
 </head>
 <body class="list">
 	<div class="bar">
-		到货通知列表&nbsp;总记录数: ${pager.totalCount} (共${pager.pageCount}页)
+		<@s.text name="goods.notify.list.msg.title"/>&nbsp;<@s.text name="goods.specification.list.page.tips1"/>: ${pager.totalCount} (<@s.text name="goods.specification.list.page.tips2"/>${pager.pageCount}<@s.text name="goods.specification.list.page.tips3"/>)
 	</div>
 	<div class="body">
 		<form id="listForm" action="goods_notify!list.action" method="post">
 			<div class="listBar">
-				<input type="button" id="sendButton" class="formButton" value="发送通知" disabled />
+				<input type="button" id="sendButton" class="formButton" value="<@s.text name="goods.notify.list.msg.notice.send"/>" disabled />
 				&nbsp;&nbsp;
-				<label>每页显示: </label>
+				<label><@s.text name="goods.specification.list.search.result"/>: </label>
 				<select name="pager.pageSize" id="pageSize">
 					<option value="10"<#if pager.pageSize == 10> selected</#if>>
 						10
@@ -98,25 +98,25 @@ $().ready(function() {
 						<input type="checkbox" class="allCheck" />
 					</th>
 					<th>
-						<a href="#" class="sort" name="product" hidefocus>缺货商品名称</a>
+						<a href="#" class="sort" name="product" hidefocus><@s.text name="goods.notify.list.msg.product.out"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="member" hidefocus>会员</a>
+						<a href="#" class="sort" name="member" hidefocus><@s.text name="goods.notify.list.msg.member"/></a>
 					</th>
 					<th>
 						<a href="#" class="sort" name="email" hidefocus>E-mail</a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="sendDate" hidefocus>通知时间</a>
+						<a href="#" class="sort" name="sendDate" hidefocus><@s.text name="goods.notify.list.msg.notice.time"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="createDate" hidefocus>登记时间</a>
+						<a href="#" class="sort" name="createDate" hidefocus><@s.text name="goods.notify.list.msg.send.time"/></a>
 					</th>
 					<th>
-						<a href="#" class="sort" name="isSent" hidefocus>已发送</a>
+						<a href="#" class="sort" name="isSent" hidefocus><@s.text name="goods.notify.list.msg.sent"/></a>
 					</th>
 					<th>
-						<span>缺货状态</span>
+						<span><@s.text name="goods.notify.list.msg.status.out"/></span>
 					</th>
 				</tr>
 				<#list pager.result as goodsNotify>
@@ -153,9 +153,9 @@ $().ready(function() {
 						</td>
 						<td>
 							<#if product.isOutOfStock>
-								无货
+								<@s.text name="goods.notify.list.msg.product.notExist"/>
 							<#else>
-								有货
+								<@s.text name="goods.notify.list.msg.product.exist"/>
 							</#if>
 						</td>
 					</tr>
@@ -164,14 +164,14 @@ $().ready(function() {
 			<#if (pager.result?size > 0)>
 				<div class="pagerBar">
 					<div class="delete">
-						<input type="button" id="deleteButton" class="formButton" url="goods_notify!delete.action" value="删 除" disabled hidefocus />
+						<input type="button" id="deleteButton" class="formButton" url="goods_notify!delete.action" value="<@s.text name="goods.specification.list.search.result.header.delete"/>" disabled hidefocus />
 					</div>
 					<div class="pager">
 						<#include "/WEB-INF/template/admin/pager.ftl" />
 					</div>
 				<div>
 			<#else>
-				<div class="noRecord">没有找到任何记录!</div>
+				<div class="noRecord"><@s.text name="common.empty"/></div>
 			</#if>
 		</form>
 	</div>

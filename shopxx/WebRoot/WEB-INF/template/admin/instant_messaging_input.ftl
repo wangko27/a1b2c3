@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>编辑在线客服 - Powered By SHOP++</title>
+<title><@s.text name="instance.messaging.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -39,12 +39,12 @@ $().ready(function() {
 					<input type="hidden" name="instantMessagingList[' + instantMessagingIndex + '].instantMessagingType" value="qq" />
 					<span class="instantMessagingType">QQ: </span>&nbsp;
 					<input type="text" name="instantMessagingList[' + instantMessagingIndex + '].value" class="formText instantMessagingListValue" />
-					&nbsp;&nbsp;标题: &nbsp;
+					&nbsp;&nbsp;<@s.text name="goods.message.push.title"/>: &nbsp;
 					<input type="text" name="instantMessagingList[' + instantMessagingIndex + '].title" class="formText instantMessagingListTitle" />
-					&nbsp;&nbsp;排序: &nbsp;
+					&nbsp;&nbsp;<@s.text name="goods.specification.list.search.result.header.order"/>: &nbsp;
 					<input type="text" name="instantMessagingList[' + instantMessagingIndex + '].orderList" class="formText instantMessagingListOrderList" style="width: 30px;" />
 					&nbsp;&nbsp;
-					<span class="deleteIcon deleteInstantMessagingIcon" title="删 除">&nbsp;</span>
+					<span class="deleteIcon deleteInstantMessagingIcon" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 				</td>
 			</tr>';
 		</@compress>
@@ -64,12 +64,12 @@ $().ready(function() {
 					<input type="hidden" name="instantMessagingList[' + instantMessagingIndex + '].instantMessagingType" value="msn" />
 					<span class="instantMessagingType">MSN: </span>&nbsp;
 					<input type="text" name="instantMessagingList[' + instantMessagingIndex + '].value" class="formText instantMessagingListValue" />
-					&nbsp;&nbsp;标题: &nbsp;
+					&nbsp;&nbsp;<@s.text name="goods.message.push.title"/>: &nbsp;
 					<input type="text" name="instantMessagingList[' + instantMessagingIndex + '].title" class="formText instantMessagingListTitle" />
-					&nbsp;&nbsp;排序: &nbsp;
+					&nbsp;&nbsp;<@s.text name="goods.specification.list.search.result.header.order"/>: &nbsp;
 					<input type="text" name="instantMessagingList[' + instantMessagingIndex + '].orderList" class="formText instantMessagingListOrderList" style="width: 30px;" />
 					&nbsp;&nbsp;
-					<span class="deleteIcon deleteInstantMessagingIcon" title="删 除">&nbsp;</span>
+					<span class="deleteIcon deleteInstantMessagingIcon" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 				</td>
 			</tr>';
 		</@compress>
@@ -87,14 +87,14 @@ $().ready(function() {
 				<th>&nbsp;</th>
 				<td>
 					<input type="hidden" name="instantMessagingList[' + instantMessagingIndex + '].instantMessagingType" value="wangwang" />
-					<span class="instantMessagingType">旺旺: </span>&nbsp;
+					<span class="instantMessagingType"><@s.text name="goods.common.chart.wangwang"/>: </span>&nbsp;
 					<input type="text" name="instantMessagingList[' + instantMessagingIndex + '].value" class="formText instantMessagingListValue" />
-					&nbsp;&nbsp;标题: &nbsp;
+					&nbsp;&nbsp;<@s.text name="goods.message.push.title"/>: &nbsp;
 					<input type="text" name="instantMessagingList[' + instantMessagingIndex + '].title" class="formText instantMessagingListTitle" />
-					&nbsp;&nbsp;排序: &nbsp;
+					&nbsp;&nbsp;<@s.text name="goods.specification.list.search.result.header.order"/>: &nbsp;
 					<input type="text" name="instantMessagingList[' + instantMessagingIndex + '].orderList" class="formText instantMessagingListOrderList" style="width: 30px;" />
 					&nbsp;&nbsp;
-					<span class="deleteIcon deleteInstantMessagingIcon" title="删 除">&nbsp;</span>
+					<span class="deleteIcon deleteInstantMessagingIcon" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 				</td>
 			</tr>';
 		</@compress>
@@ -114,12 +114,12 @@ $().ready(function() {
 					<input type="hidden" name="instantMessagingList[' + instantMessagingIndex + '].instantMessagingType" value="skype" />
 					<span class="instantMessagingType">Skype: </span>&nbsp;
 					<input type="text" name="instantMessagingList[' + instantMessagingIndex + '].value" class="formText instantMessagingListValue" />
-					&nbsp;&nbsp;标题: &nbsp;
+					&nbsp;&nbsp;<@s.text name="goods.message.push.title"/>: &nbsp;
 					<input type="text" name="instantMessagingList[' + instantMessagingIndex + '].title" class="formText instantMessagingListTitle" />
-					&nbsp;&nbsp;排序: &nbsp;
+					&nbsp;&nbsp;<@s.text name="goods.specification.list.search.result.header.order"/>: &nbsp;
 					<input type="text" name="instantMessagingList[' + instantMessagingIndex + '].orderList" class="formText instantMessagingListOrderList" style="width: 30px;" />
 					&nbsp;&nbsp;
-					<span class="deleteIcon deleteInstantMessagingIcon" title="删 除">&nbsp;</span>
+					<span class="deleteIcon deleteInstantMessagingIcon" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 				</td>
 			</tr>';
 		</@compress>
@@ -131,7 +131,7 @@ $().ready(function() {
 	// 删除在线客服
 	$("#instantMessagingTable .deleteInstantMessagingIcon").live("click", function() {
 		var $this = $(this);
-		$.dialog({type: "warn", content: "您确定要删除吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: deleteInstantMessaging});
+		$.dialog({type: "warn", content: "<@s.text name="goods.notify.javascript.deleteNotice"/>?", ok: "<@s.text name="goods.common.ok"/>", cancel: "<@s.text name="goods.common.cancel"/>", modal: true, okCallback: deleteInstantMessaging});
 		function deleteInstantMessaging() {
 			$this.parent().parent().remove();
 		}
@@ -151,7 +151,7 @@ $().ready(function() {
 		},
 		messages: {
 			"instantMessagingTitle": {
-				required: "请填写在线客服标题"
+				required: "<@s.text name="instance.messaging.input"/>"
 			}
 		},
 		submitHandler: function(form) {
@@ -160,9 +160,9 @@ $().ready(function() {
 		}
 	});
 	
-	$.validator.addMethod("instantMessagingListValueRequired", $.validator.methods.required, "请填写在线客服账号");
-	$.validator.addMethod("instantMessagingListTitleRequired", $.validator.methods.required, "请填写在线客服账号标题");
-	$.validator.addMethod("instantMessagingListOrderListDigits", $.validator.methods.digits, "排序必须为零或正整数");
+	$.validator.addMethod("instantMessagingListValueRequired", $.validator.methods.required, "<@s.text name="instance.messaging.input.account"/>");
+	$.validator.addMethod("instantMessagingListTitleRequired", $.validator.methods.required, "<@s.text name="instance.messaging.input.accountTitle"/>");
+	$.validator.addMethod("instantMessagingListOrderListDigits", $.validator.methods.digits, "<@s.text name="goods.specification.edit.order.tips"/>");
 	
 	$.validator.addClassRules("instantMessagingListValue", {
 		instantMessagingListValueRequired: true
@@ -179,10 +179,10 @@ $().ready(function() {
 </head>
 <body class="input instantMessaging">
 	<div class="bar">
-		编辑在线客服
+		<@s.text name="instance.messaging.input.title"/>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -190,7 +190,7 @@ $().ready(function() {
 			<table id="instantMessagingTable" class="inputTable">
 				<tr>
 					<th>
-						在线客服标题: 
+						<@s.text name="instance.messaging.title"/>: 
 					</th>
 					<td>
 						<input type="text" name="instantMessagingTitle" class="formText" value="${(setting.instantMessagingTitle)!}" />
@@ -199,7 +199,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						在线客服位置: 
+						<@s.text name="instance.messaging.location"/>: 
 					</th>
 					<td>
 						<#list instantMessagingPositionList as instantMessagingPosition>
@@ -212,11 +212,11 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						设置: 
+						<@s.text name="goods.common.setting"/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox name="isInstantMessagingEnabled" value="${setting.isInstantMessagingEnabled}" />启用
+							<@checkbox name="isInstantMessagingEnabled" value="${setting.isInstantMessagingEnabled}" /><@s.text name="setting.isGzipEnabled"/>
 						</label>
 					</td>
 				</tr>
@@ -230,13 +230,13 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						添加在线客服
+						<@s.text name="instance.messaging.title.add"/>
 					</th>
 					<td>
-						<input type="button" id="addQqButton" class="formButton" value="添加QQ" hidefocus />&nbsp;&nbsp;
-						<input type="button" id="addMsnButton" class="formButton" value="添加MSN" hidefocus />&nbsp;&nbsp;
-						<input type="button" id="addWangwangButton" class="formButton" value="添加旺旺" hidefocus />&nbsp;&nbsp;
-						<input type="button" id="addSkypeButton" class="formButton" value="添加Skype" hidefocus />
+						<input type="button" id="addQqButton" class="formButton" value="<@s.text name="common.button.add"/>QQ" hidefocus />&nbsp;&nbsp;
+						<input type="button" id="addMsnButton" class="formButton" value="<@s.text name="common.button.add"/>MSN" hidefocus />&nbsp;&nbsp;
+						<input type="button" id="addWangwangButton" class="formButton" value="<@s.text name="common.button.add"/><@s.text name="goods.common.chart.wangwang"/>" hidefocus />&nbsp;&nbsp;
+						<input type="button" id="addSkypeButton" class="formButton" value="<@s.text name="common.button.add"/>Skype" hidefocus />
 					</td>
 				</tr>
 				<#list instantMessagingList as instantMessaging>
@@ -248,19 +248,19 @@ $().ready(function() {
 							<input type="hidden" name="instantMessagingList[${instantMessaging_index}].instantMessagingType" value="${instantMessaging.instantMessagingType}" />
 							<span class="instantMessagingType">${action.getText("InstantMessagingType." + instantMessaging.instantMessagingType)}: </span>&nbsp;
 							<input type="text" name="instantMessagingList[${instantMessaging_index}].value" class="formText instantMessagingListValue" value="${instantMessaging.value}" />
-							&nbsp;&nbsp;标题: &nbsp;
+							&nbsp;&nbsp;<@s.text name="goods.message.push.title"/>: &nbsp;
 							<input type="text" name="instantMessagingList[${instantMessaging_index}].title" class="formText instantMessagingListTitle" value="${instantMessaging.title}" />
-							&nbsp;&nbsp;排序: &nbsp;
+							&nbsp;&nbsp;<@s.text name="goods.specification.list.search.result.header.order"/>: &nbsp;
 							<input type="text" name="instantMessagingList[${instantMessaging_index}].orderList" class="formText instantMessagingListOrderList" style="width: 30px;" value="${instantMessaging.orderList}" />
 							&nbsp;&nbsp;
-							<span class="deleteIcon deleteInstantMessagingIcon" title="删 除">&nbsp;</span>
+							<span class="deleteIcon deleteInstantMessagingIcon" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 						</td>
 					</tr>
 				</#list>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑商品 - Powered By SHOP++</title>
+<title><@s.text name="goods.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -76,7 +76,7 @@ $().ready(function() {
 					<input type="text" name="goodsImageList[' + goodsImageIndex + '].orderList" class="formText goodsImageOrderList" style="width: 50px;" />
 				</td>
 				<td>
-					<span class="deleteIcon deleteGoodsImage" title="删 除">&nbsp;</span>
+					<span class="deleteIcon deleteGoodsImage" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 				</td>
 			</tr>';
 		</@compress>
@@ -88,7 +88,7 @@ $().ready(function() {
 	// 删除商品图片
 	$("#goodsImageTable .deleteGoodsImage").live("click", function() {
 		var $this = $(this);
-		$.dialog({type: "warn", content: "您确定要删除吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: deleteGoodsImage});
+		$.dialog({type: "warn", content: "<@s.text name="item.delete.tipmessage"/>", ok: "<@s.text name="goods.common.ok"/>", cancel: "<@s.text name="goods.common.cancel"/>", modal: true, okCallback: deleteGoodsImage});
 		function deleteGoodsImage() {
 			$this.parent().parent().remove();
 		}
@@ -115,7 +115,7 @@ $().ready(function() {
 					<input type="text" name="goodsHelpList[' + goodsHelpIndex + '].orderList" class="formText goodsImageOrderList" style="width: 50px;" />
 				</td>
 				<td>
-					<span class="deleteIcon deleteGoodsHelp" title="删 除">&nbsp;</span>
+					<span class="deleteIcon deleteGoodsHelp" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 				</td>
 			</tr>';
 		</@compress>
@@ -127,7 +127,7 @@ $().ready(function() {
 	// 删除帮助文件
 	$("#goodsHelpTable .deleteGoodsHelp").live("click", function() {
 		var $this = $(this);
-		$.dialog({type: "warn", content: "您确定要删除吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: deleteGoodsHelp});
+		$.dialog({type: "warn", content: "<@s.text name="goods.notify.javascript.deleteNotice"/>?", ok: "<@s.text name="goods.common.ok"/>", cancel: "<@s.text name="goods.common.cancel"/>", modal: true, okCallback: deleteGoodsHelp});
 		function deleteGoodsHelp() {
 			$this.parent().parent().remove();
 		}
@@ -153,7 +153,7 @@ $().ready(function() {
 	// 切换商品规格
 	$specificationTab.click( function() {
 		if (!$isSpecificationEnabled.attr("checked")) {
-			$.dialog({type: "warn", content: "确定启用商品规格?", ok: "确 定", cancel: "取 消", modal: true, okCallback: specificationEnabled});
+			$.dialog({type: "warn", content: "<@s.text name="goods.input.goods.specific"/>?", ok: "<@s.text name="goods.common.ok"/>", cancel: "<@s.text name="<@s.text name="goods.common.cancel"/>"/>", modal: true, okCallback: specificationEnabled});
 			function specificationEnabled() {
 				$isSpecificationEnabled.attr("checked", true);
 				$specificationDisabledInfo.hide().find(":input").attr("disabled", true);
@@ -241,7 +241,7 @@ $().ready(function() {
 		<@compress single_line = true>
 			var productTrHtml = '<tr class="productTr" productIndex="' + productIndex + '">
 				<td>
-					<input type="text" id="productListProductSn' + productIndex + '" name="productList[' + productIndex + '].productSn" class="formText productListProductSn" style="width: 50px;" title="留空则由系统自动生成" />
+					<input type="text" id="productListProductSn' + productIndex + '" name="productList[' + productIndex + '].productSn" class="formText productListProductSn" style="width: 50px;" title="<@s.text name="goods.input.goods.blank.default"/>" />
 				</td>';
 		</@compress>
 		
@@ -262,7 +262,7 @@ $().ready(function() {
 					<input type="text" name="productList[' + productIndex + '].price" class="formText productListPrice" value="0" style="width: 50px;" />
 				</td>
 				<td>
-					<input type="text" name="productList[' + productIndex + '].cost" class="formText productListCost" style="width: 50px;" title="前台不会显示,仅供后台使用" />
+					<input type="text" name="productList[' + productIndex + '].cost" class="formText productListCost" style="width: 50px;" title="<@s.text name="goods.input.goods.show.message"/>" />
 				</td>
 				<td>
 					<input type="text" name="productList[' + productIndex + '].marketPrice" class="formText productListMarketPrice" style="width: 50px;" />
@@ -283,7 +283,7 @@ $().ready(function() {
 					<@checkbox name="productList[' + productIndex + '].isMarketable" cssClass="productListIsMarketable" value="true" />
 				</td>
 				<td>
-					<span class="deleteIcon deleteProduct" title="删 除">&nbsp;</span>
+					<span class="deleteIcon deleteProduct" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 				</td>
 			</tr>';
 		</@compress>
@@ -308,7 +308,7 @@ $().ready(function() {
 				}
 			},
 			messages: {
-				remote: "货号已存在"
+				remote: "<@s.text name="goods.input.goods.product.exist"/>"
 			}
 		});
 		productIndex ++;
@@ -317,7 +317,7 @@ $().ready(function() {
 	// 删除货品
 	$("#productTable .deleteProduct").live("click", function() {
 		var $this = $(this);
-		$.dialog({type: "warn", content: "您确定要删除吗?", ok: "确 定", cancel: "取 消", modal: true, okCallback: deleteProduct});
+		$.dialog({type: "warn", content: "<@s.text name="goods.notify.javascript.deleteNotice"/>?", ok: "<@s.text name="goods.common.ok"/>", cancel: "<@s.text name="goods.common.cancel"/>", modal: true, okCallback: deleteProduct});
 		function deleteProduct() {
 			$this.parent().parent().remove();
 		}
@@ -327,7 +327,7 @@ $().ready(function() {
 	$("#productTable input.productListIsDefault").live("click", function() {
 		var $this = $(this);
 		if (!$this.parent().next().find("input.productListIsMarketable").attr("checked")) {
-			$.dialog({type: "warn", content: "请选择上架货品为默认货品!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "<@s.text name="goods.input.goods.product.default"/>!", modal: true, autoCloseTime: 3000});
 			return false;
 		}
 		$("#productTable input.productListIsDefault").not($this).attr("checked", false);
@@ -336,7 +336,7 @@ $().ready(function() {
 	// 商品上架
 	$goodsIsMarketable.click( function() {
 		if ($isSpecificationEnabled.attr("checked") && $("#goodsForm input.productListIsMarketable:checked").size() == 0) {
-			$.dialog({type: "warn", content: "货品已全部下架后,商品无法上架!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "<@s.text name="goods.input.goods.product.cancel"/>!", modal: true, autoCloseTime: 3000});
 			return false;
 		}
 	});
@@ -345,11 +345,11 @@ $().ready(function() {
 	$("#goodsForm input.productListIsMarketable").live("click", function() {
 		var $this = $(this);
 		if ($this.parent().prev().find("input.productListIsDefault").attr("checked")) {
-			$.dialog({type: "warn", content: "默认货品无法下架!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "<@s.text name="goods.input.goods.product.default.un"/>!", modal: true, autoCloseTime: 3000});
 			return false;
 		}
 		if ($isSpecificationEnabled.attr("checked") && $("#goodsForm input.productListIsMarketable:checked").size() == 0) {
-			$.dialog({type: "warn", content: "货品已全部下架后,商品将自动下架!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "<@s.text name="goods.input.goods.product.goods.default"/>!", modal: true, autoCloseTime: 3000});
 			$goodsIsMarketable.attr("checked", false);
 		}
 	});
@@ -358,7 +358,7 @@ $().ready(function() {
 	var previousGoodsTypeId = "${(goods.goodsType.id)!}";
 	$goodsTypeId.change( function() {
 		if (previousGoodsTypeId != "") {
-			$.dialog({type: "warn", content: "修改商品类型后当前“属性参数”数据将会丢失,是否继续!", width: 450, ok: "确 定", cancel: "取 消", modal: true, okCallback: goodsTypeChange, cancelCallback: goodsTypeReset});
+			$.dialog({type: "warn", content: "<@s.text name="goods.input.goods.product.typeEdit"/>!", width: 450, ok: "<@s.text name="button.name.confirm"/>", cancel: "<@s.text name="button.name.cancel"/>", modal: true, okCallback: goodsTypeChange, cancelCallback: goodsTypeReset});
 		} else {
 			goodsTypeChange();
 		}
@@ -388,7 +388,7 @@ $().ready(function() {
 						var goodsAttributeTrHtml = "";
 						$.each(data, function(i) {
 							if (data[i].attributeType == "filter") {
-								var optionHtml = '<option value="">请选择...</option>';
+								var optionHtml = '<option value=""><@s.text name="goods.content.buyInfo.tipsTitle"/>...</option>';
 								$.each(data[i].optionList, function(j) {
 									<@compress single_line = true>
 										optionHtml += 
@@ -506,27 +506,27 @@ $().ready(function() {
 			"defaultProduct.store": "storeDigits"
 		},
 		messages: {
-			"goods.goodsCategory.id": "请选择商品分类",
-			"goods.name": "请填写商品名称",
-			"goods.goodsSn": "商品编号已存在",
-			"defaultProduct.productSn": "货号已存在",
+			"goods.goodsCategory.id": "<@s.text name="goods.input.goods.product.category.choose"/>",
+			"goods.name": "<@s.text name="goods.input.goods.product.name"/>",
+			"goods.goodsSn": "<@s.text name="goods.input.goods.product.name.exist"/>",
+			"defaultProduct.productSn": "<@s.text name="goods.input.goods.product.exist"/>",
 			"goods.score": {
-				required: "请填写积分",
-				digits: "积分必须为零或正整数"
+				required: "<@s.text name="goods.profile.input.score"/>",
+				digits: "<@s.text name="goods.profile.input.score.invalid"/>"
 			}
 		},
 		submitHandler: function(form) {
 			if ($isSpecificationEnabled.attr("checked") == true) {
 				if ($("#specificationSelect input:checked").size() == 0) {
-					$.dialog({type: "warn", content: "请选择至少一种商品规格!", modal: true, autoCloseTime: 3000});
+					$.dialog({type: "warn", content: "<@s.text name="goods.input.goods.product.specific.choose"/>!", modal: true, autoCloseTime: 3000});
 					return false;
 				}
 				if ($("#productTable .productTr").size() == 0) {
-					$.dialog({type: "warn", content: "请选择至少添加一种货品!", modal: true, autoCloseTime: 3000});
+					$.dialog({type: "warn", content: "<@s.text name="goods.input.goods.product.add.choose"/>!", modal: true, autoCloseTime: 3000});
 					return false;
 				}
 				if ($("#productTable input.productListIsDefault:checked").length == 0) {
-					$.dialog({type: "warn", content: "必须选择一个默认货品!", modal: true, autoCloseTime: 3000});
+					$.dialog({type: "warn", content: "<@s.text name="goods.input.goods.product.default.choose"/>!", modal: true, autoCloseTime: 3000});
 					return false;
 				}
 				
@@ -543,7 +543,7 @@ $().ready(function() {
 					}
 				});
 				if (isProductSnRepeat) {
-					$.dialog({type: "warn", content: "货号重复,请检查!", modal: true, autoCloseTime: 3000});
+					$.dialog({type: "warn", content: "<@s.text name="goods.input.goods.product.sn.duplicate"/>!", modal: true, autoCloseTime: 3000});
 					return false;
 				}
 				
@@ -563,7 +563,7 @@ $().ready(function() {
 					}
 				});
 				if (isSpecificationValueIdsRepeat) {
-					$.dialog({type: "warn", content: "货品规格值重复,请检查!", modal: true, autoCloseTime: 3000});
+					$.dialog({type: "warn", content: "<@s.text name="goods.input.goods.product.specific.duplicate"/>!", modal: true, autoCloseTime: 3000});
 					return false;
 				}
 			}
@@ -588,22 +588,22 @@ $().ready(function() {
 					}
 				},
 				messages: {
-					remote: "货号已存在"
+					remote: "<@s.text name="goods.input.goods.product.exist"/>"
 				}
 			});
 		</#list>
 	</#if>
 	
 	// 表单验证
-	$.validator.addMethod("goodsImageFileListRequired", $.validator.methods.required, "请选择上传商品图片");
-	$.validator.addMethod("goodsImageFileListImageFile", $.validator.methods.imageFile, "商品图片格式错误");
-	$.validator.addMethod("goodsImageOrderListDigits", $.validator.methods.digits, "商品图片排序必须为零或正整数");
-	$.validator.addMethod("priceRequired", $.validator.methods.required, "请填写销售价");
-	$.validator.addMethod("priceMin", $.validator.methods.min, "销售价必须为零或正数");
-	$.validator.addMethod("costMin", $.validator.methods.min, "成本价必须为零或正数");
-	$.validator.addMethod("marketPriceMin", $.validator.methods.min, "市场价必须为零或正数");
-	$.validator.addMethod("weightDigits", $.validator.methods.digits, "重量必须为零或正整数");
-	$.validator.addMethod("storeDigits", $.validator.methods.digits, "库存必须为零或正整数");
+	$.validator.addMethod("goodsImageFileListRequired", $.validator.methods.required, "<@s.text name="goods.input.goods.product.image.upload"/>");
+	$.validator.addMethod("goodsImageFileListImageFile", $.validator.methods.imageFile, "<@s.text name="goods.input.goods.product.image.upload.formatError"/>");
+	$.validator.addMethod("goodsImageOrderListDigits", $.validator.methods.digits, "<@s.text name="goods.input.goods.product.image.sort.require"/>");
+	$.validator.addMethod("priceRequired", $.validator.methods.required, "<@s.text name="goods.input.goods.product.image.sell.price"/>");
+	$.validator.addMethod("priceMin", $.validator.methods.min, "<@s.text name="goods.input.goods.product.image.sell.require"/>");
+	$.validator.addMethod("costMin", $.validator.methods.min, "<@s.text name="goods.input.goods.product.image.cost.require"/>");
+	$.validator.addMethod("marketPriceMin", $.validator.methods.min, "<@s.text name="goods.input.goods.product.image.market.require"/>");
+	$.validator.addMethod("weightDigits", $.validator.methods.digits, "<@s.text name="goods.input.goods.product.image.weight.require"/>");
+	$.validator.addMethod("storeDigits", $.validator.methods.digits, "<@s.text name="goods.input.goods.product.image.storage.require"/>");
 	
 	$.validator.addClassRules("goodsImageFileList", {
 		goodsImageFileListRequired: true,
@@ -641,10 +641,10 @@ $().ready(function() {
 </head>
 <body class="input goods">
 	<div class="bar">
-		<#if isAddAction>添加商品<#else>编辑商品</#if>
+		<#if isAddAction><@s.text name="goods.input.goods.add"/><#else><@s.text name="goods.input.goods.edit"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -655,38 +655,38 @@ $().ready(function() {
 			</#if>
 			<ul id="tab" class="tab">
 				<li>
-					<input type="button" value="基本信息" hidefocus />
+					<input type="button" value="<@s.text name="goods.compare.head1"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="商品描述" hidefocus />
+					<input type="button" value="<@s.text name="goods.input.goods.description"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="商品图片" hidefocus />
+					<input type="button" value="<@s.text name="goods.compare.result.pic"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" id="specificationTab" value="商品规格" hidefocus />
+					<input type="button" id="specificationTab" value="<@s.text name="goods.input.goods.specific"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="属性参数" hidefocus />
+					<input type="button" value="<@s.text name="goods.input.goods.attribute"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="相关产品" hidefocus />
+					<input type="button" value="<@s.text name="goods.content.bottom.options.relate"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="帮助文件" hidefocus />
+					<input type="button" value="<@s.text name="goods.content.bottom.options.help"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="适应车型" hidefocus />
+					<input type="button" value="<@s.text name="goods.input.goods.cartype"/>" hidefocus />
 				</li>
 			</ul>
 			<table id="infoTable" class="inputTable tabContent">
 				<tr>
 					<th>
-						商品分类: 
+						<@s.text name="goods.picture.list.category"/>: 
 					</th>
 					<td>
 						<select name="goods.goodsCategory.id">
-							<option value="">请选择...</option>
+							<option value=""><@s.text name="goods.content.buyInfo.tipsTitle"/>...</option>
 							<#list goodsCategoryTreeList as goodsCategoryTree>
 								<option value="${goodsCategoryTree.id}"<#if (goodsCategoryTree == goods.goodsCategory)!> selected</#if>>
 									<#if goodsCategoryTree.grade != 0>
@@ -703,7 +703,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						商品名称: 
+						<@s.text name="goods.notify.memberCenter.goods.name"/>: 
 					</th>
 					<td>
 						<input type="text" name="goods.name" class="formText" value="${(goods.name)!}" />
@@ -712,31 +712,31 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						商品编号: 
+						<@s.text name="goods.compare.result.sn"/>: 
 					</th>
 					<td>
-						<input type="text" name="goods.goodsSn" class="formText" value="${(goods.goodsSn)!}" title="若留空则由系统自动生成" />
+						<input type="text" name="goods.goodsSn" class="formText" value="${(goods.goodsSn)!}" title="<@s.text name="goods.input.goods.sn.default"/>" />
 					</td>
 				</tr>
 				<tr class="specificationDisabledInfo">
 					<th>
-						货号: 
+						<@s.text name="deliveryItem.productSn"/>: 
 					</th>
 					<td>
 						<#if (!goods.isSpecificationEnabled)!>
-							<input type="text" name="defaultProduct.productSn" class="formText" value="${(defaultProduct.productSn)!}" title="若留空则由系统自动生成" />
+							<input type="text" name="defaultProduct.productSn" class="formText" value="${(defaultProduct.productSn)!}" title="<@s.text name="goods.input.goods.sn.default"/>" />
 						<#else>
-							<input type="text" name="defaultProduct.productSn" class="formText" title="若留空则由系统自动生成" />
+							<input type="text" name="defaultProduct.productSn" class="formText" title="<@s.text name="goods.input.goods.sn.default"/>" />
 						</#if>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						品牌: 
+						<@s.text name="goods.input.goods.brand"/>: 
 					</th>
 					<td>
 						<select name="brandId">
-							<option value="">请选择...</option>
+							<option value=""><@s.text name="goods.content.buyInfo.tipsTitle"/>...</option>
 							<#list allBrandList as brand>
 								<option value="${brand.id}"<#if (brand == goods.brand)!> selected</#if>>
 									${brand.name}
@@ -748,7 +748,7 @@ $().ready(function() {
 				<#if setting.scoreType == "goodsSet">
 					<tr>
 						<th>
-							积分: 
+							<@s.text name="goods.common.score"/>: 
 						</th>
 						<td>
 							<input type="text" name="goods.score" class="formText" value="${(goods.score)!"0"}" />
@@ -757,7 +757,7 @@ $().ready(function() {
 				</#if>
 				<tr class="specificationDisabledInfo">
 					<th>
-						销售价: 
+						<@s.text name="goods.compare.result.price"/>: 
 					</th>
 					<td>
 						<input type="text" name="defaultProduct.price" class="formText" value="${(defaultProduct.price)!"0"}" />
@@ -766,66 +766,66 @@ $().ready(function() {
 				</tr>
 				<tr class="specificationDisabledInfo">
 					<th>
-						成本价: 
+						<@s.text name="goods.input.goods.cost"/>: 
 					</th>
 					<td>
-						<input type="text" name="defaultProduct.cost" class="formText" value="${(defaultProduct.cost)!}" title="前台不会显示,仅供后台使用" />
+						<input type="text" name="defaultProduct.cost" class="formText" value="${(defaultProduct.cost)!}" title="<@s.text name="goods.input.goods.show.message"/>" />
 					</td>
 				</tr>
 				<tr class="specificationDisabledInfo">
 					<th>
-						市场价: 
+						<@s.text name="goods.compare.result.marketPrice"/>: 
 					</th>
 					<td>
-						<input type="text" name="defaultProduct.marketPrice" class="formText" value="${(defaultProduct.marketPrice)!}" title="若为空则系统自动计算市场价" />
+						<input type="text" name="defaultProduct.marketPrice" class="formText" value="${(defaultProduct.marketPrice)!}" title="<@s.text name="goods.input.goods.market.default"/>" />
 					</td>
 				</tr>
 				<tr class="specificationDisabledInfo">
 					<th>
-						重量: 
+						<@s.text name="goods.input.goods.weight"/>: 
 					</th>
 					<td>
-						<input type="text" name="defaultProduct.weight" class="formText" value="${(defaultProduct.weight)!}" title="单位: 克" />
+						<input type="text" name="defaultProduct.weight" class="formText" value="${(defaultProduct.weight)!}" title="<@s.text name="delivery.type.input.unit"/>: <@s.text name="goods.common.unit.gram"/>" />
 					</td>
 				</tr>
 				<tr class="specificationDisabledInfo">
 					<th>
-						库存: 
+						<@s.text name="goods.input.goods.storage"/>: 
 					</th>
 					<td>
-						<input type="text" name="defaultProduct.store" class="formText" value="${(goods.store)!}" title="只允许输入零或正整数,为空表示不计库存" />
+						<input type="text" name="defaultProduct.store" class="formText" value="${(goods.store)!}" title="<@s.text name="goods.input.goods.storage.default"/>" />
 					</td>
 				</tr>
 				<tr class="specificationDisabledInfo">
 					<th>
-						货位: 
+						<@s.text name="goods.input.goods.unit"/>: 
 					</th>
 					<td>
-						<input type="text" name="goods.storePlace" class="formText" value="${(goods.storePlace)!}" title="用于记录商品所在的具体仓库位置,便于检索" />				 						
+						<input type="text" name="goods.storePlace" class="formText" value="${(goods.storePlace)!}" title="<@s.text name="goods.input.goods.unit.default"/>" />				 						
 					</td>
 				</tr>
 				<tr>
 					<th>
-						设置: 
+						<@s.text name="goods.common.setting"/>: 
 					</th>
 					<td>
 						<label>
-							<@checkbox id="goodsIsMarketable" name="goods.isMarketable" value="${(goods.isMarketable)!true}" />上架
+							<@checkbox id="goodsIsMarketable" name="goods.isMarketable" value="${(goods.isMarketable)!true}" /><@s.text name="goods.input.goods.marketable"/>
 						</label>
 						<label>
-							<@checkbox name="goods.isBest" value="${(goods.isBest)!false}" />精品
+							<@checkbox name="goods.isBest" value="${(goods.isBest)!false}" /><@s.text name="goods.input.goods.best"/>
 						</label>
 						<label>
-							<@checkbox name="goods.isNew" value="${(goods.isNew)!false}" />新品
+							<@checkbox name="goods.isNew" value="${(goods.isNew)!false}" /><@s.text name="goods.input.goods.new"/>
 						</label>
 						<label>
-							<@checkbox name="goods.isHot" value="${(goods.isHot)!false}" />热销
+							<@checkbox name="goods.isHot" value="${(goods.isHot)!false}" /><@s.text name="goods.input.goods.hot"/>
 						</label>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						页面关键词: 
+						<@s.text name="admin.category.article.pageKey"/>: 
 					</th>
 					<td>
 						<input type="text" name="goods.metaKeywords" class="formText" value="${(goods.metaKeywords)!}" />
@@ -833,7 +833,7 @@ $().ready(function() {
 				</tr>
 				<tr>
 					<th>
-						页面描述: 
+						<@s.text name="admin.category.article.pageDescription"/>: 
 					</th>
 					<td>
 						<textarea name="goods.metaDescription" class="formTextarea">${(goods.metaDescription)!}</textarea>
@@ -850,21 +850,21 @@ $().ready(function() {
 			<table id="goodsImageTable" class="inputTable tabContent">
 				<tr class="noneHover">
 					<td colspan="5">
-						<input type="button" id="addGoodsImageButton" class="formButton" value="增加图片" hidefocus />
+						<input type="button" id="addGoodsImageButton" class="formButton" value="<@s.text name="goods.input.goods.image.add"/>" hidefocus />
 					</td>
 				</tr>
 				<tr class="title">
 					<th>
-						上传图片
+						<@s.text name="goods.input.goods.image.upload"/>
 					</th>
 					<th>
-						图片描述
+						<@s.text name="goods.input.goods.image.description"/>
 					</th>
 					<th>
-						排序
+						<@s.text name="goods.specification.list.search.result.header.order"/>
 					</th>
 					<th>
-						删除
+						<@s.text name="common.button.delete"/>
 					</th>
 				</tr>
 				<#list (goods.goodsImageList)! as goodsImage>
@@ -873,7 +873,7 @@ $().ready(function() {
 							<input type="hidden" name="goodsImageList[${goodsImage_index}].id" value="${goodsImage.id}" />
 							<input type="hidden" name="goodsImageList[${goodsImage_index}].path" value="${goodsImage.path}" />
 							<input type="hidden" name="goodsImageList[${goodsImage_index}].sourceImageFormatName" value="${goodsImage.sourceImageFormatName}" />
-							<a href="${base}${goodsImage.thumbnailImagePath}" title="点击查看" target="_blank">
+							<a href="${base}${goodsImage.thumbnailImagePath}" title="<@s.text name="goods.common.clickshow"/>" target="_blank">
 								<img src="${base}${goodsImage.thumbnailImagePath}" style="width: 50px; height: 50px;" />
 							</a>
 						</td>
@@ -884,7 +884,7 @@ $().ready(function() {
 							<input type="text" name="goodsImageList[${goodsImage_index}].orderList" class="formText goodsImageOrderList" value="${goodsImage.orderList}" style="width: 50px;" />
 						</td>
 						<td>
-							<span class="deleteIcon deleteGoodsImage" title="删 除">&nbsp;</span>
+							<span class="deleteIcon deleteGoodsImage" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 						</td>
 					</tr>
 				</#list>
@@ -894,13 +894,13 @@ $().ready(function() {
 					<tr class="noneHover">
 						<td colspan="9">
 							<label class="red">
-								<@checkbox id="isSpecificationEnabled" name="goods.isSpecificationEnabled" value="${(goods.isSpecificationEnabled)!false}" />启用商品规格
+								<@checkbox id="isSpecificationEnabled" name="goods.isSpecificationEnabled" value="${(goods.isSpecificationEnabled)!false}" /><@s.text name="goods.input.goods.specific.start"/>
 							</label>
 						</td>
 					</tr>
 					<tr class="title">
 						<th colspan="9">
-							请选择商品规格<span id="specificationValueLoadingIcon" class="loadingIcon hidden">&nbsp;</span>
+							<@s.text name="goods.input.goods.specific.choose"/><span id="specificationValueLoadingIcon" class="loadingIcon hidden">&nbsp;</span>
 						</th>
 					</tr>
 					<tr class="noneHover">
@@ -910,7 +910,7 @@ $().ready(function() {
 									<#assign specificationSet = (goods.specificationSet)! />
 									<#list allSpecificationList as specification>
 										<li>
-											<label title="商品规格值: <#list specification.specificationValueList as specificationValue>${specificationValue.name}&nbsp;</#list>">
+											<label title="<@s.text name="goods.input.goods.specific.value"/>: <#list specification.specificationValueList as specificationValue>${specificationValue.name}&nbsp;</#list>">
 												<input type="checkbox" name="specificationIds" value="${specification.id}"<#if (specificationSet.contains(specification))!> checked</#if><#if (!goods.isSpecificationEnabled)!true> disabled</#if> />${specification.name}
 												<#if specification.memo??>
 													<span class="gray">[${specification.memo}]</span>
@@ -924,14 +924,14 @@ $().ready(function() {
 					</tr>
 					<tr class="noneHover">
 						<td colspan="9">
-							<input type="button" id="addProductButton" class="formButton" value="增加货品"<#if (!goods.isSpecificationEnabled)!true> disabled</#if> hidefocus />
+							<input type="button" id="addProductButton" class="formButton" value="<@s.text name="goods.input.goods.product.add"/>"<#if (!goods.isSpecificationEnabled)!true> disabled</#if> hidefocus />
 						</td>
 					</tr>
 				</table>
 				<table id="productTable" class="inputTable">
 					<tr id="productTitle" class="title">
 						<th>
-							货号
+							<@s.text name="deliveryItem.productSn"/>
 						</th>
 						<#list (goods.specificationSet)! as specification>
 							<th class="${specification.id}">
@@ -939,31 +939,31 @@ $().ready(function() {
 							</th>
 						</#list>
 						<th id="specificationInsertTh">
-							销售价
+							<@s.text name="goods.compare.result.price"/>
 						</th>
 						<th>
-							成本价
+							<@s.text name="goods.input.goods.cost"/>
 						</th>
 						<th>
-							市场价
+							<@s.text name="goods.compare.result.marketPrice"/>
 						</th>
 						<th>
-							重量
+							<@s.text name="goods.input.goods.weight"/>
 						</th>
 						<th>
-							库存
+							<@s.text name="goods.input.goods.storage"/>
 						</th>
 						<th>
-							货位
+							<@s.text name="goods.input.goods.unit"/>
 						</th>
 						<th>
-							默认
+							<@s.text name="goods.common.default"/>
 						</th>
 						<th>
-							上架
+							<@s.text name="goods.input.goods.marketable"/>
 						</th>
 						<th>
-							删除
+							<@s.text name="common.button.delete"/>
 						</th>
 					</tr>
 					<#if (goods.isSpecificationEnabled)!>
@@ -971,7 +971,7 @@ $().ready(function() {
 							<tr class="productTr" productIndex="${product_index}">
 								<td>
 									<input type="hidden" name="productList[${product_index}].id" class="formText" value="${product.id}" />
-									<input type="text" id="productListProductSn${product_index}" name="productList[${product_index}].productSn" class="formText productListProductSn" value="${product.productSn}" style="width: 50px;" title="留空则由系统自动生成" />
+									<input type="text" id="productListProductSn${product_index}" name="productList[${product_index}].productSn" class="formText productListProductSn" value="${product.productSn}" style="width: 50px;" title="<@s.text name="goods.input.goods.blank.default"/>" />
 								</td>
 								<#list (goods.specificationSet)! as specification>
 									<td class="${specification.id}">
@@ -988,13 +988,13 @@ $().ready(function() {
 									<input type="text" name="productList[${product_index}].price" class="formText productListPrice" value="${product.price}" style="width: 50px;" />
 								</td>
 								<td>
-									<input type="text" name="productList[${product_index}].cost" class="formText productListCost" value="${product.cost}" style="width: 50px;" title="前台不会显示.仅供后台使用" />
+									<input type="text" name="productList[${product_index}].cost" class="formText productListCost" value="${product.cost}" style="width: 50px;" title="<@s.text name="goods.input.goods.show.message"/>" />
 								</td>
 								<td>
-									<input type="text" name="productList[${product_index}].marketPrice" class="formText productListMarketPrice" value="${product.marketPrice}" style="width: 50px;" title="若为空则系统自动计算市场价" />
+									<input type="text" name="productList[${product_index}].marketPrice" class="formText productListMarketPrice" value="${product.marketPrice}" style="width: 50px;" title="<@s.text name="goods.input.goods.market.default"/>" />
 								</td>
 								<td>
-									<input type="text" name="productList[${product_index}].weight" class="formText productListWeight" value="${product.weight}" style="width: 50px;" title="单位: 克" />
+									<input type="text" name="productList[${product_index}].weight" class="formText productListWeight" value="${product.weight}" style="width: 50px;" title="<@s.text name="delivery.type.input.unit"/>: <@s.text name="goods.common.unit.gram"/>" />
 								</td>
 								<td>
 									<input type="text" name="productList[${product_index}].store" class="formText productListStore" value="${product.store}" style="width: 50px;" />
@@ -1020,9 +1020,9 @@ $().ready(function() {
 										</#list>
 									</#if>
 									<#if hasUnfinishedOrder>
-										<span class="deleteIcon" title="存在未完成订单,无法删除" disabled>&nbsp;</span>
+										<span class="deleteIcon" title="<@s.text name="goods.input.goods.delete.existError"/>" disabled>&nbsp;</span>
 									<#else>
-										<span class="deleteIcon deleteProduct" title="删 除">&nbsp;</span>
+										<span class="deleteIcon deleteProduct" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 									</#if>
 								</td>
 							</tr>
@@ -1035,11 +1035,11 @@ $().ready(function() {
 					<table class="inputTable">
 						<tr class="title">
 							<th>
-								请选择商品类型: 
+								<@s.text name="goods.input.goods.type.choose"/>: 
 							</th>
 							<td>
 								<select id="goodsTypeId" name="goodsTypeId">
-									<option value="">请选择...</option>
+									<option value=""><@s.text name="goods.content.buyInfo.tipsTitle"/>...</option>
 									<#list allGoodsTypeList as goodsType>
 										<option value="${goodsType.id}"<#if (goodsType == goods.goodsType)!> selected</#if>>${goodsType.name}</option>
 									</#list>
@@ -1052,7 +1052,7 @@ $().ready(function() {
 					<table id="goodsAttributeTable" class="inputTable<#if (isAddAction || goods.goodsType == null)!> hidden</#if>">
 						<tr class="title">
 							<th>
-								商品属性
+								<@s.text name="goods.input.goods.properties"/>
 							</th>
 							<td>
 								&nbsp;
@@ -1064,7 +1064,7 @@ $().ready(function() {
 								<td>
 									<#if goodsAttribute.attributeType == "filter">
 										<select name="goodsAttributeValueMap['${goodsAttribute.id}']">
-											<option value="">请选择...</option>
+											<option value=""><@s.text name="goods.content.buyInfo.tipsTitle"/>...</option>
 											<#list goodsAttribute.optionList as option>
 												<option value="${option}"<#if option == goods.getGoodsAttributeValue(goodsAttribute)> selected</#if>>
 													${option}
@@ -1082,7 +1082,7 @@ $().ready(function() {
 					<table id="goodsParameterTable" class="inputTable<#if (isAddAction || goods.goodsType == null)!true> hidden</#if>">
 						<tr class="title">
 							<th>
-								商品参数
+								<@s.text name="goods.content.bottom.options.attribute"/>
 							</th>
 							<td>
 								&nbsp;
@@ -1105,11 +1105,11 @@ $().ready(function() {
 					<table class="inputTable">
 						<tr class="title">
 							<th>
-								请选择相关产品: 
+								<@s.text name="goods.input.goods.product.choose"/>: 
 							</th>
 							<td>
 								<select id="relateGoodsSelect">
-									<option value="">请选择...</option>
+									<option value=""><@s.text name="goods.content.buyInfo.tipsTitle"/>...</option>
 									<#list allGoods as goods>
 										<option value="${goods.id}">${goods.name}</option>
 									</#list>
@@ -1124,7 +1124,7 @@ $().ready(function() {
 					<table id="relateGoodsTable" class="inputTable<#if (isAddAction || goods.goodsType == null)!true> hidden</#if>">
 						<tr class="title">
 							<th>
-								相关产品
+								<@s.text name="goods.content.bottom.options.relate"/>
 							</th>
 							<td>
 								&nbsp;
@@ -1146,24 +1146,24 @@ $().ready(function() {
 			<table id="goodsHelpTable" class="inputTable tabContent">
 				<tr class="noneHover">
 					<td colspan="5">
-						<input type="button" id="addGoodsHelpButton" class="formButton" value="增加文件" hidefocus />
+						<input type="button" id="addGoodsHelpButton" class="formButton" value="<@s.text name="goods.input.goods.file.add"/>" hidefocus />
 					</td>
 				</tr>
 				<tr class="title">
 					<th>
-						路径
+						<@s.text name="goods.input.goods.file.path"/>
 					</th>
 					<th>
-						名字
+						<@s.text name="goods.input.goods.file.name"/>
 					</th>
 					<th>
-						缩略图
+						<@s.text name="goods.input.goods.file.image"/>
 					</th>
 					<th>
-						排序
+						<@s.text name="goods.specification.list.search.result.header.order"/>
 					</th>
 					<th>
-						删除
+						<@s.text name="common.button.delete"/>
 					</th>
 				</tr>
 				<#list (goods.goodsHelpList)! as goodsHelp>
@@ -1184,7 +1184,7 @@ $().ready(function() {
 							<input type="text" name="goodsHelpList[${goodsHelp_index}].orderList" class="formText goodsImageOrderList" value="${goodsHelp.orderList}" style="width: 50px;" />
 						</td>
 						<td>
-							<span class="deleteIcon deleteGoodsHelp" title="删 除">&nbsp;</span>
+							<span class="deleteIcon deleteGoodsHelp" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 						</td>
 					</tr>
 				</#list>
@@ -1194,11 +1194,11 @@ $().ready(function() {
 				<table class="inputTable">
 					<tr>
 						<th>
-							请选择制造商: 
+							<@s.text name="car.make.producer.choose"/>: 
 						</th>
 						<td>
 							<select name="goodsFitCar.carMakeId" id="goodsFitCar_carMakeId">
-								<option value="0">请选择...</option>
+								<option value="0"><@s.text name="goods.content.buyInfo.tipsTitle"/>...</option>
 								<#list carMakeList as carMake>
 									<option value="${carMake.id}">${carMake.name}</option>
 								</#list>
@@ -1208,59 +1208,59 @@ $().ready(function() {
 					</tr>
 					<tr>
 						<th>
-							请选择汽车型号: 
+							<@s.text name="goods.input.car.type"/>: 
 						</th>
 						<td>
 							<select name="goodsFitCar.carModeId" id="goodsFitCar_carModeId">
-								<option value="0">请选择...</option>
+								<option value="0"><@s.text name="goods.content.buyInfo.tipsTitle"/>...</option>
 							</select>
 							<label class="requireField">*</label>
 						</td>
 					</tr>
 					<tr>
 						<th>
-							请选择汽车规格: 
+							<@s.text name="goods.input.car.specific"/>: 
 						</th>
 						<td>
 							<select name="goodsFitCar.carStyleId" id="goodsFitCar_carStyleId">
-								<option value="0">请选择...</option>
+								<option value="0"><@s.text name="goods.content.buyInfo.tipsTitle"/>...</option>
 							</select>
 							<label class="requireField">*</label>
 						</td>
 					</tr>
 					<tr>
 						<th>
-							请选择出厂年代: 
+							<@s.text name="goods.input.car.generateYear"/>: 
 						</th>
 						<td>
 							<select name="goodsFitCar.yearMade" id="goodsFitCar_yearMade">
-								<option value="0">请选择...</option>
+								<option value="0"><@s.text name="goods.content.buyInfo.tipsTitle"/>...</option>
 							</select>
 							<label class="requireField">*</label>
 						</td>
 					</tr>
 					<tr class="noneHover">
 						<td colspan="2">
-							<input type="button" id="addFitCarButton" class="formButton" value="增加" hidefocus />
+							<input type="button" id="addFitCarButton" class="formButton" value="<@s.text name="goods.input.car.add"/>" hidefocus />
 						</td>
 					</tr>
 				</table>
 				<table class="inputTable">
 					<tr class="title">
 						<th>
-							制造商
+							<@s.text name="car.make.maker"/>
 						</th>
 						<th>
-							汽车型号
+							<@s.text name="goods.input.car.theType"/>
 						</th>
 						<th>
-							汽车规格
+							<@s.text name="goods.input.car.theSpecific"/>
 						</th>
 						<th>
-							出厂年代
+							<@s.text name="goods.input.car.theYear"/>
 						</th>
 						<th>
-							删除
+							<@s.text name="button.name.delete"/>
 						</th>
 					</tr>
 					<#list (goods.fitCarList)! as fitCar>
@@ -1278,7 +1278,7 @@ $().ready(function() {
 								${fitCar.carStyle.yearMade}
 							</td>
 							<td>
-								<span class="deleteIcon deleteGoodsHelp" title="删 除">&nbsp;</span>
+								<span class="deleteIcon deleteGoodsHelp" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 							</td>
 						</tr>
 					</#list>
@@ -1286,8 +1286,8 @@ $().ready(function() {
 			</div>
 			
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="common.button.back" hidefocus />
 			</div>
 		</form>
 	</div>

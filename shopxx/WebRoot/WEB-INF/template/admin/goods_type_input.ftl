@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>添加/编辑商品类型 - Powered By SHOP++</title>
+<title><@s.text name="goods.type.input.title"/> - Powered By SHOP++</title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -52,19 +52,19 @@ $().ready(function() {
 					</select>
 				</td>
 				<td>
-					<input type="text" name="goodsAttributeList[' + goodsAttributeIndex + '].optionText" class="formText optionText goodsAttributeListOptionText" title="多个可选值.请使用“,”分隔" />
+					<input type="text" name="goodsAttributeList[' + goodsAttributeIndex + '].optionText" class="formText optionText goodsAttributeListOptionText" title="<@s.text name="goods.type.input.selector.multiple"/>" />
 				</td>
 				<td>
 					<input type="text" name="goodsAttributeList[' + goodsAttributeIndex + '].orderList" class="formText goodsAttributeListOrderList" style="width: 30px;" />
 				</td>
 				<td>
-					<span class="deleteIcon deleteGoodsAttributeIcon" title="删 除">&nbsp;</span>
+					<span class="deleteIcon deleteGoodsAttributeIcon" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 				</td>
 			</tr>';
 		</@compress>
 		
 		if ($goodsAttributeTable.find(".goodsAttributeTr").length >= 20) {
-			$.dialog({type: "warn", content: "商品属性个数超出限制!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "<@s.text name="goods.type.input.attribute.overflow"/>!", modal: true, autoCloseTime: 3000});
 		} else {
 			$goodsAttributeTable.append(goodsAttributeTrHtml);
 			goodsAttributeIndex ++;
@@ -101,7 +101,7 @@ $().ready(function() {
 					<input type="text" name="goodsParameterList[' + goodsParameterIndex + '].orderList" class="formText goodsParameterListOrderList" style="width: 30px;" />
 				</td>
 				<td>
-					<span class="deleteIcon deleteGoodsParameterIcon" title="删 除">&nbsp;</span>
+					<span class="deleteIcon deleteGoodsParameterIcon" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 				</td>
 			</tr>';
 		</@compress>
@@ -130,7 +130,7 @@ $().ready(function() {
 		},
 		messages: {
 			"goodsType.name": {
-				required: "请填写类型名称"
+				required: "<@s.text name="goods.type.input.type.name"/>"
 			}
 		},
 		submitHandler: function(form) {
@@ -139,11 +139,11 @@ $().ready(function() {
 		}
 	});
 	
-	$.validator.addMethod("goodsAttributeListNameRequired", $.validator.methods.required, "请填写商品属性名称");
-	$.validator.addMethod("goodsAttributeListOptionTextRequired", $.validator.methods.required, "请填写商品属性可选项");
-	$.validator.addMethod("goodsAttributeListOrderListDigits", $.validator.methods.digits, "商品属性排序必须为零或正整数");
-	$.validator.addMethod("goodsParameterListNameRequired", $.validator.methods.required, "请填写商品参数名称");
-	$.validator.addMethod("goodsParameterListOrderListDigits", $.validator.methods.digits, "商品参数排序必须为零或正整数");
+	$.validator.addMethod("goodsAttributeListNameRequired", $.validator.methods.required, "<@s.text name="goods.type.input.attribute.name"/>");
+	$.validator.addMethod("goodsAttributeListOptionTextRequired", $.validator.methods.required, "<@s.text name="goods.type.input.attribute.name.select"/>");
+	$.validator.addMethod("goodsAttributeListOrderListDigits", $.validator.methods.digits, "<@s.text name="goods.type.input.attribute.sort.require"/>");
+	$.validator.addMethod("goodsParameterListNameRequired", $.validator.methods.required, "<@s.text name="goods.type.input.param.name"/>");
+	$.validator.addMethod("goodsParameterListOrderListDigits", $.validator.methods.digits, "<@s.text name="goods.type.input.param.require"/>");
 	
 	$.validator.addClassRules("goodsAttributeListName", {
 		goodsAttributeListNameRequired: true
@@ -166,10 +166,10 @@ $().ready(function() {
 </head>
 <body class="input goodsType">
 	<div class="bar">
-		<#if isAddAction>添加商品类型<#else>编辑商品类型</#if>
+		<#if isAddAction><@s.text name="goods.type.input.add"/><#else><@s.text name="goods.type.input.edit"/></#if>
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
-		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<div class="validateErrorTitle"><@s.text name="deposit.recharge.input.error"/></div>
 		<ul></ul>
 	</div>
 	<div class="body">
@@ -177,22 +177,22 @@ $().ready(function() {
 			<input type="hidden" name="id" value="${id}" />
 			<ul id="tab" class="tab">
 				<li>
-					<input type="button" value="基本信息" hidefocus />
+					<input type="button" value="<@s.text name="goods.compare.head1"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="商品品牌" hidefocus />
+					<input type="button" value="<@s.text name="goods.picture.list.goods.brand"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="商品属性" hidefocus />
+					<input type="button" value="<@s.text name="goods.input.goods.properties"/>" hidefocus />
 				</li>
 				<li>
-					<input type="button" value="商品参数" hidefocus />
+					<input type="button" value="<@s.text name="goods.content.bottom.options.attribute"/>" hidefocus />
 				</li>
 			</ul>
 			<table class="inputTable tabContent">
 				<tr>
 					<th>
-						类型名称: 
+						<@s.text name="goods.type.name"/>: 
 					</th>
 					<td>
 						<input type="text" name="goodsType.name" class="formText" value="${(goodsType.name)!}" />
@@ -203,7 +203,7 @@ $().ready(function() {
 			<table class="inputTable tabContent">
 				<tr class="noneHover">
 					<th>
-						商品品牌: 
+						<@s.text name="goods.picture.list.goods.brand"/>: 
 					</th>
 					<td>
 						<div class="brandSelect">
@@ -224,31 +224,31 @@ $().ready(function() {
 						&nbsp;
 					</th>
 					<td>
-						<span class="warnInfo"><span class="icon">&nbsp;</span>未选择的商品品牌前台页面无法进行品牌筛选</span>
+						<span class="warnInfo"><span class="icon">&nbsp;</span><@s.text name="goods.type.input.brand.default"/></span>
 					</td>
 				</tr>
 			</table>
 			<table id="goodsAttributeTable" class="inputTable tabContent">
 				<tr class="noneHover">
 					<td colspan="5">
-						<input type="button" id="addGoodsAttributeButton" class="formButton" value="增加属性" hidefocus />
+						<input type="button" id="addGoodsAttributeButton" class="formButton" value="<@s.text name="goods.type.input.attribute.add"/>" hidefocus />
 					</td>
 				</tr>
 				<tr class="title">
 					<th>
-						属性名称
+						<@s.text name="goods.type.input.attribute.name"/>
 					</th>
 					<th>
-						属性类型
+						<@s.text name="goods.type.input.attribute.type"/>
 					</th>
 					<th>
-						可选项
+						<@s.text name="goods.type.input.attribute.select"/>
 					</th>
 					<th>
-						排序
+						<@s.text name="goods.specification.list.search.result.header.order"/>
 					</th>
 					<th>
-						删除
+						<@s.text name="common.button.delete"/>
 					</th>
 				</tr>
 				<#list (goodsType.goodsAttributeSet)! as goodsAttribute>
@@ -269,16 +269,16 @@ $().ready(function() {
 						</td>
 						<td>
 							<#if goodsAttribute.attributeType == "filter">
-								<input type="text" name="goodsAttributeList[${goodsAttribute_index}].optionText" class="formText optionText goodsAttributeListOptionText" value="${goodsAttribute.optionText}" title="多个可选值请使用“,”分隔" />
+								<input type="text" name="goodsAttributeList[${goodsAttribute_index}].optionText" class="formText optionText goodsAttributeListOptionText" value="${goodsAttribute.optionText}" title="<@s.text name="goods.type.input.selector.multiple"/>" />
 							<#else>
-								<input type="text" name="goodsAttributeList[${goodsAttribute_index}].optionText" class="formText hidden optionText goodsAttributeListOptionText" title="多个可选值请使用“,”分隔" disabled />
+								<input type="text" name="goodsAttributeList[${goodsAttribute_index}].optionText" class="formText hidden optionText goodsAttributeListOptionText" title="<@s.text name="goods.type.input.selector.multiple"/>" disabled />
 							</#if>
 						</td>
 						<td>
 							<input type="text" name="goodsAttributeList[${goodsAttribute_index}].orderList" class="formText goodsAttributeListOrderList" value="${goodsAttribute.orderList}" style="width: 30px;" />
 						</td>
 						<td>
-							<span class="deleteIcon deleteGoodsAttributeIcon" title="删 除">&nbsp;</span>
+							<span class="deleteIcon deleteGoodsAttributeIcon" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 						</td>
 					</tr>
 				</#list>
@@ -286,18 +286,18 @@ $().ready(function() {
 			<table id="goodsParameterTable" class="inputTable tabContent">
 				<tr class="noneHover">
 					<td colspan="3">
-						<input type="button" id="addGoodsParameterButton" class="formButton" value="增加参数" hidefocus />
+						<input type="button" id="addGoodsParameterButton" class="formButton" value="<@s.text name="goods.type.input.param.add"/>" hidefocus />
 					</td>
 				</tr>
 				<tr class="title">
 					<th>
-						参数名称
+						<@s.text name="goods.type.input.param"/>
 					</th>
 					<th>
-						排序
+						<@s.text name="goods.specification.list.search.result.header.order"/>
 					</th>
 					<th>
-						删除
+						<@s.text name="common.button.delete"/>
 					</th>
 				</tr>
 				<#list (goodsType.goodsParameterList)! as goodsParameter>
@@ -310,15 +310,15 @@ $().ready(function() {
 							<input type="text" name="goodsParameterList[${goodsParameter_index}].orderList" class="formText goodsParameterListOrderList" value="${goodsParameter.orderList}" style="width: 30px;" />
 						</td>
 						<td>
-							<span class="deleteIcon deleteGoodsParameterIcon" title="删 除">&nbsp;</span>
+							<span class="deleteIcon deleteGoodsParameterIcon" title="<@s.text name="goods.specification.list.search.result.header.delete"/>">&nbsp;</span>
 						</td>
 					</tr>
 				</#list>
 			</table>
 			<div class="buttonArea">
-				<input type="submit" class="formButton" value="确  定" hidefocus />
+				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />
 				&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>
