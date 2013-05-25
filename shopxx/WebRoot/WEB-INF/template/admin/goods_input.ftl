@@ -102,11 +102,11 @@ $().ready(function() {
 			var goodsHelpTrHtml = 
 			'<tr class="goodsImageTr">
 				<td>
-					<input type="file" name="goodsHelpFileList[' + goodsHelpIndex + ']" class="goodsHelpFileList" onchange="uploadFileChange(this, ' + goodsHelpIndex + ')"/>
-					<input type="hidden" name="goodsHelpList[' + goodsHelpIndex + '].fileSuffix" id="helpFile_' + goodsHelpIndex + '"/>
+					<input type="text" name="goodsHelpList[' + goodsHelpIndex + '].name" class="formText" />
 				</td>
 				<td>
-					<input type="text" name="goodsHelpList[' + goodsHelpIndex + '].name" class="formText" />
+					<input type="file" name="goodsHelpFileList[' + goodsHelpIndex + ']" class="goodsHelpFileList" onchange="uploadFileChange(this, ' + goodsHelpIndex + ')"/>
+					<input type="hidden" name="goodsHelpList[' + goodsHelpIndex + '].fileSuffix" id="helpFile_' + goodsHelpIndex + '"/>
 				</td>
 				<td>
 					<input type="file" name="goodsHelpFileThumbnailList[' + goodsHelpIndex + ']" class="goodsHelpFileList"/>
@@ -153,7 +153,7 @@ $().ready(function() {
 	// 切换商品规格
 	$specificationTab.click( function() {
 		if (!$isSpecificationEnabled.attr("checked")) {
-			$.dialog({type: "warn", content: "<@s.text name="goods.input.goods.specific"/>?", ok: "<@s.text name="goods.common.ok"/>", cancel: "<@s.text name="<@s.text name="goods.common.cancel"/>"/>", modal: true, okCallback: specificationEnabled});
+			$.dialog({type: "warn", content: "<@s.text name="goods.input.goods.specific"/>?", ok: "<@s.text name="goods.common.ok"/>", cancel: "<@s.text name="goods.common.cancel"/>", modal: true, okCallback: specificationEnabled});
 			function specificationEnabled() {
 				$isSpecificationEnabled.attr("checked", true);
 				$specificationDisabledInfo.hide().find(":input").attr("disabled", true);
@@ -1151,10 +1151,10 @@ $().ready(function() {
 				</tr>
 				<tr class="title">
 					<th>
-						<@s.text name="goods.input.goods.file.path"/>
+						<@s.text name="goods.input.goods.file.name"/>
 					</th>
 					<th>
-						<@s.text name="goods.input.goods.file.name"/>
+						<@s.text name="goods.input.goods.file.path"/>
 					</th>
 					<th>
 						<@s.text name="goods.input.goods.file.image"/>
@@ -1169,16 +1169,16 @@ $().ready(function() {
 				<#list (goods.goodsHelpList)! as goodsHelp>
 					<tr class="goodsImageTr">
 						<td>
-							<a href="${goodsHelp.filePath}">${goodsHelp.filePath}</a>
-						</td>
-						<td>
 							<input type="hidden" name="goodsHelpList[${goodsHelp_index}].id" value="${goodsHelp.id}" />
-							<input type="hidden" name="goodsHelpList[${goodsHelp_index}].path" value="${goodsHelp.path}" />
 							<input type="text" name="goodsHelpList[${goodsHelp_index}].name" class="formText" value="${goodsHelp.name}" />
 						</td>
 						<td>
+							<a href="${goodsHelp.filePath}">${goodsHelp.filePath}</a>
+							<input type="hidden" name="goodsHelpList[${goodsHelp_index}].filePath" value="${goodsHelp.filePath}" />
+						</td>
+						<td>
 							<img src="${base}${goodsHelp.fileThumbnail}" style="width: 50px; height: 50px;" />
-							<input type="hidden" name="goodsHelpList[' + goodsHelpIndex + '].fileThumbnail" value="${goodsHelp.fileThumbnail}"/>
+							<input type="hidden" name="goodsHelpList[${goodsHelp_index}].fileThumbnail" value="${goodsHelp.fileThumbnail}"/>
 						</td>
 						<td>
 							<input type="text" name="goodsHelpList[${goodsHelp_index}].orderList" class="formText goodsImageOrderList" value="${goodsHelp.orderList}" style="width: 50px;" />
@@ -1287,7 +1287,7 @@ $().ready(function() {
 			
 			<div class="buttonArea">
 				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="common.button.back" hidefocus />
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="common.button.back"/>" hidefocus />
 			</div>
 		</form>
 	</div>

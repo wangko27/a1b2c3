@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
@@ -24,6 +25,9 @@ import org.apache.struts2.ServletActionContext;
 import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import freemarker.ext.beans.BeansWrapper;
+import freemarker.ext.beans.ResourceBundleModel;
 
 /**
  * 前台Action类 - 前台基类
@@ -65,6 +69,13 @@ public class BaseShopAction extends ActionSupport {
 	protected String[] ids;
 	protected Pager pager = new Pager();
 	protected String redirectUrl;// 跳转URL
+	
+	protected ResourceBundleModel bundle;
+	
+	{
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("i18n");
+		bundle = new ResourceBundleModel(resourceBundle, new BeansWrapper());
+	}
 	
 	@Resource(name = "memberServiceImpl")
 	protected MemberService memberService;
@@ -312,4 +323,7 @@ public class BaseShopAction extends ActionSupport {
 		return new StringBuffer("+").append("+").append("POHS").reverse().toString();
 	}
 
+	public ResourceBundleModel getBundle() {
+		return bundle;
+	}
 }
