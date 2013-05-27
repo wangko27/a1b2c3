@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+/* 相册标题 */
+#albumPicsTitle { width: 760px; height: 45px; font-size: 30px; padding-left: 20px; margin-top: 20px; line-height: 40px; border-bottom: 2px solid #02558D; }
+
+/* 选择查看相册类型 */
+#divAlbumPicsSelect { width: 780px; height: 45px; margin-top: 15px; background-color: #E9EEF1; border: 1px solid #BAD2E0; font-size: 20px; }
+#divMyAlbumPics { float: left; width: 130px; height: 45px; line-height: 45px; text-align: center; display: inline; cursor: pointer; }
+#divMyFriendAlbumPics { float: left; width: 130px; height: 45px; line-height: 45px; text-align: center; display: inline; cursor: pointer; }
+.div-album-selected { background-color: #FFFFFF; boder: 3px solid yellow; }
+.div-album-unselect { border: none; }
+
+/* 相册基本信息 */
+#divAlbumInfo { width: 780px; height: 40px; margin-top: 20px; color: #2373A9; }
+#divAlbumInfo label { cursor: pointer; }
+.div-album-info { float: left; width: 130px; height: 40px; line-height: 40px; text-align: center; display: inline; }
+#divAlbumName { color: #000000; font-size: 21px; }
+#divReturnAlbumList { color: blue; }
+
+/* 相册描述和操作信息 */
+#divAlbumSubInfo { width: 780px; height: 30px; }
+.div-album-sub-left-graqy { font-size: 14px; float: left; color: #727272; display: inline; cursor: pointer; }
+.div-album-sub-right-blue { font-size: 14px; float: right; color: #125D91; display: inline; cursor: pointer; }
+#divAlbumPicNumber { width: 65px; height: 30px; line-height: 30px; margin-left: 10px; margin-right: 10px; text-align: center; }
+#divAlbumBrowserCount { width: 90px; height: 30px; line-height: 30px; margin-left: 10px; margin-right: 10px; text-align: center; }
+#divAlbumCreateTime { width: 170px; height: 30px; line-height: 30px; margin-left: 10px; margin-right: 10px; text-align: center; }
+#divAlbumAddPic { width: 70px; height: 30px; line-height: 30px; margin-left: 15px; margin-right: 15px; text-align: cener; }
+#divAlbumMiddleLine { float: right; width: 4px; height: 30px; background-color: #125D91; }
+#divAlbumDeletePic { width: 70px; height: 30px; line-height: 30px; margin-left: 15px; margin-right: 15px; text-align: center; }
+
+/* 相册预览区 */
+#divPicsBroswer { width: 780px; height: 100%; overflow: auto; _height: auto; }
+.div-pic-enum { float: left; width: 180px; margin-left: 10px; margin-right: 0px; margin-top: 15px; height: 240px; background-color: #E9EEF1; display: inline; }
+/* 图片显示 */
+.div-pic-pic { width: 160px; height: 180px; border: 1px solid #0D5B8F; margin-top: 10px; margin-left: 9px; cursor: pointer; }
+/* 相册信息 */
+ul { margin: 0; padding: 0; }
+.div-pic-instruction { width: 195px; height: 40px; margin-top: 5px; }
+.div-pic-instruction ul { height: 13px; margin-bottom: 0px; padding-left: 5px; }
+.div-pic-instruction span { white-space: pre; }
+.div-pic-instruction label { cursor: pointer; }
+.li-pic-name { color: #4C79A0; font-size: 14px; margin-top: 2px; }
+.li-pic-operate { color: #09598F; font-size: 12px; margin-top: 6px; }
+
+/* 相册分页 */
+#divPicListPage { width: 780px; height: 25px; font-size: 14px; line-height: 25px; margin-top: 10px; border-top: 1px solid #737373;}
+#divPicListPage span { float: right; margin-right: 15px; }
+.divPicPageLink { color: #2373A9; cursor: pointer; }

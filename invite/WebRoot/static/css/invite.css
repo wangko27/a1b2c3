@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+#inviteTitle { width: 950px; height: 35px; margin-left: 40px; line-height: 30px; text-align: left; font-size: 24px; font-weight: bold; }
+#inviteSubTitle { width: 950px; height: 30px; margin-left: 40px; line-height: 24px; text-align: left; font-size: 20px; color: gray; border-bottom: 2px solid #02558D;}
+.inviteMethod { width: 950px; height: 200px; margin-left: 40px; padding-top: 9px; font-size: 18px; }
+.methodTitle { float: left; width: 920px; height: 40px; border: 2px solid #BAD2E0; display: inline; padding-left: 26px; line-height: 40px; background-color: #E9EEF1; color: #0C5A8F;}
+.methodDescription { float: left; color: gray; margin-top: 38px; display: inline; }
+.methodText { float: left; width: 950px; height: 70px;}
+.methodText .inputTxt { float: left; width: 578px; height: 30px; margin-top: 34px; border: 2px solid #03558D; font-size: 18px; color: gray;}
+.methodText .inputBtn { float: left; width: 100px; height: 36px; margin-top: 34px; border: 2px solid #03558D; background-color: #1068A0; font-size: 18px; font-weight: bold; color: #FFFFFF; cursor: pointer;}
+#method2 { margin-top: 20px; margin-bottom : 50px;}
+
+

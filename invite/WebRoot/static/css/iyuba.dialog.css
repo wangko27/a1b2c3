@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+/* 回复消息：消息框 */
+/* dialog 对话框 */
+#divMsgDlg { position: fixed; top: 30%; left: 30%; z-index: 1001; zoom:1 ;}
+#divMsgDlg table { border-color: gray; border-spacing: 0px; width: 400px; table-layout: fixed;}
+#divMsgDlg table td { border-collapse: collapse; margin: 0px; border-spacing: 0px; overflow: hidden; padding: 0px!important; }
+#divMsgDlg table tr { border-collapse: collapse; margin: 0px; border-spacing: 0px; overflow: hidden; padding: 0px!important; }
+#topLeft { width: 10px!important; height: 10px; background-image: url(../img/dialog/dlg_top_left.png); }
+#topRight { width: 10px!important; height: 10px; background-image: url(../img/dialog/dlg_top_right.png); }
+#bottomLeft { width: 10px!important; height: 10px; background-image: url(../img/dialog/dlg_bottom_left.png); }
+#bottomRight { width: 10px!important; height: 10px; background-image: url(../img/dialog/dlg_bottom_right.png); }
+.topBar { width: 380px; background-image: url(../img/dialog/dlg_border.png);}
+.verticalBar { width :10px!important; height: 100px; background-image: url(../img/dialog/dlg_border.png);}
+td h2 span { padding: 4px 10px 5px; color: white; font-size: 14px; font-weight: 700; }
+td h2 {background: #0E5C90; margin: 0; height: 28px; line-height: 28px;}
+#tableDivInfo { width: 380px; height: 72px;}
+#tableDivInfoBody { width: 380px; height: 36px; line-height: 36px; background: #FFFFFF; font-size: 14px; padding-left: 10px;}
+.shareDivInfoBody { padding-top: 10px; }
+#tableDivInfoBody img { margin-top:0px; padding-top: 0px; margin-bottom: 38px; display: inline; vertical-align: bottom; }
+#tableDivInfoBody textarea { width: 296px; height: 80px; margin-left: 10px; overflow: hidden; border: 1px solid #D9D9DA; }
+#divDialogInfo { width: 380px; height: 40px; background-color: #FFFFFF; }
+#divDlgLetterLength { float: left; width: 60px; color: gray; padding-left: 70px; font-size: 16px; display: inline; }
+#divDlgExpressList { float: left; left: 79px; width: 265px; height: 70px; display: none; border: 1px dashed #0CF; background-color: #FFFFFF; position: absolute; }
+#divDlgExpressList img { float: left; width: 20px; height: 20px; margin-top: 3px; margin-left: 6px; display: inline; cursor: pointer; }
+#divDlgExpress { float: right; margin-right: 15px;  }
+#divDlgExpress img { cursor: pointer; }
+#tableDivInfoButton {width: 380px; height: 36px; line-height: 36px; background: #FFFFFF; font-size: 10px; text-align: right; }
+.input-submit { width: 56px; height: 22px; margin-right: 10px; background-color: #E4E5E6; cursor: pointer;}
+#shareDialog {margin: 0px 10px 0px 0px; color: #FFFFFF; float: right; padding: 0px; font-size: 20px; cursor: pointer; display: inline; }

@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+div.albumList {
+	display:inline;
+	float:left;
+	width:33%;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;	
+}
+
+li.pic {
+	display:inline;
+	float:left;
+	margin: 1px 3px 1px 0px;
+	list-style-type: none;	
+}
+
+img {
+	width:170px;
+	height:128px;
+}
+
+
+span.upTime {
+	font-family:"Microsoft YaHei";
+	font-size:9pt;	
+}

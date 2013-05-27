@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+/* 上传导航 */
+#divAlbumUploadPath { width: 780px; height: 40px; line-height: 40px; border-bottom: 2px solid #02558D; text-align: center; }
+#divAlbum { float: left; width: 50px; height: 40px; color: #505151; font-size: 20px; margin-left: 10px; }
+#divRightArrow { float: left; width: 20px; height: 40px; color: #000000; font-size: 18px; font-weight: bold; }
+#divPicUpload { float: left; width: 90px; height: 40px; color: #115D90; font-size: 18px; }
+
+/* 相册上传操作 */
+#divAlbumChooseCreate { width: 780px; height: 25px; margin-top: 20px; color: #0B5A8F; line-height: 25px; text-align: center; }
+#divAlbumChooseLbl { float: left; width: 90px; height: 25px; text-align: left; margin-left: 5px; color: #555656; }
+#divAlbumSelect { float: left; width: 200px; height: 25px; line-height: 25px; }
+#divAlbumSelect select { width: 200px; height: 21px; border: 1px solid #4FB7EC; margin-top: 3px; }
+#divAlbumCreate { float: left; width: 100px; height: 25px; }
+#divAlbumCreate label { cursor: pointer; }
+#divAlbumReturn { float: left; width: 100px; height: 25px; }
+#divAlbumReturn label { cursor: pointer; }
+
+/* 大图片显示 */
+#divPicUploadArea { width: 780px; height: 100%; overflow: auto; border: 1px solid #919191; margin-top: 30px; _height: auto;}
+#divPicUploadMenu { width: 100%; height: 50px; margin-top: 0; padding-top: 0; background-color: #E9EEF1; }
+.divPicUploadBtn { float: left; width: 100px; height: 30px; line-height: 30px; text-align: center; margin-top: 10px; margin-left: 30px; display: inline; color: #FFFFFF; font-size: 18px; cursor: pointer; }
+#divPicGotoAdd { background-color: #AEAFB0; border: 1px solid #757677; position: relative; overflow: hidden; _height: 32px; }
+#divPicGotoAdd input { position: absolute; top: 0; left: 0; width: 100px; height: 30px; opacity: 0; filter:alpha(opacity:1); border: 0 none; cursor: pointer;}
+#divPicGotoUpload { background-color: #E6A62E; border: 1px solid #B58019; }
+
+/* 上传后的预览和评论 */
+.div-upload-pic-scan { width: 170px; height: 220px; margin-left: 20px; float: left; display: inline; border: 1px solid #0B58AF; margin-top: 10px; margin-bottom: 10px; position: relative;}
+.div-upload-single-pic { float: left; width: 170px; height: 150px; display: inline; background-color: #E9EEF1; border-bottom: 1px solid #0B58AF; }
+.div-upload-pic-ctx { float: left; width: 100%; height: 50px; display: inline; }
+.div-upload-pic-ctx textarea { width: 164px; height: 43px; border: 1px solid #FFFFFF; overflow: hidden; *margin-top: -1px;}
+.div-upload-pic-ctx-lbl { width: 170px; height: 20px; line-height: 20px; text-align: left; color: gray; font-size: 14px; float: left; display: inline; }
+.div-upload-pic-delete { width: 20px; height: 20px; line-height: 20px; font-size: 20px; color: gray; background-color:white; font-weight: bold; position: absolute; top: 0; left: 150px; text-align: center; display: none; cursor: pointer;}

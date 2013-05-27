@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+/* 上传导航 */
+#divAlbumUploadPath { width: 780px; height: 40px; line-height: 40px; border-bottom: 2px solid #02558D; text-align: center; }
+#divAlbum { float: left; width: 50px; height: 40px; color: #505151; font-size: 20px; margin-left: 10px; }
+#divRightArrow { float: left; width: 20px; height: 40px; color: #000000; font-size: 18px; font-weight: bold; }
+#divPicUpload { float: left; width: 90px; height: 40px; color: #115D90; font-size: 18px; }
+#divPicUpload label { cursor: pointer; }
+
+/* 相册上传操作 */
+#divAlbumChooseCreate { width: 780px; height: 25px; margin-top: 20px; color: #0B5A8F; line-height: 25px; text-align: center; }
+#divAlbumChooseLbl { float: left; width: 90px; height: 25px; text-align: left; margin-left: 5px; color: #555656; }
+#divAlbumSelect { float: left; width: 200px; height: 25px; line-height: 25px; }
+#divAlbumSelect select { width: 200px; height: 21px; border: 1px solid #4FB7EC; margin-top: 3px; }
+#divAlbumCreate { float: left; width: 100px; height: 25px; }
+#divAlbumCreate label { cursor: pointer; }
+
+/* 大图片显示 */
+#divPicUploadArea { width: 780px; height: 520px; border: 1px solid #919191; margin-top: 30px;}
+.div-pic-upload { width: 180px; height: 40px; line-height: 40px; background-color: #4FB7EC; color: #FFFFFF; font-size: 24px; text-align: center;}
+#divPicUploadSingle { float: left; margin-top: 240px; margin-left: 300px; display: inline; cursor: pointer; }
+#divPicUploadSingle img { width: 30px; margin-top: 5px; margin-bottom: -5px;}
+
+p { width: 180px; height: 1px; margin: 0; padding: 0; }
+.div-p-r1 { width: 178px; margin-left :1px; margin-right: 1px; background-color: #4FB7EC; }
+.div-p-r2 { width: 176px; margin-left :2px; margin-right: 2px; background-color: #4FB7EC; }
+.div-p-r3 { width: 174px; margin-left :3px; margin-right: 3px; background-color: #4FB7EC; }
+.div-p-r4 { width: 170px; margin-left :5px; margin-right: 5px; background-color: #4FB7EC; }

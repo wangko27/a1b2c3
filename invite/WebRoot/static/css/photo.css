@@ -1,0 +1,58 @@
+@CHARSET "UTF-8";
+/* 相册导航 */
+#divAlbumPath { width: 780px; height: 40px; line-height: 40px; border-bottom: 2px solid #02558D; text-align: center; }
+#divMyAlbum { float: left; height: 40px; color: #505151; font-size: 20px; margin-left: 10px; }
+#divRightArrow { float: left; width: 20px; height: 40px; color: #000000; font-size: 18px; font-weight: bold; }
+#divMyAlbumName { float: left; height: 40px; color: #115D90; font-size: 18px; }
+#divMyAlbumName label { cursor: pointer; }
+
+/* 相册照片操作 */
+#divMyAlbumManagement { width: 780px; height: 25px; margin-top: 20px; color: #0B5A8F; line-height: 25px; text-align: center; font-size: 16px;}
+#divMyAlbumManagement label { cursor: pointer; }
+#divPhotoManagement { float: left; width: 110px; height: 25px; border-right: 1px solid #125D91; }
+#divPhotoReply { float: left; width: 70px; height: 25px; border-left: 1px solid #125D91; border-right: 1px solid #125D91; }
+#divPhotoShare { float: left; width: 70px; height: 25px; border-left: 1px solid #125D91; }
+
+/* 管理 */
+#divMyPhotoOperate { width: 780px; height: 30px; }
+#divMyPhotoOperateList { width: 75px; border: 1px solid #125D91; margin-left: 15px; position: absolute; display: none; z-index: 100; }
+#divMyPhotoOperateList p { border: 0; margin: 0; font-size: 14px; color: #0C5A8F; text-align: center; background-color: #FFFFFF; cursor: pointer; }
+
+/* 大图片显示 */
+#divPhotoShow { width: 780px; height: 100%; overflow: auto; _height: auto; position: relative; }
+#divSubPhotoShow { width: 720px; height: 480px; margin-left: 30px; margin-top: 20px; margin-bottom: 20px; }
+#divSubPhotoCtxInfo { width: 720px; height: 100%; overflow: auto; margin-left: 30px; color: #2A2A2A; font-size: 14px; word-wrap: break-word;  border-top: 1px solid gray; _height: auto; }
+#divSubPhotoDataInfo { width: 720px; height: 25px; line-height: 25px; margin-left: 30px; color: gray; font-size: 14px; }
+
+/* 图片切换 */
+#divSubPhotoPrev { width: 50px; height: 90px; position: absolute; top: 200px; left: 30px; opacity: 0.3; filter:alpha(opacity:30);}
+#divSubPhotoPrev img { width: 48px; height: 89px; cursor: pointer; }
+#divSubPhotoNext { width: 50px; height: 90px; position: absolute; top: 200px; left: 700px; opacity: 0.3; filter:alpha(opacity:30);}
+#divSubPhotoNext img { width: 48px; height: 89px; cursor: pointer; }
+
+/* 图片评论区域 */
+#divPhotoReplyArea { width: 720px; height: 140px; margin-left: 30px; margin-top: 10px; }
+#divPhotoReplyText { width: 720px; height: 30px; line-height: 30px; text-align: left; color: #0C5A8F; }
+#divPhotoReplyContext textarea { width: 710px; height: 60px; overflow: hidden; border: 1px solid #125D91;}
+#divPhotoReplyOperate { width: 720px; height: 40px; }
+#divPhotoReplyCtxLength { width: 50px; height: 40px; line-height: 40px; text-align: center; color: gray; float: left; display: inline; border-color: #125D91; }
+#divPhotoReplyBtnconfirm { width: 80px; height: 30px; line-height: 30px; text-align: center; color: #FFFFFF; margin-top: 5px; background-color: #0A619D; float: right; display: inline; margin-right: 5px; border-color: #12496E; cursor: pointer; }
+
+/* 显示用户评论区域 */
+#divPhotoReplys { width: 720px; height: 100%; overflow: auto; margin-left: 30px; margin-top: 10px; _height: auto; }
+.div-photo-one-reply-area { width: 720px; height: 100%; overflow: auto; border-bottom: 2px solid #B2B3B4; _height: auto; }
+.div-photo-user-image { width: 48px; height: 60px; margin-top: 10px; float: left; display: inline; }
+.div-photo-user-image img { border: 0; padding: 0; width: 48px; height: 48px; }
+/* 评论内容区域 */
+.div-photo-user-info { width: 660px; height: 100%; overflow: auto; margin-left: 12px; margin-top: 10px; margin-bottom: 10px; float: left; display: inline; font-size: 14px; _height: auto; }
+.div-photo-user-name-ctx { word-wrap: break-word; }
+.div-photo-lbl-user-name { color: blue; cursor: pointer; }
+.div-photo-time-reply { height: 20px; line-height: 20px; font-size: 12px; color: blue; margin-top: 5px; }
+.div-photo-lbl-time { text-align: left; color: gray; }
+.div-photo-lbl-reply { margin-left: 20px; cursor: pointer; }
+.div-photo-lbl-delete { margin-left: 20px; cursor: pointer; }
+
+/* 评论分页 */
+#divPhotoReplyPage { width: 720px; height: 25px; font-size: 14px; line-height: 25px; margin-top: 10px; margin-left: 30px;}
+#divPhotoReplyPage span { float: right; margin-right: 15px; }
+.div-page-link { color: #2373A9; cursor: pointer; }
