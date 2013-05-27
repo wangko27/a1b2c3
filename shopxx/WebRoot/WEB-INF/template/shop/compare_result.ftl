@@ -10,7 +10,6 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
 <link href="${base}/template/shop/css/base.css" rel="stylesheet" type="text/css" />
 <link href="${base}/template/shop/css/shop.css" rel="stylesheet" type="text/css" />
-<link href="${base}/template/admin/css/admin.css" rel="stylesheet" type="text/css" />
 <!--[if lte IE 6]>
 	<script type="text/javascript" src="${base}/template/common/js/belatedPNG.js"></script>
 	<script type="text/javascript">

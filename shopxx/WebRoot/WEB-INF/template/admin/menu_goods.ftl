@@ -52,7 +52,7 @@
 				</dt>
 				<@sec.authorize ifAnyGranted="ROLE_GOODS_TYPE">
 					<dd>
-						<a href="goods_type!list.action" target="mainFrame"><@s.text name="menu.manage.goodstype.lis"/></a>
+						<a href="goods_type!list.action" target="mainFrame"><@s.text name="menu.manage.goodstype.list"/></a>
 					</dd>
 					<dd>
 						<a href="goods_type!add.action" target="mainFrame"><@s.text name="menu.manage.goodstype.add"/></a>
