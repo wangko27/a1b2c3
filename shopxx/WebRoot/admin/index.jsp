@@ -10,6 +10,9 @@
 <%@page import="org.springframework.security.LockedException"%>
 <%@page import="org.springframework.security.AccountExpiredException"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
+<%@page import="java.util.ResourceBundle"%>
+<%@page import="freemarker.ext.beans.BeansWrapper"%>
+<%@page import="freemarker.ext.beans.ResourceBundleModel"%>
 <%
 	response.setHeader("progma", "no-cache");
 	response.setHeader("Cache-Control", "no-cache");
@@ -18,14 +21,16 @@
 
 	final String SPRING_SECURITY_LAST_EXCEPTION = "SPRING_SECURITY_LAST_EXCEPTION";
 
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("i18n");
+	
 	String base = request.getContextPath();
 	ApplicationContext applicationContext = SpringUtil.getApplicationContext();
 	if (applicationContext == null) {
 %>
-	<p>系统出现异常，请检查是否已正确安装SHOP++</p>
-	<p>提示: SHOP++安装完成后请重新启动WEB服务器</p>
+	<p><%=resourceBundle.getString("login.system.error1") %></p>
+	<p><%=resourceBundle.getString("login.system.error2") %></p>
 	<p>
-		<a href="<%=base%>/install/index.html">点击进行安装</a>
+		<a href="<%=base%>/install/index.html"><%=resourceBundle.getString("login.system.link1") %></a>
 	</p>
 <%
 	return;
@@ -39,7 +44,7 @@ String username = null;
 
 String error = StringUtils.trim(request.getParameter("error"));
 if (StringUtils.equalsIgnoreCase(error, "captcha")) {
-	message = "验证码错误,请重新输入!";
+	message = resourceBundle.getString("login.captcha.error");
 } else {
 	Exception springSecurityLastException = (Exception) session.getAttribute(SPRING_SECURITY_LAST_EXCEPTION);
 	if (springSecurityLastException != null) {
@@ -50,21 +55,21 @@ if (StringUtils.equalsIgnoreCase(error, "captcha")) {
 				int loginFailureLockCount = setting.getLoginFailureLockCount();
 				int loginFailureCount = admin.getLoginFailureCount();
 				if (setting.getIsLoginFailureLock() && loginFailureLockCount - loginFailureCount <= 3) {
-					message = "若连续" + loginFailureLockCount + "次密码输入错误,您的账号将被锁定!";
+					message = resourceBundle.getString("login.account.error1.1") + loginFailureLockCount + resourceBundle.getString("login.account.error1.2");
 				} else {
-					message = "您的用户名或密码错误!";
+					message = resourceBundle.getString("login.account.error2");
 				}
 			} else {
-				message = "您的用户名或密码错误!";
+				message = resourceBundle.getString("login.account.error2");
 			}
 		} else if (springSecurityLastException instanceof DisabledException) {
-			message = "您的账号已被禁用,无法登录!";
+			message = resourceBundle.getString("login.account.error3");
 		} else if (springSecurityLastException instanceof LockedException) {
-			message = "您的账号已被锁定,无法登录!";
+			message = resourceBundle.getString("login.account.error4");
 		} else if (springSecurityLastException instanceof AccountExpiredException) {
-			message = "您的账号已过期,无法登录!";
+			message = resourceBundle.getString("login.account.error5");
 		} else {
-			message = "出现未知错误,无法登录!";
+			message = resourceBundle.getString("login.account.error6");
 		}
 		session.removeAttribute(SPRING_SECURITY_LAST_EXCEPTION);
 	}
@@ -75,7 +80,7 @@ if (StringUtils.equalsIgnoreCase(error, "captcha")) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>管理中心 - Powered By SHOP++</title>
+<title><%=resourceBundle.getString("page.main.pagetitle") %></title>
 <meta name="Author" content="SHOP++ Team" />
 <meta name="Copyright" content="SHOP++" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -107,15 +112,15 @@ $().ready( function() {
 	// 提交表单验证,记住登录用户名
 	$loginForm.submit( function() {
 		if ($username.val() == "") {
-			$.dialog({type: "warn", content: "请输入您的用户名!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "<%=resourceBundle.getString("login.username.warn") %>", modal: true, autoCloseTime: 3000});
 			return false;
 		}
 		if ($password.val() == "") {
-			$.dialog({type: "warn", content: "请输入您的密码!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "<%=resourceBundle.getString("login.password.warn") %>", modal: true, autoCloseTime: 3000});
 			return false;
 		}
 		if ($captcha.val() == "") {
-			$.dialog({type: "warn", content: "请输入您的验证码!", modal: true, autoCloseTime: 3000});
+			$.dialog({type: "warn", content: "<%=resourceBundle.getString("login.captcha.warn") %>", modal: true, autoCloseTime: 3000});
 			return false;
 		}
 		
@@ -164,10 +169,10 @@ $().ready( function() {
             <table class="loginTable">
             	<tr>
             		<td rowspan="3">
-            			<img src="<%=base%>/template/admin/images/login_logo.gif" alt="SHOP++管理中心" />
+            			<img src="<%=base%>/template/admin/images/login_logo.gif" alt="<%=resourceBundle.getString("page.main.pagetitle") %>" />
             		</td>
                     <th>
-                    	用户名:
+                    	<%=resourceBundle.getString("login.field.username") %>:
                     </th>
 					<td>
                     	<input type="text" id="username" name="j_username" class="formText" />
@@ -175,7 +180,7 @@ $().ready( function() {
                 </tr>
                 <tr>
 					<th>
-						密&nbsp;&nbsp;&nbsp;码:
+						<%=resourceBundle.getString("login.field.password") %>:
 					</th>
                     <td>
                     	<input type="password" id="password" name="j_password" class="formText" />
@@ -183,11 +188,11 @@ $().ready( function() {
                 </tr>
                 <tr>
                 	<th>
-                		验证码:
+                		<%=resourceBundle.getString("login.field.captcha") %>:
                 	</th>
                     <td>
                     	<input type="text" id="captcha" name="j_captcha" class="formText captcha" />
-                   		<img id="captchaImage" class="captchaImage" src="<%=base%>/captcha.jpeg" alt="换一张" />
+                   		<img id="captchaImage" class="captchaImage" src="<%=base%>/captcha.jpeg" alt="<%=resourceBundle.getString("login.field.captcha.tips") %>" />
                     </td>
                 </tr>
                 <tr>
@@ -199,7 +204,7 @@ $().ready( function() {
                 	</th>
                     <td>
                     	<label>
-                    		<input type="checkbox" id="isRememberUsername" />&nbsp;记住用户名
+                    		<input type="checkbox" id="isRememberUsername" />&nbsp;<%=resourceBundle.getString("login.username.remember") %>
                     	</label>
                     </td>
                 </tr>
@@ -211,7 +216,7 @@ $().ready( function() {
                 		&nbsp;
                 	</th>
                     <td>
-                        <input type="button" class="homeButton" value="" onclick="window.open('<%=base%>/')" hidefocus /><input type="submit" class="submitButton" value="登 录" hidefocus />
+                        <input type="button" class="homeButton" value="" onclick="window.open('<%=base%>/')" hidefocus /><input type="submit" class="submitButton" value="<%=resourceBundle.getString("login.button.name") %>" hidefocus />
                     </td>
                 </tr>
             </table>
@@ -219,12 +224,12 @@ $().ready( function() {
             	COPYRIGHT © 2005-2011 SHOPXX.NET ALL RIGHTS RESERVED.
             </div>
             <div class="link">
-            	<a href="<%=base%>/">前台首页</a> |
-				<a href="http://www.shopxx.net">官方网站</a> |
-				<a href="http://bbs.shopxx.net">交流论坛</a> |
-				<a href="http://www.shopxx.net/about.html">关于我们</a> |
-				<a href="http://www.shopxx.net/contact.html">联系我们</a> |
-				<a href="http://www.shopxx.net/license.html">授权查询</a>
+            	<a href="<%=base%>/"><%=resourceBundle.getString("login.nav.home") %></a> |
+				<a href="http://www.shopxx.net"><%=resourceBundle.getString("login.nav.site") %></a> |
+				<a href="http://bbs.shopxx.net"><%=resourceBundle.getString("login.nav.form") %></a> |
+				<a href="http://www.shopxx.net/about.html"><%=resourceBundle.getString("login.nav.about") %></a> |
+				<a href="http://www.shopxx.net/contact.html"><%=resourceBundle.getString("login.nav.contact") %></a> |
+				<a href="http://www.shopxx.net/license.html"><%=resourceBundle.getString("login.nav.license") %></a>
             </div>
         </form>
 	</div>
