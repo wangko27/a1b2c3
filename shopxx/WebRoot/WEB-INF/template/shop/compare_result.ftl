@@ -27,7 +27,7 @@
 			<tr>
 			    <th>${bundle("goods.compare.result.pic")}</th>
 			    <#list compareResultList as goods>
-			    <td><div class="pro"><img src="${base}${goods.defaultSmallGoodsImagePath}" align="middle" /></div></td>
+			    <td><div class="pro"><img src="${base}${goods.defaultSmallGoodsImagePath}" align="middle" /><em style="display: none">${goods_index}</em></div></td>
 			    </#list>
 			</tr>
 			<tr>
@@ -84,121 +84,121 @@
 			<div class="title"><strong>${bundle("goods.compare.head2")}</strong></div>
 			<table width="1000" border="1" class="tb">
 			<tr>
-			    <th>${bundle("goods.compare.attribute")}0</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue0}</td>
 				</#list>
 		  	</tr>
   			<tr>
-			    <th>${bundle("goods.compare.attribute")}1</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue1}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>${bundle("goods.compare.attribute")}2</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue2}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>${bundle("goods.compare.attribute")}3</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue3}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>${bundle("goods.compare.attribute")}4</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue4}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>${bundle("goods.compare.attribute")}5</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue5}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>${bundle("goods.compare.attribute")}6</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue6}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>${bundle("goods.compare.attribute")}7</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue7}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>${bundle("goods.compare.attribute")}8</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue8}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>${bundle("goods.compare.attribute")}9</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue9}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>${bundle("goods.compare.attribute")}10</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue10}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>${bundle("goods.compare.attribute")}11</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue11}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>${bundle("goods.compare.attribute")}12</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue12}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>${bundle("goods.compare.attribute")}13</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue13}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>${bundle("goods.compare.attribute")}14</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue14}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>${bundle("goods.compare.attribute")}15</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue15}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>${bundle("goods.compare.attribute")}16</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue16}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>${bundle("goods.compare.attribute")}17</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue17}</td>
 				</#list>
 		  	</tr>
 		  	<tr>
-			    <th>${bundle("goods.compare.attribute")}18</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue18}</td>
 				</#list>
 		  	</tr>
 			<tr>
-			    <th>${bundle("goods.compare.attribute")}19</th>
+			    <th>${bundle("goods.compare.attribute")}</th>
 			    <#list compareResultList as goods>
 				<td>${goods.goodsAttributeValue19}</td>
 				</#list>
@@ -225,5 +225,30 @@
 	<script type="text/javascript" src="${base}/template/common/js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="${base}/template/shop/js/base.js"></script>
 	<script type="text/javascript" src="${base}/template/shop/js/shop.js"></script>
+	<script type="text/javascript">
+		$().ready(function() {
+			var items = $.cookie('items-compare');
+			if(items) {
+				var itemArray = items.split(',');
+				if(itemArray.length >= 5){
+					$("#add_compare_goods").hide();
+				}
+			}
+			
+			$("#shop_contrast > table > tbody > tr").each(function(key, value) {
+				var flag = false;
+				var tds = $("td", value);
+				tds.each(function(i, k) {
+					if($.trim($(tds[i]).text()) && $.trim($(tds[i]).text()) != null && $.trim($(tds[i]).text()) != '') {
+						flag = true;
+						return;
+					}
+				});
+				if(!flag){
+					$(this).hide();
+				}
+			});
+		});
+	</script>
 </body>
 </html>

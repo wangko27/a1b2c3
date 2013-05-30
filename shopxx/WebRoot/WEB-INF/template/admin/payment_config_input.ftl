@@ -99,7 +99,7 @@ $().ready(function() {
 				<#if paymentConfig.paymentConfigType == "online">
 					<tr>
 						<th>
-							${(payment.bargainorIdName)!"<@s.text name="payment.config.bargainorId"/>"}: 
+							${(payment.bargainorIdName)!bundle("payment.config.bargainorId")}: 
 						</th>
 						<td>
 							<input type="text" name="paymentConfig.bargainorId" class="formText" value="${(paymentConfig.bargainorId)!}" />
@@ -108,7 +108,7 @@ $().ready(function() {
 					</tr>
 					<tr>
 						<th>
-							${(payment.bargainorKeyName)!"<@s.text name="payment.config.bargainorKey"/>"}: 
+							${(payment.bargainorKeyName)!bundle("payment.config.bargainorKey")}: 
 						</th>
 						<td>
 							<input type="text" name="paymentConfig.bargainorKey" class="formText" value="${(paymentConfig.bargainorKey)!}" />
@@ -156,7 +156,7 @@ $().ready(function() {
 			</table>
 			<div class="buttonArea">
 				<input type="submit" class="formButton" value="<@s.text name="button.name.confirm"/>" hidefocus />&nbsp;&nbsp;
-				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="button.name.confirm"/>" hidefocus />
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="<@s.text name="button.name.cancel"/>" hidefocus />
 			</div>
 		</form>
 	</div>

@@ -3,6 +3,7 @@ package net.shopxx.action.admin;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,9 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import freemarker.ext.beans.BeansWrapper;
+import freemarker.ext.beans.ResourceBundleModel;
 
 /**
  * 后台Action类 - 后台基类
@@ -60,6 +64,13 @@ public class BaseAdminAction extends ActionSupport {
 	protected Pager pager = new Pager();
 	protected String logInfo;// 日志记录信息
 	protected String redirectUrl;// 跳转URL
+	
+	protected ResourceBundleModel bundle;
+	
+	{
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("i18n");
+		bundle = new ResourceBundleModel(resourceBundle, new BeansWrapper());
+	}
 	
 	public String input() {
 		return NONE;
@@ -282,4 +293,11 @@ public class BaseAdminAction extends ActionSupport {
 		this.redirectUrl = redirectUrl;
 	}
 
+	public ResourceBundleModel getBundle() {
+		return bundle;
+	}
+
+	public void setBundle(ResourceBundleModel bundle) {
+		this.bundle = bundle;
+	}
 }
