@@ -2,6 +2,7 @@ package net.shopxx.common;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 import java.util.Properties;
 
 import javax.servlet.ServletContext;
@@ -21,6 +22,7 @@ import net.shopxx.directive.PaginationDirective;
 import net.shopxx.directive.SubstringMethod;
 import net.shopxx.util.SpringUtil;
 
+import org.apache.commons.lang.LocaleUtils;
 import org.springframework.core.io.ClassPathResource;
 
 import com.opensymphony.xwork2.util.logging.Logger;
@@ -36,7 +38,6 @@ public class FreemarkerManager extends org.apache.struts2.views.freemarker.Freem
 	@Override
 	protected Configuration createConfiguration(ServletContext servletContext) throws TemplateException {
 		Configuration configuration = super.createConfiguration(servletContext);
-		
 		SubstringMethod substringMethod = (SubstringMethod) SpringUtil.getBean("substringMethod");
 		CheckboxDirective checkboxDirective = (CheckboxDirective) SpringUtil.getBean("checkboxDirective");
 		PaginationDirective paginationDirective = (PaginationDirective) SpringUtil.getBean("paginationDirective");
@@ -64,6 +65,29 @@ public class FreemarkerManager extends org.apache.struts2.views.freemarker.Freem
 		configuration.setSharedVariable(GoodsCategoryListDirective.TAG_NAME, goodsCategoryListDirective);
 		configuration.setSharedVariable(GoodsCategoryTreeDirective.TAG_NAME, goodsCategoryTreeDirective);
 		configuration.setSharedVariable(GoodsListDirective.TAG_NAME, goodsListDirective);
+		
+		InputStream in = null;
+		try {
+			in = new ClassPathResource("freemarker.properties").getInputStream();
+			if (in != null) {
+				Properties p = new Properties();
+				p.load(in);
+				
+				Locale.setDefault(LocaleUtils.toLocale(p.getProperty("locale")));
+			}
+		} catch (IOException e) {
+			LOG.error("Error while loading freemarker settings from /freemarker.properties", e);
+		} finally {
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException io) {
+					if (LOG.isWarnEnabled()) {
+						LOG.warn("Unable to close input stream", io);
+					}
+				}
+			}
+		}
 
 		return configuration;
 	}
